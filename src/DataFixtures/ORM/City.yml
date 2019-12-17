@@ -1,0 +1,13 @@
+App\Entity\City:
+    city{1..3000}:
+        title: <city()>
+        googleId: <swiftBicNumber()>
+        lng: <longitude()>
+        lat: <latitude()>
+        north: <longitude()>
+        south: <latitude()>
+        east: <longitude()>
+        west: <longitude()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        # advert: ['@advert<numberBetween(1, 100)>', '@advert<numberBetween(1, 100)>', '@advert<numberBetween(1, 100)>']

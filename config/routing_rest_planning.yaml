@@ -1,0 +1,5 @@
+planning :
+  type: rest
+  resource:     "@App/Controller/Planning/PlanningController.php"
+  name_prefix:  planning_
+  prefix: planning

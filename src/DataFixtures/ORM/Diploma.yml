@@ -1,0 +1,8 @@
+App\Entity\Diploma:
+    diploma{1..100}:
+        title: <catchPhrase()>
+        filename: <file('/tmp', '/var/tmp', false)>
+        ext: <fileExtension()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        advert (unique): '@advert<current()>'

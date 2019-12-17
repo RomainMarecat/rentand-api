@@ -1,0 +1,10 @@
+App\Entity\AdvertTranslation:
+    advertTranslation{1..1000}:
+        locale: '90%? fr : <languageCode()>'
+        title: <text(20)>
+        description1: <realText()>
+        description2: <realText()>
+        description3: <realText()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        advert: '@advert<numberBetween(1, 100)>'

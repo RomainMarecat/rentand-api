@@ -1,0 +1,10 @@
+App\Entity\Meeting:
+    meeting{1..10000}:
+        title: <catchPhrase()>
+        lng: <longitude()>
+        lat: <latitude()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        advert: '@advert<numberBetween(1, 100)>'
+        city: '@city<numberBetween(1, 3000)>'
+

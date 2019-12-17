@@ -1,0 +1,19 @@
+controllers_admin:
+    resource: ../../src/Controller/Admin
+    type: rest
+    prefix: api/admin
+
+controllers_front:
+    resource: ../../src/Controller/Front
+    type: rest
+    prefix: api/
+
+controllers_planning:
+    resource: ../../src/Controller/Planning
+    type: rest
+    prefix: api/planning
+
+controllers_restricted:
+    resource: ../../src/Controller/Restricted
+    type: rest
+    prefix: api/restricted

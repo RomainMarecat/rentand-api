@@ -1,0 +1,6 @@
+App\Entity\Structure:
+    structure{1..100}:
+        title: <realText()>
+        email: <email()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>

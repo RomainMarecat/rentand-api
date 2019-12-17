@@ -1,0 +1,10 @@
+App\Entity\Comment:
+    comment{1..1000}:
+        grade: <numberBetween(1, 5)>
+        comment: <text()>
+        validated: <boolean(50)>
+        status: '50%? published : unpublished'
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        advert: '@advert<numberBetween(1, 100)>'
+        user: '@user<numberBetween(1, 1000)>'

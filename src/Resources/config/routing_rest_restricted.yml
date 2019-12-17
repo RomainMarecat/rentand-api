@@ -1,0 +1,23 @@
+me : 
+  type: rest
+  resource:     "@AppBundle/Controller/Restricted/MeController.php"
+  name_prefix:  restricted_
+  prefix: restricted
+
+restricted_structure : 
+  type: rest
+  resource:     "@AppBundle/Controller/Restricted/StructuresController.php"
+  name_prefix:  restricted_
+  prefix: restricted
+
+restricted_booking : 
+  type: rest
+  resource:     "@AppBundle/Controller/Restricted/BookingsController.php"
+  name_prefix:  restricted_
+  prefix: restricted
+
+restricted_form : 
+  type: rest
+  resource:     "@AppBundle/Controller/Restricted/FormsController.php"
+  name_prefix:  restricted_
+  prefix: restricted

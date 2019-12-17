@@ -1,0 +1,8 @@
+App\Entity\AdvertSport:
+    advertSport{1..1000}:
+        orderNumber: <numberBetween(1, 100)>
+        levels: [1, 4]
+        ages: [1, 2]
+        advert: '@advert<numberBetween(1, 100)>'
+        sport: '@sport<numberBetween(1, 100)>'
+        specialities: ['@sport<numberBetween(1, 20)>', '@sport<numberBetween(21, 50)>', '@sport<numberBetween(51, 100)>']

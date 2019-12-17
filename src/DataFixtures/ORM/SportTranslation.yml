@@ -1,0 +1,8 @@
+App\Entity\SportTranslation:
+    sportTranslation{1..1000}:
+        locale: '90%? fr : <languageCode()>'
+        title: <text(20)>
+        search: <realText()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        sport: '@sport<numberBetween(1, 100)>'

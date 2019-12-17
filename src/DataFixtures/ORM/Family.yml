@@ -1,0 +1,9 @@
+App\Entity\Family:
+    family{1..100}:
+        name: <text(20)>
+        slug: <slug()>
+        level: <numberBetween(0, 2)>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        parent: '50%? @family<numberBetween(1, 20)>'
+        sports: ['@sport<numberBetween(1, 10)>', '@sport<numberBetween(11, 20)>', '@sport<numberBetween(21, 30)>', '@sport<numberBetween(31, 40)>', '@sport<numberBetween(41, 50)>', '@sport<numberBetween(51, 60)>', '@sport<numberBetween(61, 70)>', '@sport<numberBetween(71, 80)>', '@sport<numberBetween(81, 90)>', '@sport<numberBetween(91, 100)>']

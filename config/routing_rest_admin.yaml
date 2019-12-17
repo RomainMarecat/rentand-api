@@ -1,0 +1,41 @@
+#admin_user:
+#  type: rest
+#  resource:     "@App/Controller/Admin/UserController.php"
+#  name_prefix:  admin_
+#  prefix: admin
+#
+#admin_advert:
+#  type: rest
+#  resource:     "@App/Controller/Admin/AdvertController.php"
+#  name_prefix:  admin_
+#  prefix: admin
+#
+#admin_comment:
+#  type: rest
+#  resource:     "@App/Controller/Admin/CommentController.php"
+#  name_prefix:  admin_
+#  prefix: admin
+#
+#admin_sport:
+#  type: rest
+#  resource:     "@App/Controller/Admin/SportController.php"
+#  name_prefix:  admin_
+#  prefix: admin
+#
+#admin_family:
+#  type: rest
+#  resource:     "@App/Controller/Admin/FamilyController.php"
+#  name_prefix:  admin_
+#  prefix: admin
+#
+#admin_booking:
+#  type: rest
+#  resource:     "@App/Controller/Admin/BookingController.php"
+#  name_prefix:  admin_
+#  prefix: admin
+#
+#admin_form:
+#  type: rest
+#  resource:     "@App/Controller/Admin/FormController.php"
+#  name_prefix:  admin_
+#  prefix: admin

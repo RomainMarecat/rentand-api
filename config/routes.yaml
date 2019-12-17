@@ -1,3 +1,15 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+#admin_rest:
+#    type : rest
+#    resource: "routing_rest_admin.yaml"
+#
+#restricted_rest:
+#    type : rest
+#    resource: "routing_rest_restricted.yaml"
+#
+#front_rest:
+#    type : rest
+#    resource: "routing_rest_front.yaml"
+#
+#planning_rest:
+#    type : rest
+#    resource: "routing_rest_planning.yaml"

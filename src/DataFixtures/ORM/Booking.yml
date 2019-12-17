@@ -1,0 +1,13 @@
+App\Entity\Booking:
+    booking{1..100}:
+        walletId: <creditCardNumber()>
+        statut: <numberBetween(1, 100)>
+        transaction: <swiftBicNumber()>
+        code: <creditCardNumber()>
+        price: <numberBetween(1, 100)>
+        startDate: <dateTime()>
+        endDate: <dateTime()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        user: '@user<numberBetween(1, 100)>'
+        advert: '@advert<numberBetween(1, 100)>'

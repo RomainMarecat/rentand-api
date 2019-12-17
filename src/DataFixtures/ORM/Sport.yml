@@ -1,0 +1,7 @@
+App\Entity\Sport:
+    sport{1..100}:
+        level: <numberBetween(0, 2)>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        parent: '@sport<numberBetween(1, 100)>'
+        # advertSports: ['@advertSport<numberBetween(1, 100)>', '@advertSport<numberBetween(1, 100)>', '@advertSport<numberBetween(1, 100)>']
