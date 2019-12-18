@@ -1,0 +1,5603 @@
+App\Entity\Country:
+    #    country1:
+    #        name: افغانستان
+    #        translations:
+    #            de: Afghanistan
+    #            es: Afganistán
+    #            fr: Afghanistan
+    #            it: Afghanistan
+    #            ja: アフガニスタン
+    #            nl: Afghanistan
+    #            hr: Afganistan
+    #            en: Afghanistan
+    #        latlng:
+    #            - 33
+    #            - 65
+    #        demonym:
+    #            en: Afghan
+    #            fr: Afghan
+    #        timezones:
+    #            - UTC+04:30
+    #        currencies:
+    #            - AFN
+    #        languages:
+    #            - pus
+    #            - uzb
+    #            - tuk
+    #        alpha2: AF
+    #        alpha3: AFG
+    #        calling_codes:
+    #            - '93'
+    #        numeric_code: '004'
+    #    country2:
+    #        name: Shqipëria
+    #        translations:
+    #            de: Albanien
+    #            es: Albania
+    #            fr: Albanie
+    #            it: Albania
+    #            ja: アルバニア
+    #            nl: Albanië
+    #            hr: Albanija
+    #            en: Albania
+    #        latlng:
+    #            - 41
+    #            - 20
+    #        demonym:
+    #            en: Albanian
+    #            fr: Albanais
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - ALL
+    #        languages:
+    #            - sqi
+    #        alpha2: AL
+    #        alpha3: ALB
+    #        calling_codes:
+    #            - '355'
+    #        numeric_code: 008
+    #    country3:
+    #        name: الجزائر
+    #        translations:
+    #            de: Algerien
+    #            es: Argelia
+    #            fr: Algérie
+    #            it: Algeria
+    #            ja: アルジェリア
+    #            nl: Algerije
+    #            hr: Alžir
+    #            en: Algeria
+    #        latlng:
+    #            - 28
+    #            - 3
+    #        demonym:
+    #            en: Algerian
+    #            fr: Algérien
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - DZD
+    #        languages:
+    #            - ara
+    #        alpha2: DZ
+    #        alpha3: DZA
+    #        calling_codes:
+    #            - '213'
+    #        numeric_code: '012'
+    #    country4:
+    #        name: Andorra
+    #        translations:
+    #            de: Andorra
+    #            es: Andorra
+    #            fr: Andorre
+    #            it: Andorra
+    #            ja: アンドラ
+    #            nl: Andorra
+    #            hr: Andora
+    #            en: Andorra
+    #        latlng:
+    #            - 42.5
+    #            - 1.5
+    #        demonym:
+    #            en: Andorran
+    #            fr: andorran
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - cat
+    #        alpha2: AD
+    #        alpha3: AND
+    #        calling_codes:
+    #            - '376'
+    #        numeric_code: '020'
+    #    country5:
+    #        name: Angola
+    #        translations:
+    #            de: Angola
+    #            es: Angola
+    #            fr: Angola
+    #            it: Angola
+    #            ja: アンゴラ
+    #            nl: Angola
+    #            hr: Angola
+    #            en: Angola
+    #        latlng:
+    #            - -12.5
+    #            - 18.5
+    #        demonym:
+    #            en: Angolan
+    #            fr: Angolais
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - AOA
+    #        languages:
+    #            - por
+    #        alpha2: AO
+    #        alpha3: AGO
+    #        calling_codes:
+    #            - '244'
+    #        numeric_code: '024'
+    #    country6:
+    #        name: Antigua and Barbuda
+    #        translations:
+    #            de: Antigua und Barbuda
+    #            es: Antigua y Barbuda
+    #            fr: Antigua-et-Barbuda
+    #            it: Antigua e Barbuda
+    #            ja: アンティグア・バーブーダ
+    #            nl: Antigua en Barbuda
+    #            hr: Antigva i Barbuda
+    #            en: Antigua and Barbuda
+    #        latlng:
+    #            - 17.05
+    #            - -61.8
+    #        demonym:
+    #            en: Barbudan
+    #            fr: Barbudien
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - XCD
+    #        languages:
+    #            - eng
+    #        alpha2: AG
+    #        alpha3: ATG
+    #        calling_codes:
+    #            - '1268'
+    #        numeric_code: 028
+    #    country7:
+    #        name: Argentina
+    #        translations:
+    #            de: Argentinien
+    #            es: Argentina
+    #            fr: Argentine
+    #            it: Argentina
+    #            ja: アルゼンチン
+    #            nl: Argentinië
+    #            hr: Argentina
+    #            en: Argentina
+    #        latlng:
+    #            - -34
+    #            - -64
+    #        demonym:
+    #            en: Argentinean
+    #            fr: Argentin
+    #        timezones:
+    #            - UTC-03:00
+    #        currencies:
+    #            - ARS
+    #        languages:
+    #            - spa
+    #            - grn
+    #        alpha2: AR
+    #        alpha3: ARG
+    #        calling_codes:
+    #            - '54'
+    #        numeric_code: '032'
+    #    country8:
+    #        name: Հայաստան
+    #        translations:
+    #            de: Armenien
+    #            es: Armenia
+    #            fr: Arménie
+    #            it: Armenia
+    #            ja: アルメニア
+    #            nl: Armenië
+    #            hr: Armenija
+    #            en: Armenia
+    #        latlng:
+    #            - 40
+    #            - 45
+    #        demonym:
+    #            en: Armenian
+    #            fr: Arménien
+    #        timezones:
+    #            - UTC+04:00
+    #        currencies:
+    #            - AMD
+    #        languages:
+    #            - hye
+    #            - rus
+    #        alpha2: AM
+    #        alpha3: ARM
+    #        calling_codes:
+    #            - '374'
+    #        numeric_code: '051'
+    #    country9:
+    #        name: Australia
+    #        translations:
+    #            de: Australien
+    #            es: Australia
+    #            fr: Australie
+    #            it: Australia
+    #            ja: オーストラリア
+    #            nl: Australië
+    #            hr: Australija
+    #            en: Australia
+    #        latlng:
+    #            - -27
+    #            - 133
+    #        demonym:
+    #            en: Australian
+    #            fr: Australien
+    #        timezones:
+    #            - UTC+05:00
+    #            - UTC+06:30
+    #            - UTC+07:00
+    #            - UTC+08:00
+    #            - UTC+09:30
+    #            - UTC+10:00
+    #            - UTC+10:30
+    #            - UTC+11:30
+    #        currencies:
+    #            - AUD
+    #        languages:
+    #            - eng
+    #        alpha2: AU
+    #        alpha3: AUS
+    #        calling_codes:
+    #            - '61'
+    #        numeric_code: '036'
+    #    country10:
+    #        name: Österreich
+    #        translations:
+    #            de: Österreich
+    #            es: Austria
+    #            fr: Autriche
+    #            it: Austria
+    #            ja: オーストリア
+    #            nl: Oostenrijk
+    #            hr: Austrija
+    #            en: Austria
+    #        latlng:
+    #            - 47.33333333
+    #            - 13.33333333
+    #        demonym:
+    #            en: Austrian
+    #            fr: Austrichien
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - deu
+    #        alpha2: AT
+    #        alpha3: AUT
+    #        calling_codes:
+    #            - '43'
+    #        numeric_code: '040'
+    #    country11:
+    #        name: Azərbaycan
+    #        translations:
+    #            de: Aserbaidschan
+    #            es: Azerbaiyán
+    #            fr: Azerbaïdjan
+    #            it: Azerbaijan
+    #            ja: アゼルバイジャン
+    #            nl: Azerbeidzjan
+    #            hr: Azerbajdžan
+    #            en: Azerbaijan
+    #        latlng:
+    #            - 40.5
+    #            - 47.5
+    #        demonym:
+    #            en: Azerbaijani
+    #            fr: Azerbaïdjanais
+    #        timezones:
+    #            - UTC+04:00
+    #        currencies:
+    #            - AZN
+    #        languages:
+    #            - aze
+    #        alpha2: AZ
+    #        alpha3: AZE
+    #        calling_codes:
+    #            - '994'
+    #        numeric_code: '031'
+    #    country12:
+    #        name: Bahamas
+    #        translations:
+    #            de: Bahamas
+    #            es: Bahamas
+    #            fr: Bahamas
+    #            it: Bahamas
+    #            ja: バハマ
+    #            nl: Bahama’s
+    #            hr: Bahami
+    #            en: Bahamas
+    #        latlng:
+    #            - 24.25
+    #            - -76
+    #        demonym:
+    #            en: Bahamian
+    #            fr: Bahamien
+    #        timezones:
+    #            - UTC-05:00
+    #        currencies:
+    #            - BSD
+    #        languages:
+    #            - eng
+    #        alpha2: BS
+    #        alpha3: BHS
+    #        calling_codes:
+    #            - '1242'
+    #        numeric_code: '044'
+    #    country13:
+    #        name: "‏البحرين"
+    #        translations:
+    #            de: Bahrain
+    #            es: Bahrein
+    #            fr: Bahreïn
+    #            it: Bahrein
+    #            ja: バーレーン
+    #            nl: Bahrein
+    #            hr: Bahrein
+    #            en: Bahrain
+    #        latlng:
+    #            - 26
+    #            - 50.55
+    #        demonym:
+    #            en: Bahraini
+    #            fr: Bahrénien
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - BHD
+    #        languages:
+    #            - ara
+    #        alpha2: BH
+    #        alpha3: BHR
+    #        calling_codes:
+    #            - '973'
+    #        numeric_code: 048
+    #    country14:
+    #        name: Bangladesh
+    #        translations:
+    #            de: Bangladesch
+    #            es: Bangladesh
+    #            fr: Bangladesh
+    #            it: Bangladesh
+    #            ja: バングラデシュ
+    #            nl: Bangladesh
+    #            hr: Bangladeš
+    #            en: Bangladesh
+    #        latlng:
+    #            - 24
+    #            - 90
+    #        demonym:
+    #            en: Bangladeshi
+    #            fr: Bangladais
+    #        timezones:
+    #            - UTC+06:00
+    #        currencies:
+    #            - BDT
+    #        languages:
+    #            - ben
+    #        alpha2: BD
+    #        alpha3: BGD
+    #        calling_codes:
+    #            - '880'
+    #        numeric_code: '050'
+    #    country15:
+    #        name: Barbados
+    #        translations:
+    #            de: Barbados
+    #            es: Barbados
+    #            fr: Barbade
+    #            it: Barbados
+    #            ja: バルバドス
+    #            nl: Barbados
+    #            hr: Barbados
+    #            en: Barbados
+    #        latlng:
+    #            - 13.16666666
+    #            - -59.53333333
+    #        demonym:
+    #            en: Barbadian
+    #            fr: Barbadien
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - BBD
+    #        languages:
+    #            - eng
+    #        alpha2: BB
+    #        alpha3: BRB
+    #        calling_codes:
+    #            - '1246'
+    #        numeric_code: '052'
+    #    country16:
+    #        name: Белару́сь
+    #        translations:
+    #            de: Weißrussland
+    #            es: Bielorrusia
+    #            fr: Biélorussie
+    #            it: Bielorussia
+    #            ja: ベラルーシ
+    #            nl: Wit-Rusland
+    #            hr: Bjelorusija
+    #            en: Belarus
+    #        latlng:
+    #            - 53
+    #            - 28
+    #        demonym:
+    #            en: Belarusian
+    #            fr: Biélorusse
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - BYR
+    #            - BYN
+    #        languages:
+    #            - bel
+    #            - rus
+    #        alpha2: BY
+    #        alpha3: BLR
+    #        calling_codes:
+    #            - '375'
+    #        numeric_code: '112'
+    #    country17:
+    #        name: België
+    #        translations:
+    #            de: Belgien
+    #            es: Bélgica
+    #            fr: Belgique
+    #            it: Belgio
+    #            ja: ベルギー
+    #            nl: België
+    #            hr: Belgija
+    #            en: Belgium
+    #        latlng:
+    #            - 50.83333333
+    #            - 4
+    #        demonym:
+    #            en: Belgian
+    #            fr: Belge
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - nld
+    #            - fra
+    #            - deu
+    #        alpha2: BE
+    #        alpha3: BEL
+    #        calling_codes:
+    #            - '32'
+    #        numeric_code: '056'
+    #    country18:
+    #        name: Belize
+    #        translations:
+    #            de: Belize
+    #            es: Belice
+    #            fr: Belize
+    #            it: Belize
+    #            ja: ベリーズ
+    #            nl: Belize
+    #            hr: Belize
+    #            en: Belize
+    #        latlng:
+    #            - 17.25
+    #            - -88.75
+    #        demonym:
+    #            en: Belizean
+    #            fr: Bélizien
+    #        timezones:
+    #            - UTC-06:00
+    #        currencies:
+    #            - BZD
+    #        languages:
+    #            - eng
+    #            - spa
+    #        alpha2: BZ
+    #        alpha3: BLZ
+    #        calling_codes:
+    #            - '501'
+    #        numeric_code: 084
+    #    country19:
+    #        name: Bénin
+    #        translations:
+    #            de: Benin
+    #            es: Benín
+    #            fr: Bénin
+    #            it: Benin
+    #            ja: ベナン
+    #            nl: Benin
+    #            hr: Benin
+    #            en: Benin
+    #        latlng:
+    #            - 9.5
+    #            - 2.25
+    #        demonym:
+    #            en: Beninese
+    #            fr: Béninois
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - XOF
+    #        languages:
+    #            - fra
+    #        alpha2: BJ
+    #        alpha3: BEN
+    #        calling_codes:
+    #            - '229'
+    #        numeric_code: '204'
+    #    country20:
+    #        name: ʼbrug-yul
+    #        translations:
+    #            de: Bhutan
+    #            es: Bután
+    #            fr: Bhoutan
+    #            it: Bhutan
+    #            ja: ブータン
+    #            nl: Bhutan
+    #            hr: Butan
+    #            en: Bhutan
+    #        latlng:
+    #            - 27.5
+    #            - 90.5
+    #        demonym:
+    #            en: Bhutanese
+    #            fr: Bouthanais
+    #        timezones:
+    #            - UTC+06:00
+    #        currencies:
+    #            - BTN
+    #            - INR
+    #        languages:
+    #            - dzo
+    #        alpha2: BT
+    #        alpha3: BTN
+    #        calling_codes:
+    #            - '975'
+    #        numeric_code: '064'
+    #    country21:
+    #        name: Bolivia
+    #        translations:
+    #            de: Bolivien
+    #            es: Bolivia
+    #            fr: Bolivie
+    #            it: Bolivia
+    #            ja: ボリビア多民族国
+    #            nl: Bolivia
+    #            hr: Bolivija
+    #            en: Bolivia (Plurinational State of)
+    #        latlng:
+    #            - -17
+    #            - -65
+    #        demonym:
+    #            en: Bolivian
+    #            fr: Bolivien
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - BOB
+    #        languages:
+    #            - spa
+    #            - aym
+    #            - que
+    #        alpha2: BO
+    #        alpha3: BOL
+    #        calling_codes:
+    #            - '591'
+    #        numeric_code: 068
+    #    country22:
+    #        name: Bosna i Hercegovina
+    #        translations:
+    #            de: Bosnien und Herzegowina
+    #            es: Bosnia y Herzegovina
+    #            fr: Bosnie-Herzégovine
+    #            it: Bosnia ed Erzegovina
+    #            ja: ボスニア・ヘルツェゴビナ
+    #            nl: Bosnië en Herzegovina
+    #            hr: Bosna i Hercegovina
+    #            en: Bosnia and Herzegovina
+    #        latlng:
+    #            - 44
+    #            - 18
+    #        demonym:
+    #            en: Bosnian, Herzegovinian
+    #            fr: Bosniaques
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - BAM
+    #        languages:
+    #            - bos
+    #            - hrv
+    #            - srp
+    #        alpha2: BA
+    #        alpha3: BIH
+    #        calling_codes:
+    #            - '387'
+    #        numeric_code: '070'
+    #    country23:
+    #        name: Botswana
+    #        translations:
+    #            de: Botswana
+    #            es: Botswana
+    #            fr: Botswana
+    #            it: Botswana
+    #            ja: ボツワナ
+    #            nl: Botswana
+    #            hr: Bocvana
+    #            en: Botswana
+    #        latlng:
+    #            - -22
+    #            - 24
+    #        demonym:
+    #            en: Motswana
+    #            fr: Botswanais
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - BWP
+    #        languages:
+    #            - eng
+    #            - tsn
+    #        alpha2: BW
+    #        alpha3: BWA
+    #        calling_codes:
+    #            - '267'
+    #        numeric_code: '072'
+    #    country24:
+    #        name: Brasil
+    #        translations:
+    #            de: Brasilien
+    #            es: Brasil
+    #            fr: Brésil
+    #            it: Brasile
+    #            ja: ブラジル
+    #            nl: Brazilië
+    #            hr: Brazil
+    #            en: Brazil
+    #        latlng:
+    #            - -10
+    #            - -55
+    #        demonym:
+    #            en: Brazilian
+    #            fr: Brésilien
+    #        timezones:
+    #            - UTC-05:00
+    #            - UTC-04:00
+    #            - UTC-03:00
+    #            - UTC-02:00
+    #        currencies:
+    #            - BRL
+    #        languages:
+    #            - por
+    #        alpha2: BR
+    #        alpha3: BRA
+    #        calling_codes:
+    #            - '55'
+    #        numeric_code: '076'
+    #    country25:
+    #        name: Negara Brunei Darussalam
+    #        translations:
+    #            fr: Brunei
+    #            nl: Brunei
+    #            de: Brunei
+    #            it: Brunei
+    #            ja: ブルネイ・ダルサラーム
+    #            es: Brunei
+    #            hr: Brunej
+    #            en: Brunei Darussalam
+    #        latlng:
+    #            - 4.5
+    #            - 114.66666666
+    #        demonym:
+    #            en: Bruneian
+    #            fr: Brunéiens
+    #        timezones:
+    #            - UTC+08:00
+    #        currencies:
+    #            - BND
+    #            - SGD
+    #        languages:
+    #            - msa
+    #        alpha2: BN
+    #        alpha3: BRN
+    #        calling_codes:
+    #            - '673'
+    #        numeric_code: 096
+    #    country26:
+    #        name: България
+    #        translations:
+    #            de: Bulgarien
+    #            es: Bulgaria
+    #            fr: Bulgarie
+    #            it: Bulgaria
+    #            ja: ブルガリア
+    #            nl: Bulgarije
+    #            hr: Bugarska
+    #            en: Bulgaria
+    #        latlng:
+    #            - 43
+    #            - 25
+    #        demonym:
+    #            en: Bulgarian
+    #            fr: Bulgare
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - BGN
+    #        languages:
+    #            - bul
+    #        alpha2: BG
+    #        alpha3: BGR
+    #        calling_codes:
+    #            - '359'
+    #        numeric_code: '100'
+    #    country27:
+    #        name: Burkina Faso
+    #        translations:
+    #            de: Burkina Faso
+    #            es: Burkina Faso
+    #            fr: Burkina Faso
+    #            it: Burkina Faso
+    #            ja: ブルキナファソ
+    #            nl: Burkina Faso
+    #            hr: Burkina Faso
+    #            en: Burkina Faso
+    #        latlng:
+    #            - 13
+    #            - -2
+    #        demonym:
+    #            en: Burkinabe
+    #            fr: Burkinabè
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - XOF
+    #        languages:
+    #            - fra
+    #            - ful
+    #        alpha2: BF
+    #        alpha3: BFA
+    #        calling_codes:
+    #            - '226'
+    #        numeric_code: '854'
+    #    country28:
+    #        name: Burundi
+    #        translations:
+    #            de: Burundi
+    #            es: Burundi
+    #            fr: Burundi
+    #            it: Burundi
+    #            ja: ブルンジ
+    #            nl: Burundi
+    #            hr: Burundi
+    #            en: Burundi
+    #        latlng:
+    #            - -3.5
+    #            - 30
+    #        demonym:
+    #            en: Burundian
+    #            fr: Burundais
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - BIF
+    #        languages:
+    #            - fra
+    #            - run
+    #        alpha2: BI
+    #        alpha3: BDI
+    #        calling_codes:
+    #            - '257'
+    #        numeric_code: '108'
+    #    country29:
+    #        name: Cabo Verde
+    #        translations:
+    #            de: Kap Verde
+    #            es: Cabo Verde
+    #            fr: Cap Vert
+    #            it: Capo Verde
+    #            ja: カーボベルデ
+    #            nl: Kaapverdië
+    #            hr: Zelenortska Republika
+    #            en: Cabo Verde
+    #        latlng:
+    #            - 16
+    #            - -24
+    #        demonym:
+    #            en: Cape Verdian
+    #            fr: Cap-verdien
+    #        timezones:
+    #            - UTC-01:00
+    #        currencies:
+    #            - CVE
+    #        languages:
+    #            - por
+    #        alpha2: CV
+    #        alpha3: CPV
+    #        calling_codes:
+    #            - '238'
+    #        numeric_code: '132'
+    #    country30:
+    #        name: Kâmpŭchéa
+    #        translations:
+    #            fr: Cambodge
+    #            nl: Cambodja
+    #            de: Kambodscha
+    #            it: Cambogia
+    #            ja: カンボジア
+    #            es: Camboya
+    #            hr: Kambodža
+    #            en: Cambodia
+    #        latlng:
+    #            - 13
+    #            - 105
+    #        demonym:
+    #            en: Cambodian
+    #            fr: Cambodgien
+    #        timezones:
+    #            - UTC+07:00
+    #        currencies:
+    #            - KHR
+    #            - USD
+    #        languages:
+    #            - khm
+    #        alpha2: KH
+    #        alpha3: KHM
+    #        calling_codes:
+    #            - '855'
+    #        numeric_code: '116'
+    #    country31:
+    #        name: Cameroon
+    #        translations:
+    #            de: Kamerun
+    #            es: Camerún
+    #            fr: Cameroun
+    #            it: Camerun
+    #            ja: カメルーン
+    #            nl: Kameroen
+    #            hr: Kamerun
+    #            en: Cameroon
+    #        latlng:
+    #            - 6
+    #            - 12
+    #        demonym:
+    #            en: Cameroonian
+    #            fr: Camerounais
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - XAF
+    #        languages:
+    #            - eng
+    #            - fra
+    #        alpha2: CM
+    #        alpha3: CMR
+    #        calling_codes:
+    #            - '237'
+    #        numeric_code: '120'
+    #    country32:
+    #        name: Canada
+    #        translations:
+    #            de: Kanada
+    #            es: Canadá
+    #            fr: Canada
+    #            it: Canada
+    #            ja: カナダ
+    #            nl: Canada
+    #            hr: Kanada
+    #            en: Canada
+    #        latlng:
+    #            - 60
+    #            - -95
+    #        demonym:
+    #            en: Canadian
+    #            fr: Canadien
+    #        timezones:
+    #            - UTC-08:00
+    #            - UTC-07:00
+    #            - UTC-06:00
+    #            - UTC-05:00
+    #            - UTC-04:00
+    #            - UTC-03:30
+    #        currencies:
+    #            - CAD
+    #        languages:
+    #            - eng
+    #            - fra
+    #        alpha2: CA
+    #        alpha3: CAN
+    #        calling_codes:
+    #            - '1'
+    #        numeric_code: '124'
+    #    country33:
+    #        name: Ködörösêse tî Bêafrîka
+    #        translations:
+    #            de: Zentralafrikanische Republik
+    #            es: República Centroafricana
+    #            fr: République centrafricaine
+    #            it: Repubblica Centrafricana
+    #            ja: 中央アフリカ共和国
+    #            nl: Centraal-Afrikaanse Republiek
+    #            hr: Srednjoafrička Republika
+    #            en: Central African Republic
+    #        latlng:
+    #            - 7
+    #            - 21
+    #        demonym:
+    #            en: Central African
+    #            fr: Centrafricain
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - XAF
+    #        languages:
+    #            - fra
+    #            - sag
+    #        alpha2: CF
+    #        alpha3: CAF
+    #        calling_codes:
+    #            - '236'
+    #        numeric_code: '140'
+    #    country34:
+    #        name: Tchad
+    #        translations:
+    #            de: Tschad
+    #            es: Chad
+    #            fr: Tchad
+    #            it: Ciad
+    #            ja: チャド
+    #            nl: Tsjaad
+    #            hr: Čad
+    #            en: Chad
+    #        latlng:
+    #            - 15
+    #            - 19
+    #        demonym:
+    #            en: Chadian
+    #            fr: Tchadien
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - XAF
+    #        languages:
+    #            - fra
+    #            - ara
+    #        alpha2: TD
+    #        alpha3: TCD
+    #        calling_codes:
+    #            - '235'
+    #        numeric_code: '148'
+    #    country35:
+    #        name: Chile
+    #        translations:
+    #            de: Chile
+    #            es: Chile
+    #            fr: Chili
+    #            it: Cile
+    #            ja: チリ
+    #            nl: Chili
+    #            hr: Čile
+    #            en: Chile
+    #        latlng:
+    #            - -30
+    #            - -71
+    #        demonym:
+    #            en: Chilean
+    #            fr: Chilien
+    #        timezones:
+    #            - UTC-06:00
+    #            - UTC-04:00
+    #        currencies:
+    #            - CLP
+    #        languages:
+    #            - spa
+    #        alpha2: CL
+    #        alpha3: CHL
+    #        calling_codes:
+    #            - '56'
+    #        numeric_code: '152'
+    #    country36:
+    #        name: 中国
+    #        translations:
+    #            de: China
+    #            es: China
+    #            fr: Chine
+    #            it: Cina
+    #            ja: 中国
+    #            nl: China
+    #            hr: Kina
+    #            en: China
+    #        latlng:
+    #            - 35
+    #            - 105
+    #        demonym:
+    #            en: Chinese
+    #            fr: Chinois
+    #        timezones:
+    #            - UTC+08:00
+    #        currencies:
+    #            - CNY
+    #        languages:
+    #            - zho
+    #        alpha2: CN
+    #        alpha3: CHN
+    #        calling_codes:
+    #            - '86'
+    #        numeric_code: '156'
+    #    country37:
+    #        name: Colombia
+    #        translations:
+    #            de: Kolumbien
+    #            es: Colombia
+    #            fr: Colombie
+    #            it: Colombia
+    #            ja: コロンビア
+    #            nl: Colombia
+    #            hr: Kolumbija
+    #            en: Colombia
+    #        latlng:
+    #            - 4
+    #            - -72
+    #        demonym:
+    #            en: Colombian
+    #            fr: Colombien
+    #        timezones:
+    #            - UTC-05:00
+    #        currencies:
+    #            - COP
+    #        languages:
+    #            - spa
+    #        alpha2: CO
+    #        alpha3: COL
+    #        calling_codes:
+    #            - '57'
+    #        numeric_code: '170'
+    #    country38:
+    #        name: Komori
+    #        translations:
+    #            de: Union der Komoren
+    #            es: Comoras
+    #            fr: Comores
+    #            it: Comore
+    #            ja: コモロ
+    #            nl: Comoren
+    #            hr: Komori
+    #            en: Comoros
+    #        latlng:
+    #            - -12.16666666
+    #            - 44.25
+    #        demonym:
+    #            en: Comoran
+    #            fr: Comoriens
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - KMF
+    #        languages:
+    #            - ara
+    #            - fra
+    #        alpha2: KM
+    #        alpha3: COM
+    #        calling_codes:
+    #            - '269'
+    #        numeric_code: '174'
+    #    country39:
+    #        name: République du Congo
+    #        translations:
+    #            de: Kongo
+    #            es: Congo
+    #            fr: Congo
+    #            it: Congo
+    #            ja: コンゴ共和国
+    #            nl: Congo [Republiek]
+    #            hr: Kongo
+    #            en: Congo
+    #        latlng:
+    #            - -1
+    #            - 15
+    #        demonym:
+    #            en: Congolese
+    #            fr: Congolais
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - XAF
+    #        languages:
+    #            - fra
+    #            - lin
+    #        alpha2: CG
+    #        alpha3: COG
+    #        calling_codes:
+    #            - '242'
+    #        numeric_code: '178'
+    #    country40:
+    #        name: Costa Rica
+    #        translations:
+    #            de: Costa Rica
+    #            es: Costa Rica
+    #            fr: Costa Rica
+    #            it: Costa Rica
+    #            ja: コスタリカ
+    #            nl: Costa Rica
+    #            hr: Kostarika
+    #            en: Costa Rica
+    #        latlng:
+    #            - 10
+    #            - -84
+    #        demonym:
+    #            en: Costa Rican
+    #            fr: Costaricien
+    #        timezones:
+    #            - UTC-06:00
+    #        currencies:
+    #            - CRC
+    #        languages:
+    #            - spa
+    #        alpha2: CR
+    #        alpha3: CRI
+    #        calling_codes:
+    #            - '506'
+    #        numeric_code: '188'
+    #    country41:
+    #        name: Côte d'Ivoire
+    #        translations:
+    #            de: Elfenbeinküste
+    #            es: Costa de Marfil
+    #            fr: Côte d'Ivoire
+    #            it: Costa D'Avorio
+    #            ja: コートジボワール
+    #            nl: Ivoorkust
+    #            hr: Obala Bjelokosti
+    #            en: Côte d'Ivoire
+    #        latlng:
+    #            - 8
+    #            - -5
+    #        demonym:
+    #            en: Ivorian
+    #            fr: Ivoirien
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - XOF
+    #        languages:
+    #            - fra
+    #        alpha2: CI
+    #        alpha3: CIV
+    #        calling_codes:
+    #            - '225'
+    #        numeric_code: '384'
+    #    country42:
+    #        name: Hrvatska
+    #        translations:
+    #            de: Kroatien
+    #            es: Croacia
+    #            fr: Croatie
+    #            it: Croazia
+    #            ja: クロアチア
+    #            nl: Kroatië
+    #            hr: Hrvatska
+    #            en: Croatia
+    #        latlng:
+    #            - 45.16666666
+    #            - 15.5
+    #        demonym:
+    #            en: Croatian
+    #            fr: Croate
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - HRK
+    #        languages:
+    #            - hrv
+    #        alpha2: HR
+    #        alpha3: HRV
+    #        calling_codes:
+    #            - '385'
+    #        numeric_code: '191'
+    #    country43:
+    #        name: Cuba
+    #        translations:
+    #            de: Kuba
+    #            es: Cuba
+    #            fr: Cuba
+    #            it: Cuba
+    #            ja: キューバ
+    #            nl: Cuba
+    #            hr: Kuba
+    #            en: Cuba
+    #        latlng:
+    #            - 21.5
+    #            - -80
+    #        demonym:
+    #            en: Cuban
+    #            fr: Cubain
+    #        timezones:
+    #            - UTC-05:00
+    #        currencies:
+    #            - CUC
+    #            - CUP
+    #        languages:
+    #            - spa
+    #        alpha2: CU
+    #        alpha3: CUB
+    #        calling_codes:
+    #            - '53'
+    #        numeric_code: '192'
+    #    country44:
+    #        name: Κύπρος
+    #        translations:
+    #            de: Zypern
+    #            es: Chipre
+    #            fr: Chypre
+    #            it: Cipro
+    #            ja: キプロス
+    #            nl: Cyprus
+    #            hr: Cipar
+    #            en: Cyprus
+    #        latlng:
+    #            - 35
+    #            - 33
+    #        demonym:
+    #            en: Cypriot
+    #            fr: Chypriote
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - ell
+    #            - tur
+    #            - hye
+    #        alpha2: CY
+    #        alpha3: CYP
+    #        calling_codes:
+    #            - '357'
+    #        numeric_code: '196'
+    #    country45:
+    #        name: Česká republika
+    #        translations:
+    #            de: Tschechische Republik
+    #            es: República Checa
+    #            fr: République tchèque
+    #            it: Repubblica Ceca
+    #            ja: チェコ
+    #            nl: Tsjechië
+    #            hr: Češka
+    #            en: Czech Republic
+    #        latlng:
+    #            - 49.75
+    #            - 15.5
+    #        demonym:
+    #            en: Czech
+    #            fr: Tchèque
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - CZK
+    #        languages:
+    #            - ces
+    #            - slk
+    #        alpha2: CZ
+    #        alpha3: CZE
+    #        calling_codes:
+    #            - '420'
+    #        numeric_code: '203'
+    #    country46:
+    #        name: 북한
+    #        translations:
+    #            de: Nordkorea
+    #            es: Corea del Norte
+    #            fr: Corée du Nord
+    #            it: Corea del Nord
+    #            ja: 朝鮮民主主義人民共和国
+    #            nl: Noord-Korea
+    #            hr: Sjeverna Koreja
+    #            en: Korea (Democratic People's Republic of)
+    #        latlng:
+    #            - 40
+    #            - 127
+    #        demonym:
+    #            en: North Korean
+    #            fr: Corée du Nord
+    #        timezones:
+    #            - UTC+09:00
+    #        currencies:
+    #            - KPW
+    #        languages:
+    #            - kor
+    #        alpha2: KP
+    #        alpha3: PRK
+    #        calling_codes:
+    #            - '850'
+    #        numeric_code: '408'
+    #    country47:
+    #        name: République démocratique du Congo
+    #        translations:
+    #            de: Kongo (Dem. Rep.)
+    #            es: Congo (Rep. Dem.)
+    #            fr: Congo (Rép. dém.)
+    #            it: Congo (Rep. Dem.)
+    #            ja: コンゴ民主共和国
+    #            nl: Congo [DRC]
+    #            hr: Kongo, Demokratska Republika
+    #            en: Congo (Democratic Republic of the)
+    #        latlng:
+    #            - 0
+    #            - 25
+    #        demonym:
+    #            en: Congolese
+    #            fr: Congolais
+    #        timezones:
+    #            - UTC+01:00
+    #            - UTC+02:00
+    #        currencies:
+    #            - CDF
+    #        languages:
+    #            - fra
+    #            - lin
+    #            - kon
+    #            - swa
+    #            - lub
+    #        alpha2: CD
+    #        alpha3: COD
+    #        calling_codes:
+    #            - '243'
+    #        numeric_code: '180'
+    #    country48:
+    #        name: Danmark
+    #        translations:
+    #            de: Dänemark
+    #            es: Dinamarca
+    #            fr: Danemark
+    #            it: Danimarca
+    #            ja: デンマーク
+    #            nl: Denemarken
+    #            hr: Danska
+    #            en: Denmark
+    #        latlng:
+    #            - 56
+    #            - 10
+    #        demonym:
+    #            en: Danish
+    #            fr: Dannois
+    #        timezones:
+    #            - UTC-04:00
+    #            - UTC-03:00
+    #            - UTC-01:00
+    #            - UTC
+    #            - UTC+01:00
+    #        currencies:
+    #            - DKK
+    #        languages:
+    #            - dan
+    #        alpha2: DK
+    #        alpha3: DNK
+    #        calling_codes:
+    #            - '45'
+    #        numeric_code: '208'
+    #    country49:
+    #        name: Djibouti
+    #        translations:
+    #            de: Dschibuti
+    #            es: Yibuti
+    #            fr: Djibouti
+    #            it: Gibuti
+    #            ja: ジブチ
+    #            nl: Djibouti
+    #            hr: Džibuti
+    #            en: Djibouti
+    #        latlng:
+    #            - 11.5
+    #            - 43
+    #        demonym:
+    #            en: Djibouti
+    #            fr: Djiboutiens
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - DJF
+    #        languages:
+    #            - fra
+    #            - ara
+    #        alpha2: DJ
+    #        alpha3: DJI
+    #        calling_codes:
+    #            - '253'
+    #        numeric_code: '262'
+    #    country50:
+    #        name: Dominica
+    #        translations:
+    #            de: Dominica
+    #            es: Dominica
+    #            fr: Dominique
+    #            it: Dominica
+    #            ja: ドミニカ国
+    #            nl: Dominica
+    #            hr: Dominika
+    #            en: Dominica
+    #        latlng:
+    #            - 15.41666666
+    #            - -61.33333333
+    #        demonym:
+    #            en: Dominican
+    #            fr: Dominicain
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - XCD
+    #        languages:
+    #            - eng
+    #        alpha2: DM
+    #        alpha3: DMA
+    #        calling_codes:
+    #            - '1767'
+    #        numeric_code: '212'
+    #    country51:
+    #        name: República Dominicana
+    #        translations:
+    #            de: Dominikanische Republik
+    #            es: República Dominicana
+    #            fr: République dominicaine
+    #            it: Repubblica Dominicana
+    #            ja: ドミニカ共和国
+    #            nl: Dominicaanse Republiek
+    #            hr: Dominikanska Republika
+    #            en: Dominican Republic
+    #        latlng:
+    #            - 19
+    #            - -70.66666666
+    #        demonym:
+    #            en: Dominican
+    #            fr: Dominicain
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - DOP
+    #        languages:
+    #            - spa
+    #        alpha2: DO
+    #        alpha3: DOM
+    #        calling_codes:
+    #            - '1809'
+    #            - '1829'
+    #            - '1849'
+    #        numeric_code: '214'
+    #    country52:
+    #        name: Ecuador
+    #        translations:
+    #            de: Ecuador
+    #            es: Ecuador
+    #            fr: Équateur
+    #            it: Ecuador
+    #            ja: エクアドル
+    #            nl: Ecuador
+    #            hr: Ekvador
+    #            en: Ecuador
+    #        latlng:
+    #            - -2
+    #            - -77.5
+    #        demonym:
+    #            en: Ecuadorean
+    #            fr: Equatorien
+    #        timezones:
+    #            - UTC-06:00
+    #            - UTC-05:00
+    #        currencies:
+    #            - USD
+    #            - "(none)"
+    #        languages:
+    #            - spa
+    #        alpha2: EC
+    #        alpha3: ECU
+    #        calling_codes:
+    #            - '593'
+    #        numeric_code: '218'
+    #    country53:
+    #        name: مصر‎
+    #        translations:
+    #            de: Ägypten
+    #            es: Egipto
+    #            fr: Égypte
+    #            it: Egitto
+    #            ja: エジプト
+    #            nl: Egypte
+    #            hr: Egipat
+    #            en: Egypt
+    #        latlng:
+    #            - 27
+    #            - 30
+    #        demonym:
+    #            en: Egyptian
+    #            fr: Egyptien
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - EGP
+    #        languages:
+    #            - ara
+    #        alpha2: EG
+    #        alpha3: EGY
+    #        calling_codes:
+    #            - '20'
+    #        numeric_code: '818'
+    #    country54:
+    #        name: El Salvador
+    #        translations:
+    #            de: El Salvador
+    #            es: El Salvador
+    #            fr: Salvador
+    #            it: El Salvador
+    #            ja: エルサルバドル
+    #            nl: El Salvador
+    #            hr: Salvador
+    #            en: El Salvador
+    #        latlng:
+    #            - 13.83333333
+    #            - -88.91666666
+    #        demonym:
+    #            en: Salvadoran
+    #            fr: Salvadorien
+    #        timezones:
+    #            - UTC-06:00
+    #        currencies:
+    #            - USD
+    #        languages:
+    #            - spa
+    #        alpha2: SV
+    #        alpha3: SLV
+    #        calling_codes:
+    #            - '503'
+    #        numeric_code: '222'
+    #    country55:
+    #        name: Guinea Ecuatorial
+    #        translations:
+    #            de: Äquatorial-Guinea
+    #            es: Guinea Ecuatorial
+    #            fr: Guinée-Équatoriale
+    #            it: Guinea Equatoriale
+    #            ja: 赤道ギニア
+    #            nl: Equatoriaal-Guinea
+    #            hr: Ekvatorijalna Gvineja
+    #            en: Equatorial Guinea
+    #        latlng:
+    #            - 2
+    #            - 10
+    #        demonym:
+    #            en: Equatorial Guinean
+    #            fr: Équato-Guinéen
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - XAF
+    #        languages:
+    #            - spa
+    #            - fra
+    #        alpha2: GQ
+    #        alpha3: GNQ
+    #        calling_codes:
+    #            - '240'
+    #        numeric_code: '226'
+    #    country56:
+    #        name: ኤርትራ
+    #        translations:
+    #            de: Eritrea
+    #            es: Eritrea
+    #            fr: Érythrée
+    #            it: Eritrea
+    #            ja: エリトリア
+    #            nl: Eritrea
+    #            hr: Eritreja
+    #            en: Eritrea
+    #        latlng:
+    #            - 15
+    #            - 39
+    #        demonym:
+    #            en: Eritrean
+    #            fr: Erythréen
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - ERN
+    #        languages:
+    #            - tir
+    #            - ara
+    #            - eng
+    #        alpha2: ER
+    #        alpha3: ERI
+    #        calling_codes:
+    #            - '291'
+    #        numeric_code: '232'
+    #    country57:
+    #        name: Eesti
+    #        translations:
+    #            de: Estland
+    #            es: Estonia
+    #            fr: Estonie
+    #            it: Estonia
+    #            ja: エストニア
+    #            nl: Estland
+    #            hr: Estonija
+    #            en: Estonia
+    #        latlng:
+    #            - 59
+    #            - 26
+    #        demonym:
+    #            en: Estonian
+    #            fr: Estonien
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - est
+    #        alpha2: EE
+    #        alpha3: EST
+    #        calling_codes:
+    #            - '372'
+    #        numeric_code: '233'
+    #    country58:
+    #        name: ኢትዮጵያ
+    #        translations:
+    #            de: Äthiopien
+    #            es: Etiopía
+    #            fr: Éthiopie
+    #            it: Etiopia
+    #            ja: エチオピア
+    #            nl: Ethiopië
+    #            hr: Etiopija
+    #            en: Ethiopia
+    #        latlng:
+    #            - 8
+    #            - 38
+    #        demonym:
+    #            en: Ethiopian
+    #            fr: Ethiopien
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - ETB
+    #        languages:
+    #            - amh
+    #        alpha2: ET
+    #        alpha3: ETH
+    #        calling_codes:
+    #            - '251'
+    #        numeric_code: '231'
+    #    country59:
+    #        name: Fiji
+    #        translations:
+    #            de: Fidschi
+    #            es: Fiyi
+    #            fr: Fidji
+    #            it: Figi
+    #            ja: フィジー
+    #            nl: Fiji
+    #            hr: Fiđi
+    #            en: Fiji
+    #        latlng:
+    #            - -18
+    #            - 175
+    #        demonym:
+    #            en: Fijian
+    #            fr: Fidjien
+    #        timezones:
+    #            - UTC+12:00
+    #        currencies:
+    #            - FJD
+    #        languages:
+    #            - eng
+    #            - fij
+    #            - hin
+    #            - urd
+    #        alpha2: FJ
+    #        alpha3: FJI
+    #        calling_codes:
+    #            - '679'
+    #        numeric_code: '242'
+    #    country60:
+    #        name: Suomi
+    #        translations:
+    #            de: Finnland
+    #            es: Finlandia
+    #            fr: Finlande
+    #            it: Finlandia
+    #            ja: フィンランド
+    #            nl: Finland
+    #            hr: Finska
+    #            en: Finland
+    #        latlng:
+    #            - 64
+    #            - 26
+    #        demonym:
+    #            en: Finnish
+    #            fr: Finlandais
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - fin
+    #            - swe
+    #        alpha2: FI
+    #        alpha3: FIN
+    #        calling_codes:
+    #            - '358'
+    #        numeric_code: '246'
+    country61:
+        name: France
+        translations:
+            de: Frankreich
+            es: Francia
+            fr: France
+            it: Francia
+            ja: フランス
+            nl: Frankrijk
+            hr: Francuska
+            en: France
+        latlng:
+            - 46
+            - 2
+        demonym:
+            en: French
+            fr: Français
+        timezones:
+            - UTC-10:00
+            - UTC-09:30
+            - UTC-09:00
+            - UTC-08:00
+            - UTC-04:00
+            - UTC-03:00
+            - UTC+01:00
+            - UTC+03:00
+            - UTC+04:00
+            - UTC+05:00
+            - UTC+11:00
+            - UTC+12:00
+        currencies:
+            - EUR
+        languages:
+            - '@fra'
+        alpha2: FR
+        alpha3: FRA
+        calling_codes:
+            - '33'
+        numeric_code: '250'
+    #    country62:
+    #        name: Gabon
+    #        translations:
+    #            de: Gabun
+    #            es: Gabón
+    #            fr: Gabon
+    #            it: Gabon
+    #            ja: ガボン
+    #            nl: Gabon
+    #            hr: Gabon
+    #            en: Gabon
+    #        latlng:
+    #            - -1
+    #            - 11.75
+    #        demonym:
+    #            en: Gabonese
+    #            fr: Gabonais
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - XAF
+    #        languages:
+    #            - fra
+    #        alpha2: GA
+    #        alpha3: GAB
+    #        calling_codes:
+    #            - '241'
+    #        numeric_code: '266'
+    #    country63:
+    #        name: Gambia
+    #        translations:
+    #            de: Gambia
+    #            es: Gambia
+    #            fr: Gambie
+    #            it: Gambia
+    #            ja: ガンビア
+    #            nl: Gambia
+    #            hr: Gambija
+    #            en: Gambia
+    #        latlng:
+    #            - 13.46666666
+    #            - -16.56666666
+    #        demonym:
+    #            en: Gambian
+    #            fr: Gambien
+    #        currencies:
+    #            - GMD
+    #        languages:
+    #            - eng
+    #        timezones:
+    #            - UTC+00:00
+    #        alpha2: GM
+    #        alpha3: GMB
+    #        calling_codes:
+    #            - '220'
+    #        numeric_code: '270'
+    #    country64:
+    #        name: საქართველო
+    #        translations:
+    #            de: Georgien
+    #            es: Georgia
+    #            fr: Géorgie
+    #            it: Georgia
+    #            ja: グルジア
+    #            nl: Georgië
+    #            hr: Gruzija
+    #            en: Georgia
+    #        latlng:
+    #            - 42
+    #            - 43.5
+    #        demonym:
+    #            en: Georgian
+    #            fr: Géorgien
+    #        currencies:
+    #            - GEL
+    #        languages:
+    #            - kat
+    #        timezones:
+    #            - UTC-05:00
+    #        alpha2: GE
+    #        alpha3: GEO
+    #        calling_codes:
+    #            - '995'
+    #        numeric_code: '268'
+    #    country65:
+    #        name: Deutschland
+    #        translations:
+    #            de: Deutschland
+    #            es: Alemania
+    #            fr: Allemagne
+    #            it: Germania
+    #            ja: ドイツ
+    #            nl: Duitsland
+    #            hr: Njemačka
+    #            en: Germany
+    #        latlng:
+    #            - 51
+    #            - 9
+    #        demonym:
+    #            en: German
+    #            fr: Allemand
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - deu
+    #        alpha2: DE
+    #        alpha3: DEU
+    #        calling_codes:
+    #            - '49'
+    #        numeric_code: '276'
+    #    country66:
+    #        name: Ghana
+    #        translations:
+    #            de: Ghana
+    #            es: Ghana
+    #            fr: Ghana
+    #            it: Ghana
+    #            ja: ガーナ
+    #            nl: Ghana
+    #            hr: Gana
+    #            en: Ghana
+    #        latlng:
+    #            - 8
+    #            - -2
+    #        demonym:
+    #            en: Ghanaian
+    #            fr: Ghanéen
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - GHS
+    #        languages:
+    #            - eng
+    #        alpha2: GH
+    #        alpha3: GHA
+    #        calling_codes:
+    #            - '233'
+    #        numeric_code: '288'
+    #    country67:
+    #        name: Ελλάδα
+    #        translations:
+    #            de: Griechenland
+    #            es: Grecia
+    #            fr: Grèce
+    #            it: Grecia
+    #            ja: ギリシャ
+    #            nl: Griekenland
+    #            hr: Grčka
+    #            en: Greece
+    #        latlng:
+    #            - 39
+    #            - 22
+    #        demonym:
+    #            en: Greek
+    #            fr: Grecque
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - ell
+    #        alpha2: GR
+    #        alpha3: GRC
+    #        calling_codes:
+    #            - '30'
+    #        numeric_code: '300'
+    #    country68:
+    #        name: Grenada
+    #        translations:
+    #            de: Grenada
+    #            es: Grenada
+    #            fr: Grenade
+    #            it: Grenada
+    #            ja: グレナダ
+    #            nl: Grenada
+    #            hr: Grenada
+    #            en: Grenada
+    #        latlng:
+    #            - 12.11666666
+    #            - -61.66666666
+    #        demonym:
+    #            en: Grenadian
+    #            fr: Grenadien
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - XCD
+    #        languages:
+    #            - eng
+    #        alpha2: GD
+    #        alpha3: GRD
+    #        calling_codes:
+    #            - '1473'
+    #        numeric_code: '308'
+    #    country69:
+    #        name: Guatemala
+    #        translations:
+    #            de: Guatemala
+    #            es: Guatemala
+    #            fr: Guatemala
+    #            it: Guatemala
+    #            ja: グアテマラ
+    #            nl: Guatemala
+    #            hr: Gvatemala
+    #            en: Guatemala
+    #        latlng:
+    #            - 15.5
+    #            - -90.25
+    #        demonym:
+    #            en: Guatemalan
+    #            fr: Guatémaltèque
+    #        timezones:
+    #            - UTC-06:00
+    #        currencies:
+    #            - GTQ
+    #        languages:
+    #            - spa
+    #        alpha2: GT
+    #        alpha3: GTM
+    #        calling_codes:
+    #            - '502'
+    #        numeric_code: '320'
+    #    country70:
+    #        name: Guinée
+    #        translations:
+    #            de: Guinea
+    #            es: Guinea
+    #            fr: Guinée
+    #            it: Guinea
+    #            ja: ギニア
+    #            nl: Guinee
+    #            hr: Gvineja
+    #            en: Guinea
+    #        latlng:
+    #            - 11
+    #            - -10
+    #        demonym:
+    #            en: Guinean
+    #            fr: Guinéen
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - GNF
+    #        languages:
+    #            - fra
+    #            - ful
+    #        alpha2: GN
+    #        alpha3: GIN
+    #        calling_codes:
+    #            - '224'
+    #        numeric_code: '324'
+    #    country71:
+    #        name: Guiné-Bissau
+    #        translations:
+    #            de: Guinea-Bissau
+    #            es: Guinea-Bisáu
+    #            fr: Guinée-Bissau
+    #            it: Guinea-Bissau
+    #            ja: ギニアビサウ
+    #            nl: Guinee-Bissau
+    #            hr: Gvineja Bisau
+    #            en: Guinea-Bissau
+    #        latlng:
+    #            - 12
+    #            - -15
+    #        demonym:
+    #            en: Guinea-Bissauan
+    #            fr: Bissau-guinéen
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - XOF
+    #        languages:
+    #            - por
+    #        alpha2: GW
+    #        alpha3: GNB
+    #        calling_codes:
+    #            - '245'
+    #        numeric_code: '624'
+    #    country72:
+    #        name: Guyana
+    #        translations:
+    #            de: Guyana
+    #            es: Guyana
+    #            fr: Guyane
+    #            it: Guyana
+    #            ja: ガイアナ
+    #            nl: Guyana
+    #            hr: Gvajana
+    #            en: Guyana
+    #        latlng:
+    #            - 5
+    #            - -59
+    #        demonym:
+    #            en: Guyanese
+    #            fr: Guyanien
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - GYD
+    #        languages:
+    #            - eng
+    #        alpha2: GY
+    #        alpha3: GUY
+    #        calling_codes:
+    #            - '592'
+    #        numeric_code: '328'
+    #    country73:
+    #        name: Haïti
+    #        translations:
+    #            de: Haiti
+    #            es: Haiti
+    #            fr: Haïti
+    #            it: Haiti
+    #            ja: ハイチ
+    #            nl: Haïti
+    #            hr: Haiti
+    #            en: Haiti
+    #        latlng:
+    #            - 19
+    #            - -72.41666666
+    #        demonym:
+    #            en: Haitian
+    #            fr: Haïtien
+    #        timezones:
+    #            - UTC-05:00
+    #        currencies:
+    #            - HTG
+    #        languages:
+    #            - fra
+    #            - hat
+    #        alpha2: HT
+    #        alpha3: HTI
+    #        calling_codes:
+    #            - '509'
+    #        numeric_code: '332'
+    #    country74:
+    #        name: Honduras
+    #        translations:
+    #            de: Honduras
+    #            es: Honduras
+    #            fr: Honduras
+    #            it: Honduras
+    #            ja: ホンジュラス
+    #            nl: Honduras
+    #            hr: Honduras
+    #            en: Honduras
+    #        latlng:
+    #            - 15
+    #            - -86.5
+    #        demonym:
+    #            en: Honduran
+    #            fr: Honduriens
+    #        timezones:
+    #            - UTC-06:00
+    #        currencies:
+    #            - HNL
+    #        languages:
+    #            - spa
+    #        alpha2: HN
+    #        alpha3: HND
+    #        calling_codes:
+    #            - '504'
+    #        numeric_code: '340'
+    #    country75:
+    #        name: Magyarország
+    #        translations:
+    #            de: Ungarn
+    #            es: Hungría
+    #            fr: Hongrie
+    #            it: Ungheria
+    #            ja: ハンガリー
+    #            nl: Hongarije
+    #            hr: Mađarska
+    #            en: Hungary
+    #        latlng:
+    #            - 47
+    #            - 20
+    #        demonym:
+    #            en: Hungarian
+    #            fr: Hongrois
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - HUF
+    #        languages:
+    #            - hun
+    #        alpha2: HU
+    #        alpha3: HUN
+    #        calling_codes:
+    #            - '36'
+    #        numeric_code: '348'
+    #    country76:
+    #        name: Ísland
+    #        translations:
+    #            de: Island
+    #            es: Islandia
+    #            fr: Islande
+    #            it: Islanda
+    #            ja: アイスランド
+    #            nl: IJsland
+    #            hr: Island
+    #            en: Iceland
+    #        latlng:
+    #            - 65
+    #            - -18
+    #        demonym:
+    #            en: Icelander
+    #            fr: Islandais
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - ISK
+    #        languages:
+    #            - isl
+    #        alpha2: IS
+    #        alpha3: ISL
+    #        calling_codes:
+    #            - '354'
+    #        numeric_code: '352'
+    #    country77:
+    #        name: भारत
+    #        translations:
+    #            de: Indien
+    #            es: India
+    #            fr: Inde
+    #            it: India
+    #            ja: インド
+    #            nl: India
+    #            hr: Indija
+    #            en: India
+    #        latlng:
+    #            - 20
+    #            - 77
+    #        demonym:
+    #            en: Indian
+    #            fr: Hindou
+    #        timezones:
+    #            - UTC+05:30
+    #        currencies:
+    #            - INR
+    #        languages:
+    #            - hin
+    #            - eng
+    #        alpha2: IN
+    #        alpha3: IND
+    #        calling_codes:
+    #            - '91'
+    #        numeric_code: '356'
+    #    country78:
+    #        name: Indonesia
+    #        translations:
+    #            fr: Indonésie
+    #            nl: Indonesië
+    #            de: Indonesien
+    #            it: Indonesia
+    #            ja: インドネシア
+    #            es: Indonesia
+    #            hr: Indonezija
+    #            en: Indonesia
+    #        latlng:
+    #            - -5
+    #            - 120
+    #        demonym:
+    #            en: Indonesian
+    #            fr: Indonésien
+    #        timezones:
+    #            - UTC+07:00
+    #            - UTC+08:00
+    #            - UTC+09:00
+    #        currencies:
+    #            - IDR
+    #        languages:
+    #            - ind
+    #        alpha2: ID
+    #        alpha3: IDN
+    #        calling_codes:
+    #            - '62'
+    #        numeric_code: '360'
+    #    country79:
+    #        name: ایران
+    #        translations:
+    #            de: Iran
+    #            es: Iran
+    #            fr: Iran
+    #            ja: イラン・イスラム共和国
+    #            nl: Iran
+    #            hr: Iran
+    #            en: Iran (Islamic Republic of)
+    #        latlng:
+    #            - 32
+    #            - 53
+    #        demonym:
+    #            en: Iranian
+    #            fr: Iranien
+    #        timezones:
+    #            - UTC+03:30
+    #        currencies:
+    #            - IRR
+    #        languages:
+    #            - fas
+    #        alpha2: IR
+    #        alpha3: IRN
+    #        calling_codes:
+    #            - '98'
+    #        numeric_code: '364'
+    #    country80:
+    #        name: العراق
+    #        translations:
+    #            de: Irak
+    #            es: Irak
+    #            fr: Irak
+    #            it: Iraq
+    #            ja: イラク
+    #            nl: Irak
+    #            hr: Irak
+    #            en: Iraq
+    #        latlng:
+    #            - 33
+    #            - 44
+    #        demonym:
+    #            en: Iraqi
+    #            fr: Irakien
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - IQD
+    #        languages:
+    #            - ara
+    #            - kur
+    #        alpha2: IQ
+    #        alpha3: IRQ
+    #        calling_codes:
+    #            - '964'
+    #        numeric_code: '368'
+    #    country81:
+    #        name: Éire
+    #        translations:
+    #            de: Irland
+    #            es: Irlanda
+    #            fr: Irlande
+    #            it: Irlanda
+    #            ja: アイルランド
+    #            nl: Ierland
+    #            hr: Irska
+    #            en: Ireland
+    #        latlng:
+    #            - 53
+    #            - -8
+    #        demonym:
+    #            en: Irish
+    #            fr: Irlandais
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - gle
+    #            - eng
+    #        alpha2: IE
+    #        alpha3: IRL
+    #        calling_codes:
+    #            - '353'
+    #        numeric_code: '372'
+    #    country82:
+    #        name: יִשְׂרָאֵל
+    #        translations:
+    #            de: Israel
+    #            es: Israel
+    #            fr: Israël
+    #            it: Israele
+    #            ja: イスラエル
+    #            nl: Israël
+    #            hr: Izrael
+    #            en: Israel
+    #        latlng:
+    #            - 31.5
+    #            - 34.75
+    #        demonym:
+    #            en: Israeli
+    #            fr: Israélien
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - ILS
+    #        languages:
+    #            - heb
+    #            - ara
+    #        alpha2: IL
+    #        alpha3: ISR
+    #        calling_codes:
+    #            - '972'
+    #        numeric_code: '376'
+    #    country83:
+    #        name: Italia
+    #        translations:
+    #            de: Italien
+    #            es: Italia
+    #            fr: Italie
+    #            it: Italia
+    #            ja: イタリア
+    #            nl: Italië
+    #            hr: Italija
+    #            en: Italy
+    #        latlng:
+    #            - 42.83333333
+    #            - 12.83333333
+    #        demonym:
+    #            en: Italian
+    #            fr: Italien
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - ita
+    #        alpha2: IT
+    #        alpha3: ITA
+    #        calling_codes:
+    #            - '39'
+    #        numeric_code: '380'
+    #    country84:
+    #        name: Jamaica
+    #        translations:
+    #            de: Jamaika
+    #            es: Jamaica
+    #            fr: Jamaïque
+    #            it: Giamaica
+    #            ja: ジャマイカ
+    #            nl: Jamaica
+    #            hr: Jamajka
+    #            en: Jamaica
+    #        latlng:
+    #            - 18.25
+    #            - -77.5
+    #        demonym:
+    #            en: Jamaican
+    #            fr: Jamaïcain
+    #        timezones:
+    #            - UTC-05:00
+    #        currencies:
+    #            - JMD
+    #        languages:
+    #            - eng
+    #        alpha2: JM
+    #        alpha3: JAM
+    #        calling_codes:
+    #            - '1876'
+    #        numeric_code: '388'
+    #    country85:
+    #        name: 日本
+    #        translations:
+    #            de: Japan
+    #            es: Japón
+    #            fr: Japon
+    #            it: Giappone
+    #            ja: 日本
+    #            nl: Japan
+    #            hr: Japan
+    #            en: Japan
+    #        latlng:
+    #            - 36
+    #            - 138
+    #        demonym:
+    #            en: Japanese
+    #            fr: Japonais
+    #        timezones:
+    #            - UTC+09:00
+    #        currencies:
+    #            - JPY
+    #        languages:
+    #            - jpn
+    #        alpha2: JP
+    #        alpha3: JPN
+    #        calling_codes:
+    #            - '81'
+    #        numeric_code: '392'
+    #    country86:
+    #        name: الأردن
+    #        translations:
+    #            de: Jordanien
+    #            es: Jordania
+    #            fr: Jordanie
+    #            it: Giordania
+    #            ja: ヨルダン
+    #            nl: Jordanië
+    #            hr: Jordan
+    #            en: Jordan
+    #        latlng:
+    #            - 31
+    #            - 36
+    #        demonym:
+    #            en: Jordanian
+    #            fr: Jordanien
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - JOD
+    #        languages:
+    #            - ara
+    #        alpha2: JO
+    #        alpha3: JOR
+    #        calling_codes:
+    #            - '962'
+    #        numeric_code: '400'
+    #    country87:
+    #        name: Қазақстан
+    #        translations:
+    #            de: Kasachstan
+    #            es: Kazajistán
+    #            fr: Kazakhstan
+    #            it: Kazakistan
+    #            ja: カザフスタン
+    #            nl: Kazachstan
+    #            hr: Kazahstan
+    #            en: Kazakhstan
+    #        latlng:
+    #            - 48
+    #            - 68
+    #        demonym:
+    #            en: Kazakhstani
+    #            fr: Kazakhstanais
+    #        timezones:
+    #            - UTC+05:00
+    #            - UTC+06:00
+    #        currencies:
+    #            - KZT
+    #        languages:
+    #            - kaz
+    #            - rus
+    #        alpha2: KZ
+    #        alpha3: KAZ
+    #        calling_codes:
+    #            - '76'
+    #            - '77'
+    #        numeric_code: '398'
+    #    country88:
+    #        name: Kenya
+    #        translations:
+    #            de: Kenia
+    #            es: Kenia
+    #            fr: Kenya
+    #            it: Kenya
+    #            ja: ケニア
+    #            nl: Kenia
+    #            hr: Kenija
+    #            en: Kenya
+    #        latlng:
+    #            - 1
+    #            - 38
+    #        demonym:
+    #            en: Kenyan
+    #            fr: Kenyan
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - KES
+    #        languages:
+    #            - eng
+    #            - swa
+    #        alpha2: KE
+    #        alpha3: KEN
+    #        calling_codes:
+    #            - '254'
+    #        numeric_code: '404'
+    #    country89:
+    #        name: Kiribati
+    #        translations:
+    #            de: Kiribati
+    #            es: Kiribati
+    #            fr: Kiribati
+    #            it: Kiribati
+    #            ja: キリバス
+    #            nl: Kiribati
+    #            hr: Kiribati
+    #            en: Kiribati
+    #        latlng:
+    #            - 1.41666666
+    #            - 173
+    #        demonym:
+    #            en: I-Kiribati
+    #            fr: Gilbertins
+    #        timezones:
+    #            - UTC+12:00
+    #            - UTC+13:00
+    #            - UTC+14:00
+    #        currencies:
+    #            - AUD
+    #            - "(none)"
+    #        languages:
+    #            - eng
+    #        alpha2: KI
+    #        alpha3: KIR
+    #        calling_codes:
+    #            - '686'
+    #        numeric_code: '296'
+    #    country90:
+    #        name: الكويت
+    #        translations:
+    #            de: Kuwait
+    #            es: Kuwait
+    #            fr: Koweït
+    #            it: Kuwait
+    #            ja: クウェート
+    #            nl: Koeweit
+    #            hr: Kuvajt
+    #            en: Kuwait
+    #        latlng:
+    #            - 29.5
+    #            - 45.75
+    #        demonym:
+    #            en: Kuwaiti
+    #            fr: Koweïtien
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - KWD
+    #        languages:
+    #            - ara
+    #        alpha2: KW
+    #        alpha3: KWT
+    #        calling_codes:
+    #            - '965'
+    #        numeric_code: '414'
+    #    country91:
+    #        name: Кыргызстан
+    #        translations:
+    #            de: Kirgisistan
+    #            es: Kirguizistán
+    #            fr: Kirghizistan
+    #            it: Kirghizistan
+    #            ja: キルギス
+    #            nl: Kirgizië
+    #            hr: Kirgistan
+    #            en: Kyrgyzstan
+    #        latlng:
+    #            - 41
+    #            - 75
+    #        demonym:
+    #            en: Kirghiz
+    #            fr: Kirghiz
+    #        timezones:
+    #            - UTC+06:00
+    #        currencies:
+    #            - KGS
+    #        languages:
+    #            - kir
+    #            - rus
+    #        alpha2: KG
+    #        alpha3: KGZ
+    #        calling_codes:
+    #            - '996'
+    #        numeric_code: '417'
+    #    country92:
+    #        name: ສປປລາວ
+    #        translations:
+    #            fr: Laos
+    #            nl: Laos
+    #            de: Laos
+    #            it: Laos
+    #            ja: ラオス人民民主共和国
+    #            es: Laos
+    #            hr: Laos
+    #            en: Lao People's Democratic Republic
+    #        latlng:
+    #            - 18
+    #            - 105
+    #        demonym:
+    #            en: Laotian
+    #            fr: Laotien
+    #        timezones:
+    #            - UTC+07:00
+    #        currencies:
+    #            - LAK
+    #        languages:
+    #            - lao
+    #        alpha2: LA
+    #        alpha3: LAO
+    #        calling_codes:
+    #            - '856'
+    #        numeric_code: '418'
+    #    country93:
+    #        name: Latvija
+    #        translations:
+    #            de: Lettland
+    #            es: Letonia
+    #            fr: Lettonie
+    #            it: Lettonia
+    #            ja: ラトビア
+    #            nl: Letland
+    #            hr: Latvija
+    #            en: Latvia
+    #        latlng:
+    #            - 57
+    #            - 25
+    #        demonym:
+    #            en: Latvian
+    #            fr: Letton
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - lav
+    #        alpha2: LV
+    #        alpha3: LVA
+    #        calling_codes:
+    #            - '371'
+    #        numeric_code: '428'
+    #    country94:
+    #        name: لبنان
+    #        translations:
+    #            de: Libanon
+    #            es: Líbano
+    #            fr: Liban
+    #            it: Libano
+    #            ja: レバノン
+    #            nl: Libanon
+    #            hr: Libanon
+    #            en: Lebanon
+    #        latlng:
+    #            - 33.83333333
+    #            - 35.83333333
+    #        demonym:
+    #            en: Lebanese
+    #            fr: Libanais
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - LBP
+    #        languages:
+    #            - ara
+    #            - fra
+    #        alpha2: LB
+    #        alpha3: LBN
+    #        calling_codes:
+    #            - '961'
+    #        numeric_code: '422'
+    #    country95:
+    #        name: Lesotho
+    #        translations:
+    #            de: Lesotho
+    #            es: Lesotho
+    #            fr: Lesotho
+    #            it: Lesotho
+    #            ja: レソト
+    #            nl: Lesotho
+    #            hr: Lesoto
+    #            en: Lesotho
+    #        latlng:
+    #            - -29.5
+    #            - 28.5
+    #        demonym:
+    #            en: Mosotho
+    #            fr: Masotho
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - LSL
+    #            - ZAR
+    #        languages:
+    #            - eng
+    #            - sot
+    #        alpha2: LS
+    #        alpha3: LSO
+    #        calling_codes:
+    #            - '266'
+    #        numeric_code: '426'
+    #    country96:
+    #        name: Liberia
+    #        translations:
+    #            de: Liberia
+    #            es: Liberia
+    #            fr: Liberia
+    #            it: Liberia
+    #            ja: リベリア
+    #            nl: Liberia
+    #            hr: Liberija
+    #            en: Liberia
+    #        latlng:
+    #            - 6.5
+    #            - -9.5
+    #        demonym:
+    #            en: Liberian
+    #            fr: Libérien
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - LRD
+    #        languages:
+    #            - eng
+    #        alpha2: LR
+    #        alpha3: LBR
+    #        calling_codes:
+    #            - '231'
+    #        numeric_code: '430'
+    #    country97:
+    #        name: "‏ليبيا"
+    #        translations:
+    #            de: Libyen
+    #            es: Libia
+    #            fr: Libye
+    #            it: Libia
+    #            ja: リビア
+    #            nl: Libië
+    #            hr: Libija
+    #            en: Libya
+    #        latlng:
+    #            - 25
+    #            - 17
+    #        demonym:
+    #            en: Libyan
+    #            fr: Lybien
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - LYD
+    #        languages:
+    #            - ara
+    #        alpha2: LY
+    #        alpha3: LBY
+    #        calling_codes:
+    #            - '218'
+    #        numeric_code: '434'
+    #    country98:
+    #        name: Liechtenstein
+    #        translations:
+    #            de: Liechtenstein
+    #            es: Liechtenstein
+    #            fr: Liechtenstein
+    #            it: Liechtenstein
+    #            ja: リヒテンシュタイン
+    #            nl: Liechtenstein
+    #            hr: Lihtenštajn
+    #            en: Liechtenstein
+    #        latlng:
+    #            - 47.26666666
+    #            - 9.53333333
+    #        demonym:
+    #            en: Liechtensteiner
+    #            fr: Liechtensteinois
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - CHF
+    #        languages:
+    #            - deu
+    #        alpha2: LI
+    #        alpha3: LIE
+    #        calling_codes:
+    #            - '423'
+    #        numeric_code: '438'
+    #    country99:
+    #        name: Lietuva
+    #        translations:
+    #            de: Litauen
+    #            es: Lituania
+    #            fr: Lituanie
+    #            it: Lituania
+    #            ja: リトアニア
+    #            nl: Litouwen
+    #            hr: Litva
+    #            en: Lithuania
+    #        latlng:
+    #            - 56
+    #            - 24
+    #        demonym:
+    #            en: Lithuanian
+    #            fr: Lituanien
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - lit
+    #        alpha2: LT
+    #        alpha3: LTU
+    #        calling_codes:
+    #            - '370'
+    #        numeric_code: '440'
+    #    country100:
+    #        name: Luxembourg
+    #        translations:
+    #            de: Luxemburg
+    #            es: Luxemburgo
+    #            fr: Luxembourg
+    #            it: Lussemburgo
+    #            ja: ルクセンブルク
+    #            nl: Luxemburg
+    #            hr: Luksemburg
+    #            en: Luxembourg
+    #        latlng:
+    #            - 49.75
+    #            - 6.16666666
+    #        demonym:
+    #            en: Luxembourger
+    #            fr: Luxembourgeois
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - fra
+    #            - deu
+    #            - ltz
+    #        alpha2: LU
+    #        alpha3: LUX
+    #        calling_codes:
+    #            - '352'
+    #        numeric_code: '442'
+    #    country101:
+    #        name: Madagasikara
+    #        translations:
+    #            de: Madagaskar
+    #            es: Madagascar
+    #            fr: Madagascar
+    #            it: Madagascar
+    #            ja: マダガスカル
+    #            nl: Madagaskar
+    #            hr: Madagaskar
+    #            en: Madagascar
+    #        latlng:
+    #            - -20
+    #            - 47
+    #        demonym:
+    #            en: Malagasy
+    #            fr: Malgache
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - MGA
+    #        languages:
+    #            - fra
+    #            - mlg
+    #        alpha2: MG
+    #        alpha3: MDG
+    #        calling_codes:
+    #            - '261'
+    #        numeric_code: '450'
+    #    country102:
+    #        name: Malawi
+    #        translations:
+    #            de: Malawi
+    #            es: Malawi
+    #            fr: Malawi
+    #            it: Malawi
+    #            ja: マラウイ
+    #            nl: Malawi
+    #            hr: Malavi
+    #            en: Malawi
+    #        latlng:
+    #            - -13.5
+    #            - 34
+    #        demonym:
+    #            en: Malawian
+    #            fr: Malawien
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - MWK
+    #        languages:
+    #            - eng
+    #            - nya
+    #        alpha2: MW
+    #        alpha3: MWI
+    #        calling_codes:
+    #            - '265'
+    #        numeric_code: '454'
+    #    country103:
+    #        name: Malaysia
+    #        translations:
+    #            fr: Malaisie
+    #            nl: Maleisië
+    #            de: Malaysia
+    #            it: Malesia
+    #            ja: マレーシア
+    #            es: Malasia
+    #            hr: Malezija
+    #            en: Malaysia
+    #        latlng:
+    #            - 2.5
+    #            - 112.5
+    #        demonym:
+    #            en: Malaysian
+    #            fr: Malaisien
+    #        timezones:
+    #            - UTC+08:00
+    #        currencies:
+    #            - MYR
+    #        languages:
+    #            - zsm
+    #        alpha2: MY
+    #        alpha3: MYS
+    #        calling_codes:
+    #            - '60'
+    #        numeric_code: '458'
+    #    country104:
+    #        name: Maldives
+    #        translations:
+    #            de: Malediven
+    #            es: Maldivas
+    #            fr: Maldives
+    #            it: Maldive
+    #            ja: モルディブ
+    #            nl: Maldiven
+    #            hr: Maldivi
+    #            en: Maldives
+    #        latlng:
+    #            - 3.25
+    #            - 73
+    #        demonym:
+    #            en: Maldivan
+    #            fr: Maldivien
+    #        timezones:
+    #            - UTC+05:00
+    #        currencies:
+    #            - MVR
+    #        languages:
+    #            - div
+    #        alpha2: MV
+    #        alpha3: MDV
+    #        calling_codes:
+    #            - '960'
+    #        numeric_code: '462'
+    #    country105:
+    #        name: Mali
+    #        translations:
+    #            de: Mali
+    #            es: Mali
+    #            fr: Mali
+    #            it: Mali
+    #            ja: マリ
+    #            nl: Mali
+    #            hr: Mali
+    #            en: Mali
+    #        latlng:
+    #            - 17
+    #            - -4
+    #        demonym:
+    #            en: Malian
+    #            fr: Malien
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - XOF
+    #        languages:
+    #            - fra
+    #        alpha2: ML
+    #        alpha3: MLI
+    #        calling_codes:
+    #            - '223'
+    #        numeric_code: '466'
+    #    country106:
+    #        name: Malta
+    #        translations:
+    #            de: Malta
+    #            es: Malta
+    #            fr: Malte
+    #            it: Malta
+    #            ja: マルタ
+    #            nl: Malta
+    #            hr: Malta
+    #            en: Malta
+    #        latlng:
+    #            - 35.83333333
+    #            - 14.58333333
+    #        demonym:
+    #            en: Maltese
+    #            fr: Maltais
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - mlt
+    #            - eng
+    #        alpha2: MT
+    #        alpha3: MLT
+    #        calling_codes:
+    #            - '356'
+    #        numeric_code: '470'
+    #    country107:
+    #        name: M̧ajeļ
+    #        translations:
+    #            de: Marshallinseln
+    #            es: Islas Marshall
+    #            fr: Îles Marshall
+    #            it: Isole Marshall
+    #            ja: マーシャル諸島
+    #            nl: Marshalleilanden
+    #            hr: Maršalovi Otoci
+    #            en: Marshall Islands
+    #        latlng:
+    #            - 9
+    #            - 168
+    #        demonym:
+    #            en: Marshallese
+    #            fr: Marshallais
+    #        timezones:
+    #            - UTC+12:00
+    #        currencies:
+    #            - USD
+    #        languages:
+    #            - eng
+    #            - mah
+    #        alpha2: MH
+    #        alpha3: MHL
+    #        calling_codes:
+    #            - '692'
+    #        numeric_code: '584'
+    #    country108:
+    #        name: موريتانيا
+    #        translations:
+    #            de: Mauretanien
+    #            es: Mauritania
+    #            fr: Mauritanie
+    #            it: Mauritania
+    #            ja: モーリタニア
+    #            nl: Mauritanië
+    #            hr: Mauritanija
+    #            en: Mauritania
+    #        latlng:
+    #            - 20
+    #            - -12
+    #        demonym:
+    #            en: Mauritanian
+    #            fr: Mauritanien
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - MRO
+    #        languages:
+    #            - ara
+    #        alpha2: MR
+    #        alpha3: MRT
+    #        calling_codes:
+    #            - '222'
+    #        numeric_code: '478'
+    #    country109:
+    #        name: Maurice
+    #        translations:
+    #            de: Mauritius
+    #            es: Mauricio
+    #            fr: Île Maurice
+    #            it: Mauritius
+    #            ja: モーリシャス
+    #            nl: Mauritius
+    #            hr: Mauricijus
+    #            en: Mauritius
+    #        latlng:
+    #            - -20.28333333
+    #            - 57.55
+    #        demonym:
+    #            en: Mauritian
+    #            fr: Mauricien
+    #        timezones:
+    #            - UTC+04:00
+    #        currencies:
+    #            - MUR
+    #        languages:
+    #            - eng
+    #        alpha2: MU
+    #        alpha3: MUS
+    #        calling_codes:
+    #            - '230'
+    #        numeric_code: '480'
+    #    country110:
+    #        name: México
+    #        translations:
+    #            de: Mexiko
+    #            es: México
+    #            fr: Mexique
+    #            it: Messico
+    #            ja: メキシコ
+    #            nl: Mexico
+    #            hr: Meksiko
+    #            en: Mexico
+    #        latlng:
+    #            - 23
+    #            - -102
+    #        demonym:
+    #            en: Mexican
+    #            fr: Mexicain
+    #        timezones:
+    #            - UTC-08:00
+    #            - UTC-07:00
+    #            - UTC-06:00
+    #        currencies:
+    #            - MXN
+    #        languages:
+    #            - spa
+    #        alpha2: MX
+    #        alpha3: MEX
+    #        calling_codes:
+    #            - '52'
+    #        numeric_code: '484'
+    #    country111:
+    #        name: Micronesia
+    #        translations:
+    #            de: Mikronesien
+    #            es: Micronesia
+    #            fr: Micronésie
+    #            it: Micronesia
+    #            ja: ミクロネシア連邦
+    #            nl: Micronesië
+    #            hr: Mikronezija
+    #            en: Micronesia (Federated States of)
+    #        latlng:
+    #            - 6.91666666
+    #            - 158.25
+    #        demonym:
+    #            en: Micronesian
+    #            fr: Micronésien
+    #        timezones:
+    #            - UTC+10:00
+    #            - UTC+11
+    #        currencies:
+    #            -
+    #            - USD
+    #        languages:
+    #            - eng
+    #        alpha2: FM
+    #        alpha3: FSM
+    #        calling_codes:
+    #            - '691'
+    #        numeric_code: '583'
+    #    country112:
+    #        name: Monaco
+    #        translations:
+    #            de: Monaco
+    #            es: Mónaco
+    #            fr: Monaco
+    #            it: Principato di Monaco
+    #            ja: モナコ
+    #            nl: Monaco
+    #            hr: Monako
+    #            en: Monaco
+    #        latlng:
+    #            - 43.73333333
+    #            - 7.4
+    #        demonym:
+    #            en: Monegasque
+    #            fr: Monegasque
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - fra
+    #        alpha2: MC
+    #        alpha3: MCO
+    #        calling_codes:
+    #            - '377'
+    #        numeric_code: '492'
+    #    country113:
+    #        name: Монгол улс
+    #        translations:
+    #            de: Mongolei
+    #            es: Mongolia
+    #            fr: Mongolie
+    #            it: Mongolia
+    #            ja: モンゴル
+    #            nl: Mongolië
+    #            hr: Mongolija
+    #            en: Mongolia
+    #        latlng:
+    #            - 46
+    #            - 105
+    #        demonym:
+    #            en: Mongolian
+    #            fr: Mongol
+    #        timezones:
+    #            - UTC+07:00
+    #            - UTC+08:00
+    #        currencies:
+    #            - MNT
+    #        languages:
+    #            - mon
+    #        alpha2: MN
+    #        alpha3: MNG
+    #        calling_codes:
+    #            - '976'
+    #        numeric_code: '496'
+    #    country114:
+    #        name: Црна Гора
+    #        translations:
+    #            de: Montenegro
+    #            es: Montenegro
+    #            fr: Monténégro
+    #            it: Montenegro
+    #            ja: モンテネグロ
+    #            nl: Montenegro
+    #            hr: Crna Gora
+    #            en: Montenegro
+    #        latlng:
+    #            - 42.5
+    #            - 19.3
+    #        demonym:
+    #            en: Montenegrin
+    #            fr: Monténégrin
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - srp
+    #            - bos
+    #            - sqi
+    #            - hrv
+    #        alpha2: ME
+    #        alpha3: MNE
+    #        calling_codes:
+    #            - '382'
+    #        numeric_code: '499'
+    #    country115:
+    #        name: المغرب
+    #        translations:
+    #            de: Marokko
+    #            es: Marruecos
+    #            fr: Maroc
+    #            it: Marocco
+    #            ja: モロッコ
+    #            nl: Marokko
+    #            hr: Maroko
+    #            en: Morocco
+    #        latlng:
+    #            - 32
+    #            - -5
+    #        demonym:
+    #            en: Moroccan
+    #            fr: Marocain
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - MAD
+    #        languages:
+    #            - ara
+    #        alpha2: MA
+    #        alpha3: MAR
+    #        calling_codes:
+    #            - '212'
+    #        numeric_code: '504'
+    #    country116:
+    #        name: Moçambique
+    #        translations:
+    #            de: Mosambik
+    #            es: Mozambique
+    #            fr: Mozambique
+    #            it: Mozambico
+    #            ja: モザンビーク
+    #            nl: Mozambique
+    #            hr: Mozambik
+    #            en: Mozambique
+    #        latlng:
+    #            - -18.25
+    #            - 35
+    #        demonym:
+    #            en: Mozambican
+    #            fr: Mozambican
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - MZN
+    #        languages:
+    #            - por
+    #        alpha2: MZ
+    #        alpha3: MOZ
+    #        calling_codes:
+    #            - '258'
+    #        numeric_code: '508'
+    #    country117:
+    #        name: Myanma
+    #        translations:
+    #            fr: Myanmar
+    #            nl: Myanmar
+    #            de: Myanmar
+    #            it: Birmania
+    #            ja: ミャンマー
+    #            es: Myanmar
+    #            hr: Mijanmar
+    #            en: Myanmar
+    #        latlng:
+    #            - 22
+    #            - 98
+    #        demonym:
+    #            en: Burmese
+    #            fr: Birman
+    #        timezones:
+    #            - UTC+06:30
+    #        currencies:
+    #            - MMK
+    #        languages:
+    #            - mya
+    #        alpha2: MM
+    #        alpha3: MMR
+    #        calling_codes:
+    #            - '95'
+    #        numeric_code: '104'
+    #    country118:
+    #        name: Namibia
+    #        translations:
+    #            de: Namibia
+    #            es: Namibia
+    #            fr: Namibie
+    #            it: Namibia
+    #            ja: ナミビア
+    #            nl: Namibië
+    #            hr: Namibija
+    #            en: Namibia
+    #        latlng:
+    #            - -22
+    #            - 17
+    #        demonym:
+    #            en: Namibian
+    #            fr: Namibien
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - NAD
+    #            - ZAR
+    #        languages:
+    #            - eng
+    #            - afr
+    #        alpha2: NA
+    #        alpha3: NAM
+    #        calling_codes:
+    #            - '264'
+    #        numeric_code: '516'
+    #    country119:
+    #        name: Nauru
+    #        translations:
+    #            de: Nauru
+    #            es: Nauru
+    #            fr: Nauru
+    #            it: Nauru
+    #            ja: ナウル
+    #            nl: Nauru
+    #            hr: Nauru
+    #            en: Nauru
+    #        latlng:
+    #            - -0.53333333
+    #            - 166.91666666
+    #        demonym:
+    #            en: Nauruan
+    #            fr: Nauruan
+    #        timezones:
+    #            - UTC+12:00
+    #        currencies:
+    #            - AUD
+    #            - "(none)"
+    #        languages:
+    #            - eng
+    #            - nau
+    #        alpha2: NR
+    #        alpha3: NRU
+    #        calling_codes:
+    #            - '674'
+    #        numeric_code: '520'
+    #    country120:
+    #        name: नेपाल
+    #        translations:
+    #            de: Népal
+    #            es: Nepal
+    #            fr: Népal
+    #            it: Nepal
+    #            ja: ネパール
+    #            nl: Nepal
+    #            hr: Nepal
+    #            en: Nepal
+    #        latlng:
+    #            - 28
+    #            - 84
+    #        demonym:
+    #            en: Nepalese
+    #            fr: Népalais
+    #        timezones:
+    #            - UTC+05:45
+    #        currencies:
+    #            - NPR
+    #        languages:
+    #            - nep
+    #        alpha2: NP
+    #        alpha3: NPL
+    #        calling_codes:
+    #            - '977'
+    #        numeric_code: '524'
+    #    country121:
+    #        name: Nederland
+    #        translations:
+    #            de: Niederlande
+    #            es: Países Bajos
+    #            fr: Pays-Bas
+    #            it: Paesi Bassi
+    #            ja: オランダ
+    #            nl: Nederland
+    #            hr: Nizozemska
+    #            en: Netherlands
+    #        latlng:
+    #            - 52.5
+    #            - 5.75
+    #        demonym:
+    #            en: Dutch
+    #            fr: Néerlandais
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - nld
+    #        timezones:
+    #            - UTC-04:00
+    #            - UTC+01:00
+    #        alpha2: NL
+    #        alpha3: NLD
+    #        calling_codes:
+    #            - '31'
+    #        numeric_code: '528'
+    #    country122:
+    #        name: New Zealand
+    #        translations:
+    #            fr: Nouvelle-Zélande
+    #            nl: Nieuw-Zeeland
+    #            de: Neuseeland
+    #            it: Nuova Zelanda
+    #            ja: ニュージーランド
+    #            es: Nueva Zelanda
+    #            hr: Novi Zeland
+    #            en: New Zealand
+    #        latlng:
+    #            - -41
+    #            - 174
+    #        demonym:
+    #            en: New Zealander
+    #            fr: Néo Zélandais
+    #        timezones:
+    #            - UTC-11:00
+    #            - UTC-10:00
+    #            - UTC+12:00
+    #            - UTC+12:45
+    #            - UTC+13:00
+    #        currencies:
+    #            - NZD
+    #        languages:
+    #            - eng
+    #            - mri
+    #        alpha2: NZ
+    #        alpha3: NZL
+    #        calling_codes:
+    #            - '64'
+    #        numeric_code: '554'
+    #    country123:
+    #        name: Nicaragua
+    #        translations:
+    #            de: Nicaragua
+    #            es: Nicaragua
+    #            fr: Nicaragua
+    #            it: Nicaragua
+    #            ja: ニカラグア
+    #            nl: Nicaragua
+    #            hr: Nikaragva
+    #            en: Nicaragua
+    #        latlng:
+    #            - 13
+    #            - -85
+    #        demonym:
+    #            en: Nicaraguan
+    #            fr: Nicaraguayen
+    #        timezones:
+    #            - UTC-06:00
+    #        currencies:
+    #            - NIO
+    #        languages:
+    #            - spa
+    #        alpha2: NI
+    #        alpha3: NIC
+    #        calling_codes:
+    #            - '505'
+    #        numeric_code: '558'
+    #    country124:
+    #        name: Niger
+    #        translations:
+    #            de: Niger
+    #            es: Níger
+    #            fr: Niger
+    #            it: Niger
+    #            ja: ニジェール
+    #            nl: Niger
+    #            hr: Niger
+    #            en: Niger
+    #        latlng:
+    #            - 16
+    #            - 8
+    #        demonym:
+    #            en: Nigerien
+    #            fr: Nigérien
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - XOF
+    #        languages:
+    #            - fra
+    #        alpha2: NE
+    #        alpha3: NER
+    #        calling_codes:
+    #            - '227'
+    #        numeric_code: '562'
+    #    country125:
+    #        name: Nigeria
+    #        translations:
+    #            de: Nigeria
+    #            es: Nigeria
+    #            fr: Nigéria
+    #            it: Nigeria
+    #            ja: ナイジェリア
+    #            nl: Nigeria
+    #            hr: Nigerija
+    #            en: Nigeria
+    #        latlng:
+    #            - 10
+    #            - 8
+    #        demonym:
+    #            en: Nigerian
+    #            fr: Nigérian
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - NGN
+    #        languages:
+    #            - eng
+    #        alpha2: NG
+    #        alpha3: NGA
+    #        calling_codes:
+    #            - '234'
+    #        numeric_code: '566'
+    #    country126:
+    #        name: Norge
+    #        translations:
+    #            de: Norwegen
+    #            es: Noruega
+    #            fr: Norvège
+    #            it: Norvegia
+    #            ja: ノルウェー
+    #            nl: Noorwegen
+    #            hr: Norveška
+    #            en: Norway
+    #        latlng:
+    #            - 62
+    #            - 10
+    #        demonym:
+    #            en: Norwegian
+    #            fr: Norvégien
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - NOK
+    #        languages:
+    #            - nor
+    #            - nob
+    #            - nno
+    #        alpha2: 'NO'
+    #        alpha3: NOR
+    #        calling_codes:
+    #            - '47'
+    #        numeric_code: '578'
+    #    country127:
+    #        name: عمان
+    #        translations:
+    #            de: Oman
+    #            es: Omán
+    #            fr: Oman
+    #            it: oman
+    #            ja: オマーン
+    #            nl: Oman
+    #            hr: Oman
+    #            en: Oman
+    #        latlng:
+    #            - 21
+    #            - 57
+    #        demonym:
+    #            en: Omani
+    #            fr: Omanais
+    #        timezones:
+    #            - UTC+04:00
+    #        currencies:
+    #            - OMR
+    #        languages:
+    #            - ara
+    #        alpha2: OM
+    #        alpha3: OMN
+    #        calling_codes:
+    #            - '968'
+    #        numeric_code: '512'
+    #    country128:
+    #        name: Pakistan
+    #        translations:
+    #            de: Pakistan
+    #            es: Pakistán
+    #            fr: Pakistan
+    #            it: Pakistan
+    #            ja: パキスタン
+    #            nl: Pakistan
+    #            hr: Pakistan
+    #            en: Pakistan
+    #        latlng:
+    #            - 30
+    #            - 70
+    #        demonym:
+    #            en: Pakistani
+    #            fr: Pakistanais
+    #        timezones:
+    #            - UTC+05:00
+    #        currencies:
+    #            - PKR
+    #        languages:
+    #            - eng
+    #            - urd
+    #        alpha2: PK
+    #        alpha3: PAK
+    #        calling_codes:
+    #            - '92'
+    #        numeric_code: '586'
+    #    country129:
+    #        name: Palau
+    #        translations:
+    #            de: Palau
+    #            es: Palau
+    #            fr: Palaos
+    #            it: Palau
+    #            ja: パラオ
+    #            nl: Palau
+    #            hr: Palau
+    #            en: Palau
+    #        latlng:
+    #            - 7.5
+    #            - 134.5
+    #        demonym:
+    #            en: Palauan
+    #            fr: Palaosien
+    #        timezones:
+    #            - UTC+09:00
+    #        currencies:
+    #            - "(none)"
+    #            - USD
+    #        languages:
+    #            - eng
+    #        alpha2: PW
+    #        alpha3: PLW
+    #        calling_codes:
+    #            - '680'
+    #        numeric_code: '585'
+    #    country130:
+    #        name: Panamá
+    #        translations:
+    #            de: Panama
+    #            es: Panamá
+    #            fr: Panama
+    #            it: Panama
+    #            ja: パナマ
+    #            nl: Panama
+    #            hr: Panama
+    #            en: Panama
+    #        latlng:
+    #            - 9
+    #            - -80
+    #        demonym:
+    #            en: Panamanian
+    #            fr: Panaméen
+    #        timezones:
+    #            - UTC-05:00
+    #        currencies:
+    #            - PAB
+    #            - USD
+    #        languages:
+    #            - spa
+    #        alpha2: PA
+    #        alpha3: PAN
+    #        calling_codes:
+    #            - '507'
+    #        numeric_code: '591'
+    #    country131:
+    #        name: Papua Niugini
+    #        translations:
+    #            de: Papua-Neuguinea
+    #            es: Papúa Nueva Guinea
+    #            fr: Papouasie-Nouvelle-Guinée
+    #            it: Papua Nuova Guinea
+    #            ja: パプアニューギニア
+    #            nl: Papoea-Nieuw-Guinea
+    #            hr: Papua Nova Gvineja
+    #            en: Papua New Guinea
+    #        latlng:
+    #            - -6
+    #            - 147
+    #        demonym:
+    #            en: Papua New Guinean
+    #            fr: Papouans-Néo-Guinéen
+    #        timezones:
+    #            - UTC+10:00
+    #        currencies:
+    #            - PGK
+    #        languages:
+    #            - eng
+    #        alpha2: PG
+    #        alpha3: PNG
+    #        calling_codes:
+    #            - '675'
+    #        numeric_code: '598'
+    #    country132:
+    #        name: Paraguay
+    #        translations:
+    #            de: Paraguay
+    #            es: Paraguay
+    #            fr: Paraguay
+    #            it: Paraguay
+    #            ja: パラグアイ
+    #            nl: Paraguay
+    #            hr: Paragvaj
+    #            en: Paraguay
+    #        latlng:
+    #            - -23
+    #            - -58
+    #        demonym:
+    #            en: Paraguayan
+    #            fr: Paraguayen
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - PYG
+    #        languages:
+    #            - spa
+    #            - grn
+    #        alpha2: PY
+    #        alpha3: PRY
+    #        calling_codes:
+    #            - '595'
+    #        numeric_code: '600'
+    #    country133:
+    #        name: Perú
+    #        translations:
+    #            de: Peru
+    #            es: Perú
+    #            fr: Pérou
+    #            it: Perù
+    #            ja: ペルー
+    #            nl: Peru
+    #            hr: Peru
+    #            en: Peru
+    #        latlng:
+    #            - -10
+    #            - -76
+    #        demonym:
+    #            en: Peruvian
+    #            fr: Péruvien
+    #        timezones:
+    #            - UTC-05:00
+    #        currencies:
+    #            - PEN
+    #        languages:
+    #            - spa
+    #        alpha2: PE
+    #        alpha3: PER
+    #        calling_codes:
+    #            - '51'
+    #        numeric_code: '604'
+    #    country134:
+    #        name: Pilipinas
+    #        translations:
+    #            fr: Philippines
+    #            nl: Filipijnen
+    #            de: Philippinen
+    #            it: Filippine
+    #            ja: フィリピン
+    #            es: Filipinas
+    #            hr: Filipini
+    #            en: Philippines
+    #        latlng:
+    #            - 13
+    #            - 122
+    #        demonym:
+    #            en: Filipino
+    #            fr: Philippin
+    #        timezones:
+    #            - UTC+08:00
+    #        currencies:
+    #            - PHP
+    #        languages:
+    #            - eng
+    #        alpha2: PH
+    #        alpha3: PHL
+    #        calling_codes:
+    #            - '63'
+    #        numeric_code: '608'
+    #    country135:
+    #        name: Polska
+    #        translations:
+    #            de: Polen
+    #            es: Polonia
+    #            fr: Pologne
+    #            it: Polonia
+    #            ja: ポーランド
+    #            nl: Polen
+    #            hr: Poljska
+    #            en: Poland
+    #        latlng:
+    #            - 52
+    #            - 20
+    #        demonym:
+    #            en: Polish
+    #            fr: Polonais
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - PLN
+    #        languages:
+    #            - pol
+    #        alpha2: PL
+    #        alpha3: POL
+    #        calling_codes:
+    #            - '48'
+    #        numeric_code: '616'
+    #    country136:
+    #        name: Portugal
+    #        translations:
+    #            de: Portugal
+    #            es: Portugal
+    #            fr: Portugal
+    #            it: Portogallo
+    #            ja: ポルトガル
+    #            nl: Portugal
+    #            hr: Portugal
+    #            en: Portugal
+    #        latlng:
+    #            - 39.5
+    #            - -8
+    #        demonym:
+    #            en: Portuguese
+    #            fr: Portugais
+    #        timezones:
+    #            - UTC-01:00
+    #            - UTC
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - por
+    #        alpha2: PT
+    #        alpha3: PRT
+    #        calling_codes:
+    #            - '351'
+    #        numeric_code: '620'
+    #    country137:
+    #        name: قطر
+    #        translations:
+    #            de: Katar
+    #            es: Catar
+    #            fr: Qatar
+    #            it: Qatar
+    #            ja: カタール
+    #            nl: Qatar
+    #            hr: Katar
+    #            en: Qatar
+    #        latlng:
+    #            - 25.5
+    #            - 51.25
+    #        demonym:
+    #            en: Qatari
+    #            fr: Qatarien
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - QAR
+    #        languages:
+    #            - ara
+    #        alpha2: QA
+    #        alpha3: QAT
+    #        calling_codes:
+    #            - '974'
+    #        numeric_code: '634'
+    #    country138:
+    #        name: 대한민국
+    #        translations:
+    #            de: Südkorea
+    #            es: Corea del Sur
+    #            fr: Corée du Sud
+    #            it: Corea del Sud
+    #            ja: 大韓民国
+    #            nl: Zuid-Korea
+    #            hr: Južna Koreja
+    #            en: Korea (Republic of)
+    #        latlng:
+    #            - 37
+    #            - 127.5
+    #        demonym:
+    #            en: South Korean
+    #            fr: Coréen du sud
+    #        timezones:
+    #            - UTC+09:00
+    #        currencies:
+    #            - KRW
+    #        languages:
+    #            - kor
+    #        alpha2: KR
+    #        alpha3: KOR
+    #        calling_codes:
+    #            - '82'
+    #        numeric_code: '410'
+    #    country139:
+    #        name: Moldova
+    #        translations:
+    #            de: Moldawie
+    #            es: Moldavia
+    #            fr: Moldavie
+    #            it: Moldavia
+    #            ja: モルドバ共和国
+    #            nl: Moldavië
+    #            hr: Moldova
+    #            en: Moldova (Republic of)
+    #        latlng:
+    #            - 47
+    #            - 29
+    #        demonym:
+    #            en: Moldovan
+    #            fr: Moldave
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - MDL
+    #        languages:
+    #            - ron
+    #        alpha2: MD
+    #        alpha3: MDA
+    #        calling_codes:
+    #            - '373'
+    #        numeric_code: '498'
+    #    country140:
+    #        name: România
+    #        translations:
+    #            de: Rumänien
+    #            es: Rumania
+    #            fr: Roumanie
+    #            it: Romania
+    #            ja: ルーマニア
+    #            nl: Roemenië
+    #            hr: Rumunjska
+    #            en: Romania
+    #        latlng:
+    #            - 46
+    #            - 25
+    #        demonym:
+    #            en: Romanian
+    #            fr: Roumain
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - RON
+    #        languages:
+    #            - ron
+    #        alpha2: RO
+    #        alpha3: ROU
+    #        calling_codes:
+    #            - '40'
+    #        numeric_code: '642'
+    #    country141:
+    #        name: Россия
+    #        translations:
+    #            de: Russland
+    #            es: Rusia
+    #            fr: Russie
+    #            it: Russia
+    #            ja: ロシア連邦
+    #            nl: Rusland
+    #            hr: Rusija
+    #            en: Russian Federation
+    #        latlng:
+    #            - 60
+    #            - 100
+    #        demonym:
+    #            en: Russian
+    #            fr: Russe
+    #        timezones:
+    #            - UTC+03:00
+    #            - UTC+04:00
+    #            - UTC+06:00
+    #            - UTC+07:00
+    #            - UTC+08:00
+    #            - UTC+09:00
+    #            - UTC+10:00
+    #            - UTC+11:00
+    #            - UTC+12:00
+    #        currencies:
+    #            - RUB
+    #        languages:
+    #            - rus
+    #        alpha2: RU
+    #        alpha3: RUS
+    #        calling_codes:
+    #            - '7'
+    #        numeric_code: '643'
+    #    country142:
+    #        name: Rwanda
+    #        translations:
+    #            de: Ruanda
+    #            es: Ruanda
+    #            fr: Rwanda
+    #            it: Ruanda
+    #            ja: ルワンダ
+    #            nl: Rwanda
+    #            hr: Ruanda
+    #            en: Rwanda
+    #        latlng:
+    #            - -2
+    #            - 30
+    #        demonym:
+    #            en: Rwandan
+    #            fr: Rwandais
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - RWF
+    #        languages:
+    #            - kin
+    #            - eng
+    #            - fra
+    #        alpha2: RW
+    #        alpha3: RWA
+    #        calling_codes:
+    #            - '250'
+    #        numeric_code: '646'
+    #    country143:
+    #        name: Saint Kitts and Nevis
+    #        translations:
+    #            de: St. Kitts und Nevis
+    #            es: San Cristóbal y Nieves
+    #            fr: Saint-Christophe-et-Niévès
+    #            it: Saint Kitts e Nevis
+    #            ja: セントクリストファー・ネイビス
+    #            nl: Saint Kitts en Nevis
+    #            hr: Sveti Kristof i Nevis
+    #            en: Saint Kitts and Nevis
+    #        latlng:
+    #            - 17.33333333
+    #            - -62.75
+    #        demonym:
+    #            en: Kittian and Nevisian
+    #            fr: Névisiens
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - XCD
+    #        languages:
+    #            - eng
+    #        alpha2: KN
+    #        alpha3: KNA
+    #        calling_codes:
+    #            - '1869'
+    #        numeric_code: '659'
+    #    country144:
+    #        name: Saint Lucia
+    #        translations:
+    #            de: Saint Lucia
+    #            es: Santa Lucía
+    #            fr: Saint-Lucie
+    #            it: Santa Lucia
+    #            ja: セントルシア
+    #            nl: Saint Lucia
+    #            hr: Sveta Lucija
+    #            en: Saint Lucia
+    #        latlng:
+    #            - 13.88333333
+    #            - -60.96666666
+    #        demonym:
+    #            en: Saint Lucian
+    #            fr: Saint-Lucien
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - XCD
+    #        languages:
+    #            - eng
+    #        alpha2: LC
+    #        alpha3: LCA
+    #        calling_codes:
+    #            - '1758'
+    #        numeric_code: '662'
+    #    country145:
+    #        name: Saint Vincent and the Grenadines
+    #        translations:
+    #            de: Saint Vincent und die Grenadinen
+    #            es: San Vicente y Granadinas
+    #            fr: Saint-Vincent-et-les-Grenadines
+    #            it: Saint Vincent e Grenadine
+    #            ja: セントビンセントおよびグレナディーン諸島
+    #            nl: Saint Vincent en de Grenadines
+    #            hr: Sveti Vincent i Grenadini
+    #            en: Saint Vincent and the Grenadines
+    #        latlng:
+    #            - 13.25
+    #            - -61.2
+    #        demonym:
+    #            en: Saint Vincentian
+    #            fr: Vincentais
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - XCD
+    #        languages:
+    #            - eng
+    #        alpha2: VC
+    #        alpha3: VCT
+    #        calling_codes:
+    #            - '1784'
+    #        numeric_code: '670'
+    #    country146:
+    #        name: Samoa
+    #        translations:
+    #            de: Samoa
+    #            es: Samoa
+    #            fr: Samoa
+    #            it: Samoa
+    #            ja: サモア
+    #            nl: Samoa
+    #            hr: Samoa
+    #            en: Samoa
+    #        latlng:
+    #            - -13.58333333
+    #            - -172.33333333
+    #        demonym:
+    #            en: Samoan
+    #            fr: Samoan
+    #        timezones:
+    #            - UTC+13:00
+    #        currencies:
+    #            - WST
+    #        languages:
+    #            - smo
+    #            - eng
+    #        alpha2: WS
+    #        alpha3: WSM
+    #        calling_codes:
+    #            - '685'
+    #        numeric_code: '882'
+    #    country147:
+    #        name: San Marino
+    #        translations:
+    #            de: San Marino
+    #            es: San Marino
+    #            fr: Saint-Marin
+    #            it: San Marino
+    #            ja: サンマリノ
+    #            nl: San Marino
+    #            hr: San Marino
+    #            en: San Marino
+    #        latlng:
+    #            - 43.76666666
+    #            - 12.41666666
+    #        demonym:
+    #            en: Sammarinese
+    #            fr: Saint-marinais
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - ita
+    #        alpha2: SM
+    #        alpha3: SMR
+    #        calling_codes:
+    #            - '378'
+    #        numeric_code: '674'
+    #    country148:
+    #        name: São Tomé e Príncipe
+    #        translations:
+    #            de: São Tomé und Príncipe
+    #            es: Santo Tomé y Príncipe
+    #            fr: Sao Tomé-et-Principe
+    #            it: São Tomé e Príncipe
+    #            ja: サントメ・プリンシペ
+    #            nl: Sao Tomé en Principe
+    #            hr: Sveti Toma i Princip
+    #            en: Sao Tome and Principe
+    #        latlng:
+    #            - 1
+    #            - 7
+    #        demonym:
+    #            en: Sao Tomean
+    #            fr: Santoméen
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - STD
+    #        languages:
+    #            - por
+    #        alpha2: ST
+    #        alpha3: STP
+    #        calling_codes:
+    #            - '239'
+    #        numeric_code: '678'
+    #    country149:
+    #        name: العربية السعودية
+    #        translations:
+    #            de: Saudi-Arabien
+    #            es: Arabia Saudí
+    #            fr: Arabie Saoudite
+    #            it: Arabia Saudita
+    #            ja: サウジアラビア
+    #            nl: Saoedi-Arabië
+    #            hr: Saudijska Arabija
+    #            en: Saudi Arabia
+    #        latlng:
+    #            - 25
+    #            - 45
+    #        demonym:
+    #            en: Saudi Arabian
+    #            fr: Saoudien
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - SAR
+    #        languages:
+    #            - ara
+    #        alpha2: SA
+    #        alpha3: SAU
+    #        calling_codes:
+    #            - '966'
+    #        numeric_code: '682'
+    #    country150:
+    #        name: Sénégal
+    #        translations:
+    #            de: Senegal
+    #            es: Senegal
+    #            fr: Sénégal
+    #            it: Senegal
+    #            ja: セネガル
+    #            nl: Senegal
+    #            hr: Senegal
+    #            en: Senegal
+    #        latlng:
+    #            - 14
+    #            - -14
+    #        demonym:
+    #            en: Senegalese
+    #            fr: Senegalais
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - XOF
+    #        languages:
+    #            - fra
+    #        alpha2: SN
+    #        alpha3: SEN
+    #        calling_codes:
+    #            - '221'
+    #        numeric_code: '686'
+    #    country151:
+    #        name: Србија
+    #        translations:
+    #            de: Serbien
+    #            es: Serbia
+    #            fr: Serbie
+    #            it: Serbia
+    #            ja: セルビア
+    #            nl: Servië
+    #            hr: Srbija
+    #            en: Serbia
+    #        latlng:
+    #            - 44
+    #            - 21
+    #        demonym:
+    #            en: Serbian
+    #            fr: Serbe
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - RSD
+    #        languages:
+    #            - srp
+    #        alpha2: RS
+    #        alpha3: SRB
+    #        calling_codes:
+    #            - '381'
+    #        numeric_code: '688'
+    #    country152:
+    #        name: Seychelles
+    #        translations:
+    #            de: Seychellen
+    #            es: Seychelles
+    #            fr: Seychelles
+    #            it: Seychelles
+    #            ja: セーシェル
+    #            nl: Seychellen
+    #            hr: Sejšeli
+    #            en: Seychelles
+    #        latlng:
+    #            - -4.58333333
+    #            - 55.66666666
+    #        demonym:
+    #            en: Seychellois
+    #            fr: Seychellois
+    #        timezones:
+    #            - UTC+04:00
+    #        currencies:
+    #            - SCR
+    #        languages:
+    #            - fra
+    #            - eng
+    #        alpha2: SC
+    #        alpha3: SYC
+    #        calling_codes:
+    #            - '248'
+    #        numeric_code: '690'
+    #    country153:
+    #        name: Sierra Leone
+    #        translations:
+    #            de: Sierra Leone
+    #            es: Sierra Leone
+    #            fr: Sierra Leone
+    #            it: Sierra Leone
+    #            ja: シエラレオネ
+    #            nl: Sierra Leone
+    #            hr: Sijera Leone
+    #            en: Sierra Leone
+    #        latlng:
+    #            - 8.5
+    #            - -11.5
+    #        demonym:
+    #            en: Sierra Leonean
+    #            fr: Sierra-léonais
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - SLL
+    #        languages:
+    #            - eng
+    #        alpha2: SL
+    #        alpha3: SLE
+    #        calling_codes:
+    #            - '232'
+    #        numeric_code: '694'
+    #    country154:
+    #        name: Singapore
+    #        translations:
+    #            fr: Singapour
+    #            nl: Singapore
+    #            de: Singapur
+    #            it: Singapore
+    #            ja: シンガポール
+    #            es: Singapur
+    #            hr: Singapur
+    #            en: Singapore
+    #        latlng:
+    #            - 1.36666666
+    #            - 103.8
+    #        demonym:
+    #            en: Singaporean
+    #            fr: Singapourien
+    #        timezones:
+    #            - UTC+08:00
+    #        currencies:
+    #            - BND
+    #            - SGD
+    #        languages:
+    #            - eng
+    #            - msa
+    #            - tam
+    #            - zho
+    #        alpha2: SG
+    #        alpha3: SGP
+    #        calling_codes:
+    #            - '65'
+    #        numeric_code: '702'
+    #    country155:
+    #        name: Slovensko
+    #        translations:
+    #            de: Slowakei
+    #            es: República Eslovaca
+    #            fr: Slovaquie
+    #            it: Slovacchia
+    #            ja: スロバキア
+    #            nl: Slowakije
+    #            hr: Slovačka
+    #            en: Slovakia
+    #        latlng:
+    #            - 48.66666666
+    #            - 19.5
+    #        demonym:
+    #            en: Slovak
+    #            fr: Slovaque
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - slk
+    #        alpha2: SK
+    #        alpha3: SVK
+    #        calling_codes:
+    #            - '421'
+    #        numeric_code: '703'
+    #    country156:
+    #        name: Slovenija
+    #        translations:
+    #            de: Slowenien
+    #            es: Eslovenia
+    #            fr: Slovénie
+    #            it: Slovenia
+    #            ja: スロベニア
+    #            nl: Slovenië
+    #            hr: Slovenija
+    #            en: Slovenia
+    #        latlng:
+    #            - 46.11666666
+    #            - 14.81666666
+    #        demonym:
+    #            en: Slovene
+    #            fr: Slovène
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - slv
+    #        alpha2: SI
+    #        alpha3: SVN
+    #        calling_codes:
+    #            - '386'
+    #        numeric_code: '705'
+    #    country157:
+    #        name: Solomon Islands
+    #        translations:
+    #            de: Salomonen
+    #            es: Islas Salomón
+    #            fr: Îles Salomon
+    #            it: Isole Salomone
+    #            ja: ソロモン諸島
+    #            nl: Salomonseilanden
+    #            hr: Solomonski Otoci
+    #            en: Solomon Islands
+    #        latlng:
+    #            - -8
+    #            - 159
+    #        demonym:
+    #            en: Solomon Islander
+    #            fr: Salomonais
+    #        timezones:
+    #            - UTC+11:00
+    #        currencies:
+    #            - SBD
+    #        languages:
+    #            - eng
+    #        alpha2: SB
+    #        alpha3: SLB
+    #        calling_codes:
+    #            - '677'
+    #        numeric_code: 090
+    #    country158:
+    #        name: Soomaaliya
+    #        translations:
+    #            de: Somalia
+    #            es: Somalia
+    #            fr: Somalie
+    #            it: Somalia
+    #            ja: ソマリア
+    #            nl: Somalië
+    #            hr: Somalija
+    #            en: Somalia
+    #        latlng:
+    #            - 10
+    #            - 49
+    #        demonym:
+    #            en: Somali
+    #            fr: Somali
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - SOS
+    #        languages:
+    #            - som
+    #            - ara
+    #        alpha2: SO
+    #        alpha3: SOM
+    #        calling_codes:
+    #            - '252'
+    #        numeric_code: '706'
+    #    country159:
+    #        name: South Africa
+    #        translations:
+    #            de: Republik Südafrika
+    #            es: República de Sudáfrica
+    #            fr: Afrique du Sud
+    #            it: Sud Africa
+    #            ja: 南アフリカ
+    #            nl: Zuid-Afrika
+    #            hr: Južnoafrička Republika
+    #            en: South Africa
+    #        latlng:
+    #            - -29
+    #            - 24
+    #        demonym:
+    #            en: South African
+    #            fr: Sud-africain
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - ZAR
+    #        languages:
+    #            - afr
+    #            - eng
+    #            - nbl
+    #            - sot
+    #            - ssw
+    #            - tsn
+    #            - tso
+    #            - ven
+    #            - xho
+    #            - zul
+    #        alpha2: ZA
+    #        alpha3: ZAF
+    #        calling_codes:
+    #            - '27'
+    #        numeric_code: '710'
+    #    country160:
+    #        name: South Sudan
+    #        translations:
+    #            fr: Soudan du Sud
+    #            nl: Zuid-Soedan
+    #            de: Südsudan
+    #            it: Sudan del sud
+    #            ja: 南スーダン
+    #            es: Sudán del Sur
+    #            hr: Južni Sudan
+    #            en: South Sudan
+    #        latlng:
+    #            - 7
+    #            - 30
+    #        demonym:
+    #            en: South Sudanese
+    #            fr: Soudanais du sud
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - SSP
+    #        languages:
+    #            - eng
+    #        alpha2: SS
+    #        alpha3: SSD
+    #        calling_codes:
+    #            - '211'
+    #        numeric_code: '728'
+    #    country161:
+    #        name: España
+    #        translations:
+    #            de: Spanien
+    #            es: España
+    #            fr: Espagne
+    #            it: Spagna
+    #            ja: スペイン
+    #            nl: Spanje
+    #            hr: Španjolska
+    #            en: Spain
+    #        latlng:
+    #            - 40
+    #            - -4
+    #        demonym:
+    #            en: Spanish
+    #            fr: Espagnol
+    #        timezones:
+    #            - UTC
+    #            - UTC+01:00
+    #        currencies:
+    #            - EUR
+    #        languages:
+    #            - spa
+    #        alpha2: ES
+    #        alpha3: ESP
+    #        calling_codes:
+    #            - '34'
+    #        numeric_code: '724'
+    #    country162:
+    #        name: śrī laṃkāva
+    #        translations:
+    #            de: Sri Lanka
+    #            es: Sri Lanka
+    #            fr: Sri Lanka
+    #            it: Sri Lanka
+    #            ja: スリランカ
+    #            nl: Sri Lanka
+    #            hr: Šri Lanka
+    #            en: Sri Lanka
+    #        latlng:
+    #            - 7
+    #            - 81
+    #        demonym:
+    #            en: Sri Lankan
+    #            fr: Sri Lankais
+    #        timezones:
+    #            - UTC+05:30
+    #        currencies:
+    #            - LKR
+    #        languages:
+    #            - sin
+    #            - tam
+    #        alpha2: LK
+    #        alpha3: LKA
+    #        calling_codes:
+    #            - '94'
+    #        numeric_code: '144'
+    #    country163:
+    #        name: السودان
+    #        translations:
+    #            de: Sudan
+    #            es: Sudán
+    #            fr: Soudan
+    #            it: Sudan
+    #            ja: スーダン
+    #            nl: Soedan
+    #            hr: Sudan
+    #            en: Sudan
+    #        latlng:
+    #            - 15
+    #            - 30
+    #        demonym:
+    #            en: Sudanese
+    #            fr: Soudanais
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - SDG
+    #        languages:
+    #            - ara
+    #            - eng
+    #        alpha2: SD
+    #        alpha3: SDN
+    #        calling_codes:
+    #            - '249'
+    #        numeric_code: '729'
+    #    country164:
+    #        name: Suriname
+    #        translations:
+    #            de: Suriname
+    #            es: Surinam
+    #            fr: Surinam
+    #            it: Suriname
+    #            ja: スリナム
+    #            nl: Suriname
+    #            hr: Surinam
+    #            en: Suriname
+    #        latlng:
+    #            - 4
+    #            - -56
+    #        demonym:
+    #            en: Surinamer
+    #            fr: Surinamais
+    #        timezones:
+    #            - UTC-03:00
+    #        currencies:
+    #            - SRD
+    #        languages:
+    #            - nld
+    #        alpha2: SR
+    #        alpha3: SUR
+    #        calling_codes:
+    #            - '597'
+    #        numeric_code: '740'
+    #    country165:
+    #        name: Swaziland
+    #        translations:
+    #            de: Swasiland
+    #            es: Suazilandia
+    #            fr: Swaziland
+    #            it: Swaziland
+    #            ja: スワジランド
+    #            nl: Swaziland
+    #            hr: Svazi
+    #            en: Swaziland
+    #        latlng:
+    #            - -26.5
+    #            - 31.5
+    #        demonym:
+    #            en: Swazi
+    #            fr: Swazi
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - SZL
+    #        languages:
+    #            - eng
+    #            - ssw
+    #        alpha2: SZ
+    #        alpha3: SWZ
+    #        calling_codes:
+    #            - '268'
+    #        numeric_code: '748'
+    #    country166:
+    #        name: Sverige
+    #        translations:
+    #            de: Schweden
+    #            es: Suecia
+    #            fr: Suède
+    #            it: Svezia
+    #            ja: スウェーデン
+    #            nl: Zweden
+    #            hr: Švedska
+    #            en: Sweden
+    #        latlng:
+    #            - 62
+    #            - 15
+    #        demonym:
+    #            en: Swedish
+    #            fr: Suèdois
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - SEK
+    #        languages:
+    #            - swe
+    #        alpha2: SE
+    #        alpha3: SWE
+    #        calling_codes:
+    #            - '46'
+    #        numeric_code: '752'
+    #    country167:
+    #        name: Schweiz
+    #        translations:
+    #            de: Schweiz
+    #            es: Suiza
+    #            fr: Suisse
+    #            it: Svizzera
+    #            ja: スイス
+    #            nl: Zwitserland
+    #            hr: Švicarska
+    #            en: Switzerland
+    #        latlng:
+    #            - 47
+    #            - 8
+    #        demonym:
+    #            en: Swiss
+    #            fr: Suisse
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - CHF
+    #        languages:
+    #            - deu
+    #            - fra
+    #            - ita
+    #        alpha2: CH
+    #        alpha3: CHE
+    #        calling_codes:
+    #            - '41'
+    #        numeric_code: '756'
+    #    country168:
+    #        name: سوريا
+    #        translations:
+    #            de: Syrien
+    #            es: Siria
+    #            fr: Syrie
+    #            it: Siria
+    #            ja: シリア・アラブ共和国
+    #            nl: Syrië
+    #            hr: Sirija
+    #            en: Syrian Arab Republic
+    #        latlng:
+    #            - 35
+    #            - 38
+    #        demonym:
+    #            en: Syrian
+    #            fr: Syrien
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - SYP
+    #        languages:
+    #            - ara
+    #        alpha2: SY
+    #        alpha3: SYR
+    #        calling_codes:
+    #            - '963'
+    #        numeric_code: '760'
+    #    country169:
+    #        name: Тоҷикистон
+    #        translations:
+    #            de: Tadschikistan
+    #            es: Tayikistán
+    #            fr: Tadjikistan
+    #            it: Tagikistan
+    #            ja: タジキスタン
+    #            nl: Tadzjikistan
+    #            hr: Tađikistan
+    #            en: Tajikistan
+    #        latlng:
+    #            - 39
+    #            - 71
+    #        demonym:
+    #            en: Tadzhik
+    #            fr: Tadjik
+    #        timezones:
+    #            - UTC+05:00
+    #        currencies:
+    #            - TJS
+    #        languages:
+    #            - tgk
+    #            - rus
+    #        alpha2: TJ
+    #        alpha3: TJK
+    #        calling_codes:
+    #            - '992'
+    #        numeric_code: '762'
+    #    country170:
+    #        name: ประเทศไทย
+    #        translations:
+    #            fr: Thaïlande
+    #            nl: Thailand
+    #            de: Thailand
+    #            it: Tailandia
+    #            ja: タイ
+    #            es: Tailandia
+    #            hr: Tajland
+    #            en: Thailand
+    #        latlng:
+    #            - 15
+    #            - 100
+    #        demonym:
+    #            en: Thai
+    #            fr: Thailandais
+    #        timezones:
+    #            - UTC+07:00
+    #        currencies:
+    #            - THB
+    #        languages:
+    #            - tha
+    #        alpha2: TH
+    #        alpha3: THA
+    #        calling_codes:
+    #            - '66'
+    #        numeric_code: '764'
+    #    country171:
+    #        name: Македонија
+    #        translations:
+    #            de: Mazedonien
+    #            es: Macedonia
+    #            fr: Macédoine
+    #            it: Macedonia
+    #            ja: マケドニア旧ユーゴスラビア共和国
+    #            nl: Macedonië
+    #            hr: Makedonija
+    #            en: Macedonia (the former Yugoslav Republic of)
+    #        latlng:
+    #            - 41.83333333
+    #            - 22
+    #        demonym:
+    #            en: Macedonian
+    #            fr: Macédonien
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - MKD
+    #        languages:
+    #            - mkd
+    #        alpha2: MK
+    #        alpha3: MKD
+    #        calling_codes:
+    #            - '389'
+    #        numeric_code: '807'
+    #    country172:
+    #        name: Timor-Leste
+    #        translations:
+    #            fr: Timor oriental
+    #            nl: Oost-Timor
+    #            de: Timor-Leste
+    #            it: Timor Est
+    #            ja: 東ティモール
+    #            es: Timor Oriental
+    #            hr: Istočni Timor
+    #            en: Timor-Leste
+    #        latlng:
+    #            - -8.83333333
+    #            - 125.91666666
+    #        demonym:
+    #            en: East Timorese
+    #            fr: Est-timorais
+    #        timezones:
+    #            - UTC+09:00
+    #        currencies:
+    #            - USD
+    #            -
+    #        languages:
+    #            - por
+    #        alpha2: TL
+    #        alpha3: TLS
+    #        calling_codes:
+    #            - '670'
+    #        numeric_code: '626'
+    #    country173:
+    #        name: Togo
+    #        translations:
+    #            de: Togo
+    #            es: Togo
+    #            fr: Togo
+    #            it: Togo
+    #            ja: トーゴ
+    #            nl: Togo
+    #            hr: Togo
+    #            en: Togo
+    #        latlng:
+    #            - 8
+    #            - 1.16666666
+    #        demonym:
+    #            en: Togolese
+    #            fr: Togolais
+    #        timezones:
+    #            - UTC
+    #        currencies:
+    #            - XOF
+    #        languages:
+    #            - fra
+    #        alpha2: TG
+    #        alpha3: TGO
+    #        calling_codes:
+    #            - '228'
+    #        numeric_code: '768'
+    #    country174:
+    #        name: Tonga
+    #        translations:
+    #            de: Tonga
+    #            es: Tonga
+    #            fr: Tonga
+    #            it: Tonga
+    #            ja: トンガ
+    #            nl: Tonga
+    #            hr: Tonga
+    #            en: Tonga
+    #        latlng:
+    #            - -20
+    #            - -175
+    #        demonym:
+    #            en: Tongan
+    #            fr: Tongien
+    #        timezones:
+    #            - UTC+13:00
+    #        currencies:
+    #            - TOP
+    #        languages:
+    #            - eng
+    #            - ton
+    #        alpha2: TO
+    #        alpha3: TON
+    #        calling_codes:
+    #            - '676'
+    #        numeric_code: '776'
+    #    country175:
+    #        name: Trinidad and Tobago
+    #        translations:
+    #            de: Trinidad und Tobago
+    #            es: Trinidad y Tobago
+    #            fr: Trinité et Tobago
+    #            it: Trinidad e Tobago
+    #            ja: トリニダード・トバゴ
+    #            nl: Trinidad en Tobago
+    #            hr: Trinidad i Tobago
+    #            en: Trinidad and Tobago
+    #        latlng:
+    #            - 11
+    #            - -61
+    #        demonym:
+    #            en: Trinidadian
+    #            fr: Trinidadien
+    #        timezones:
+    #            - UTC-04:00
+    #        currencies:
+    #            - TTD
+    #        languages:
+    #            - eng
+    #        alpha2: TT
+    #        alpha3: TTO
+    #        calling_codes:
+    #            - '1868'
+    #        numeric_code: '780'
+    #    country176:
+    #        name: تونس
+    #        translations:
+    #            de: Tunesien
+    #            es: Túnez
+    #            fr: Tunisie
+    #            it: Tunisia
+    #            ja: チュニジア
+    #            nl: Tunesië
+    #            hr: Tunis
+    #            en: Tunisia
+    #        latlng:
+    #            - 34
+    #            - 9
+    #        demonym:
+    #            en: Tunisian
+    #            fr: Tunisien
+    #        timezones:
+    #            - UTC+01:00
+    #        currencies:
+    #            - TND
+    #        languages:
+    #            - ara
+    #        alpha2: TN
+    #        alpha3: TUN
+    #        calling_codes:
+    #            - '216'
+    #        numeric_code: '788'
+    #    country177:
+    #        name: Türkiye
+    #        translations:
+    #            de: Türkei
+    #            es: Turquía
+    #            fr: Turquie
+    #            it: Turchia
+    #            ja: トルコ
+    #            nl: Turkije
+    #            hr: Turska
+    #            en: Turkey
+    #        latlng:
+    #            - 39
+    #            - 35
+    #        demonym:
+    #            en: Turkish
+    #            fr: Turque
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - TRY
+    #        languages:
+    #            - tur
+    #        alpha2: TR
+    #        alpha3: TUR
+    #        calling_codes:
+    #            - '90'
+    #        numeric_code: '792'
+    #    country178:
+    #        name: Türkmenistan
+    #        translations:
+    #            de: Turkmenistan
+    #            es: Turkmenistán
+    #            fr: Turkménistan
+    #            it: Turkmenistan
+    #            ja: トルクメニスタン
+    #            nl: Turkmenistan
+    #            hr: Turkmenistan
+    #            en: Turkmenistan
+    #        latlng:
+    #            - 40
+    #            - 60
+    #        demonym:
+    #            en: Turkmen
+    #            fr: Turkmène
+    #        timezones:
+    #            - UTC+05:00
+    #        currencies:
+    #            - TMT
+    #        languages:
+    #            - tuk
+    #            - rus
+    #        alpha2: TM
+    #        alpha3: TKM
+    #        calling_codes:
+    #            - '993'
+    #        numeric_code: '795'
+    #    country179:
+    #        name: Tuvalu
+    #        translations:
+    #            de: Tuvalu
+    #            es: Tuvalu
+    #            fr: Tuvalu
+    #            it: Tuvalu
+    #            ja: ツバル
+    #            nl: Tuvalu
+    #            hr: Tuvalu
+    #            en: Tuvalu
+    #        latlng:
+    #            - -8
+    #            - 178
+    #        demonym:
+    #            en: Tuvaluan
+    #            fr: Tuvaluan
+    #        timezones:
+    #            - UTC+12:00
+    #        currencies:
+    #            - AUD
+    #            - TVD[G]
+    #        languages:
+    #            - eng
+    #        alpha2: TV
+    #        alpha3: TUV
+    #        calling_codes:
+    #            - '688'
+    #        numeric_code: '798'
+    #    country180:
+    #        name: Uganda
+    #        translations:
+    #            de: Uganda
+    #            es: Uganda
+    #            fr: Uganda
+    #            it: Uganda
+    #            ja: ウガンダ
+    #            nl: Oeganda
+    #            hr: Uganda
+    #            en: Uganda
+    #        latlng:
+    #            - 1
+    #            - 32
+    #        demonym:
+    #            en: Ugandan
+    #            fr: Ougandais
+    #        timezones:
+    #            - UTC+03:00
+    #        currencies:
+    #            - UGX
+    #        languages:
+    #            - eng
+    #            - swa
+    #        alpha2: UG
+    #        alpha3: UGA
+    #        calling_codes:
+    #            - '256'
+    #        numeric_code: '800'
+    #    country181:
+    #        name: Україна
+    #        translations:
+    #            de: Ukraine
+    #            es: Ucrania
+    #            fr: Ukraine
+    #            it: Ucraina
+    #            ja: ウクライナ
+    #            nl: Oekraïne
+    #            hr: Ukrajina
+    #            en: Ukraine
+    #        latlng:
+    #            - 49
+    #            - 32
+    #        demonym:
+    #            en: Ukrainian
+    #            fr: Ukrainien
+    #        timezones:
+    #            - UTC+02:00
+    #        currencies:
+    #            - UAH
+    #            - RUB
+    #        languages:
+    #            - ukr
+    #        alpha2: UA
+    #        alpha3: UKR
+    #        calling_codes:
+    #            - '380'
+    #        numeric_code: '804'
+    #    country182:
+    #        name: دولة الإمارات العربية المتحدة
+    #        translations:
+    #            de: Vereinigte Arabische Emirate
+    #            es: Emiratos Árabes Unidos
+    #            fr: Émirats arabes unis
+    #            it: Emirati Arabi Uniti
+    #            ja: アラブ首長国連邦
+    #            nl: Verenigde Arabische Emiraten
+    #            hr: Ujedinjeni Arapski Emirati
+    #            en: United Arab Emirates
+    #        latlng:
+    #            - 24
+    #            - 54
+    #        demonym:
+    #            en: Emirati
+    #            fr: Emirien
+    #        timezones:
+    #            - UTC+04
+    #        currencies:
+    #            - AED
+    #        languages:
+    #            - ara
+    #        alpha2: AE
+    #        alpha3: ARE
+    #        calling_codes:
+    #            - '971'
+    #        numeric_code: '784'
+    country183:
+        name: United Kingdom
+        translations:
+            de: Vereinigtes Königreich
+            es: Reino Unido
+            fr: Royaume-Uni
+            it: Regno Unito
+            ja: イギリス
+            nl: Verenigd Koninkrijk
+            hr: Ujedinjeno Kraljevstvo
+            en: United Kingdom of Great Britain and Northern Ireland
+        latlng:
+            - 54
+            - -2
+        demonym:
+            en: British
+            fr: Britannique
+        timezones:
+            - UTC-08:00
+            - UTC-05:00
+            - UTC-04:00
+            - UTC-03:00
+            - UTC-02:00
+            - UTC
+            - UTC+01:00
+            - UTC+02:00
+            - UTC+06:00
+        currencies:
+            - GBP
+        languages:
+            - '@eng'
+        alpha2: GB
+        alpha3: GBR
+        calling_codes:
+            - '44'
+        numeric_code: '826'
+#    country184:
+#        name: Tanzania
+#        translations:
+#            de: Tansania
+#            es: Tanzania
+#            fr: Tanzanie
+#            it: Tanzania
+#            ja: タンザニア
+#            nl: Tanzania
+#            hr: Tanzanija
+#            en: Tanzania, United Republic of
+#        latlng:
+#            - -6
+#            - 35
+#        demonym:
+#            en: Tanzanian
+#            fr: Tanzanien
+#        timezones:
+#            - UTC+03:00
+#        currencies:
+#            - TZS
+#        languages:
+#            - swa
+#            - eng
+#        alpha2: TZ
+#        alpha3: TZA
+#        calling_codes:
+#            - '255'
+#        numeric_code: '834'
+#    country185:
+#        name: United States
+#        translations:
+#            de: Vereinigte Staaten von Amerika
+#            es: Estados Unidos
+#            fr: États-Unis
+#            it: Stati Uniti D'America
+#            ja: アメリカ合衆国
+#            nl: Verenigde Staten
+#            hr: Sjedinjene Američke Države
+#            en: United States of America
+#        latlng:
+#            - 38
+#            - -97
+#        demonym:
+#            en: American
+#            fr: Américain
+#        timezones:
+#            - UTC-12:00
+#            - UTC-11:00
+#            - UTC-10:00
+#            - UTC-09:00
+#            - UTC-08:00
+#            - UTC-07:00
+#            - UTC-06:00
+#            - UTC-05:00
+#            - UTC-04:00
+#            - UTC+10:00
+#            - UTC+12:00
+#        currencies:
+#            - USD
+#        languages:
+#            - eng
+#        alpha2: US
+#        alpha3: USA
+#        calling_codes:
+#            - '1'
+#        numeric_code: '840'
+#    country186:
+#        name: Uruguay
+#        translations:
+#            de: Uruguay
+#            es: Uruguay
+#            fr: Uruguay
+#            it: Uruguay
+#            ja: ウルグアイ
+#            nl: Uruguay
+#            hr: Urugvaj
+#            en: Uruguay
+#        latlng:
+#            - -33
+#            - -56
+#        demonym:
+#            en: Uruguayan
+#            fr: Uruguayen
+#        timezones:
+#            - UTC-03:00
+#        currencies:
+#            - UYU
+#        languages:
+#            - spa
+#        alpha2: UY
+#        alpha3: URY
+#        calling_codes:
+#            - '598'
+#        numeric_code: '858'
+#    country187:
+#        name: O‘zbekiston
+#        translations:
+#            de: Usbekistan
+#            es: Uzbekistán
+#            fr: Ouzbékistan
+#            it: Uzbekistan
+#            ja: ウズベキスタン
+#            nl: Oezbekistan
+#            hr: Uzbekistan
+#            en: Uzbekistan
+#        latlng:
+#            - 41
+#            - 64
+#        demonym:
+#            en: Uzbekistani
+#            fr: Ouzbèkes
+#        timezones:
+#            - UTC+05:00
+#        currencies:
+#            - UZS
+#        languages:
+#            - uzb
+#            - rus
+#        alpha2: UZ
+#        alpha3: UZB
+#        calling_codes:
+#            - '998'
+#        numeric_code: '860'
+#    country188:
+#        name: Vanuatu
+#        translations:
+#            de: Vanuatu
+#            es: Vanuatu
+#            fr: Vanuatu
+#            it: Vanuatu
+#            ja: バヌアツ
+#            nl: Vanuatu
+#            hr: Vanuatu
+#            en: Vanuatu
+#        latlng:
+#            - -16
+#            - 167
+#        demonym:
+#            en: Ni-Vanuatu
+#            fr: Ni-Vanuatu
+#        timezones:
+#            - UTC+11:00
+#        currencies:
+#            - VUV
+#        languages:
+#            - bis
+#            - eng
+#            - fra
+#        alpha2: VU
+#        alpha3: VUT
+#        calling_codes:
+#            - '678'
+#        numeric_code: '548'
+#    country189:
+#        name: Venezuela
+#        translations:
+#            de: Venezuela
+#            es: Venezuela
+#            fr: Venezuela
+#            it: Venezuela
+#            ja: ベネズエラ・ボリバル共和国
+#            nl: Venezuela
+#            hr: Venezuela
+#            en: Venezuela (Bolivarian Republic of)
+#        latlng:
+#            - 8
+#            - -66
+#        demonym:
+#            en: Venezuelan
+#            fr: Vénézuélien
+#        timezones:
+#            - UTC-04:30
+#        currencies:
+#            - VEF
+#        languages:
+#            - spa
+#        alpha2: VE
+#        alpha3: VEN
+#        calling_codes:
+#            - '58'
+#        numeric_code: '862'
+#    country190:
+#        name: Việt Nam
+#        translations:
+#            fr: Viêt Nam
+#            nl: Vietnam
+#            de: Vietnam
+#            it: Vietnam
+#            ja: ベトナム
+#            es: Vietnam
+#            hr: Vijetnam
+#            en: Viet Nam
+#        latlng:
+#            - 16.16666666
+#            - 107.83333333
+#        demonym:
+#            en: Vietnamese
+#            fr: Vietnamien
+#        timezones:
+#            - UTC+07:00
+#        currencies:
+#            - VND
+#        languages:
+#            - vie
+#        alpha2: VN
+#        alpha3: VNM
+#        calling_codes:
+#            - '84'
+#        numeric_code: '704'
+#    country191:
+#        name: اليَمَن
+#        translations:
+#            de: Jemen
+#            es: Yemen
+#            fr: Yémen
+#            it: Yemen
+#            ja: イエメン
+#            nl: Jemen
+#            hr: Jemen
+#            en: Yemen
+#        latlng:
+#            - 15
+#            - 48
+#        demonym:
+#            en: Yemeni
+#            fr: Yéménite
+#        timezones:
+#            - UTC+03:00
+#        currencies:
+#            - YER
+#        languages:
+#            - ara
+#        alpha2: YE
+#        alpha3: YEM
+#        calling_codes:
+#            - '967'
+#        numeric_code: '887'
+#    country192:
+#        name: Zambia
+#        translations:
+#            de: Sambia
+#            es: Zambia
+#            fr: Zambie
+#            it: Zambia
+#            ja: ザンビア
+#            nl: Zambia
+#            hr: Zambija
+#            en: Zambia
+#        latlng:
+#            - -15
+#            - 30
+#        demonym:
+#            en: Zambian
+#            fr: Zambien
+#        timezones:
+#            - UTC+02:00
+#        currencies:
+#            - ZMW
+#        languages:
+#            - eng
+#        alpha2: ZM
+#        alpha3: ZMB
+#        calling_codes:
+#            - '260'
+#        numeric_code: '894'
+#    country193:
+#        name: Zimbabwe
+#        translations:
+#            de: Simbabwe
+#            es: Zimbabue
+#            fr: Zimbabwe
+#            it: Zimbabwe
+#            ja: ジンバブエ
+#            nl: Zimbabwe
+#            hr: Zimbabve
+#            en: Zimbabwe
+#        latlng:
+#            - -20
+#            - 30
+#        demonym:
+#            en: Zimbabwean
+#            fr: Zimbabwéen
+#        timezones:
+#            - UTC+02:00
+#        currencies:
+#            - BWP
+#            - GBP
+#            - CNY
+#            - EUR
+#            - INR
+#            - JPY
+#            - ZAR
+#            - USD
+#            - "(none)"
+#        languages:
+#            - eng
+#            - sna
+#            - nde
+#        alpha2: ZW
+#        alpha3: ZWE
+#        calling_codes:
+#            - '263'
+#        numeric_code: '716'
+#

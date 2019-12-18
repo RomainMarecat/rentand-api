@@ -19,7 +19,7 @@ class BookingManager
 
     public function adminCget(array $filters, $orderBy, $limit, $offset)
     {
-        $bookings = $this->getEm()->getRepository('AppBundle:Booking')->adminCget($filters, $orderBy, $limit, $offset);
+        $bookings = $this->getEm()->getRepository('App:Booking')->adminCget($filters, $orderBy, $limit, $offset);
 
         $sports = array();
         $cities = array();
@@ -32,8 +32,8 @@ class BookingManager
             }
         }
 
-        $sports = $this->getEm()->getRepository('AppBundle:Sport')->findSportByIds(array_unique($sports));
-        $cities = $this->getEm()->getRepository('AppBundle:City')->findCitiesByIds(array_unique($cities));
+        $sports = $this->getEm()->getRepository('App:Sport')->findSportByIds(array_unique($sports));
+        $cities = $this->getEm()->getRepository('App:City')->findCitiesByIds(array_unique($cities));
 
         foreach ($bookings as $b => $booking) {
             foreach ($booking['courses'] as $c => $course) {

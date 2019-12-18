@@ -3,11 +3,11 @@
 namespace App\Controller\Front;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
-use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
 
-class SearchController extends FOSRestController
+class SearchController extends AbstractFOSRestController
 {
     /**
      * @Annotations\View(serializerGroups={"Default", "getSearch"})
@@ -22,7 +22,7 @@ class SearchController extends FOSRestController
         ) {
             $results = new ArrayCollection(
                 $this->getDoctrine()
-                    ->getRepository('AppBundle:Advert')
+                    ->getRepository('App:Advert')
                     ->findAdvertsByCriteria($criteria)
             );
         }
@@ -41,7 +41,7 @@ class SearchController extends FOSRestController
         $sports =
             new ArrayCollection(
                 $this->getDoctrine()
-                    ->getRepository('AppBundle:Sport')
+                    ->getRepository('App:Sport')
                     ->findSportsByLevel(0)
             );
 
@@ -57,12 +57,12 @@ class SearchController extends FOSRestController
      */
     public function postSimpleSearchAction(Request $request)
     {
-        list($sport, $city, $adverts, $titles, $total) = $this->get('manager.search')
+        list($sport, $city, $users, $titles, $total) = $this->get('manager.search')
             ->getResultsBySimpleForm($request);
         return array(
             'sport' => $sport,
             'city' => $city,
-            'adverts' => $adverts,
+            'adverts' => $users,
             'titles' => $titles,
             'total' => $total
         );
@@ -94,7 +94,7 @@ class SearchController extends FOSRestController
         $sports =
             new ArrayCollection(
                 $this->getDoctrine()
-                    ->getRepository('AppBundle:Sport')
+                    ->getRepository('App:Sport')
                     ->findSportsByLevel(0)
             );
 
@@ -112,12 +112,12 @@ class SearchController extends FOSRestController
      */
     public function postAdvancedSearchAction(Request $request)
     {
-        list($sport, $city, $adverts, $titles, $total) = $this->get('manager.search')
+        list($sport, $city, $users, $titles, $total) = $this->get('manager.search')
             ->getResultsByAdvancedForm($request);
         return array(
             'sport' => $sport,
             'city' => $city,
-            'adverts' => $adverts,
+            'adverts' => $users,
             'titles' => $titles,
             'total' => $total
         );
@@ -135,7 +135,7 @@ class SearchController extends FOSRestController
         $ages = $params->getAges();
         $titles = $params->getTitles();
         $sports = $this->getDoctrine()
-            ->getRepository('AppBundle:Sport')
+            ->getRepository('App:Sport')
             ->findSportsByLevel(1);
 
         return array(

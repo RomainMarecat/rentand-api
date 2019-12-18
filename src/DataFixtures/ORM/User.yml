@@ -1,7 +1,7 @@
 App\Entity\User:
-    user{1..1000}:
-        username (unique): <username()>
+    user{1..500}:
         email (unique): <email()>
+        username (unique): <email()>
         enabled: <boolean(95)>
         password: <userName()>
         salt: <userName()>
@@ -10,18 +10,12 @@ App\Entity\User:
         expiresAt: null
         expired: <boolean(1)>
         confirmationToken: <slug()>
-        passwordRequestedAt: 50%? <dateTimeBetween('-100 days', 'now')>
         roles: ['ROLE_USER']
         credentialsExpired: <boolean(10)>
-        credentialsExpireAt: 50%? <dateTimeBetween('-100 days', 'now')>
-        lastName: <lastName()>
-        firstName: <firstName()>
-        gender: <boolean(50)>
-        birthdate: <dateTimeThisCentury()>
-        nationality: <countryCode()>
         facebookId: <ean13()>
         mangopayId: <creditCardNumber()>
         newsletter: <boolean(10)>
         adminComment: <realText()>
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
+        structure: '@structure<numberBetween(1, 10)>'

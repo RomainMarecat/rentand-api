@@ -3,10 +3,10 @@
 namespace App\Controller\Front;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
-use FOS\RestBundle\Controller\FOSRestController;
 
-class SportController extends FOSRestController
+class SportController extends AbstractFOSRestController
 {
     /**
      * @Annotations\View(serializerGroups={"Default", "getSports"})
@@ -15,7 +15,7 @@ class SportController extends FOSRestController
     public function getSportsAction()
     {
         $sports = new ArrayCollection($this->getDoctrine()
-            ->getRepository('AppBundle:Sport')
+            ->getRepository('App:Sport')
             ->findByParent(null));
 
         return array('sports' => $sports);
@@ -25,9 +25,9 @@ class SportController extends FOSRestController
      * @Annotations\View(serializerGroups={"Default", "getSportSpecialities"})
      * @Annotations\Get("/sports/{sport}/{advert}/specialities")
      */
-    public function getSportSpecialitiesAction($sport, $advert)
+    public function getSportSpecialitiesAction($sport, $user)
     {
-        $specialities = $this->get('manager.sport')->getSpecialities($sport, $advert);
+        $specialities = $this->get('manager.sport')->getSpecialities($sport, $user);
 
         return $specialities;
     }

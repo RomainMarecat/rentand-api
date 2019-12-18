@@ -3,10 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OrderBy;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
+use Lexik\Bundle\JWTAuthenticationBundle\Security\User\JWTUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -17,114 +19,76 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * @JMS\ExclusionPolicy("none")
- * @ORM\Entity(repositoryClass="Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements UserInterface
+class User implements UserInterface, JWTUserInterface
 {
     const ROLE_DEFAULT = 'ROLE_USER';
     const ROLE_SUPER_ADMIN = 'ROLE_ADMIN';
-    private $password;
-    private $salt;
 
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(name="user_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"Default", "adminGetUsers"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "register"})
      */
-    protected $id;
+    private $id;
 
     /**
-     * @JMS\Groups({"Default"})
+     * @ORM\Column(name="username", type="string", length=255)
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "register"})
      */
-    protected $username;
+    private $username;
 
     /**
-     * @JMS\Groups({"Default", "adminGetUsers", "adminGetAdverts"})
+     * @ORM\Column(name="email", type="string", length=255)
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "register"})
      */
-    protected $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="firstName", type="string", length=255, nullable=true)
-     * @JMS\Groups({"Default", "adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser"})
-     */
-    protected $firstName;
+    private $email;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="lastName", type="string", length=255, nullable=true)
-     * @JMS\Groups({"Default", "adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser"})
+     * @ORM\Column(name="password", type="string", length=255)
      */
-    protected $lastName;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="gender", type="boolean", nullable=true)
-     * @Assert\Type(
-     *     type="boolean",
-     *     message="The value {{ value }} is not a valid {{ type }}."
-     * )
-     */
-    protected $gender;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="birthdate", type="date", nullable=true)
-     * @Assert\Type(
-     *     type="datetime",
-     *     message="The value {{ value }} is not a valid {{ type }}."
-     * )
-     */
-    protected $birthdate;
+    private $password;
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="nationality", type="string", length=2, nullable=true)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 2,
-     *      exactMessage = "The value must be a coutry code 3166-1_alpha-2",
-     * )
+     * @ORM\Column(name="salt", type="string", length=255)
      */
-    protected $nationality;
+    private $salt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="facebookId", type="string", length=255, nullable=true)
      */
-    protected $facebookId;
+    private $facebookId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mangopayId", type="string", length=255, nullable=true)
      */
-    protected $mangopayId;
+    private $mangopayId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="planningId", type="string", length=255, nullable=true)
-     * @JMS\Groups({"Default", "adminGetAdverts"})
+     * @JMS\Groups({"Default", "adminGetUsers"})
      */
-    protected $planningId;
+    private $planningId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="planningToken", type="string", length=255, nullable=true)
-     * @JMS\Groups({"Default", "adminGetAdverts", "adminGetUsers"})
+     * @JMS\Groups({"Default", "adminGetUsers", "adminGetUsers"})
      */
-    protected $planningToken;
+    private $planningToken;
 
     /**
      * @var boolean
@@ -135,26 +99,19 @@ class User implements UserInterface
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
      */
-    protected $newsletter;
+    private $newsletter;
 
     /**
      * @var string
      *
      * @ORM\Column(name="adminComment", type="text", nullable = true)
      */
-    protected $adminComment;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="type", type="string", length=50, nullable=false, options={"default" : "zeemono"})
-     */
-    protected $type;
+    private $adminComment;
 
     /**
      * @JMS\Groups({"Default", "adminGetUsers"})
      */
-    protected $roles;
+    private $roles;
 
     /**
      * @var bool
@@ -173,19 +130,19 @@ class User implements UserInterface
      *
      * @ORM\Column(name="access_token", type="string", length=255, nullable=true)
      */
-    protected $accessToken;
+    private $accessToken;
 
     /**
      * @var \DateTime|null
      * @ORM\Column(name="last_login", type="datetime", nullable=true)
      */
-    protected $lastLogin;
+    private $lastLogin;
 
     /**
      * @var \DateTime|null
      * @ORM\Column(name="expires_at", type="datetime", nullable=true)
      */
-    protected $expiresAt;
+    private $expiresAt;
 
     /**
      * @var \DateTime
@@ -194,7 +151,7 @@ class User implements UserInterface
      * @Gedmo\Timestampable(on="create")
      * @JMS\Groups({"Default", "adminGetUsers"})
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @var \DateTime
@@ -203,80 +160,19 @@ class User implements UserInterface
      * @Gedmo\Timestampable(on="update")
      * @JMS\Groups({"Default", "adminGetUsers"})
      */
-    protected $updatedAt;
-
-    /**
-     * @ORM\OneToOne(
-     * targetEntity="Address",
-     * mappedBy="user",
-     * cascade={"remove", "persist"},
-     * fetch="LAZY")
-     * @JMS\Groups({"hidden", "getMe", "patchMe", "getUser", "getIsValidUser", "getUserByToken", "adminGetUsers", "adminGetUser"})
-     */
-    protected $address;
-
-    /**
-     * @ORM\OneToOne(targetEntity="Phone", mappedBy="user", cascade={"remove", "persist"}, fetch="LAZY")
-     * @JMS\Groups({"hidden", "getMe", "patchMe", "getUser", "getPlanningUserInformations", "putBooking", "getBooking", "getBookingAdvert", "getBookingAdvert", "getAdvertById", "postEmailReminder", "adminGetUser"})
-     */
-    protected $phone;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user", cascade={"remove"}, fetch="EXTRA_LAZY")
-     * @OrderBy({"id" = "DESC"})
-     * @JMS\Groups({"hidden"})
-     */
-    protected $comments;
-
-    /**
-     * @ORM\OneToMany(
-     *      targetEntity="Advert",
-     *      mappedBy="user",
-     *      indexBy="id",
-     *      cascade={"remove", "persist"},
-     *      fetch="EXTRA_LAZY"
-     * )
-     * @OrderBy({"id" = "DESC"})
-     * @JMS\Groups({"hidden", "getMe", "patchMe"})
-     */
-    protected $adverts;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Booking", mappedBy="user", fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden"})
-     */
-    protected $bookings;
-
-    /**
-     * @var ArrayCollection Voucher $vouchers
-     *
-     * @ORM\OneToMany(
-     *    targetEntity="App\Entity\VouchersUsers",
-     *    mappedBy="user",
-     *    cascade={"persist", "merge"},
-     *    fetch="EXTRA_LAZY"
-     * )
-     * @JMS\Groups({"hidden"})
-     * @JMS\MaxDepth(1)
-     */
-    protected $vouchers;
+    private $updatedAt;
 
     /**
      * @var string
      */
-    protected $usernameCanonical;
-
-    /**
-     * @var string
-     */
-    protected $emailCanonical;
+    private $emailCanonical;
 
     /**
      * Plain password. Used for model validation. Must not be persisted.
      *
      * @var string
      */
-    protected $plainPassword;
+    private $plainPassword;
 
     /**
      * Random string sent to the user email address in order to verify it.
@@ -284,18 +180,18 @@ class User implements UserInterface
      * @var string|null
      * @ORM\Column(name="confirmation_token", type="string", length=255)
      */
-    protected $confirmationToken;
+    private $confirmationToken;
 
     /**
      * @var \DateTime|null
-     * @ORM\Column(name="password_requested_at", type="string", length=255)
+     * @ORM\Column(name="password_requested_at", type="string", length=255, nullable=true)
      */
-    protected $passwordRequestedAt;
+    private $passwordRequestedAt;
 
     /**
      * @var ArrayCollection
      */
-    protected $groups;
+    private $groups;
 
     /**
      * @var bool
@@ -316,24 +212,166 @@ class User implements UserInterface
     private $credentialsExpireAt;
 
     /**
-     * User constructor.
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="user", cascade={"remove"}, fetch="EXTRA_LAZY")
+     * @OrderBy({"id" = "DESC"})
+     * @JMS\Groups({"hidden"})
      */
-    public function __construct()
+    private $comments;
+
+
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="coachs")
+     * @ORM\JoinColumn(name="coach_manager_id", referencedColumnName="user_id", nullable=true)
+     */
+    private $coachManager;
+
+    /**
+     * @ORM\OneToMany(
+     *      targetEntity="User",
+     *      mappedBy="coachManager",
+     *      indexBy="id",
+     *      cascade={"remove", "persist"},
+     *      fetch="EXTRA_LAZY"
+     * )
+     * @OrderBy({"id" = "DESC"})
+     * @JMS\Groups({"hidden", "getMe", "patchMe"})
+     */
+    private $coachs;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Booking", mappedBy="user", fetch="EXTRA_LAZY")
+     * @JMS\Groups({"hidden"})
+     */
+    private $bookings;
+
+    /**
+     * @var ArrayCollection Voucher $vouchers
+     *
+     * @ORM\OneToMany(
+     *    targetEntity="App\Entity\VouchersUsers",
+     *    mappedBy="user",
+     *    cascade={"persist", "merge"},
+     *    fetch="EXTRA_LAZY"
+     * )
+     * @JMS\Groups({"hidden"})
+     * @JMS\MaxDepth(1)
+     */
+    private $vouchers;
+
+    /**
+     * @var Structure
+     * @ORM\ManyToOne(targetEntity="Structure", inversedBy="users")
+     * @ORM\JoinColumn(name="structure_id", referencedColumnName="structure_id", nullable=true)
+     */
+    private $structure;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(
+     *    targetEntity="StructureLink",
+     *    mappedBy="user",
+     *    cascade={"persist", "merge"},
+     *    fetch="EXTRA_LAZY"
+     * )
+     * @JMS\Groups({"hidden"})
+     */
+    private $structureLinks;
+
+    /**
+     * @var AppMetadata
+     *
+     * @ORM\OneToOne(targetEntity="AppMetadata", mappedBy="user", orphanRemoval=true, cascade={"persist"})
+     * @JMS\Groups({"Default", "getUsers", "getUser"})
+     */
+    private $appMetadata;
+
+    /**
+     * @var UserMetadata
+     * @ORM\OneToOne(targetEntity="UserMetadata", mappedBy="user", cascade={"remove", "persist"}, fetch="LAZY")
+     * @JMS\Groups({"hidden", "getMe", "patchMe", "getPlanningUserInformations", "putBooking", "getBooking",
+     *     "getBookingUser", "getBookingUser", "getUserById", "postEmailReminder", "adminGetUser", "getUsers",
+     *     "getUser"})
+     */
+    private $userMetadata;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="City", inversedBy="users", fetch="EXTRA_LAZY")
+     * @ORM\JoinTable(
+     *      name="cities_teached",
+     *      joinColumns={
+     *          @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
+     *      },
+     *      inverseJoinColumns={
+     *          @ORM\JoinColumn(name="city_id", referencedColumnName="city_id")
+     *      }
+     * )
+     * @JMS\Groups({"hidden", "getUser", "postSimpleSearch", "countPostSimpleSearch", "getBestUsers"})
+     */
+    private $cities;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Diploma", mappedBy="user", cascade={"remove", "persist"}, fetch="LAZY")
+     * @JMS\Groups({"hidden", "getUser", "postSimpleSearch"})
+     */
+    private $diploma;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Media", mappedBy="user", cascade={"remove", "persist"}, fetch="LAZY")
+     * @JMS\Groups({"hidden", "getUser", "getMyUsers", "getUsers", "postSimpleSearch", "getBestUsers", "patchBooking",
+     *     "getBooking", "putBooking", "getBookingUser", "getUserComplete"})
+     */
+    private $media;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MeetingPoint", mappedBy="user", cascade={"remove", "persist"}, fetch="EXTRA_LAZY")
+     * @JMS\Type("ArrayCollection<App\Entity\MeetingPoint>")
+     * @JMS\Groups({"hidden", "getUser", "getMyUsers"})
+     */
+    private $meetings;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="SportTeached", mappedBy="user", cascade={"remove", "persist"}, fetch="EXTRA_LAZY")
+     * @ORM\OrderBy({"id" = "DESC"})
+     * @JMS\Groups({"hidden", "getUser", "getFormUser", "getMyUsers", "postSimpleSearch",
+     *     "countPostSimpleSearch", "getSportsTeached", "getUserUsersports"})
+     */
+    private $sportsTeached;
+
+    /**
+     * User constructor.
+     *
+     * @param string|null $username
+     * @param array|null  $roles
+     */
+    public function __construct(?string $username = null, ?array $roles = null)
     {
         $this->bookings = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->adverts = new ArrayCollection();
         $this->vouchers = new ArrayCollection();
+        $this->sportsTeached = new ArrayCollection();
+        $this->structureLinks = new ArrayCollection();
+        $this->meetings = new ArrayCollection();
+        $this->cities = new ArrayCollection();
         $this->enabled = false;
         $this->roles = array();
+        $this->coachs = new ArrayCollection();
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function __toString()
+    public static function createFromPayload($username, array $payload)
     {
-        return (string) $this->getUsername();
+        if (isset($payload['roles'])) {
+            return new static($username, (array) $payload['roles']);
+        }
+
+        return new static($username);
     }
 
     /**
@@ -353,6 +391,11 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -361,8 +404,6 @@ class User implements UserInterface
         return serialize(array(
             $this->password,
             $this->salt,
-            $this->usernameCanonical,
-            $this->username,
             $this->enabled,
             $this->id,
             $this->email,
@@ -390,8 +431,6 @@ class User implements UserInterface
         list(
             $this->password,
             $this->salt,
-            $this->usernameCanonical,
-            $this->username,
             $this->enabled,
             $this->id,
             $this->email,
@@ -418,22 +457,6 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getUsernameCanonical()
-    {
-        return $this->usernameCanonical;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getSalt()
     {
         return $this->salt;
@@ -442,7 +465,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
@@ -560,26 +583,6 @@ class User implements UserInterface
             unset($this->roles[$key]);
             $this->roles = array_values($this->roles);
         }
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setUsernameCanonical($usernameCanonical)
-    {
-        $this->usernameCanonical = $usernameCanonical;
 
         return $this;
     }
@@ -753,7 +756,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function addGroup(GroupInterface $group)
+    public function addGroup($group)
     {
         if (!$this->getGroups()->contains($group)) {
             $this->getGroups()->add($group);
@@ -788,10 +791,6 @@ class User implements UserInterface
         }
 
         if ($this->salt !== $user->getSalt()) {
-            return false;
-        }
-
-        if ($this->username !== $user->getUsername()) {
             return false;
         }
 
@@ -854,84 +853,6 @@ class User implements UserInterface
         if ($this->getNewsletter() == null) {
             $this->setNewsletter(false);
         }
-    }
-
-    /**
-     * Get firstName
-     *
-     * @return string
-     */
-    public function getFirstName()
-    {
-        return $this->firstName;
-    }
-
-    /**
-     * Get lastName
-     *
-     * @return string
-     */
-    public function getLastName()
-    {
-        return $this->lastName;
-    }
-
-    /**
-     * Set gender
-     *
-     * @param boolean $gender
-     *
-     * @return User
-     */
-    public function setGender($gender)
-    {
-        $this->gender = $gender;
-
-        return $this;
-    }
-
-    /**
-     * Get gender
-     *
-     * @return boolean
-     */
-    public function getGender()
-    {
-        return $this->gender;
-    }
-
-    /**
-     * Set birthdate
-     *
-     * @param \DateTime $birthdate
-     *
-     * @return User
-     */
-    public function setBirthdate($birthdate)
-    {
-        $this->birthdate = $birthdate;
-
-        return $this;
-    }
-
-    /**
-     * Get birthdate
-     *
-     * @return \DateTime
-     */
-    public function getBirthdate()
-    {
-        return $this->birthdate;
-    }
-
-    /**
-     * Get nationality
-     *
-     * @return string
-     */
-    public function getNationality()
-    {
-        return $this->nationality;
     }
 
     /**
@@ -1079,54 +1000,6 @@ class User implements UserInterface
     }
 
     /**
-     * Set address
-     *
-     * @param Address $address
-     *
-     * @return User
-     */
-    public function setAddress(Address $address = null)
-    {
-        $this->address = $address;
-
-        return $this;
-    }
-
-    /**
-     * Get address
-     *
-     * @return \Entity\Address
-     */
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    /**
-     * Set phone
-     *
-     * @param Phone $phone
-     *
-     * @return User
-     */
-    public function setPhone(Phone $phone = null)
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
-    /**
-     * Get phone
-     *
-     * @return \Entity\Phone
-     */
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-
-    /**
      * Add comment
      *
      * @param Comment $comment
@@ -1158,40 +1031,6 @@ class User implements UserInterface
     public function getComments()
     {
         return $this->comments;
-    }
-
-    /**
-     * Add advert
-     *
-     * @param Advert $advert
-     *
-     * @return User
-     */
-    public function addAdvert(Advert $advert)
-    {
-        $this->adverts[] = $advert;
-
-        return $this;
-    }
-
-    /**
-     * Remove advert
-     *
-     * @param Advert $advert
-     */
-    public function removeAdvert(Advert $advert)
-    {
-        $this->adverts->removeElement($advert);
-    }
-
-    /**
-     * Get adverts
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAdverts()
-    {
-        return $this->adverts;
     }
 
     /**
@@ -1245,9 +1084,9 @@ class User implements UserInterface
     /**
      * Remove voucher
      *
-     * @param \App\Entity\VouchersUsers $voucher
+     * @param VouchersUsers $voucher
      */
-    public function removeVoucher(\App\Entity\VouchersUsers $voucher)
+    public function removeVoucher(VouchersUsers $voucher)
     {
         $this->vouchers->removeElement($voucher);
     }
@@ -1335,30 +1174,6 @@ class User implements UserInterface
     }
 
     /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return User
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
      * @return mixed
      */
     public function getLocked()
@@ -1368,6 +1183,7 @@ class User implements UserInterface
 
     /**
      * @param mixed $locked
+     *
      * @return User
      */
     public function setLocked($locked)
@@ -1386,6 +1202,7 @@ class User implements UserInterface
 
     /**
      * @param \DateTime|null $expiresAt
+     *
      * @return User
      */
     public function setExpiresAt(?\DateTime $expiresAt): User
@@ -1404,6 +1221,7 @@ class User implements UserInterface
 
     /**
      * @param bool $expired
+     *
      * @return User
      */
     public function setExpired(bool $expired): User
@@ -1422,6 +1240,7 @@ class User implements UserInterface
 
     /**
      * @param bool $credentialsExpired
+     *
      * @return User
      */
     public function setCredentialsExpired(bool $credentialsExpired): User
@@ -1440,11 +1259,320 @@ class User implements UserInterface
 
     /**
      * @param \DateTime|null $credentialsExpireAt
+     *
      * @return User
      */
     public function setCredentialsExpireAt(?\DateTime $credentialsExpireAt): User
     {
         $this->credentialsExpireAt = $credentialsExpireAt;
+        return $this;
+    }
+
+    /**
+     * @return UserMetadata
+     */
+    public function getUserMetadata(): ?UserMetadata
+    {
+        return $this->userMetadata;
+    }
+
+    /**
+     * @param UserMetadata $userMetadata
+     *
+     * @return User
+     */
+    public function setUserMetadata(UserMetadata $userMetadata): User
+    {
+        $this->userMetadata = $userMetadata;
+        return $this;
+    }
+
+    /**
+     * @return Structure
+     */
+    public function getStructure()
+    {
+        return $this->structure;
+    }
+
+    /**
+     * @param Structure $structure
+     *
+     * @return User
+     */
+    public function setStructure(Structure $structure = null): User
+    {
+        $this->structure = $structure;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getStructureLinks(): ArrayCollection
+    {
+        return $this->structureLinks;
+    }
+
+    /**
+     * @param ArrayCollection $structureLinks
+     *
+     * @return User
+     */
+    public function setStructureLinks(ArrayCollection $structureLinks): User
+    {
+        $this->structureLinks = $structureLinks;
+        return $this;
+    }
+
+    /**
+     * @return AppMetadata
+     */
+    public function getAppMetadata(): ?AppMetadata
+    {
+        return $this->appMetadata;
+    }
+
+    /**
+     * @param AppMetadata $appMetadata
+     *
+     * @return User
+     */
+    public function setAppMetadata(AppMetadata $appMetadata): User
+    {
+        $appMetadata->setUser($this);
+        $this->appMetadata = $appMetadata;
+
+        return $this;
+    }
+
+    public function getEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function getExpired(): ?bool
+    {
+        return $this->expired;
+    }
+
+    public function getCredentialsExpired(): ?bool
+    {
+        return $this->credentialsExpired;
+    }
+
+    public function getCoachManager(): ?self
+    {
+        return $this->coachManager;
+    }
+
+    public function setCoachManager(?self $coachManager): self
+    {
+        $this->coachManager = $coachManager;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getCoachs(): Collection
+    {
+        return $this->coachs;
+    }
+
+    public function addCoach(User $coach): self
+    {
+        if (!$this->coachs->contains($coach)) {
+            $this->coachs[] = $coach;
+            $coach->setCoachManager($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCoach(User $coach): self
+    {
+        if ($this->coachs->contains($coach)) {
+            $this->coachs->removeElement($coach);
+            // set the owning side to null (unless already changed)
+            if ($coach->getCoachManager() === $this) {
+                $coach->setCoachManager(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function addStructureLink(StructureLink $structureLink): self
+    {
+        if (!$this->structureLinks->contains($structureLink)) {
+            $this->structureLinks[] = $structureLink;
+            $structureLink->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStructureLink(StructureLink $structureLink): self
+    {
+        if ($this->structureLinks->contains($structureLink)) {
+            $this->structureLinks->removeElement($structureLink);
+            // set the owning side to null (unless already changed)
+            if ($structureLink->getUser() === $this) {
+                $structureLink->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|City[]
+     */
+    public function getCities(): Collection
+    {
+        return $this->cities;
+    }
+
+    public function addCity(City $city): self
+    {
+        if (!$this->cities->contains($city)) {
+            $this->cities[] = $city;
+        }
+
+        return $this;
+    }
+
+    public function removeCity(City $city): self
+    {
+        if ($this->cities->contains($city)) {
+            $this->cities->removeElement($city);
+        }
+
+        return $this;
+    }
+
+    public function getDiploma(): ?Diploma
+    {
+        return $this->diploma;
+    }
+
+    public function setDiploma(?Diploma $diploma): self
+    {
+        $this->diploma = $diploma;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = null === $diploma ? null : $this;
+        if ($diploma->getUser() !== $newUser) {
+            $diploma->setUser($newUser);
+        }
+
+        return $this;
+    }
+
+    public function getImage(): ?Media
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Media $image): self
+    {
+        $this->image = $image;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = null === $image ? null : $this;
+        if ($image->getUser() !== $newUser) {
+            $image->setUser($newUser);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MeetingPoint[]
+     */
+    public function getMeetings(): Collection
+    {
+        return $this->meetings;
+    }
+
+    public function addMeeting(MeetingPoint $meeting): self
+    {
+        if (!$this->meetings->contains($meeting)) {
+            $this->meetings[] = $meeting;
+            $meeting->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMeeting(MeetingPoint $meeting): self
+    {
+        if ($this->meetings->contains($meeting)) {
+            $this->meetings->removeElement($meeting);
+            // set the owning side to null (unless already changed)
+            if ($meeting->getUser() === $this) {
+                $meeting->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SportTeached[]
+     */
+    public function getSportsTeached(): Collection
+    {
+        return $this->sportsTeached;
+    }
+
+    public function addSportsTeached(SportTeached $sportsTeached): self
+    {
+        if (!$this->sportsTeached->contains($sportsTeached)) {
+            $this->sportsTeached[] = $sportsTeached;
+            $sportsTeached->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSportsTeached(SportTeached $sportsTeached): self
+    {
+        if ($this->sportsTeached->contains($sportsTeached)) {
+            $this->sportsTeached->removeElement($sportsTeached);
+            // set the owning side to null (unless already changed)
+            if ($sportsTeached->getUser() === $this) {
+                $sportsTeached->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getMedia(): ?Media
+    {
+        return $this->media;
+    }
+
+    public function setMedia(?Media $media): self
+    {
+        $this->media = $media;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = null === $media ? null : $this;
+        if ($media->getUser() !== $newUser) {
+            $media->setUser($newUser);
+        }
+
+        return $this;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
         return $this;
     }
 }

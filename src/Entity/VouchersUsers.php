@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * VouchersUsers
  *
  * @ORM\Table(name="vouchers_users")
- * @ORM\Entity(repositoryClass="App\Repository\VouchersUsersRepository")
+ * @ORM\Entity
  */
 class VouchersUsers
 {

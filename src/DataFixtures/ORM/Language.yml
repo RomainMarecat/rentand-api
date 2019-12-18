@@ -1,0 +1,169 @@
+App\Entity\Language:
+#    zho:
+#        ISO639_2: zho
+#        name: 中文 (Zhōngwén)
+#        translations:
+#            en: Chinese
+#            fr: Chinois
+#        ISO639_1: zh
+#    hin:
+#        ISO639_2: hin
+#        name: हिन्दी
+#        translations:
+#            en: Hindi
+#            fr: Hindi
+#        ISO639_1: hi
+#    spa:
+#        ISO639_2: spa
+#        name: español
+#        translations:
+#            en: Spanish
+#            fr: Espagnol
+#        ISO639_1: es
+#    ara:
+#        ISO639_2: ara
+#        name: العربية
+#        translations:
+#            en: Arabic
+#            fr: Arabe
+#        ISO639_1: ar
+#    por:
+#        ISO639_2: por
+#        name: português
+#        translations:
+#            en: Portuguese
+#            fr: Portugais
+#        ISO639_1: pt
+    fra:
+        ISO639_2: fra
+        name: français
+        translations:
+            en: French
+            fr: Français
+        ISO639_1: fr
+#    rus:
+#        ISO639_2: rus
+#        name: Русский
+#        translations:
+#            en: Russian
+#            fr: Russe
+#        ISO639_1: ru
+#    deu:
+#        ISO639_2: deu
+#        name: Deutsch
+#        translations:
+#            en: German
+#            fr: Allemand
+#        ISO639_1: de
+#    ita:
+#        ISO639_2: ita
+#        name: italiano
+#        translations:
+#            en: Italian
+#            fr: Italien
+#        ISO639_1: it
+#    pol:
+#        ISO639_2: pol
+#        name: język polski
+#        translations:
+#            en: Polish
+#            fr: Polonais
+#        ISO639_1: pl
+#    ron:
+#        ISO639_2: ron
+#        name: Română
+#        translations:
+#            en: Romanian
+#            fr: Roumain
+#        ISO639_1: ro
+#    nld:
+#        ISO639_2: nld
+#        name: Nederlands
+#        translations:
+#            en: Dutch
+#            fr: Néerlandais
+#        ISO639_1: nl
+#    hun:
+#        ISO639_2: hun
+#        name: magyar
+#        translations:
+#            en: Hungarian
+#            fr: Hongrois
+#        ISO639_1: hu
+#    ell:
+#        ISO639_2: ell
+#        name: ελληνικά
+#        translations:
+#            en: Greek
+#            fr: Grecque
+#        ISO639_1: el
+#    swe:
+#        ISO639_2: swe
+#        name: svenska
+#        translations:
+#            en: Swedish
+#            fr: Suédois
+#        ISO639_1: sv
+#    ces:
+#        ISO639_2: ces
+#        name: čeština
+#        translations:
+#            en: Czech
+#            fr: Tchèque
+#        ISO639_1: cs
+#    fin:
+#        ISO639_2: fin
+#        name: suomi
+#        translations:
+#            en: Finnish
+#            fr: Finnois
+#        ISO639_1: fi
+#    heb:
+#        ISO639_2: heb
+#        name: עברית
+#        translations:
+#            en: Hebrew
+#            fr: Hébreux
+#        ISO639_1: he
+#    nor:
+#        ISO639_2: nor
+#        name: Norsk
+#        translations:
+#            en: Norwegian
+#            fr: Norvégien
+#        ISO639_1: 'no'
+#    srp:
+#        ISO639_2: srp
+#        name: српски језик
+#        translations:
+#            en: Serbian
+#            fr: Serbe
+#        ISO639_1: sr
+#    tur:
+#        ISO639_2: tur
+#        name: Türkçe
+#        translations:
+#            en: Turkish
+#            fr: Turque
+#        ISO639_1: tr
+#    fsl:
+#        ISO639_2: fsl
+#        name: Langue des signes française
+#        translations:
+#            en: French Signs language
+#            fr: Langue des signes française
+#        ISO639_1: fsl
+#    jpn:
+#        ISO639_2: jpn
+#        name: 日本語 (nihongo)
+#        translations:
+#            en: Japanese
+#            fr: Japonais
+#        ISO639_1: ja
+    eng:
+        ISO639_2: eng
+        name: English
+        translations:
+            en: English
+            fr: Anglais
+        ISO639_1: en

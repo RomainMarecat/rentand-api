@@ -2,8 +2,8 @@
 
 namespace App\Form;
 
-use Form\AddressType;
-use Form\PhoneType;
+use App\Form\AddressType;
+use App\Form\PhoneType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -30,13 +30,6 @@ class UserType extends AbstractType
             )
             ->add(
                 'lastName',
-                TextType::class,
-                array(
-                    'translation_domain' => false
-                )
-            )
-            ->add(
-                'username',
                 TextType::class,
                 array(
                     'translation_domain' => false

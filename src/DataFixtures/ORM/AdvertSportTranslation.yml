@@ -1,8 +1,0 @@
-App\Entity\AdvertSportTranslation:
-    advertSportTranslation{1..1000}:
-        locale: '90%? fr : <languageCode()>'
-        handisport: <text(20)>
-        description: <text()>
-        createdAt: <dateTime()>
-        updatedAt: <dateTime()>
-        advertSport: '@advertSport<numberBetween(1, 1000)>'

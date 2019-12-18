@@ -2,83 +2,88 @@
 
 namespace App\Controller\Front;
 
-use Entity\Address;
-use Entity\Phone;
-use Entity\User;
+use App\Entity\Address;
+use App\Entity\Phone;
+use App\Entity\User;
+use App\Manager\UserManager;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
-use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class UserController extends FOSRestController
+class UserController extends AbstractFOSRestController
 {
     /**
      * @Annotations\View(serializerGroups={"Default", "getUserByEmail"})
      * @Annotations\Get("/users/{email}/email")
+     * @param             $email
+     * @param UserManager $userManager
+     *
+     * @return mixed
      */
-    public function getUserByEmailAction($email)
+    public function getUserByEmailAction($email, UserManager $userManager)
     {
-        return $this->get('manager.user')->getUserByEmail($email);
+        return $userManager->getUserByEmail($email);
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "postRegisterUsers"})
+     * @Annotations\View(serializerGroups={"registerUsers"})
      * @Annotations\Post("/users/register")
+     * @param Request     $request
+     * @param UserManager $userManager
+     *
+     * @return User|JsonResponse
+     * @throws \Exception
      */
-    public function postRegisterUsersAction(Request $request)
+    public function postRegisterUsersAction(Request $request, UserManager $userManager)
     {
-        list($user, $form) = $this->get('manager.user')->manageRegister($request);
-
-        return array(
-            'user' => $user,
-            'form' => $this->get('services.form_parser')->parseErrors($form),
-        );
+        return $userManager->manageRegister($request);
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "getIsValidUser"})
      * @Annotations\Get("/users/valid/{token}")
      */
-    public function getIsValidUserAction(Request $request, $token)
+    public function getIsValidUserAction(Request $request, $token, UserManager $userManager)
     {
-        return $this->get('manager.user')->isValid($request, $token);
+        return $userManager->isValid($request, $token);
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "getUserByToken"})
      * @Annotations\Get("/users/token/{token}")
      */
-    public function getUserByTokenAction(Request $request, $token)
+    public function getUserByTokenAction(Request $request, $token, UserManager $userManager)
     {
-        return $this->get('manager.user')->getUserByToken($request, $token);
+        return $userManager->getUserByToken($request, $token);
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "getUserByEmailType"})
-     * @Annotations\Get("/users/username/{username}/type/{type}")
+     * @Annotations\Get("/users/email/{email}/type/{type}")
      */
-    public function getUserByUsernameTypeAction(Request $request, $username, $type)
+    public function getUserByUsernameTypeAction(Request $request, $email, $type, UserManager $userManager)
     {
-        return $this->get('manager.user')->getUserByUsernameType($request, $username, $type);
+        return $userManager->getUserByEmailType($request, $email, $type);
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "postEnable"})
      * @Annotations\Post("/users/enable")
      */
-    public function postEnableAction(Request $request)
+    public function postEnableAction(Request $request, UserManager $userManager)
     {
-        return $this->get('manager.user')->enable($request);
+        return $userManager->enable($request);
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "postConfirm"})
      * @Annotations\Post("/register/confirm")
      */
-    public function postConfirmAction(Request $request)
+    public function postConfirmAction(Request $request, UserManager $userManager)
     {
         $params = json_decode($request->getContent(), true);
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByConfirmationToken($params['token']);
+        $user = $this->getDoctrine()->getRepository('App:User')->findOneByConfirmationToken($params['token']);
 
         if (is_object($user)) {
             if ($params['step'] == 1) {
@@ -134,13 +139,13 @@ class UserController extends FOSRestController
      * @Annotations\View(serializerGroups={"Default", "postPassword"})
      * @Annotations\Post("/register/password")
      */
-    public function postPasswordAction(Request $request)
+    public function postPasswordAction(Request $request, UserManager $userManager)
     {
 
         $data = json_decode($request->getContent(), true);
         $email = $data['email'];
 
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(
+        $user = $this->getDoctrine()->getRepository('App:User')->findOneBy(
             array('email' => $email, "type" => "zeemono")
         );
 
@@ -162,11 +167,11 @@ class UserController extends FOSRestController
      * @Annotations\View(serializerGroups={"Default", "postResetPassword"})
      * @Annotations\Post("/register/reset/password")
      */
-    public function postResetPasswordAction()
+    public function postResetPasswordAction(UserManager $userManager)
     {
 
         $data = json_decode($this->get("request")->getContent(), true);
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByConfirmationToken($data['token']);
+        $user = $this->getDoctrine()->getRepository('App:User')->findOneByConfirmationToken($data['token']);
 
         if (is_object($user)) {
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
@@ -185,18 +190,18 @@ class UserController extends FOSRestController
      * @Annotations\View(serializerGroups={"Default", "postUsersAction"})
      * @Annotations\Post("/users")
      */
-    public function postUsersAction(Request $request)
+    public function postUsersAction(Request $request, UserManager $userManager)
     {
-        return $this->get('manager.user')->post($request);
+        return $userManager->post($request);
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "patchUsersAction"})
      * @Annotations\Patch("/users/{email}")
      */
-    public function patchUsersAction(Request $request, $email)
+    public function patchUsersAction(Request $request, $email, UserManager $userManager)
     {
-        return $this->get('manager.user')->patch($request, $email);
+        return $userManager->patch($request, $email);
     }
 
     /**
@@ -207,7 +212,7 @@ class UserController extends FOSRestController
     {
         $data = json_decode($request->getContent(), true);
 
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneBy(
+        $user = $this->getDoctrine()->getRepository('App:User')->findOneBy(
             array(
                 'accessToken' => $data['_accessToken'],
                 'username' => $data['_username']
@@ -228,25 +233,11 @@ class UserController extends FOSRestController
     {
         $data = json_decode($request->getContent(), true);
 
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByFacebookId($data['_password']);
+        $user = $this->getDoctrine()->getRepository('App:User')->findOneByFacebookId($data['_password']);
         if (is_object($user)) {
             $token = $this->get('lexik_jwt_authentication.jwt_manager')->create($user);
             return new JsonResponse(['token' => $token]);
         }
         return false;
     }
-
-    // /**
-    //  * @Annotations\View(serializerGroups={"Default", "isFacebook"})
-    //  * @Annotations\Get("/has/facebook")
-    //  */
-    // public function isFacebookAction($id)
-    // {
-
-    //     $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByFacebookId($id);
-    //     if (is_object($user)) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
 }

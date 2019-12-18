@@ -19,7 +19,7 @@ class CommentManager
 
     public function adminCget()
     {
-        return $this->getEm()->getRepository('AppBundle:Comment')->adminCget();
+        return $this->getEm()->getRepository('App:Comment')->adminCget();
     }
 
     /**

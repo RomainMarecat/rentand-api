@@ -2,10 +2,10 @@
 
 namespace App\Controller\Front;
 
-use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
 
-class FamilyController extends FOSRestController
+class FamilyController extends AbstractFOSRestController
 {
     /**
      * @Annotations\View(serializerGroups={"Default", "getParentFamilies"})
@@ -14,7 +14,7 @@ class FamilyController extends FOSRestController
     public function getParentFamiliesAction()
     {
         $families = $this->getDoctrine()
-            ->getRepository('AppBundle:Family')
+            ->getRepository('App:Family')
             ->findByParent(null);
 
         return $families;
@@ -27,11 +27,11 @@ class FamilyController extends FOSRestController
     public function getFamiliesByParentAction($family)
     {
         $families = $this->getDoctrine()
-            ->getRepository('AppBundle:Family')
+            ->getRepository('App:Family')
             ->findSubFamiliesByParent($family);
 
         $sports = $this->getDoctrine()
-            ->getRepository('AppBundle:Sport')
+            ->getRepository('App:Sport')
             ->findSportsByParentFamily($family);
 
         return array_merge($sports, $families);

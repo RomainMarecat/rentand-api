@@ -15,7 +15,7 @@ class MeetingManager
 
     public function get($meeting)
     {
-        return $this->getEm()->getRepository('AppBundle:Meeting')->findOneById($meeting);
+        return $this->getEm()->getRepository('App:MeetingPoint')->findOneById($meeting);
     }
 
     /**

@@ -30,13 +30,13 @@ class StructuresController extends FOSRestController
             }
         }
         if (!isset($sort) && !isset($filter)) {
-            $structures = $this->getDoctrine()->getRepository('AppBundle:Structure')->findAll();
+            $structures = $this->getDoctrine()->getRepository('App:Structure')->findAll();
         } elseif (isset($sort) && isset($filter)) {
-            $structures = $this->getDoctrine()->getManager()->getRepository('AppBundle:Structure')->findBy(array($filter[0] => $filter[1]), array($sort[0] => $sort[1]));
+            $structures = $this->getDoctrine()->getManager()->getRepository('App:Structure')->findBy(array($filter[0] => $filter[1]), array($sort[0] => $sort[1]));
         } elseif (isset($sort)) {
-            $structures = $this->getDoctrine()->getManager()->getRepository('AppBundle:Structure')->findBy(array(), array($sort[0] => $sort[1]));
+            $structures = $this->getDoctrine()->getManager()->getRepository('App:Structure')->findBy(array(), array($sort[0] => $sort[1]));
         } else {
-            $structures = $this->getDoctrine()->getManager()->getRepository('AppBundle:Structure')->findBy(array($filter[0] => $filter[1]));
+            $structures = $this->getDoctrine()->getManager()->getRepository('App:Structure')->findBy(array($filter[0] => $filter[1]));
         }
 
         if (!is_array($structures)) {
@@ -63,7 +63,7 @@ class StructuresController extends FOSRestController
     public function getStructureAction($id)
     {
 
-        $structure = $this->getDoctrine()->getRepository('AppBundle:Structure')->find($id);
+        $structure = $this->getDoctrine()->getRepository('App:Structure')->find($id);
         if (!is_object($structure)) {
             throw $this->createNotFoundException();
         } else {

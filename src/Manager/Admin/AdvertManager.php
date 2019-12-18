@@ -19,7 +19,7 @@ class AdvertManager
 
     public function adminCget()
     {
-        return $this->getEm()->getRepository('AppBundle:Advert')->adminCget();
+        return $this->getEm()->getRepository('App:Advert')->adminCget();
     }
 
     /**

@@ -27,23 +27,23 @@ class SportManager
     public function get($sport)
     {
         return $this->getEm()
-            ->getRepository('AppBundle:Sport')
+            ->getRepository('App:Sport')
             ->findOneById($sport);
     }
 
-    public function getSpecialities($sport, $advert)
+    public function getSpecialities($sport, $user)
     {
         try {
             if (!is_string($sport) and !is_int($sport)) {
                 throw new \Exception("Undefined sport", 400);
             }
 
-            if (!is_string($advert) and !is_int($advert)) {
+            if (!is_string($user) and !is_int($user)) {
                 throw new \Exception("Undefined sport", 400);
             }
             $specialities = new ArrayCollection($this->getEm()
-                ->getRepository('AppBundle:Sport')
-                ->findPreBookingSpecialitiesBy(array('sport' => $sport, 'advert' => $advert)));
+                ->getRepository('App:Sport')
+                ->findPreBookingSpecialitiesBy(array('sport' => $sport, 'advert' => $user)));
 
             $this->getLogger()->info(
                 'specialities',
@@ -107,7 +107,7 @@ class SportManager
                 $sport->setLevel(1);
 
                 $newId = array_search($sportOld['parent'], $newCats);
-                $parent = $this->getEm()->getRepository('AppBundle:Sport')->find($newId);
+                $parent = $this->getEm()->getRepository('App:Sport')->find($newId);
                 $sport->setParent($parent);
                 $parent->addChild($sport);
 
@@ -137,7 +137,7 @@ class SportManager
                 $spe->setLevel(2);
 
                 $newId = array_search($speOld['parent'], $newSports);
-                $parent = $this->getEm()->getRepository('AppBundle:Sport')->find($newId);
+                $parent = $this->getEm()->getRepository('App:Sport')->find($newId);
                 $spe->setParent($parent);
                 $parent->addChild($spe);
 

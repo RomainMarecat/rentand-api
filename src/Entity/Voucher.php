@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -12,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Voucher
  *
  * @ORM\Table(name="voucher_voucher")
- * @ORM\Entity(repositoryClass="App\Repository\VoucherRepository")
+ * @ORM\Entity
  */
 class Voucher
 {
@@ -139,6 +140,7 @@ class Voucher
         $this->imports = new \Doctrine\Common\Collections\ArrayCollection();
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
+        $this->users = new ArrayCollection();
     }
 
     /**

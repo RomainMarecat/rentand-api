@@ -66,17 +66,17 @@ class BookingManager
 
     public function getByUser()
     {
-        return $this->getEm()->getRepository('AppBundle:Booking')->findByUser($this->getUser()->getId());
+        return $this->getEm()->getRepository('App:Booking')->findByUser($this->getUser()->getId());
     }
 
     public function getPaymentsMono()
     {
-        return $this->getEm()->getRepository('AppBundle:Booking')->findPaymentsByMono($this->getUser()->getId());
+        return $this->getEm()->getRepository('App:Booking')->findPaymentsByMono($this->getUser()->getId());
     }
 
     public function get($booking)
     {
-        $booking = $this->getEm()->getRepository('AppBundle:Booking')->find($booking);
+        $booking = $this->getEm()->getRepository('App:Booking')->find($booking);
         if (!$booking instanceof Booking) {
             throw new HttpException(404, "booking.undefined");
         }
@@ -111,12 +111,12 @@ class BookingManager
                     $booking->setStatut(0);
                     $booking->setCreatedAt(new \DateTime());
                     $booking->setUpdatedAt(new \DateTime());
-                    $advert = $this->getEm()
-                        ->getRepository('AppBundle:Advert')
+                    $user = $this->getEm()
+                        ->getRepository('App:Advert')
                         ->findOneById($booking->getAdvert());
-                    $booking->setAdvert($advert);
-                    if ($advert instanceof Advert) {
-                        $booking->setCancellation($advert->getCancel());
+                    $booking->setAdvert($user);
+                    if ($user instanceof Advert) {
+                        $booking->setCancellation($user->getCancel());
                     }
 
                     $this->getEm()->persist($booking);
@@ -156,7 +156,7 @@ class BookingManager
     {
         $user = $this->getUser();
         $booking = $this->getEm()
-            ->getRepository('AppBundle:Booking')->find($booking);
+            ->getRepository('App:Booking')->find($booking);
         if (!is_object($booking)) {
             throw new HttpException(404, "Booking is undefined");
         }
@@ -203,7 +203,7 @@ class BookingManager
     {
         $user = $this->getUser();
         $booking = $this->getEm()
-            ->getRepository('AppBundle:Booking')->find($booking);
+            ->getRepository('App:Booking')->find($booking);
         if (!is_object($booking)) {
             throw new HttpException(404, "Booking is undefined");
         }
@@ -252,7 +252,7 @@ class BookingManager
     {
         $user = $this->getUser();
         $booking = $this->getEm()
-            ->getRepository('AppBundle:Booking')->find($booking);
+            ->getRepository('App:Booking')->find($booking);
         if (!is_object($booking)) {
             throw new HttpException(404, "Booking is undefined");
         }
@@ -290,7 +290,7 @@ class BookingManager
         return $booking;
     }
 
-    public function registerBookings($users, $adverts)
+    public function registerBookings($users)
     {
 
         $bookings = new \ArrayIterator($this->getConnection()->fetchAll('
@@ -315,16 +315,16 @@ class BookingManager
         foreach ($bookings as $bookingV1) {
             try {
                 if (isset($bookingV1['user_id'])) {
-                    $user = $this->getEm()->getRepository('AppBundle:User')->findOneByEmail($bookingV1['Uemail']);
+                    $user = $this->getEm()->getRepository('App:User')->findOneByEmail($bookingV1['Uemail']);
                 }
-                if (isset($adverts[$bookingV1['advert_id']])) {
-                    $advert = $this->getEm()->getRepository('AppBundle:Advert')->findOneByEmail($newAdvertId['Aemail']);
+                if (isset($users[$bookingV1['advert_id']])) {
+                    $user = $this->getEm()->getRepository('App:Advert')->findOneByEmail($newAdvertId['Aemail']);
                 }
 
-                if (isset($advert) && isset($user)) {
+                if (isset($user) && isset($user)) {
                     $booking = new Booking;
 
-                    $booking->setAdvert($advert);
+                    $booking->setAdvert($user);
                     $booking->setUser($user);
 
                     $booking->setStatut($bookingV1['statut']);

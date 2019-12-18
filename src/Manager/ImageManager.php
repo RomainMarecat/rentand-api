@@ -26,14 +26,14 @@ class ImageManager
 
     protected $images = array();
 
-    protected $adverts;
+    protected $users;
 
     public function createImage(array $imageV1)
     {
-        $advert = $this->getEm()->getRepository('AppBundle:Advert')->findOneById(
+        $user = $this->getEm()->getRepository('App:Advert')->findOneById(
             $this->getAdvert($imageV1['advert_id'])
         );
-        if ($advert && $imageV1['filename'] != null) {
+        if ($user && $imageV1['filename'] != null) {
             $image = new Image();
             foreach ($imageV1 as $key => $value) {
                 $setter = $this->getRegexHelper()->setCamelCase('set' . ucfirst($key));
@@ -48,9 +48,9 @@ class ImageManager
 
             $image
                 ->setExt(strtolower(explode('.', $imageV1['filename'])[1]))
-                ->setAdvert($advert)
-                ->setFilename($advert->getSlug())
-                ->setAlt($imageV1['image_id'] . '.' . $imageV1['filename'])// ->setAlt($advert->getSlug())
+                ->setAdvert($user)
+                ->setFilename($user->getSlug())
+                ->setAlt($imageV1['image_id'] . '.' . $imageV1['filename'])// ->setAlt($user->getSlug())
             ;
 
             return $image;
@@ -61,12 +61,12 @@ class ImageManager
 
     public function createAdvertSportImages(array $imageV1)
     {
-        $advert = $this->getEm()->getRepository('AppBundle:Advert')->findOneById(
+        $user = $this->getEm()->getRepository('App:Advert')->findOneById(
             $this->getAdvert($imageV1['advert_id'])
         );
 
-        $advertSports = new ArrayCollection(
-            $this->getEm()->getRepository('AppBundle:AdvertSport')->findByAdvert(
+        $userSports = new ArrayCollection(
+            $this->getEm()->getRepository('App:AdvertSport')->findByAdvert(
                 $this->getAdvert($imageV1['advert_id'])
             )
         );
@@ -74,20 +74,20 @@ class ImageManager
         $this->logger->info(
             'info sportimages',
             array(
-                $advert instanceof Advert ? $advert->getId() . $advert->getSlug() : null,
+                $user instanceof Advert ? $user->getId() . $user->getSlug() : null,
                 $imageV1['filename'],
 
             )
         );
-        if ($advert && $imageV1['filename'] != null) {
+        if ($user && $imageV1['filename'] != null) {
             $i = 1;
-            foreach ($advertSports as $advertSport) {
+            foreach ($userSports as $userSport) {
                 $this->logger->info(
                     'info advert sport',
                     array(
-                        $advertSport->getId(),
-                        $advert->getSlug(),
-                        $advertSport->getSport()->getId()
+                        $userSport->getId(),
+                        $user->getSlug(),
+                        $userSport->getSport()->getId()
                     )
                 );
                 $this->getEm()->getConnection()->beginTransaction();
@@ -101,16 +101,16 @@ class ImageManager
                         }
                     }
                 }
-                $slug = $advert->getSlug() . '_' . $advertSport->getSport()->getId();
-                $nbImages = count($this->getEm()->getRepository('AppBundle:Image')->findByAdvertSport($advertSport));
+                $slug = $user->getSlug() . '_' . $userSport->getSport()->getId();
+                $nbImages = count($this->getEm()->getRepository('App:Media')->findByAdvertSport($userSport));
                 if ($nbImages > 0) {
-                    $slug = $advert->getSlug() . '_' . $advertSport->getSport()->getId()
+                    $slug = $user->getSlug() . '_' . $userSport->getSport()->getId()
                         . '_' . ($nbImages + 1);
-                    $alt = $advert->getSlug() . '_' . $advertSport->getSport()->getId()
+                    $alt = $user->getSlug() . '_' . $userSport->getSport()->getId()
                         . '_' . ($nbImages + 1);
                 } else {
-                    $slug = $advert->getSlug() . '_' . $advertSport->getSport()->getId();
-                    $alt = $advert->getSlug() . '_' . $advertSport->getSport()->getId();
+                    $slug = $user->getSlug() . '_' . $userSport->getSport()->getId();
+                    $alt = $user->getSlug() . '_' . $userSport->getSport()->getId();
                 }
 
                 $alt = $imageV1['id'] . "." . $imageV1['filename'];
@@ -119,7 +119,7 @@ class ImageManager
                     ->setFilename($slug)
                     ->setAlt($alt)
                     ->setExt(strtolower(explode('.', $imageV1['filename'])[1]))
-                    ->setAdvertSport($advertSport);
+                    ->setAdvertSport($userSport);
 
                 $this->getEm()->persist($image);
                 $this->getEm()->flush();
@@ -165,9 +165,9 @@ class ImageManager
     }
 
 
-    public function registerImages(array $adverts)
+    public function registerImages(array $users)
     {
-        $this->setAdverts($adverts);
+        $this->setAdverts($users);
         $images = new \ArrayIterator(
             $this->getConnection()->fetchAll(
                 'SELECT a.id as advert_id, u.id as user_id, im.id as image_id,
@@ -372,7 +372,7 @@ class ImageManager
     /**
      * Sets the value of adverts.
      *
-     * @param mixed $adverts the adverts
+     * @param mixed $users the adverts
      *
      * @return self
      */
@@ -384,13 +384,13 @@ class ImageManager
     /**
      * Sets the value of adverts.
      *
-     * @param mixed $adverts the adverts
+     * @param mixed $users the adverts
      *
      * @return self
      */
-    protected function setAdverts($adverts)
+    protected function setAdverts($users)
     {
-        $this->adverts = $adverts;
+        $this->adverts = $users;
 
         return $this;
     }

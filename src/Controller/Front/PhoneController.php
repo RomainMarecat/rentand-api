@@ -2,10 +2,10 @@
 
 namespace App\Controller\Front;
 
-use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
 
-class PhoneController extends FOSRestController
+class PhoneController extends AbstractFOSRestController
 {
     /**
      * @Annotations\View(serializerGroups={"Default", "getPhone"})

@@ -1,0 +1,9 @@
+App\Entity\AppMetadata:
+    appMetadata{1..1}:
+        admin: true
+        coach: false
+        user: '@user<current()>'
+    appMetadata{2..500}:
+        admin: false
+        coach: true
+        user: '@user<current()>'

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Manager\Admin\BookingManager;
 use FOS\RestBundle\Controller\Annotations;
 use FOS\RestBundle\Controller\Annotations\QueryParam;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -16,6 +17,7 @@ class BookingController extends FOSRestController
      * @Annotations\Get("/bookings")
      * @param ParamFetcherInterface $paramFetcher
      *
+     * @param BookingManager $bookingManager
      * @return Response
      *
      * @QueryParam(name="offset", requirements="\d+", nullable=true, description="Offset from which to start listing notes.")
@@ -23,14 +25,14 @@ class BookingController extends FOSRestController
      * @QueryParam(name="order_by", nullable=true, map=true, description="Order by fields. Must be an array ie. &order_by[name]=ASC&order_by[description]=DESC")
      * @QueryParam(name="filters", nullable=true, map=true, description="Filter by fields. Must be an array ie. &filters[id]=3")
      */
-    public function getBookingsAction(ParamFetcherInterface $paramFetcher)
+    public function getBookingsAction(ParamFetcherInterface $paramFetcher, BookingManager $bookingManager)
     {
         $offset = $paramFetcher->get('offset');
         $limit = $paramFetcher->get('limit');
         $orderBy = $paramFetcher->get('order_by');
         $filters = !is_null($paramFetcher->get('filters')) ? $paramFetcher->get('filters') : array();
 
-        return $this->get('admin.manager.booking')->adminCget($filters, $orderBy, $limit, $offset);
+        return $bookingManager->adminCget($filters, $orderBy, $limit, $offset);
     }
 
     /**
@@ -38,7 +40,7 @@ class BookingController extends FOSRestController
      */
     public function getBookingAction($id)
     {
-        $booking = $this->getDoctrine()->getRepository('AppBundle:Booking')->find($id);
+        $booking = $this->getDoctrine()->getRepository('App:Booking')->find($id);
 
         if (!is_object($booking)) {
             throw $this->createNotFoundException();
@@ -55,7 +57,7 @@ class BookingController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
         $data = json_decode($request->getContent(), true);
 
-        $booking = $this->getDoctrine()->getRepository('AppBundle:Booking')->find($id);
+        $booking = $this->getDoctrine()->getRepository('App:Booking')->find($id);
         if (!is_object($booking)) {
             throw $this->createNotFoundException();
         }

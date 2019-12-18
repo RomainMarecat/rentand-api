@@ -2,14 +2,20 @@
 
 namespace App\Controller\Admin;
 
-use Entity\Address;
-use Entity\Phone;
+use App\Entity\Address;
+use App\Entity\Phone;
+use App\Entity\User;
+use App\Manager\Admin\UserManager;
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations;
 use FOS\RestBundle\Controller\Annotations\NamePrefix;
 use FOS\RestBundle\Controller\Annotations\Prefix;
 use FOS\RestBundle\Controller\FOSRestController;
+use Knp\Component\Pager\Paginator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @Prefix("admin")
@@ -20,63 +26,83 @@ class UserController extends FOSRestController
     /**
      * @Annotations\View(serializerGroups={"adminGetUsers"})
      * @Annotations\Get("/users")
+     * @param Request $request , UserManager $userManager
+     * @param UserManager $userManager
+     * @return
      */
-    public function getUsersAction(Request $request)
+    public function getUsersAction(Request $request, UserManager $userManager)
     {
-        return $this->get('admin.manager.user')->adminCget();
+        return $userManager->adminCget();
     }
 
     /**
      * @Annotations\View(serializerGroups={"adminGetUsersErrors"})
      * @Annotations\Get("/users_errors")
+     * @param Request $request
+     * @param UserManager $userManager
+     * @return mixed
      */
-    public function getUsersErrorsAction(Request $request)
+    public function getUsersErrorsAction(Request $request, UserManager $userManager)
     {
-        return $this->get('admin.manager.user')->adminCgetErrors();
+        return $userManager->adminCgetErrors();
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "getUsersByMangopayId"})
      * @Annotations\Get("/users/mangopayid/{mangopayId}")
      * @Annotations\Get("/users/mangopayid/", name="_mangopayid_null")
+     * @param Request $request
+     * @param UserManager $userManager
+     * @param $mangopayId
+     * @return mixed
      */
-    public function getUsersByMangopayIdAction(Request $request, $mangopayId)
+    public function getUsersByMangopayIdAction(Request $request, UserManager $userManager, $mangopayId)
     {
-        return $this->get('admin.manager.user')->getUsersByMangopayId($mangopayId);
+        return $userManager->getUsersByMangopayId($mangopayId);
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "postUsersByMangopayId"})
      * @Annotations\Post("/users/mangopayid")
+     * @param Request $request
+     * @param UserManager $userManager
+     * @return mixed
      */
-    public function postUsersByMangopayIdAction(Request $request)
+    public function postUsersByMangopayIdAction(Request $request, UserManager $userManager)
     {
-        return $this->get('admin.manager.user')->postUsersByMangopayId($request);
+        return $userManager->postUsersByMangopayId($request);
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "getUsersMonos"})
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @param Paginator $paginator
+     * @return array|\Knp\Component\Pager\Pagination\PaginationInterface
      */
-    public function getUsersMonosAction(Request $request)
-    {
+    public function getUsersMonosAction(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        Paginator $paginator
+    ) {
 
         if ($request->query->get('sort')) {
             $sort = explode(":", $request->query->get('sort'));
             $sortParams = array('id', 'email', 'enabled', 'lastLogin', 'role', 'firstName', 'lastName', 'gender', 'birthdate', 'nationality', 'newsletter', 'createdAt', 'updatedAt');
             if (($sort[1] != 'asc' && $sort[1] != 'desc') || (!in_array($sort[0], $sortParams))) {
-                $query = $this->getDoctrine()->getManager()
-                    ->createQuery('SELECT u FROM AppBundle:User u WHERE u.roles LIKE :role')
+                $query = $entityManager
+                    ->createQuery('SELECT u FROM App:User u WHERE u.roles LIKE :role')
                     ->setParameter('role', '%"ROLE_MONO"%');
                 $users = $query->getResult();
             } else {
-                $query = $this->getDoctrine()->getManager()
-                    ->createQuery('SELECT u FROM AppBundle:User u WHERE u.roles LIKE :role ORDER BY u.' . $sort[0] . ' ' . $sort[1])
+                $query = $entityManager
+                    ->createQuery('SELECT u FROM App:User u WHERE u.roles LIKE :role ORDER BY u.' . $sort[0] . ' ' . $sort[1])
                     ->setParameter('role', '%"ROLE_MONO"%');
                 $users = $query->getResult();
             }
         } else {
-            $query = $this->getDoctrine()->getManager()
-                ->createQuery('SELECT u FROM AppBundle:User u WHERE u.roles LIKE :role')
+            $query = $entityManager
+                ->createQuery('SELECT u FROM App:User u WHERE u.roles LIKE :role')
                 ->setParameter('role', '%"ROLE_MONO"%');
             $users = $query->getResult();
         }
@@ -87,12 +113,10 @@ class UserController extends FOSRestController
             $page = $request->query->get('page');
             if (isset($page)) {
                 $perPage = $request->query->get('perPage');
-                $paginator = $this->get('knp_paginator');
                 if (!isset($perPage)) {
                     $perPage = 20;
                 }
-                $results = $paginator->paginate($users, $page, $perPage);
-                return $results;
+                return $paginator->paginate($users, $page, $perPage);
             } else {
                 return $users;
             }
@@ -101,27 +125,35 @@ class UserController extends FOSRestController
 
     /**
      * @Annotations\View(serializerGroups={"Default", "getUsersParticuliers"})
+     * @param Request $request
+     * @param UserManager $userManager
+     * @param EntityManagerInterface $entityManager
+     * @param Paginator $paginator
+     * @return array|\Knp\Component\Pager\Pagination\PaginationInterface
      */
-    public function getUsersParticuliersAction(Request $request)
-    {
+    public function getUsersParticuliersAction(Request $request,
+                                               UserManager $userManager,
+                                               EntityManagerInterface $entityManager,
+                                               Paginator $paginator
+    ) {
 
         if ($request->query->get('sort')) {
             $sort = explode(":", $request->query->get('sort'));
             $sortParams = array('id', 'email', 'enabled', 'lastLogin', 'role', 'firstName', 'lastName', 'gender', 'birthdate', 'nationality', 'newsletter', 'createdAt', 'updatedAt');
             if (($sort[1] != 'asc' && $sort[1] != 'desc') || (!in_array($sort[0], $sortParams))) {
-                $query = $this->getDoctrine()->getManager()
-                    ->createQuery('SELECT u FROM AppBundle:User u WHERE u.roles LIKE :role')
+                $query = $entityManager
+                    ->createQuery('SELECT u FROM App:User u WHERE u.roles LIKE :role')
                     ->setParameter('role', '%"ROLE_PART"%');
                 $users = $query->getResult();
             } else {
-                $query = $this->getDoctrine()->getManager()
-                    ->createQuery('SELECT u FROM AppBundle:User u WHERE u.roles LIKE :role ORDER BY u.' . $sort[0] . ' ' . $sort[1])
+                $query = $entityManager
+                    ->createQuery('SELECT u FROM App:User u WHERE u.roles LIKE :role ORDER BY u.' . $sort[0] . ' ' . $sort[1])
                     ->setParameter('role', '%"ROLE_PART"%');
                 $users = $query->getResult();
             }
         } else {
-            $query = $this->getDoctrine()->getManager()
-                ->createQuery('SELECT u FROM AppBundle:User u WHERE u.roles LIKE :role')
+            $query = $entityManager
+                ->createQuery('SELECT u FROM App:User u WHERE u.roles LIKE :role')
                 ->setParameter('role', '%"ROLE_PART"%');
             $users = $query->getResult();
         }
@@ -132,12 +164,10 @@ class UserController extends FOSRestController
             $page = $request->query->get('page');
             if (isset($page)) {
                 $perPage = $request->query->get('perPage');
-                $paginator = $this->get('knp_paginator');
                 if (!isset($perPage)) {
                     $perPage = 20;
                 }
-                $results = $paginator->paginate($users, $page, $perPage);
-                return $results;
+                return $paginator->paginate($users, $page, $perPage);
             } else {
                 return $users;
             }
@@ -146,10 +176,13 @@ class UserController extends FOSRestController
 
     /**
      * @Annotations\View(serializerGroups={"Default", "adminGetUser"})
+     * @param $id
+     * @param EntityManagerInterface $entityManager
+     * @return object|null
      */
-    public function getUserAction($id)
+    public function getUserAction($id, EntityManagerInterface $entityManager)
     {
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
+        $user = $entityManager->getRepository('App:User')->find($id);
         if (!is_object($user)) {
             throw $this->createNotFoundException();
         } else {
@@ -159,14 +192,23 @@ class UserController extends FOSRestController
 
     /**
      * @Annotations\View(serializerGroups={"Default", "postUser"})
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @param ValidatorInterface $validator
+     * @param TokenGeneratorInterface $tokenGenerator
+     * @return string
+     * @throws \Exception
      */
-    public function postUserAction(Request $request)
-    {
+    public function postUserAction(Request $request,
+                                   EntityManagerInterface $entityManager,
+                                   ValidatorInterface $validator,
+                                   TokenGeneratorInterface $tokenGenerator
+    ) {
 
         $params = json_decode($request->getContent(), true);
 
         // check email
-        $searchEmail = $this->getDoctrine()->getRepository('AppBundle:User')
+        $searchEmail = $entityManager->getRepository('App:User')
             ->findOneBy(
                 array('email' => $params['email'], "type" => "zeemono")
             );
@@ -174,20 +216,18 @@ class UserController extends FOSRestController
             return 'EMAIL';
         }
 
-        $validator = $this->get('validator');
         // init user
-        $userManager = $this->get('fos_user.user_manager');
-        $user = $userManager->createUser();
+        $user = new User();
         $user->setEmail($params['email']);
         $user->setUsername($params['email']);
         $user->setPlanningId($params['planningId']);
         $user->setPlanningToken($params['planningToken']);
         $user->setMangopayId($params['mangopayId']);
 
-        $address = new address;
+        $address = new Address();
         $address->setUser($user);
         $user->setAddress($address);
-        $phone = new phone;
+        $phone = new Phone();
         $phone->setUser($user);
         $user->setPhone($phone);
 
@@ -230,7 +270,6 @@ class UserController extends FOSRestController
         }
 
         // create password
-        $tokenGenerator = $this->container->get('fos_user.util.token_generator');
         $token = substr($tokenGenerator->generateToken(), 0, 12);
         $user->setConfirmationToken($token);
         $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
@@ -238,27 +277,32 @@ class UserController extends FOSRestController
 
         $errors = $validator->validate($user);
         if (count($errors) > 0) {
-            throw new HttpException(400, 'Invalid user: ' . $errors);
+            throw new HttpException(400, 'Invalid user: ' . json_encode($errors));
         }
 
-        $userManager->updateUser($user);
+        $entityManager->persist($user);
+        $entityManager->flush();
 
         return $user;
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "deleteUser"})
+     * @param $id
+     * @param EntityManagerInterface $entityManager
+     * @return string
      */
-    public function deleteUserAction($id)
-    {
+    public function deleteUserAction(
+        $id,
+        EntityManagerInterface $entityManager
+    ) {
 
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
+        $user = $entityManager->getRepository('App:User')->find($id);
         if (!is_object($user)) {
             throw $this->createNotFoundException();
         } else {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
-            $em->flush();
+            $entityManager->remove($user);
+            $entityManager->flush();
 
             return "USER DELETED";
         }
@@ -266,11 +310,24 @@ class UserController extends FOSRestController
 
     /**
      * @Annotations\View(serializerGroups={"Default", "patchUser"})
+     * @param Request $request
+     * @param UserManager $userManager
+     * @param ValidatorInterface $validator
+     * @param EntityManagerInterface $entityManager
+     * @param TokenGeneratorInterface $tokenGenerator
+     * @param $id
+     * @return object|null
+     * @throws \Exception
      */
-    public function patchUserAction(Request $request, $id)
-    {
+    public function patchUserAction(Request $request,
+                                    UserManager $userManager,
+                                    ValidatorInterface $validator,
+                                    EntityManagerInterface $entityManager,
+                                    TokenGeneratorInterface $tokenGenerator,
+                                    $id
+    ) {
 
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
+        $user = $entityManager->getRepository('App:User')->find($id);
 
         if (!is_object($user)) {
             throw $this->createNotFoundException();
@@ -302,10 +359,10 @@ class UserController extends FOSRestController
         if (isset($params['adminComment'])) {
             $user->setAdminComment($params['adminComment']);
         }
-        $em = $this->getDoctrine()->getManager();
+        $em = $entityManager;
         if (isset($params['address'])) {
             if ($user->getAddress() == null) {
-                $address = new address;
+                $address = new Address();
                 $address->setUser($user);
                 $user->setAddress($address);
             }
@@ -319,7 +376,7 @@ class UserController extends FOSRestController
         }
         if (isset($params['phone'])) {
             if ($user->getPhone() == null) {
-                $phone = new phone;
+                $phone = new Phone();
                 $phone->setUser($user);
                 $user->setPhone($phone);
             }
@@ -345,7 +402,6 @@ class UserController extends FOSRestController
         }
         if (isset($params['password'])) {
             // create new password
-            $tokenGenerator = $this->container->get('fos_user.util.token_generator');
             $token = substr($tokenGenerator->generateToken(), 0, 12);
             $user->setConfirmationToken($token);
             $encoder = $this->container->get('security.encoder_factory')->getEncoder($user);
@@ -358,17 +414,13 @@ class UserController extends FOSRestController
                 $user->removeRole("ROLE_ADMIN");
             }
         }
-
-        $validator = $this->get('validator');
-        $userManager = $this->get('fos_user.user_manager');
-
-        $validator = $this->get('validator');
         $errors = $validator->validate($user);
         if (count($errors) > 0) {
-            throw new HttpException(400, 'Invalid user: ' . $errors);
+            throw new HttpException(400, 'Invalid user: ' . json_encode($errors));
         }
 
-        $userManager->updateUser($user);
+        $entityManager->persist($user);
+        $entityManager->flush();
 
         return $user;
     }
@@ -376,9 +428,15 @@ class UserController extends FOSRestController
     /**
      * @Annotations\View(serializerGroups={"adminGetUsers"})
      * @Annotations\Get("/users/planning/{id}")
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @param $id
+     * @return array
      */
-    public function getUsersByPlanningAction(Request $request, $id)
-    {
-        return array('user' => $this->getDoctrine()->getRepository('AppBundle:User')->findOneByPlanningId($id));
+    public function getUsersByPlanningAction(
+        EntityManagerInterface $entityManager,
+        $id
+    ) {
+        return array('user' => $entityManager->getRepository('App:User')->findOneByPlanningId($id));
     }
 }

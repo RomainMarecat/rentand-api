@@ -1,0 +1,7 @@
+App\Entity\Media:
+    media{1..10}:
+        filename: <image('/home/romainmarecat/alr/rentand-api/public/uploads/images', 640, 480, 'cats', false)>
+        ext: jpg
+        alt: <realText(255)>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>

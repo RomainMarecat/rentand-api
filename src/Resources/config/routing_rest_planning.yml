@@ -1,5 +1,0 @@
-planning :
-  type: rest
-  resource:     "@AppBundle/Controller/Planning/PlanningController.php"
-  name_prefix:  planning_
-  prefix: planning

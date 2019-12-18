@@ -1,0 +1,770 @@
+App\Entity\Parameter:
+    parameterr1:
+        type: age
+        sort: 1
+        translations:
+            fr: Enfant(s)
+            en: Child(ren)
+    parameterr2:
+        type: age
+        sort: 2
+        translations:
+            fr: Adolescent(s)
+            en: Teenager(s)
+    parameterr3:
+        type: age
+        sort: 3
+        translations:
+            fr: Adulte(s)
+            en: Adult(s)
+    parameterr4:
+        type: age
+        sort: 4
+        translations:
+            fr: Sénior(s)
+            en: Senior(s)
+    parameterr5:
+        type: level
+        sort: 1
+        translations:
+            fr: Débutant
+            en: Beginner
+    parameterr6:
+        type: level
+        sort: 2
+        translations:
+            fr: Intermédiaire
+            en: Intermediate
+    parameterr7:
+        type: level
+        sort: 3
+        translations:
+            fr: Avancé
+            en: Advanced
+    parameterr8:
+        type: level
+        sort: 4
+        translations:
+            fr: Expert
+            en: Expert
+    parameterr9:
+        type: passion
+        sort: 1
+        translations:
+            fr: Partir à l’aventure
+            en: Going on an adventure
+    parameter10:
+        type: passion
+        sort: 2
+        translations:
+            fr: Chanter sous la douche
+            en: Singing under the shower
+    parameter11:
+        type: passion
+        sort: 3
+        translations:
+            fr: Chasser les pokemon
+            en: Hunt pokemon
+    parameter12:
+        type: passion
+        sort: 4
+        translations:
+            fr: Danser toute la nuit
+            en: Dancing all night long
+    parameter13:
+        type: passion
+        sort: 5
+        translations:
+            fr: Bouquiner au coin du feu
+            en: Reading book nearby the fireplace
+    parameter14:
+        type: passion
+        sort: 6
+        translations:
+            fr: M'imaginer en rockstar
+            en: Imagine myself as a rockstar
+    parameter15:
+        type: passion
+        sort: 7
+        translations:
+            fr: Rêver
+            en: Dreaming
+    parameter16:
+        type: passion
+        sort: 8
+        translations:
+            fr: La fondue savoyarde
+            en: Fondue!!
+    parameter17:
+        type: passion
+        sort: 9
+        translations:
+            fr: Manger des pommes
+            en: Eating apples
+    parameter18:
+        type: passion
+        sort: 10
+        translations:
+            fr: Les apéros
+            en: Having some drinks with my friends
+    parameter19:
+        type: passion
+        sort: 11
+        translations:
+            fr: Construire des maisons
+            en: Building houses
+    parameter20:
+        type: passion
+        sort: 12
+        translations:
+            fr: Les grosses cylindrées
+            en: Big cars
+    parameter21:
+        type: passion
+        sort: 13
+        translations:
+            fr: Murmurer à l'oreille des animaux
+            en: Playing with animals
+    parameter22:
+        type: passion
+        sort: 14
+        translations:
+            fr: Jouer au poker
+            en: Play poker
+    parameter23:
+        type: passion
+        sort: 15
+        translations:
+            fr: Lire des livres sans images
+            en: Reading comic books
+    parameter24:
+        type: passion
+        sort: 16
+        translations:
+            fr: Collectionner les BD
+            en: Collect comic books
+    parameter25:
+        type: passion
+        sort: 17
+        translations:
+            fr: Ma couette, le chocolat et Netflix
+            en: My bed, chocolate and Netflix
+    parameter26:
+        type: passion
+        sort: 18
+        translations:
+            fr: Les films à l'eau de rose
+            en: Girly movies
+    parameter27:
+        type: title
+        sort: 1
+        translations:
+            fr: Moniteur de ski
+            en: Ski instructor
+    parameter28:
+        type: title
+        sort: 2
+        translations:
+            fr: Monitrice de ski
+            en: Ski instructor
+    parameter29:
+        type: title
+        sort: 3
+        translations:
+            fr: Guide de haute montagne
+            en: Mountaineering guide
+    parameter30:
+        type: title
+        sort: 4
+        translations:
+            fr: Moniteur de snowboard
+            en: Snowboard instructor
+    parameter31:
+        type: title
+        sort: 5
+        translations:
+            fr: Monitrice de snowboard
+            en: Snowboard instructor
+    parameter32:
+        type: title
+        sort: 6
+        translations:
+            fr: Moniteur de ski de fond
+            en: Nordic instructor
+    parameter33:
+        type: title
+        sort: 7
+        translations:
+            fr: Monitrice de ski de fond
+            en: Nordic instructor
+    parameter34:
+        type: title
+        sort: 8
+        translations:
+            fr: Accompagnateur en montagne
+            en: Mountaineering guide
+    parameter35:
+        type: title
+        sort: 9
+        translations:
+            fr: Accompagnatrice en montagne
+            en: Mountaineering guide
+    parameter36:
+        type: title
+        sort: 10
+        translations:
+            fr: Moniteur de télémark
+            en: " Telemark instructor"
+    parameter37:
+        type: title
+        sort: 11
+        translations:
+            fr: Monitrice de télémark
+            en: Telemark instructor
+    parameter38:
+        type: title
+        sort: 12
+        translations:
+            fr: Entraineur de biathlon
+            en: Biathlon trainer
+    parameter39:
+        type: title
+        sort: 13
+        translations:
+            fr: Musher
+            en: Musher
+    parameter40:
+        type: title
+        sort: 14
+        translations:
+            fr: Moniteur de vol libre
+            en: Free fly instructor
+    parameter41:
+        type: title
+        sort: 15
+        translations:
+            fr: Monitrice de vol libre
+            en: Free fly instructor
+    parameter42:
+        type: title
+        sort: 16
+        translations:
+            fr: Moniteur de pilotage
+            en: Driving instructor
+    parameter43:
+        type: title
+        sort: 17
+        translations:
+            fr: Monitrice de pilotage
+            en: Driving instructor
+    parameter44:
+        type: title
+        sort: 18
+        translations:
+            fr: Moniteur de vélo
+            en: Cycling instructor
+    parameter45:
+        type: title
+        sort: 19
+        translations:
+            fr: Monitrice de vélo
+            en: Cycling instructor
+    parameter46:
+        type: title
+        sort: 20
+        translations:
+            fr: Moniteur de luge
+            en: Sledge instructor
+    parameter47:
+        type: title
+        sort: 21
+        translations:
+            fr: Monitrice de luge
+            en: Sledge instructor
+    parameter48:
+        type: title
+        sort: 22
+        translations:
+            fr: Moniteur de bobsleigh
+            en: Bobsleigh instructor
+    parameter49:
+        type: title
+        sort: 23
+        translations:
+            fr: Monitrice de bobsleigh
+            en: Bobsleigh instructor
+    parameter50:
+        type: title
+        sort: 24
+        translations:
+            fr: Moniteur de VTT
+            en: MTB instructor
+    parameter51:
+        type: title
+        sort: 25
+        translations:
+            fr: Monitrice de VTT
+            en: MTB instructor
+    parameter52:
+        type: title
+        sort: 26
+        translations:
+            fr: Moniteur de BMX
+            en: BMX instructor
+    parameter53:
+        type: title
+        sort: 27
+        translations:
+            fr: Monitrice de BMX
+            en: BMX instructor
+    parameter54:
+        type: title
+        sort: 28
+        translations:
+            fr: Moniteur d'escalade
+            en: Climbing instructor
+    parameter55:
+        type: title
+        sort: 29
+        translations:
+            fr: Monitrice d'escalade
+            en: Climbing instructor
+    parameter56:
+        type: title
+        sort: 30
+        translations:
+            fr: Moniteur de spéléologie
+            en: Caving instructor
+    parameter57:
+        type: title
+        sort: 31
+        translations:
+            fr: Monitrice de spéléologie
+            en: Caving instructor
+    parameter58:
+        type: title
+        sort: 32
+        translations:
+            fr: Moniteur de chute libre
+            en: Free fall intructor
+    parameter59:
+        type: title
+        sort: 33
+        translations:
+            fr: Monitrice de chute libre
+            en: Free fall intructor
+    parameter60:
+        type: title
+        sort: 34
+        translations:
+            fr: Coach de trail
+            en: Trail coach
+    parameter61:
+        type: title
+        sort: 35
+        translations:
+            fr: Entraineur de course d'orientation
+            en: Orienteering trainer
+    parameter62:
+        type: title
+        sort: 36
+        translations:
+            fr: Moniteur de mountain board
+            en: Mountain board instructor
+    parameter63:
+        type: title
+        sort: 37
+        translations:
+            fr: Monitrice de mountain board
+            en: Mountain board instructor
+    parameter64:
+        type: title
+        sort: 38
+        translations:
+            fr: Moniteur de paddle
+            en: Paddle instructor
+    parameter65:
+        type: title
+        sort: 39
+        translations:
+            fr: Monitrice de paddle
+            en: Paddle instructor
+    parameter66:
+        type: title
+        sort: 40
+        translations:
+            fr: Moniteur d'aviron
+            en: Rowing instructor
+    parameter67:
+        type: title
+        sort: 41
+        translations:
+            fr: Monitrice d'aviron
+            en: Rowing instructor
+    parameter68:
+        type: title
+        sort: 42
+        translations:
+            fr: Moniteur de rafting
+            en: Rafting instructor
+    parameter69:
+        type: title
+        sort: 43
+        translations:
+            fr: Monitrice de rafting
+            en: Rafting instructor
+    parameter70:
+        type: title
+        sort: 44
+        translations:
+            fr: Moniteur canoë-kayak
+            en: Canoe-Kayak instructor
+    parameter71:
+        type: title
+        sort: 45
+        translations:
+            fr: Monitrice canoë-kayak
+            en: Canoe-Kayak instructor
+    parameter72:
+        type: title
+        sort: 46
+        translations:
+            fr: Moniteur de voile
+            en: Sailing instructor
+    parameter73:
+        type: title
+        sort: 47
+        translations:
+            fr: Monitrice de voile
+            en: Sailing instructor
+    parameter74:
+        type: title
+        sort: 48
+        translations:
+            fr: Moniteur de kitesurf
+            en: Kitesurfing Instructor
+    parameter75:
+        type: title
+        sort: 49
+        translations:
+            fr: Monitrice de kitesurf
+            en: Kitesurfing Instructor
+    parameter76:
+        type: title
+        sort: 50
+        translations:
+            fr: Moniteur de ski nautique
+            en: Waterski instructor
+    parameter77:
+        type: title
+        sort: 51
+        translations:
+            fr: Monitrice de ski nautique
+            en: Waterski instructor
+    parameter78:
+        type: title
+        sort: 52
+        translations:
+            fr: Moniteur de wakeboard
+            en: Wakeboard instructor
+    parameter79:
+        type: title
+        sort: 53
+        translations:
+            fr: Monitrice de wakeboard
+            en: Wakeboard instructor
+    parameter80:
+        type: title
+        sort: 54
+        translations:
+            fr: Moniteur de wakesurf
+            en: Wakesurfing instructor
+    parameter81:
+        type: title
+        sort: 55
+        translations:
+            fr: Monitrice de wakesurf
+            en: Wakesurfing instructor
+    parameter82:
+        type: title
+        sort: 56
+        translations:
+            fr: Moniteur de surf
+            en: Surf instructor
+    parameter83:
+        type: title
+        sort: 57
+        translations:
+            fr: Monitrice de surf
+            en: Surf instructor
+    parameter84:
+        type: title
+        sort: 58
+        translations:
+            fr: Moniteur de plongée
+            en: Scuba diving instructor
+    parameter85:
+        type: title
+        sort: 59
+        translations:
+            fr: Monitrice de plongée
+            en: Scuba diving instructor
+    parameter86:
+        type: title
+        sort: 60
+        translations:
+            fr: Instructeur d'apnée
+            en: Apnea instructor
+    parameter87:
+        type: title
+        sort: 61
+        translations:
+            fr: Instructrice d'apnée
+            en: Apnea instructor
+    parameter88:
+        type: title
+        sort: 62
+        translations:
+            fr: Moniteur de canyoning
+            en: Canyoneering Instructor
+    parameter89:
+        type: title
+        sort: 63
+        translations:
+            fr: Monitrice de canyoning
+            en: Canyoneering Instructor
+    parameter90:
+        type: title
+        sort: 64
+        translations:
+            fr: Moniteur d'hydrospeed
+            en: Hydrospeed instructor
+    parameter91:
+        type: title
+        sort: 65
+        translations:
+            fr: Monitrice d'hydrospeed
+            en: Hydrospeed instructor
+    parameter92:
+        type: title
+        sort: 66
+        translations:
+            fr: Maître nageur
+            en: Swimming instructor
+    parameter93:
+        type: title
+        sort: 67
+        translations:
+            fr: Entraineur de plongeon
+            en: Diving instructor
+    parameter94:
+        type: title
+        sort: 68
+        translations:
+            fr: Moniteur de golf
+            en: Golf instructor
+    parameter95:
+        type: title
+        sort: 69
+        translations:
+            fr: Monitrice de golf
+            en: Golf instructor
+    parameter96:
+        type: title
+        sort: 70
+        translations:
+            fr: Moniteur d'équitation
+            en: Horse riding instructor
+    parameter97:
+        type: title
+        sort: 71
+        translations:
+            fr: Monitrice d'équitation
+            en: Horse riding instructor
+    parameter98:
+        type: title
+        sort: 72
+        translations:
+            fr: Prof de danse
+            en: Dance professor
+    parameter99:
+        type: title
+        sort: 73
+        translations:
+            fr: Entraineur de rugby
+            en: Rugby coach
+    parameterr00:
+        type: title
+        sort: 74
+        translations:
+            fr: Entraineur de football
+            en: Football coach
+    parameterr01:
+        type: title
+        sort: 75
+        translations:
+            fr: Entraineur de Basketball
+            en: Basketball coach
+    parameterr02:
+        type: title
+        sort: 76
+        translations:
+            fr: Entraineur de handball
+            en: Handball coach
+    parameterr03:
+        type: title
+        sort: 77
+        translations:
+            fr: Entraineur de volley
+            en: Volleyball coach
+    parameterr04:
+        type: title
+        sort: 78
+        translations:
+            fr: Entraineur de Tennis de table
+            en: Table Tennis coach
+    parameterr05:
+        type: title
+        sort: 79
+        translations:
+            fr: Prof de Squash
+            en: Squash instructor
+    parameterr06:
+        type: title
+        sort: 80
+        translations:
+            fr: Prof de badminton
+            en: Badminton instructor
+    parameterr07:
+        type: title
+        sort: 81
+        translations:
+            fr: Prof de tennis
+            en: Tennis Instructor
+    parameterr08:
+        type: title
+        sort: 82
+        translations:
+            fr: Moniteur de quad
+            en: Quad bike instructor
+    parameterr09:
+        type: title
+        sort: 83
+        translations:
+            fr: Monitrice de quad
+            en: Quad bike instructor
+    parameterr10:
+        type: title
+        sort: 84
+        translations:
+            fr: Entraineur d'athlétisme
+            en: Athletics instructor
+    parameterr11:
+        type: title
+        sort: 85
+        translations:
+            fr: Coach sportif
+            en: Sport coach
+    parameterr12:
+        type: title
+        sort: 86
+        translations:
+            fr: Entraineur d'haltérophilie
+            en: Weightlifting coach
+    parameterr13:
+        type: title
+        sort: 87
+        translations:
+            fr: Coach de musculation
+            en: Bodybuilding coach
+    parameterr14:
+        type: title
+        sort: 88
+        translations:
+            fr: Coach cardio-boxing
+            en: Cardio-boxing coach
+    parameterr15:
+        type: title
+        sort: 89
+        translations:
+            fr: Prof d'aquagym
+            en: Watergym coach
+    parameterr16:
+        type: title
+        sort: 90
+        translations:
+            fr: Prof d'aquabike
+            en: Waterbike coach
+    parameterr17:
+        type: title
+        sort: 91
+        translations:
+            fr: Prof de Yoga
+            en: Yoga coach
+    parameterr18:
+        type: title
+        sort: 92
+        translations:
+            fr: Prof de boxe
+            en: Boxing instructor
+    parameterr19:
+        type: title
+        sort: 93
+        translations:
+            fr: Prof de judo
+            en: Judo instructor
+    parameterr20:
+        type: title
+        sort: 94
+        translations:
+            fr: Prof de karaté
+            en: Karate instructor
+    parameterr21:
+        type: title
+        sort: 95
+        translations:
+            fr: Prof de jujitzu
+            en: Jujitzu instructor
+    parameterr22:
+        type: title
+        sort: 96
+        translations:
+            fr: Instructeur Krav Maga
+            en: Krav Maga instructor
+    parameterr23:
+        type: title
+        sort: 97
+        translations:
+            fr: Instructrice Krav Maga
+            en: Krav Maga instructor
+    parameterr24:
+        type: title
+        sort: 98
+        translations:
+            fr: Prof de taekwendo
+            en: Taekwendo instructor
+    parameterr25:
+        type: title
+        sort: 99
+        translations:
+            fr: Maitre d'armes
+            en: Fencing coach
+    parameterr26:
+        type: cancel
+        sort: 1
+        translations:
+            fr: Flexibles
+            en: Flexible
+    parameterr27:
+        type: cancel
+        sort: 2
+        translations:
+            fr: Modérées
+            en: Moderate
+    parameterr28:
+        type: cancel
+        sort: 3
+        translations:
+            fr: Strictes
+            en: Strict
+

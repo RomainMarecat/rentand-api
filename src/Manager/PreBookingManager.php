@@ -26,10 +26,10 @@ class PreBookingManager
 
     protected $params;
 
-    protected function setAdvert(Advert $advert)
+    protected function setAdvert(Advert $user)
     {
         $this->preBooking->setLanguages(
-            array_combine($advert->getLanguages(), $advert->getLanguages())
+            array_combine($user->getLanguages(), $user->getLanguages())
         );
 
         $this->getLogger()->info(
@@ -163,11 +163,11 @@ class PreBookingManager
         $criteria['city'] = $request->query->get('city');
         $this->logger->info('advert query parameter', array($criteria));
 
-        $modelAdvert = $this->getEm()->getRepository('AppBundle:Advert')
+        $modelAdvert = $this->getEm()->getRepository('App:Advert')
             ->findPreBookingBy($criteria);
 
         $modelAdvertSports = new ExtendedArrayCollection(
-            $this->getEm()->getRepository('AppBundle:Sport')
+            $this->getEm()->getRepository('App:Sport')
                 ->findPreBookingBy(array('advert' => $criteria['advert']))
         );
 
@@ -186,12 +186,12 @@ class PreBookingManager
 
         if (isset($criteria['sport'])) {
             $modelAdvertSportsSpecialities = new ExtendedArrayCollection(
-                $this->getEm()->getRepository('AppBundle:Sport')
+                $this->getEm()->getRepository('App:Sport')
                     ->findPreBookingSpecialitiesBy($criteria)
             );
             $this->setSpecialities($modelAdvertSportsSpecialities);
 
-            $modelLevels = $this->getEm()->getRepository('AppBundle:AdvertSport')
+            $modelLevels = $this->getEm()->getRepository('App:AdvertSport')
                 ->findPreBookingLevelsBy($criteria);
 
             $this->setLevels($modelLevels);
@@ -201,22 +201,22 @@ class PreBookingManager
         }
 
 
-        $modelCities = $this->getEm()->getRepository('AppBundle:City')
+        $modelCities = $this->getEm()->getRepository('App:City')
             ->findPreBookingCitiesBy($criteria);
         $this->logger->debug('modelCities', array('cities' => $modelCities));
         if (isset($criteria['city'])) {
-            $modelCity = $this->getEm()->getRepository('AppBundle:City')
+            $modelCity = $this->getEm()->getRepository('App:City')
                 ->findOneById($criteria['city']);
 
             if (!$modelCity) {
-                $modelCity = $this->getEm()->getRepository('AppBundle:City')
+                $modelCity = $this->getEm()->getRepository('App:City')
                     ->findOneByTitle(trim($criteria['city']));
             }
             $this->setCity($modelCity);
         }
 
 
-        $modelMeetings = $this->getEm()->getRepository('AppBundle:Meeting')
+        $modelMeetings = $this->getEm()->getRepository('App:MeetingPoint')
             ->findPreBookingMeetingsBy(
                 array_filter(
                     $criteria,

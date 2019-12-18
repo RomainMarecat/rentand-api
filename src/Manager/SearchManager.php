@@ -51,14 +51,14 @@ class SearchManager
         $sport = null;
         if (isset($search['sport'])) {
             $sport = $this->getEm()
-                ->getRepository('AppBundle:Sport')
+                ->getRepository('App:Sport')
                 ->findOneById($search['sport']);
         }
 
         $city = null;
         if (isset($search['city'])) {
             $city = $this->getEm()
-                ->getRepository('AppBundle:City')
+                ->getRepository('App:City')
                 ->findOneByGoogleId($search['city']);
             if ($city instanceof City) {
                 $search['lat'] = $city->getLat() ?: null;
@@ -104,34 +104,34 @@ class SearchManager
                 ));
             }
 
-            $adverts =
+            $users =
                 new ArrayCollection(
                     $this->getEm()
-                        ->getRepository('AppBundle:Advert')
+                        ->getRepository('App:Advert')
                         ->findAdvertsBySearchForm($search)
                 );
             $this->getLogger()->info(
                 'findAdvertsBySearchForm',
                 array(
-                    'adverts is empty' => empty($adverts),
-                    'adverts is total results' => count($adverts)
+                    'adverts is empty' => empty($users),
+                    'adverts is total results' => count($users)
                 )
             );
 
             $i++;
-        } while ($adverts instanceof ArrayCollection and $adverts->isEmpty() and $i < 6 and $search['offset'] === 0);
+        } while ($users instanceof ArrayCollection and $users->isEmpty() and $i < 6 and $search['offset'] === 0);
 
         $this->getLogger()->info('Advert is null ?', array(
-            $adverts instanceof ArrayCollection and $adverts->isEmpty()
+            $users instanceof ArrayCollection and $users->isEmpty()
         ));
-        return array($search, $adverts);
+        return array($search, $users);
     }
 
     protected function countResults(array $search)
     {
         $count =
             $this->getEm()
-                ->getRepository('AppBundle:Advert')
+                ->getRepository('App:Advert')
                 ->countAdvertBySearchForm($search);
 
         $count = $count['total'];
@@ -151,12 +151,12 @@ class SearchManager
         $search['limit'] = $this->calcLimit($search);
         $search['offset'] = $this->calcOffset($search);
         list($city, $sport, $search) = $this->fetchEntities($search);
-        list($search, $adverts) = $this->loopToResults($search);
+        list($search, $users) = $this->loopToResults($search);
         $search['limit'] = null;
         $search['offset'] = null;
         $total = $this->countResults($search);
 
-        return array($sport, $city, $adverts, $titles, $total);
+        return array($sport, $city, $users, $titles, $total);
     }
 
     public function countResultsBySimpleForm(Request $request)
@@ -178,12 +178,12 @@ class SearchManager
         $search['limit'] = $this->calcLimit($search);
         $search['offset'] = $this->calcOffset($search);
         list($city, $sport, $search) = $this->fetchEntities($search);
-        list($search, $adverts) = $this->loopToResults($search);
+        list($search, $users) = $this->loopToResults($search);
         $search['limit'] = null;
         $search['offset'] = null;
         $total = $this->countResults($search);
 
-        return array($sport, $city, $adverts, $titles, $total);
+        return array($sport, $city, $users, $titles, $total);
     }
 
 

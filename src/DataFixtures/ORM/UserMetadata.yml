@@ -1,0 +1,12 @@
+App\Entity\UserMetadata:
+    userMetadata{1..500}:
+        lastname: <lastName()>
+        firstname: <firstName()>
+        slug: <firstName()>-<lastName()>
+        gender: <boolean(50)>
+        birthday: null
+        languages: fr
+        nationality: <countryCode()>
+        motherLang:  <countryCode()>
+        user: '@user<current()>'
+        media: '@media<numberBetween(1, 10)>'

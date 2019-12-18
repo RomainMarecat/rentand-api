@@ -2,13 +2,13 @@
 
 namespace App\Controller\Front;
 
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
-use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Intl\Intl;
 
-class PreBookingController extends FOSRestController
+class PreBookingController extends AbstractFOSRestController
 {
     /**
      * @Annotations\View(serializerGroups={"Default", "newPreBookings"})

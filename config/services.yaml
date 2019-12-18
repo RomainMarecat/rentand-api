@@ -12,7 +12,7 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
     # makes classes in src/ available to be used as services
-    # this creates a service per class whose id is the fully-qualified class name
+    # this creates a services per class whose id is the fully-qualified class name
     App\:
         resource: '../src/*'
         exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
@@ -23,5 +23,168 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
+    # add more services definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    #    app.params:
+    #        class: Services\Params
+    #
+    #  api.event.jwt_created_listener:
+    #    class: EventListener\JWTCreatedListener
+    #    tags:
+    #      - { name: kernel.event_listener, event: lexik_jwt_authentication.on_jwt_created, method: onJWTCreated }
+
+    #    App\DataFixtures\ORM\LoadFixtureData:
+
+#        tags:
+#            - { name: hautelook_alice.faker.provider }
+#
+#    manager.email_reminder:
+#        class: Manager\EmailReminderManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setAdvertManager, ['@manager.advert']]
+#            - [setCityManager, ['@manager.city']]
+#            - [setMeetingManager, ['@manager.meeting']]
+#            - [setSportManager, ['@manager.sport']]
+#            - [setAdvertManager, ['@manager.advert']]
+#            - [setAdvertSportManager, ['@manager.advert_sport']]
+#
+#    manager.user:
+#        class: Manager\UserManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setConnection, ['@doctrine.dbal.v1_connection']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setFosUserManager, ['@fos_user.user_manager']]
+#            - [setFormFactory, ['@form.factory']]
+#            - [setTranslator, ['@translator.default']]
+#            - [setTokenGenerator, ['@fos_user.util.token_generator']]
+#            - [setEncoderFactory, ['@security.encoder_factory']]
+#            - [setFormParser, ['@services.form_parser']]
+#
+#    manager.image:
+#        class: Manager\ImageManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setConnection, ['@doctrine.dbal.v1_connection']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRegexHelper, ['@helper.regex']]
+#
+#    manager.advert:
+#        class: Manager\AdvertManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setConnection, ['@doctrine.dbal.v1_connection']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRegexHelper, ['@helper.regex']]
+#
+#    manager.sport:
+#        class: Manager\SportManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setConnection, ['@doctrine.dbal.v1_connection']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRegexHelper, ['@helper.regex']]
+#
+#    manager.comment:
+#        class: Manager\CommentManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRegexHelper, ['@helper.regex']]
+#            - [setFormFactory, ['@form.factory']]
+#
+#    manager.booking:
+#        class: Manager\BookingManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setConnection, ['@doctrine.dbal.v1_connection']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRegexHelper, ['@helper.regex']]
+#            - [setFormFactory, ['@form.factory']]
+#            - [setTokenStorage, ['@security.token_storage']]
+#            - [setSerializer, ['@jms_serializer']]
+#            - [setFormParser, ['@services.form_parser']]
+#
+#    manager.city:
+#        class: Manager\CityManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setConnection, ['@doctrine.dbal.v1_connection']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRegexHelper, ['@helper.regex']]
+#
+#    manager.meeting:
+#        class: Manager\MeetingManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#
+#    manager.phone:
+#        class: Manager\PhoneManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#
+#    manager.prebooking:
+#        class: Manager\PreBookingManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setFormFactory, ['@form.factory']]
+#            - [setParams, ['@app.params']]
+#
+#    manager.advert_sport:
+#        class: Manager\SportTeachedManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setConnection, ['@doctrine.dbal.v1_connection']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRegexHelper, ['@helper.regex']]
+#            - [setParams, ['@app.params']]
+#
+#    manager.search:
+#        class: Manager\SearchManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setParams, ['@app.params']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRadius, ['%search.radius.default%']]
+#
+#    helper.regex:
+#        class: Helper\RegexHelper
+#
+#
+#    admin.manager.comment:
+#        class: Manager\Admin\CommentManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRegexHelper, ['@helper.regex']]
+#            - [setFormFactory, ['@form.factory']]
+#
+#    admin.manager.advert:
+#        class: Manager\Admin\AdvertManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRegexHelper, ['@helper.regex']]
+#            - [setFormFactory, ['@form.factory']]
+#
+#    admin.manager.booking:
+#        class: Manager\Admin\BookingManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRegexHelper, ['@helper.regex']]
+#            - [setFormFactory, ['@form.factory']]
+#
+#    admin.manager.user:
+#        class: Manager\Admin\UserManager
+#        calls:
+#            - [setLogger, ['@logger']]
+#            - [setEm, ['@doctrine.orm.default_entity_manager']]
+#            - [setRegexHelper, ['@helper.regex']]
+#            - [setFormFactory, ['@form.factory']]
+#            - [setFosUserManager, ['@fos_user.user_manager']]

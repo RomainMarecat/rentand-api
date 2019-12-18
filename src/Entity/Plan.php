@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -589,5 +590,31 @@ class Plan
     public function getImports()
     {
         return $this->imports;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getInstructors(): Collection
+    {
+        return $this->instructors;
+    }
+
+    public function addInstructor(User $instructor): self
+    {
+        if (!$this->instructors->contains($instructor)) {
+            $this->instructors[] = $instructor;
+        }
+
+        return $this;
+    }
+
+    public function removeInstructor(User $instructor): self
+    {
+        if ($this->instructors->contains($instructor)) {
+            $this->instructors->removeElement($instructor);
+        }
+
+        return $this;
     }
 }

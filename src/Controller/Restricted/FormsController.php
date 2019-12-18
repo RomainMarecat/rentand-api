@@ -22,7 +22,7 @@ class FormsController extends FOSRestController
             'ages' => $params->getAges(),
             'titles' => $params->getTitles(),
             'passions' => $params->getPassions(),
-            'sports' => $this->getDoctrine()->getRepository('AppBundle:Sport')->findByLevel(0)
+            'sports' => $this->getDoctrine()->getRepository('App:Sport')->findByLevel(0)
         );
 
         return $result;

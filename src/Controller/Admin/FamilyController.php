@@ -2,34 +2,39 @@
 
 namespace App\Controller\Admin;
 
-use FOS\RestBundle\Controller\FOSRestController;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpFoundation\Request;
-use Entity\Family;
-use Entity\FamilyTranslation;
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\Annotations;
+use FOS\RestBundle\Controller\FOSRestController;
+use JMS\Serializer\SerializerInterface;
+use Knp\Component\Pager\Paginator;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class FamilyController extends FOSRestController
 {
     /**
      * @Annotations\View(serializerGroups={"Default", "getFamilies"})
+     * @param Request $request
+     * @param Paginator $paginator
+     * @param EntityManagerInterface $entityManager
+     * @return array|object[]
      */
-    public function getFamiliesAction(Request $request)
-    {
-        $families = $this->getDoctrine()->getManager()->getRepository('AppBundle:Family')->findAll();
+    public function getFamiliesAction(
+        Request $request,
+        Paginator $paginator,
+        EntityManagerInterface $entityManager
+    ) {
+        $families = $entityManager->getRepository('App:Family')->findAll();
         if (!is_array($families)) {
             throw $this->createNotFoundException();
         }
         $page = $request->query->get('page');
         if (isset($page)) {
             $perPage = $request->query->get('perPage');
-            $paginator = $this->get('knp_paginator');
             if (!isset($perPage)) {
                 $perPage = 20;
             }
-            // return $families;
-            $results = $paginator->paginate($families, $page, $perPage);
-            // return $results;
+            $families = $paginator->paginate($families, $page, $perPage);
         }
         return $families;
     }
@@ -40,7 +45,7 @@ class FamilyController extends FOSRestController
     public function getFamilyAction($id)
     {
 
-        $family = $this->getDoctrine()->getRepository('AppBundle:Family')->find($id);
+        $family = $this->getDoctrine()->getRepository('App:Family')->find($id);
         if (!is_object($family)) {
             throw $this->createNotFoundException();
         }
@@ -49,9 +54,16 @@ class FamilyController extends FOSRestController
 
     /**
      * @Annotations\View(serializerGroups={"Default", "postFamily"})
+     * @param Request $request
+     * @param SerializerInterface $serializer
+     * @param EntityManagerInterface $entityManager
+     * @return array|\JMS\Serializer\scalar|mixed|object
      */
-    public function postFamilyAction(Request $request)
-    {
+    public function postFamilyAction(
+        Request $request,
+        SerializerInterface $serializer,
+        EntityManagerInterface $entityManager
+    ) {
 
         $data = json_decode($request->getContent(), true);
         $dataParent = $data['parent'];
@@ -60,9 +72,6 @@ class FamilyController extends FOSRestController
         unset($data['sports']);
         $data = json_encode($data);
 
-        $em = $this->getDoctrine()->getManager();
-
-        $serializer = $this->get('serializer');
         $family = $serializer->deserialize($data, 'Entity\Family', 'json');
 
         // add translations relation
@@ -79,7 +88,7 @@ class FamilyController extends FOSRestController
 
         // add parent
         if (!is_null($dataParent)) {
-            $parent = $this->getDoctrine()->getManager()->getRepository('AppBundle:Family')->find($dataParent);
+            $parent = $entityManager->getRepository('App:Family')->find($dataParent);
             if (is_object($parent)) {
                 $family->setParent($parent);
                 $parent->addChild($family);
@@ -88,63 +97,73 @@ class FamilyController extends FOSRestController
 
         // add sports
         foreach ($dataSports as $dataSport) {
-            $sport = $this->getDoctrine()->getManager()->getRepository('AppBundle:Sport')->find($dataSport);
+            $sport = $entityManager->getRepository('App:Sport')->find($dataSport);
             if (is_object($sport)) {
                 $family->addSport($sport);
                 $sport->addFamily($family);
             }
         }
 
-        $em->persist($family);
-        $em->flush();
+        $entityManager->persist($family);
+        $entityManager->flush();
 
         return $family;
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "deleteFamily"})
+     * @param EntityManagerInterface $entityManager
+     * @param $id
+     * @return string
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function deleteFamilyAction($id)
-    {
+    public function deleteFamilyAction(EntityManagerInterface $entityManager,
+                                       $id
+    ) {
 
-        $family = $this->getDoctrine()->getRepository('AppBundle:Family')->find($id);
+        $family = $this->getDoctrine()->getRepository('App:Family')->find($id);
         if (!is_object($family)) {
             throw $this->createNotFoundException();
         }
 
-        $em = $this->getDoctrine()->getEntityManager();
-        $em->remove($family);
-        $em->flush();
+        $entityManager->remove($family);
+        $entityManager->flush();
 
         return "FAMILY DELETED";
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "patchFamily"})
+     * @param $id
+     * @param Request $request
+     * @param EntityManagerInterface $entityManager
+     * @return object|null
      */
-    public function patchFamilyAction($id, Request $request)
-    {
+    public function patchFamilyAction(
+        $id,
+        Request $request,
+        EntityManagerInterface $entityManager
+    ) {
 
-        $family = $this->getDoctrine()->getRepository('AppBundle:Family')->find($id);
+        $family = $this->getDoctrine()->getRepository('App:Family')->find($id);
         if (!is_object($family)) {
             throw $this->createNotFoundException();
         }
 
         $params = json_decode($request->getContent(), true);
 
-        $em = $this->getDoctrine()->getManager();
-
         $validator = $this->get('validator');
 
         foreach ($params['translations'] as $locale => $translation) {
-            $editedTranslation = $this->getDoctrine()->getRepository('AppBundle:FamilyTranslation')->findOneBy(array('locale' => $locale, 'family' => $family));
+            $editedTranslation = $this->getDoctrine()->getRepository('App:FamilyTranslation')->findOneBy(array('locale' => $locale, 'family' => $family));
             $editedTranslation->setTitle($translation['title']);
 
-            $em->persist($editedTranslation);
+            $entityManager->persist($editedTranslation);
         }
 
         if ($params['parent']) {
-            $parent = $this->getDoctrine()->getRepository('AppBundle:Family')->find($params['parent']);
+            $parent = $this->getDoctrine()->getRepository('App:Family')->find($params['parent']);
             if (!is_object($parent)) {
                 throw $this->createNotFoundException();
             }
@@ -152,7 +171,7 @@ class FamilyController extends FOSRestController
         }
 
         foreach ($params['sports'] as $sportId) {
-            $sport = $this->getDoctrine()->getRepository('AppBundle:Sport')->find($sportId);
+            $sport = $this->getDoctrine()->getRepository('App:Sport')->find($sportId);
             if (is_object($sport)) {
                 if (!$family->getSports()->contains($sport)) {
                     $family->addSport($sport);
@@ -162,18 +181,18 @@ class FamilyController extends FOSRestController
         }
 
         foreach ($params['sportDel'] as $sportId) {
-            $sport = $this->getDoctrine()->getRepository('AppBundle:Sport')->find($sportId);
+            $sport = $this->getDoctrine()->getRepository('App:Sport')->find($sportId);
             $family->removeSport($sport);
         }
 
 
         $errors = $validator->validate($family);
         if (count($errors) > 0) {
-            throw new HttpException(400, 'Invalid family: '.$errors);
+            throw new HttpException(400, 'Invalid family: ' . $errors);
         }
 
-        $em->persist($family);
-        $em->flush();
+        $entityManager->persist($family);
+        $entityManager->flush();
 
         return $family;
     }

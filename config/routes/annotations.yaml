@@ -1,19 +1,23 @@
 controllers_admin:
     resource: ../../src/Controller/Admin
     type: rest
-    prefix: api/admin
+    prefix: v1/admin
 
 controllers_front:
     resource: ../../src/Controller/Front
     type: rest
-    prefix: api/
+    prefix: v1/public
 
 controllers_planning:
     resource: ../../src/Controller/Planning
     type: rest
-    prefix: api/planning
+    prefix: v1/planning
 
 controllers_restricted:
     resource: ../../src/Controller/Restricted
     type: rest
-    prefix: api/restricted
+    prefix: v1/restricted
+
+post_login_check:
+    path: /v1/public/users/login_check
+    methods: ['POST']

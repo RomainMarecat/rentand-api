@@ -26,17 +26,17 @@ class UserManager
 
     public function adminCget()
     {
-        return $this->getEm()->getRepository('AppBundle:User')->adminCget();
+        return $this->getEm()->getRepository('App:User')->adminCget();
     }
 
     public function adminCgetErrors()
     {
-        return $this->getEm()->getRepository('AppBundle:User')->adminCgetErrors();
+        return $this->getEm()->getRepository('App:User')->adminCgetErrors();
     }
 
     public function getUsersByMangopayId($mangopayId)
     {
-        $users = $this->getEm()->getRepository('AppBundle:User')->findUsersIdByMangopayId($mangopayId);
+        $users = $this->getEm()->getRepository('App:User')->findUsersIdByMangopayId($mangopayId);
 
         foreach ($users as $key => $user) {
             if (isset($user['address']['country'])) {
@@ -64,7 +64,7 @@ class UserManager
         );
         $this->getLogger()->debug('users info', array('users' => $users));
 
-        $dataUsers = $this->getEm()->getRepository('AppBundle:User')->findUserIn($usersIds);
+        $dataUsers = $this->getEm()->getRepository('App:User')->findUserIn($usersIds);
         $this->getLogger()->debug('users info', array('users' => $dataUsers));
 
         $this->getEm()->getConnection()->beginTransaction();
@@ -228,7 +228,7 @@ class UserManager
     /**
      * Sets the value of mangoPayService.
      *
-     * @param mixed $mangoPayService the mango pay service
+     * @param mixed $mangoPayService the mango pay services
      *
      * @return self
      */

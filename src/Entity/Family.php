@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
@@ -10,7 +12,7 @@ use JMS\Serializer\Annotation as JMS;
  * Family
  *
  * @ORM\Table(name="family_family")
- * @ORM\Entity(repositoryClass="Repository\FamilyRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\FamilyRepository")
  * @JMS\ExclusionPolicy("none")
  */
 class Family
@@ -65,7 +67,7 @@ class Family
     /**
      * @ORM\OneToMany(targetEntity="FamilyTranslation", mappedBy="family", indexBy="locale", cascade={"remove", "persist"}, fetch="EXTRA_LAZY")
      * @ORM\OrderBy({"id" = "DESC"})
-     * @JMS\Type("ArrayCollection<Entity\FamilyTranslation>")
+     * @JMS\Type("ArrayCollection<App\Entity\FamilyTranslation>")
      * @JMS\Groups({"hidden", "getFormFamily", "getFamily", "getParentFamilies", "getFamiliesByParent"})
      */
     protected $translations;
@@ -106,6 +108,8 @@ class Family
     public function __construct()
     {
         $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sports = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -123,7 +127,7 @@ class Family
      *
      * @param string $name
      *
-     * @return Passion
+     * @return Family
      */
     public function setName($name)
     {
@@ -147,7 +151,7 @@ class Family
      *
      * @param string $slug
      *
-     * @return Passion
+     * @return Family
      */
     public function setSlug($slug)
     {
@@ -171,7 +175,7 @@ class Family
      *
      * @param \DateTime $createdAt
      *
-     * @return Passion
+     * @return Family
      */
     public function setCreatedAt($createdAt)
     {
@@ -195,7 +199,7 @@ class Family
      *
      * @param \DateTime $updatedAt
      *
-     * @return Passion
+     * @return Family
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -219,11 +223,11 @@ class Family
      *
      * @param FamilyTranslation $translation
      *
-     * @return Passion
+     * @return Family
      */
     public function addTranslation(FamilyTranslation $translation)
     {
-        $this->translations[] = $translation;
+        $this->translations->add($translation);
 
         return $this;
     }

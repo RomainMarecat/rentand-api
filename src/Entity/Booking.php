@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
@@ -11,7 +12,7 @@ use JMS\Serializer\Annotation as JMS;
  * Booking
  *
  * @ORM\Table(name="booking_booking")
- * @ORM\Entity(repositoryClass="Repository\BookingRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\BookingRepository")
  */
 class Booking
 {
@@ -23,14 +24,14 @@ class Booking
      * @ORM\GeneratedValue(strategy="UUID")
      * @JMS\Groups({"Default", "adminGetBookings"})
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="wallet_id", type="string", length=255, unique=true, nullable=true)
      */
-    protected $walletId;
+    private $walletId;
 
     /**
      * @var string statut booking done or canceled
@@ -38,39 +39,39 @@ class Booking
      * @ORM\Column(name="statut", type="integer")
      * @JMS\Groups({"Default", "adminGetBookings"})
      */
-    protected $statut;
+    private $statut;
 
     /**
      * @var string mangoPayTransactionId
      *
      * @ORM\Column(name="mango_pay_transaction_id", type="string", length=255, nullable=true)
      */
-    protected $mangoPayTransactionId;
+    private $mangoPayTransactionId;
 
     /**
      * @var string voucher transaction
      *
      * @ORM\Column(name="transaction", type="string", length=255, nullable=true)
      */
-    protected $transaction;
+    private $transaction;
 
     /**
      * @var string code sms and email auto generated
      *
      * @ORM\Column(name="code", type="string", length=80, nullable=true)
      */
-    protected $code;
+    private $code;
 
     /**
      * @ORM\Column(name="price", type="float", nullable=true)
      */
-    protected $price;
+    private $price;
 
     /**
      * @ORM\Column(name="cancellation", type="integer", nullable=true)
      * @JMS\Groups({"Default", "adminGetBookings"})
      */
-    protected $cancellation;
+    private $cancellation;
 
     /**
      * @var \DateTime
@@ -79,7 +80,7 @@ class Booking
      * @Gedmo\Timestampable(on="create")
      * @JMS\Groups({"Default", "adminGetBookings"})
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @var \DateTime
@@ -87,31 +88,41 @@ class Booking
      * @ORM\Column(name="updated_at", type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="bookings")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="SET NULL")
-     * @JMS\Groups({"hidden", "getMyBookings", "getBookings", "getBooking", "patchBooking", "putBooking", "adminGetBookings", "adminGetBooking"})
+     * @JMS\Groups({"hidden", "getMyBookings", "getBookings", "getBooking", "patchBooking", "putBooking",
+     *     "adminGetBookings", "adminGetBooking"})
      */
-    protected $user;
+    private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Advert", inversedBy="bookings")
-     * @ORM\JoinColumn(name="advert_id", referencedColumnName="advert_id", onDelete="SET NULL")
-     * @JMS\Groups({"hidden", "getMyBookings", "getBookings", "getBooking", "patchBooking", "putBooking", "adminGetBookings"})
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="coach_id", referencedColumnName="user_id", onDelete="SET NULL")
+     * @JMS\Groups({"hidden", "getMyBookings", "getBookings", "getBooking", "patchBooking", "putBooking",
+     *     "adminGetBookings"})
      */
-    protected $advert;
+    private $coach;
 
     /**
      * @ORM\OneToMany(targetEntity="Course", mappedBy="booking", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
      * @JMS\Groups({"hidden", "getBooking", "patchBooking", "getMyBookings", "putBooking", "adminGetBookings"})
      */
-    protected $courses;
+    private $courses;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="booking", cascade={"remove"}, fetch="EXTRA_LAZY")
+     * @ORM\OrderBy({"id" = "DESC"})
+     * @JMS\Groups({"hidden", "getUsers", "getUser", "postSimpleSearch"})
+     */
+    private $comments;
 
     public function __construct()
     {
         $this->courses = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -213,35 +224,11 @@ class Booking
     /**
      * Get user
      *
-     * @return \Entity\User
+     * @return User
      */
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set advert
-     *
-     * @param Advert $advert
-     *
-     * @return Booking
-     */
-    public function setAdvert(Advert $advert = null)
-    {
-        $this->advert = $advert;
-
-        return $this;
-    }
-
-    /**
-     * Get advert
-     *
-     * @return \Entity\Advert
-     */
-    public function getAdvert()
-    {
-        return $this->advert;
     }
 
     /**
@@ -468,5 +455,51 @@ class Booking
     public function getCancellation()
     {
         return $this->cancellation;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param Comment $comment
+     *
+     * @return Booking
+     */
+    public function addComment(Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param Comment $comment
+     */
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    public function getCoach(): ?User
+    {
+        return $this->coach;
+    }
+
+    public function setCoach(?User $coach): self
+    {
+        $this->coach = $coach;
+
+        return $this;
     }
 }

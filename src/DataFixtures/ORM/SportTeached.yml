@@ -1,0 +1,8 @@
+App\Entity\SportTeached:
+    sportTeached{1..1500}:
+        orderNumber: <numberBetween(1, 10)>
+        levels: [1, 4]
+        ages: [1, 2]
+        user: '@user<numberBetween(1, 500)>'
+        sport: '@sport<numberBetween(1, 10)>'
+        translations: '{"fr": "<catchPhrase()>"}'

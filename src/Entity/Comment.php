@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Comment
  *
  * @ORM\Table(name="comment_comment")
- * @ORM\Entity(repositoryClass="Repository\CommentRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
  */
 class Comment
 {
@@ -81,18 +81,20 @@ class Comment
     protected $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Advert", inversedBy="comments")
-     * @ORM\JoinColumn(name="advert_id", referencedColumnName="advert_id", onDelete="CASCADE"))
+     * @var Booking
+     *
+     * @ORM\ManyToOne(targetEntity="Booking", inversedBy="comments")
+     * @ORM\JoinColumn(name="booking_id", referencedColumnName="booking_id", onDelete="CASCADE"))
      * @Assert\NotBlank
      * @JMS\Groups({"hidden", "adminGetComments"})
      */
-    protected $advert;
+    protected $booking;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE"))
      * @Assert\NotBlank
-     * @JMS\Groups({"hidden", "adminGetComments", "getAdvert"})
+     * @JMS\Groups({"hidden", "adminGetComments", "getUser"})
      */
     protected $user;
 
@@ -232,31 +234,7 @@ class Comment
     }
 
     /**
-     * Set advert
-     *
-     * @param Advert $advert
-     *
-     * @return Comment
-     */
-    public function setAdvert(Advert $advert = null)
-    {
-        $this->advert = $advert;
-
-        return $this;
-    }
-
-    /**
-     * Get advert
-     *
-     * @return \Entity\Advert
-     */
-    public function getAdvert()
-    {
-        return $this->advert;
-    }
-
-    /**
-     * Set user
+     * Set User
      *
      * @param User $user
      *
@@ -270,9 +248,9 @@ class Comment
     }
 
     /**
-     * Get user
+     * Get advert
      *
-     * @return \Entity\User
+     * @return User
      */
     public function getUser()
     {
@@ -299,6 +277,18 @@ class Comment
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getBooking(): ?Booking
+    {
+        return $this->booking;
+    }
+
+    public function setBooking(?Booking $booking): self
+    {
+        $this->booking = $booking;
 
         return $this;
     }

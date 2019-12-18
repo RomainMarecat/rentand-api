@@ -27,11 +27,11 @@ class PreBooking
 
     protected $specialities;
 
-    protected $advert;
+    protected $user;
 
     protected $meetings;
 
-    protected $user;
+    protected $coach;
 
     /**
      * Gets the value of ages.
@@ -166,13 +166,13 @@ class PreBooking
     /**
      * Sets the value of advert.
      *
-     * @param mixed $advert the advert
+     * @param mixed $user the advert
      *
      * @return self
      */
-    public function setAdvert($advert)
+    public function setAdvert($user)
     {
-        $this->advert = $advert;
+        $this->advert = $user;
 
         return $this;
     }

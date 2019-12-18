@@ -1,7 +1,8 @@
 App\Entity\Sport:
     sport{1..100}:
+        slug: <catchPhrase()>
         level: <numberBetween(0, 2)>
+        translations: '{"fr": "<catchPhrase()>"}'
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
-        parent: '@sport<numberBetween(1, 100)>'
-        # advertSports: ['@advertSport<numberBetween(1, 100)>', '@advertSport<numberBetween(1, 100)>', '@advertSport<numberBetween(1, 100)>']
+        parent: '@sport<numberBetween(1, 10)>'

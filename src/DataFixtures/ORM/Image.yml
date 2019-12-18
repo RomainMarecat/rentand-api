@@ -1,9 +1,0 @@
-App\Entity\Image:
-    image{1..100}:
-        filename: <image('/home/romainmarecat/alr/rentand-api/public/uploads/images', 640, 480, 'cats', false)>
-        ext: jpg
-        alt: <realText(255)>
-        createdAt: <dateTime()>
-        updatedAt: <dateTime()>
-        advert: '@advert<current()>'
-        advertSport: '@advertSport<current()>'

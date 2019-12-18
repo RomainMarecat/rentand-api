@@ -2,10 +2,10 @@
 
 namespace App\Controller\Front;
 
-use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
 
-class CommentController extends FOSRestController
+class CommentController extends AbstractFOSRestController
 {
     /**
      * @Annotations\View(serializerGroups={"Default", "getCommentsByStatus"})
@@ -14,7 +14,7 @@ class CommentController extends FOSRestController
     public function getCommentsByStatusAction($status)
     {
         $comments = $this->getDoctrine()
-            ->getRepository('AppBundle:Comment')
+            ->getRepository('App:Comment')
             ->findCommentsByStatus($status);
 
         return array('comments' => $comments);

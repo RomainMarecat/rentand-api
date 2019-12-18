@@ -22,7 +22,7 @@ class Diploma
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
@@ -30,7 +30,7 @@ class Diploma
      * @ORM\Column(name="title", type="string", length=255, nullable=true)
      * @Assert\NotBlank
      */
-    protected $title;
+    private $title;
 
     /**
      * @var string
@@ -38,7 +38,7 @@ class Diploma
      * @ORM\Column(name="filename", type="string", length=255 , nullable=true)
      * @Assert\NotBlank
      */
-    protected $filename;
+    private $filename;
 
     /**
      * @var string
@@ -46,7 +46,7 @@ class Diploma
      * @ORM\Column(name="ext", type="string", length=16, nullable=true)
      * @Assert\NotBlank
      */
-    protected $ext;
+    private $ext;
 
     /**
      * @var \DateTime
@@ -54,7 +54,7 @@ class Diploma
      * @ORM\Column(name="createdAt", type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @var \DateTime
@@ -62,15 +62,15 @@ class Diploma
      * @ORM\Column(name="updatedAt", type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="Advert", inversedBy="diploma")
-     * @ORM\JoinColumn(name="advert_id", referencedColumnName="advert_id", onDelete="CASCADE"))
+     * @ORM\OneToOne(targetEntity="User", inversedBy="diploma")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE"))
      * @Assert\NotBlank()
      * @JMS\Groups({"hidden"})
      */
-    protected $advert;
+    private $user;
 
     /**
      * Get id
@@ -159,7 +159,7 @@ class Diploma
      *
      * @param \DateTime $createdAt
      *
-     * @return Image
+     * @return Diploma
      */
     public function setCreatedAt($createdAt)
     {
@@ -204,26 +204,21 @@ class Diploma
     }
 
     /**
-     * Set advert
-     *
-     * @param Advert $advert
-     *
-     * @return Diploma
+     * @return mixed
      */
-    public function setAdvert(Advert $advert = null)
+    public function getUser()
     {
-        $this->advert = $advert;
-
-        return $this;
+        return $this->user;
     }
 
     /**
-     * Get advert
+     * @param mixed $user
      *
-     * @return \Entity\Advert
+     * @return Diploma
      */
-    public function getAdvert()
+    public function setUser($user)
     {
-        return $this->advert;
+        $this->user = $user;
+        return $this;
     }
 }

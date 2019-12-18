@@ -2,11 +2,11 @@
 
 namespace App\Controller\Front;
 
-use FOS\RestBundle\Controller\FOSRestController;
-use Symfony\Component\HttpFoundation\Request;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
+use Symfony\Component\HttpFoundation\Request;
 
-class EmailReminderController extends FOSRestController
+class EmailReminderController extends AbstractFOSRestController
 {
     /**
      * @Annotations\View(serializerGroups={"Default", "postEmailReminder"})

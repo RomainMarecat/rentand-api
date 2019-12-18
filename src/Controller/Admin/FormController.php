@@ -2,25 +2,21 @@
 
 namespace App\Controller\Admin;
 
-use FOS\RestBundle\Controller\FOSRestController;
-use FOS\UserBundle\FOSUserEvents;
-use FOS\UserBundle\Event\GetResponseUserEvent;
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpFoundation\Request;
+use App\Services\Params;
 use FOS\RestBundle\Controller\Annotations;
-
-use Doctrine\Common\Collections\ArrayCollection;
+use FOS\RestBundle\Controller\FOSRestController;
+use Symfony\Component\HttpFoundation\Request;
 
 class FormController extends FOSRestController
 {
     /**
      * @Annotations\View(serializerGroups={"Default", "getFormSport"})
+     * @param Request $request
+     * @param Params $params
+     * @return array
      */
-    public function getFormSportAction(Request $request)
+    public function getFormSportAction(Request $request, Params $params)
     {
-
-        $params = $this->get('app.params');
-
         $result = [];
         $result['locales'] = $params->getLocales();
 
@@ -29,16 +25,16 @@ class FormController extends FOSRestController
 
     /**
      * @Annotations\View(serializerGroups={"Default", "getFormFamily"})
+     * @param Request $request
+     * @param Params $params
+     * @return array
      */
-    public function getFormFamilyAction(Request $request)
+    public function getFormFamilyAction(Params $params)
     {
-
-        $params = $this->get('app.params');
-
         $result = [];
         $result['locales'] = $params->getLocales();
-        $result['sports'] = $this->getDoctrine()->getRepository('AppBundle:Sport')->findByLevel(0);
-        $result['families'] = $this->getDoctrine()->getRepository('AppBundle:Family')->findByParent(null);
+        $result['sports'] = $this->getDoctrine()->getRepository('App:Sport')->findByLevel(0);
+        $result['families'] = $this->getDoctrine()->getRepository('App:Family')->findByParent(null);
 
         return $result;
     }
@@ -46,22 +42,22 @@ class FormController extends FOSRestController
     /**
      * @Annotations\View(serializerGroups={"Default", "getFormComment"})
      */
-    public function getFormCommentAction(Request $request)
+    public function getFormCommentAction()
     {
 
-        $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+        $users = $this->getDoctrine()->getRepository('App:User')->findAll();
         $list = [];
         foreach ($users as $user) {
             if ($user->hasRole('ROLE_PART')) {
-                $list[$user->getFirstName()." ".$user->getLastName()] = $user->getId();
+                $list[$user->getFirstName() . " " . $user->getLastName()] = $user->getId();
             }
         }
         $result['users'] = $list;
 
-        $adverts = $this->getDoctrine()->getRepository('AppBundle:Advert')->findAll();
+        $users = $this->getDoctrine()->getRepository('App:Advert')->findAll();
         $list = [];
-        foreach ($adverts as $advert) {
-            $list[$advert->getSlug()] = $advert->getId();
+        foreach ($users as $user) {
+            $list[$user->getSlug()] = $user->getId();
         }
         $result['adverts'] = $list;
 
@@ -70,26 +66,27 @@ class FormController extends FOSRestController
 
     /**
      * @Annotations\View(serializerGroups={"Default", "getFormAdvert"})
+     * @param $type
+     * @param Params $params
+     * @return array
      */
-    public function getFormAdvertAction($type, Request $request)
+    public function getFormAdvertAction($type, Params $params)
     {
-
-        $params = $this->get('app.params');
 
         $result = array('locales' => $params->getLocales());
 
         $result['users'] = [];
         if ($type == 1) {
-            $users = $this->getDoctrine()->getRepository('AppBundle:User')->findAll();
+            $users = $this->getDoctrine()->getRepository('App:User')->findAll();
             $list = [];
             foreach ($users as $user) {
                 if ($user->hasRole('ROLE_MONO')) {
-                    $list[$user->getFirstName(). " " .$user->getLastName()] = $user->getId();
+                    $list[$user->getFirstName() . " " . $user->getLastName()] = $user->getId();
                 }
             }
             $result['users'] = $list;
         }
-        $structures = $this->getDoctrine()->getRepository('AppBundle:structure')->findAll();
+        $structures = $this->getDoctrine()->getRepository('App:structure')->findAll();
         $list = [];
         foreach ($structures as $structure) {
             $list[$structure->getTitle()] = $structure->getId();
@@ -99,7 +96,7 @@ class FormController extends FOSRestController
         $result['levels'] = $params->getLevels();
         $result['ages'] = $params->getAges();
         $result['titles'] = $params->getTitles();
-        $result['sports'] = $this->getDoctrine()->getRepository('AppBundle:Sport')->findByLevel(0);
+        $result['sports'] = $this->getDoctrine()->getRepository('App:Sport')->findByLevel(0);
 
         return $result;
     }

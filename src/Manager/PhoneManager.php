@@ -15,7 +15,7 @@ class PhoneManager
 
     public function get($phone)
     {
-        return $this->getEm()->getRepository('AppBundle:Phone')->findOneById($phone);
+        return $this->getEm()->getRepository('App:Phone')->findOneById($phone);
     }
 
     /**

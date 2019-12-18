@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -12,7 +13,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Campaign
  *
  * @ORM\Table(name="campaign_campaign")
- * @ORM\Entity(repositoryClass="App\Repository\CampaignRepository")
+ * @ORM\Entity()
  */
 class Campaign
 {

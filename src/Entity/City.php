@@ -2,16 +2,18 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
 use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * City
  *
  * @ORM\Table(name="city_city")
- * @ORM\Entity(repositoryClass="Repository\CityRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CityRepository")
  * @JMS\ExclusionPolicy("none")
  */
 class City
@@ -22,17 +24,18 @@ class City
      * @ORM\Column(name="city_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getSimpleSearch", "getAdvancedSearch", "postSimpleSearch", "countPostSimpleSearch"})
+     * @JMS\Groups({"getSimpleSearch", "getAdvancedSearch", "postSimpleSearch", "countPostSimpleSearch", "getCity"})
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
+     * @JMS\Groups({"getCity"})
      */
-    protected $title;
+    private $name;
 
     /**
      * @var string
@@ -40,7 +43,7 @@ class City
      * @ORM\Column(name="googleId", type="string", length=255)
      * @Assert\NotBlank()
      */
-    protected $googleId;
+    private $googleId;
 
     /**
      * @var float
@@ -51,8 +54,9 @@ class City
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
+     * @JMS\Groups({"getCity"})
      */
-    protected $lng;
+    private $lng;
 
     /**
      * @var float
@@ -63,8 +67,9 @@ class City
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
+     * @JMS\Groups({"getCity"})
      */
-    protected $lat;
+    private $lat;
 
     /**
      * @var float
@@ -75,7 +80,7 @@ class City
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
      */
-    protected $north;
+    private $north;
 
     /**
      * @var float
@@ -86,7 +91,7 @@ class City
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
      */
-    protected $south;
+    private $south;
 
     /**
      * @var float
@@ -97,7 +102,7 @@ class City
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
      */
-    protected $east;
+    private $east;
 
     /**
      * @var float
@@ -108,7 +113,7 @@ class City
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
      */
-    protected $west;
+    private $west;
 
     /**
      * @var \DateTime
@@ -116,7 +121,7 @@ class City
      * @ORM\Column(name="createdAt", type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @var \DateTime
@@ -124,256 +129,158 @@ class City
      * @ORM\Column(name="updatedAt", type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Advert", mappedBy="cities", fetch="EXTRA_LAZY")
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="cities", fetch="EXTRA_LAZY")
      * @JMS\Groups({"hidden"})
      */
-    private $adverts;
+    private $users;
 
     /**
-     * @ORM\OneToMany(targetEntity="Meeting", mappedBy="city", cascade={"remove"}, fetch="EXTRA_LAZY")
-     * @JMS\Type("ArrayCollection<Entity\Meeting>")
-     * @JMS\Groups({"hidden"})
+     * @ORM\OneToMany(targetEntity="MeetingPoint", mappedBy="city")
      */
-    protected $meetings;
-
+    private $meetingPoints;
 
     /**
-     * Get id
-     *
-     * @return integer
+     * Constructor
      */
-    public function getId()
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+        $this->meetingPoints = new ArrayCollection();
+    }
+
+    /**
+     * @JMS\VirtualProperty()
+     * @JMS\SerializedName("meeting_points")
+     * @JMS\Groups({"getCity"})
+     * @return array
+     */
+    public function getMeetingPointsData()
+    {
+        return $this->meetingPoints->toArray();
+    }
+
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return City
-     */
-    public function setTitle($title)
+    public function getName(): ?string
     {
-        $this->title = $title;
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
+    public function getGoogleId(): ?string
     {
-        return $this->title;
+        return $this->googleId;
     }
 
-    /**
-     * Set googleId
-     *
-     * @param string $googleId
-     *
-     * @return City
-     */
-    public function setGoogleId($googleId)
+    public function setGoogleId(string $googleId): self
     {
         $this->googleId = $googleId;
 
         return $this;
     }
 
-    /**
-     * Get googleId
-     *
-     * @return string
-     */
-    public function getGoogleId()
+    public function getLng(): ?float
     {
-        return $this->googleId;
+        return $this->lng;
     }
 
-    /**
-     * Set lng
-     *
-     * @param float $lng
-     *
-     * @return City
-     */
-    public function setLng($lng)
+    public function setLng(float $lng): self
     {
         $this->lng = $lng;
 
         return $this;
     }
 
-    /**
-     * Get lng
-     *
-     * @return float
-     */
-    public function getLng()
+    public function getLat(): ?float
     {
-        return $this->lng;
+        return $this->lat;
     }
 
-    /**
-     * Set lat
-     *
-     * @param float $lat
-     *
-     * @return City
-     */
-    public function setLat($lat)
+    public function setLat(float $lat): self
     {
         $this->lat = $lat;
 
         return $this;
     }
 
-    /**
-     * Get lat
-     *
-     * @return float
-     */
-    public function getLat()
+    public function getNorth(): ?float
     {
-        return $this->lat;
+        return $this->north;
     }
 
-    /**
-     * Set north
-     *
-     * @param float $north
-     *
-     * @return City
-     */
-    public function setNorth($north)
+    public function setNorth(?float $north): self
     {
         $this->north = $north;
 
         return $this;
     }
 
-    /**
-     * Get north
-     *
-     * @return float
-     */
-    public function getNorth()
+    public function getSouth(): ?float
     {
-        return $this->north;
+        return $this->south;
     }
 
-    /**
-     * Set south
-     *
-     * @param float $south
-     *
-     * @return City
-     */
-    public function setSouth($south)
+    public function setSouth(?float $south): self
     {
         $this->south = $south;
 
         return $this;
     }
 
-    /**
-     * Get south
-     *
-     * @return float
-     */
-    public function getSouth()
+    public function getEast(): ?float
     {
-        return $this->south;
+        return $this->east;
     }
 
-    /**
-     * Set east
-     *
-     * @param float $east
-     *
-     * @return City
-     */
-    public function setEast($east)
+    public function setEast(?float $east): self
     {
         $this->east = $east;
 
         return $this;
     }
 
-    /**
-     * Get east
-     *
-     * @return float
-     */
-    public function getEast()
+    public function getWest(): ?float
     {
-        return $this->east;
+        return $this->west;
     }
 
-    /**
-     * Set west
-     *
-     * @param float $west
-     *
-     * @return City
-     */
-    public function setWest($west)
+    public function setWest(?float $west): self
     {
         $this->west = $west;
 
         return $this;
     }
 
-    /**
-     * Get west
-     *
-     * @return float
-     */
-    public function getWest()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->west;
+        return $this->createdAt;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return City
-     */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->createdAt;
+        return $this->updatedAt;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return City
-     */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
@@ -381,88 +288,61 @@ class City
     }
 
     /**
-     * Get updatedAt
-     *
-     * @return \DateTime
+     * @return Collection|User[]
      */
-    public function getUpdatedAt()
+    public function getUsers(): Collection
     {
-        return $this->updatedAt;
+        return $this->users;
     }
 
-    /**
-     * Constructor
-     */
-    public function __construct()
+    public function addUser(User $user): self
     {
-        $this->adverts = new \Doctrine\Common\Collections\ArrayCollection();
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addCity($this);
+        }
+
+        return $this;
     }
 
-    /**
-     * Add advert
-     *
-     * @param Advert $advert
-     *
-     * @return City
-     */
-    public function addAdvert(Advert $advert)
+    public function removeUser(User $user): self
     {
-        $this->adverts[] = $advert;
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeCity($this);
+        }
 
         return $this;
     }
 
     /**
-     * Remove advert
-     *
-     * @param Advert $advert
+     * @return Collection|MeetingPoint[]
      */
-    public function removeAdvert(Advert $advert)
+    public function getMeetingPoints(): Collection
     {
-        $this->adverts->removeElement($advert);
+        return $this->meetingPoints;
     }
 
-    /**
-     * Get adverts
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAdverts()
+    public function addMeetingPoint(MeetingPoint $meetingPoint): self
     {
-        return $this->adverts;
-    }
-
-    /**
-     * Add meeting
-     *
-     * @param Meeting $meeting
-     *
-     * @return City
-     */
-    public function addMeeting(Meeting $meeting)
-    {
-        $this->meetings[] = $meeting;
+        if (!$this->meetingPoints->contains($meetingPoint)) {
+            $this->meetingPoints[] = $meetingPoint;
+            $meetingPoint->setCity($this);
+        }
 
         return $this;
     }
 
-    /**
-     * Remove meeting
-     *
-     * @param Meeting $meeting
-     */
-    public function removeMeeting(Meeting $meeting)
+    public function removeMeetingPoint(MeetingPoint $meetingPoint): self
     {
-        $this->meetings->removeElement($meeting);
-    }
+        if ($this->meetingPoints->contains($meetingPoint)) {
+            $this->meetingPoints->removeElement($meetingPoint);
+            // set the owning side to null (unless already changed)
+            if ($meetingPoint->getCity() === $this) {
+                $meetingPoint->setCity(null);
+            }
+        }
 
-    /**
-     * Get meetings
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getMeetings()
-    {
-        return $this->meetings;
+        return $this;
     }
 }

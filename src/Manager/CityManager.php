@@ -26,24 +26,24 @@ class CityManager
 
     public function get($city)
     {
-        return $this->getEm()->getRepository('AppBundle:City')->findOneById($city);
+        return $this->getEm()->getRepository('App:City')->findOneById($city);
     }
 
     public function getGoogleId($city)
     {
-        $city = $this->getEm()->getRepository('AppBundle:City')->findOneById($city);
+        $city = $this->getEm()->getRepository('App:City')->findOneById($city);
 
         return $city->getGoogleId();
     }
 
     public function getCityByGoogleId($googleId)
     {
-        return $this->getEm()->getRepository('AppBundle:City')->findOneByGoogleId($googleId);
+        return $this->getEm()->getRepository('App:City')->findOneByGoogleId($googleId);
     }
 
     public function getMeetings($city)
     {
-        $meetings = $this->getEm()->getRepository('AppBundle:Meeting')->findByCity($city);
+        $meetings = $this->getEm()->getRepository('App:MeetingPoint')->findByCity($city);
 
         return $meetings;
     }
@@ -110,7 +110,7 @@ class CityManager
 
     public function registerCitiesOld()
     {
-        $citiesInDB = $this->getEm()->getRepository('AppBundle:City')->findAll();
+        $citiesInDB = $this->getEm()->getRepository('App:City')->findAll();
         if (!empty($citiesInDB)) {
             $this->logger->warning(
                 'Data already here'

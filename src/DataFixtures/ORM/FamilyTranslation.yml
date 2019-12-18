@@ -1,7 +1,7 @@
 App\Entity\FamilyTranslation:
-    familyTranslation{1..1000}:
+    familyTranslation{1..10}:
         locale: '75%? fr : <languageCode()>'
         title: <text(20)>
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
-        family: '@family<numberBetween(1, 100)>'
+#        family: '@family<numberBetween(1, 10)>'

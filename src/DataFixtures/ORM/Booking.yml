@@ -1,5 +1,5 @@
 App\Entity\Booking:
-    booking{1..100}:
+    booking{1..10}:
         walletId: <creditCardNumber()>
         statut: <numberBetween(1, 100)>
         transaction: <swiftBicNumber()>
@@ -9,5 +9,5 @@ App\Entity\Booking:
         endDate: <dateTime()>
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
-        user: '@user<numberBetween(1, 100)>'
-        advert: '@advert<numberBetween(1, 100)>'
+#        user: '@user<numberBetween(1, 10)>'
+#        advert: '@advert<numberBetween(1, 10)>'

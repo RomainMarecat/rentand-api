@@ -32,7 +32,7 @@ class PlanningController extends FOSRestController
 
     public function getUserLocaleAction(Request $request, $id, $locale)
     {
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->findOneByPlanningId($id);
+        $user = $this->getDoctrine()->getRepository('App:User')->findOneByPlanningId($id);
 
         if (!is_object($user) || ($locale != 'fr' && $locale != 'en')) {
             return false;
@@ -43,45 +43,45 @@ class PlanningController extends FOSRestController
         $dataUser = [];
 
 
-        $adverts = $user->getAdverts()->map(function ($item) {
+        $users = $user->getAdverts()->map(function ($item) {
             if ($item->getEnabled()) {
                 return $item;
             }
         });
 
-        foreach ($adverts as $advert) {
-            if (!is_null($advert)) {
-                $dataUser[$advert->getId()] = array(
-                    'title' => $titles[$advert->getTitle()][$locale],
+        foreach ($users as $user) {
+            if (!is_null($user)) {
+                $dataUser[$user->getId()] = array(
+                    'title' => $titles[$user->getTitle()][$locale],
                     'sports' => array(),
                     'cities' => array()
                 );
-                $advertId = $advert->getId();
+                $userId = $user->getId();
 
 
-                if (!is_null($advert->getSports())) {
-                    foreach ($advert->getSports() as $sport) {
+                if (!is_null($user->getSports())) {
+                    foreach ($user->getSports() as $sport) {
                         $sportId = $sport->getId();
-                        $dataUser[$advertId]['sports'][$sportId] = array('title' => $sport->getSport()->getTranslations()[$locale]->getTitle());
+                        $dataUser[$userId]['sports'][$sportId] = array('title' => $sport->getSport()->getTranslations()[$locale]->getTitle());
 
                         if (!is_null($sport->getSpecialities())) {
                             foreach ($sport->getSpecialities() as $speciality) {
                                 $specialityId = $speciality->getId();
-                                $dataUser[$advertId]['sports'][$sportId]['specialities'][$specialityId] = $speciality->getTranslations()[$locale]->getTitle();
+                                $dataUser[$userId]['sports'][$sportId]['specialities'][$specialityId] = $speciality->getTranslations()[$locale]->getTitle();
                             }
                         }
                     }
                 }
 
-                if (!is_null($advert->getCities())) {
-                    foreach ($advert->getCities() as $city) {
+                if (!is_null($user->getCities())) {
+                    foreach ($user->getCities() as $city) {
                         $cityId = $city->getGoogleId();
 
-                        $dataUser[$advertId]['cities'][$cityId] = array('title' => $city->getTitle());
+                        $dataUser[$userId]['cities'][$cityId] = array('title' => $city->getTitle());
                         foreach ($city->getMeetings() as $meeting) {
-                            if ($meeting->getAdvert() == $advert) {
+                            if ($meeting->getAdvert() == $user) {
                                 $meetingId = $meeting->getId();
-                                $dataUser[$advertId]['cities'][$cityId]['meetings'][$meetingId] = $meeting->getTitle();
+                                $dataUser[$userId]['cities'][$cityId]['meetings'][$meetingId] = $meeting->getTitle();
                             }
                         }
                     }

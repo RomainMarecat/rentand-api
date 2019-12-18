@@ -49,12 +49,12 @@ class MeController extends FOSRestController
             throw $this->createNotFoundException();
         }
 
-        $adverts = $user->getAdverts();
+        $users = $user->getAdverts();
         $res = array(
             'status' => 0,
             'picture' => ""
         );
-        foreach ($adverts as $item) {
+        foreach ($users as $item) {
             if ($item->getStatut() == 1 && $item->getEnabled()) {
                 if (is_object($item->getImage())) {
                     $img = $item->getImage()->getFilename() . "." . $item->getImage()->getExt();
@@ -167,8 +167,8 @@ class MeController extends FOSRestController
             throw $this->createNotFoundException();
         }
 
-        $adverts = $user->getAdverts();
-        $adverts = $adverts->map(function ($item) {
+        $users = $user->getAdverts();
+        $users = $users->map(function ($item) {
             // return $item->getEnabled();
             if ($item->getEnabled()) {
                 return $item;
@@ -178,7 +178,7 @@ class MeController extends FOSRestController
         $params = $this->get('app.params')->getTitles();
 
         return array(
-            'adverts' => $adverts,
+            'adverts' => $users,
             'params' => $params);
     }
 
@@ -188,11 +188,11 @@ class MeController extends FOSRestController
     public function getAdvertAction($id)
     {
 
-        $advert = $this->getDoctrine()->getRepository('AppBundle:Advert')->find($id);
-        if (!is_object($advert)) {
+        $user = $this->getDoctrine()->getRepository('App:Advert')->find($id);
+        if (!is_object($user)) {
             throw $this->createNotFoundException();
         }
-        return $advert;
+        return $user;
     }
 
     /**
@@ -202,7 +202,7 @@ class MeController extends FOSRestController
     {
         /**
          * UGLY UGLY UGLY !
-         * @todo repository AppBundle:Booking request with partial {booking, courses, user}
+         * @todo repository App:Booking request with partial {booking, courses, user}
          * @since return $user->getBookings();
          */
         $user = $this->getUser();
@@ -220,7 +220,7 @@ class MeController extends FOSRestController
     {
         /**
          * UGLY UGLY UGLY !
-         * @todo repository AppBundle:Booking request with partial {booking, courses, user}
+         * @todo repository App:Booking request with partial {booking, courses, user}
          * @since return $user->getBookings();
          */
         $user = $this->getUser();
@@ -236,7 +236,7 @@ class MeController extends FOSRestController
      */
     public function getBookingAction($id)
     {
-        $booking = $this->getDoctrine()->getRepository('AppBundle:Booking')->find($id);
+        $booking = $this->getDoctrine()->getRepository('App:Booking')->find($id);
         if (!is_object($booking)) {
             throw $this->createNotFoundException();
         }
@@ -266,52 +266,52 @@ class MeController extends FOSRestController
         // add new advert without city nor sports
         $dataEncode = json_encode($data);
         $serializer = $this->get('serializer');
-        $advert = $serializer->deserialize($dataEncode, 'Entity\Advert', 'json');
-        $advert->setStatut(0);
-        $advert->setEnabled(1);
+        $user = $serializer->deserialize($dataEncode, 'Entity\Advert', 'json');
+        $user->setStatut(0);
+        $user->setEnabled(1);
 
         // add advert relation to user
-        $advert->setUser($user);
-        $advert->setFirstName($user->getFirstName());
-        $advert->setLastName($user->getLastName());
+        $user->setUser($user);
+        $user->setFirstName($user->getFirstName());
+        $user->setLastName($user->getLastName());
 
         // add translations relation
-        foreach ($advert->getTranslations() as $translation) {
-            $translation->setAdvert($advert);
+        foreach ($user->getTranslations() as $translation) {
+            $translation->setAdvert($user);
         }
 
         // add cities to advert depending if city already exists or not
-        $advert = $this->addCities($dataCities, $advert, $serializer);
+        $user = $this->addCities($dataCities, $user, $serializer);
 
         //add diploma to advert
-        $advert = $this->addDiploma($dataDiploma, $advert);
+        $user = $this->addDiploma($dataDiploma, $user);
 
         //add image to advert
         if ($dataImage) {
-            $advert = $this->addImage($dataImage, $advert);
+            $user = $this->addImage($dataImage, $user);
         }
 
         // add sports to advert
         foreach ($dataSports as $sport) {
-            $advert = $this->addSport($sport, $advert, $serializer);
+            $user = $this->addSport($sport, $user, $serializer);
         }
 
         $validator = $this->get('validator');
-        $errors = $validator->validate($advert);
+        $errors = $validator->validate($user);
         if (count($errors) > 0) {
             throw new HttpException(400, 'Invalid advert: ' . $errors);
         }
 
         $em = $this->getDoctrine()->getManager();
-        $em->persist($advert);
+        $em->persist($user);
         $em->flush();
 
         //rename image with slug
-        $advert = $this->renameImages($advert, 'img');
-        $advert = $this->renameImages($advert, 'diploma');
-        $advert = $this->renameImages($advert, 'sports');
+        $user = $this->renameImages($user, 'img');
+        $user = $this->renameImages($user, 'diploma');
+        $user = $this->renameImages($user, 'sports');
 
-        return $advert;
+        return $user;
     }
 
     /**
@@ -321,8 +321,8 @@ class MeController extends FOSRestController
     {
 
         $user = $this->getUser();
-        $advert = $this->getDoctrine()->getRepository('AppBundle:Advert')->find($id);
-        if (($advert->getUser() != $user) && ($advert->getStructure() != $user->getStructure())) {
+        $user = $this->getDoctrine()->getRepository('App:Advert')->find($id);
+        if (($user->getUser() != $user) && ($user->getStructure() != $user->getStructure())) {
             throw new HttpException(400, 'Invalid access');
         }
 
@@ -333,79 +333,79 @@ class MeController extends FOSRestController
         $serializer = $this->get('serializer');
 
         if ($type == 'lang') {
-            $advert->setLanguages($data['languages']);
+            $user->setLanguages($data['languages']);
         } elseif ($type == 'desc') {
             foreach ($data['translations'] as $translation) {
-                $editedTrans = $this->getDoctrine()->getRepository('AppBundle:AdvertTranslation')->findOneBy(array('locale' => $translation['locale'], 'advert' => $advert));
+                $editedTrans = $this->getDoctrine()->getRepository('App:AdvertTranslation')->findOneBy(array('locale' => $translation['locale'], 'advert' => $user));
                 $editedTrans->setDescription1($translation['description1']);
                 $editedTrans->setDescription2($translation['description2']);
                 $editedTrans->setDescription3($translation['description3']);
                 $em->persist($editedTrans);
             }
         } elseif ($type == 'img') {
-            if ($advert->getImage()) {
-                $em->remove($advert->getImage());
+            if ($user->getImage()) {
+                $em->remove($user->getImage());
                 $em->flush();
             }
-            $advert = $this->addImage($data['image'], $advert);
+            $user = $this->addImage($data['image'], $user);
         } elseif ($type == 'title') {
-            $advert->setTitle($data['title']);
+            $user->setTitle($data['title']);
         } elseif ($type == 'diploma') {
-            if ($advert->getDiploma() == null) {
+            if ($user->getDiploma() == null) {
                 $diploma = new diploma;
-                $diploma->setAdvert($advert);
-                $advert->setDiploma($diploma);
+                $diploma->setAdvert($user);
+                $user->setDiploma($diploma);
             }
-            $advert->getDiploma()->setTitle($data['diploma']);
+            $user->getDiploma()->setTitle($data['diploma']);
         } elseif ($type == 'proCard') {
-            $advert = $this->addDiploma($data, $advert);
+            $user = $this->addDiploma($data, $user);
         } elseif ($type == 'passions') {
-            $advert->setPassions($data['passions']);
+            $user->setPassions($data['passions']);
         } elseif ($type == 'sports') {
             foreach ($data['sports'] as $id => $sport) {
                 if ($sport['id'] == 'remove') {
-                    $sport = $this->getDoctrine()->getRepository('AppBundle:Sport')->find($id);
-                    $removedSport = $this->getDoctrine()->getRepository('AppBundle:AdvertSport')->findOneBy(array('sport' => $sport, 'advert' => $advert));
+                    $sport = $this->getDoctrine()->getRepository('App:Sport')->find($id);
+                    $removedSport = $this->getDoctrine()->getRepository('App:AdvertSport')->findOneBy(array('sport' => $sport, 'advert' => $user));
                     if (is_object($removedSport)) {
-                        $advert->removeSport($removedSport);
+                        $user->removeSport($removedSport);
                         $removedSport->setAdvert(null);
                     }
                 } else {
-                    $sportExist = $this->getDoctrine()->getRepository('AppBundle:Sport')->find($id);
-                    $removedSport = $this->getDoctrine()->getRepository('AppBundle:AdvertSport')->findOneBy(array('sport' => $sportExist, 'advert' => $advert));
+                    $sportExist = $this->getDoctrine()->getRepository('App:Sport')->find($id);
+                    $removedSport = $this->getDoctrine()->getRepository('App:AdvertSport')->findOneBy(array('sport' => $sportExist, 'advert' => $user));
                     if (is_object($removedSport)) {
-                        $advert->removeSport($removedSport);
+                        $user->removeSport($removedSport);
                         $removedSport->setAdvert(null);
                     }
                     $sport['id'] = $id;
-                    $advert = $this->addSport($sport, $advert, $serializer);
+                    $user = $this->addSport($sport, $user, $serializer);
                 }
             }
         } elseif ($type == 'cities') {
-            foreach ($advert->getMeetings() as $meeting) {
-                $advert->removeMeeting($meeting);
+            foreach ($user->getMeetings() as $meeting) {
+                $user->removeMeeting($meeting);
                 $meeting->setAdvert(null);
             }
-            foreach ($advert->getCities() as $city) {
-                $advert->removeCity($city);
+            foreach ($user->getCities() as $city) {
+                $user->removeCity($city);
             }
-            $advert = $this->addCities($data['cities'], $advert, $serializer);
+            $user = $this->addCities($data['cities'], $user, $serializer);
         } elseif ($type == 'cancel') {
-            $advert->setCancel($data['cancel']);
+            $user->setCancel($data['cancel']);
         }
 
         $validator = $this->get('validator');
-        $errors = $validator->validate($advert);
+        $errors = $validator->validate($user);
         if (count($errors) > 0) {
             throw new HttpException(400, 'Invalid advert: ' . $errors);
         }
 
-        $em->persist($advert);
+        $em->persist($user);
         $em->flush();
 
         //rename image with slug
         if ($type == 'sports' || $type == 'img') {
-            $advert = $this->renameImages($advert, $type);
+            $user = $this->renameImages($user, $type);
         }
 
         return array();
@@ -418,17 +418,17 @@ class MeController extends FOSRestController
     {
 
         $user = $this->getUser();
-        $advert = $this->getDoctrine()->getRepository('AppBundle:Advert')->find($id);
-        if (!is_object($advert)) {
+        $user = $this->getDoctrine()->getRepository('App:Advert')->find($id);
+        if (!is_object($user)) {
             throw $this->createNotFoundException();
         }
-        if (($advert->getUser() != $user) && ($advert->getStructure()->getUser() != $user)) {
+        if (($user->getUser() != $user) && ($user->getStructure()->getUser() != $user)) {
             throw new HttpException(400, 'Invalid access');
         }
 
         $em = $this->getDoctrine()->getManager();
-        $advert->setEnabled(0);
-        $em->merge($advert);
+        $user->setEnabled(0);
+        $em->merge($user);
         $em->flush();
 
         return $user;
@@ -468,12 +468,12 @@ class MeController extends FOSRestController
         );
     }
 
-    private function addCities($data, $advert, $serializer)
+    private function addCities($data, $user, $serializer)
     {
         foreach ($data as $dataCity) {
             $dataMeetings = $dataCity['meetings'];
             unset($dataCity['meetings']);
-            $city = $this->getDoctrine()->getRepository('AppBundle:City')->findOneByGoogleId($dataCity['googleId']);
+            $city = $this->getDoctrine()->getRepository('App:City')->findOneByGoogleId($dataCity['googleId']);
             if (!is_object($city)) {
                 $city = $serializer->deserialize(json_encode($dataCity), 'Entity\City', 'json');
                 $em = $this->getDoctrine()->getManager();
@@ -482,24 +482,24 @@ class MeController extends FOSRestController
             foreach ($dataMeetings as $dataMeeting) {
                 $meeting = $serializer->deserialize(json_encode($dataMeeting), 'Entity\Meeting', 'json');
                 $meeting->setCity($city);
-                $meeting->setAdvert($advert);
-                $advert->addMeeting($meeting);
+                $meeting->setAdvert($user);
+                $user->addMeeting($meeting);
             }
-            $advert->addCity($city);
-            $city->addAdvert($advert);
+            $user->addCity($city);
+            $city->addAdvert($user);
         }
-        return $advert;
+        return $user;
     }
 
-    private function addDiploma($data, $advert)
+    private function addDiploma($data, $user)
     {
         // create object
-        if (is_null($advert->getDiploma())) {
+        if (is_null($user->getDiploma())) {
             $diploma = new diploma;
-            $diploma->setAdvert($advert);
-            $advert->setDiploma($diploma);
+            $diploma->setAdvert($user);
+            $user->setDiploma($diploma);
         } else {
-            $diploma = $advert->getDiploma();
+            $diploma = $user->getDiploma();
         }
 
         // Add Title
@@ -510,7 +510,7 @@ class MeController extends FOSRestController
         // add pro card
         if (isset($data['file_name'])) {
             $ext = explode(".", $data['file_name'])[1];
-            $diploma->setFilename($advert->getUser()->getId());
+            $diploma->setFilename($user->getUser()->getId());
             $diploma->setExt($ext);
             $string = base64_decode(urldecode($data['file']));
             $folder = $this->getParameter('folder_temp');
@@ -521,16 +521,16 @@ class MeController extends FOSRestController
         }
 
 
-        return $advert;
+        return $user;
     }
 
-    private function addImage($data, $advert)
+    private function addImage($data, $user)
     {
         $image = new image;
-        $image->setFilename($advert->getUser()->getId());
+        $image->setFilename($user->getUser()->getId());
         $image->setExt("png");
-        $image->setAdvert($advert);
-        $advert->setImage($image);
+        $image->setAdvert($user);
+        $user->setImage($image);
 
         $string = base64_decode($data);
         $folder = $this->container->getParameter('folder_temp');
@@ -539,7 +539,7 @@ class MeController extends FOSRestController
 
         $this->createFile($string, $fileName, $fileExt, $folder);
 
-        return $advert;
+        return $user;
     }
 
     private function createFile($string, $fileName, $fileExt, $folder)
@@ -551,17 +551,17 @@ class MeController extends FOSRestController
         return true;
     }
 
-    private function renameImages($advert, $type = null)
+    private function renameImages($user, $type = null)
     {
 
         $em = $this->getDoctrine()->getManager();
         $folder_temp = $this->getParameter('folder_temp');
         $diploma_folder = $this->getParameter('folder_diploma');
         $folder_image = $this->getParameter('folder_image');
-        $slug = $advert->getSlug();
+        $slug = $user->getSlug();
 
         if ($type == 'img') {
-            $image = $advert->getImage();
+            $image = $user->getImage();
             if ($image) {
                 $old_path = './' . $folder_temp . "/" . $image->getFileName() . "." . $image->getExt();
                 $new_path = './' . $folder_image . "/" . $slug . "." . $image->getExt();
@@ -575,7 +575,7 @@ class MeController extends FOSRestController
         }
 
         if ($type === 'diploma') {
-            $diploma = $advert->getDiploma();
+            $diploma = $user->getDiploma();
             if ($diploma) {
                 if (!is_null($diploma->getFileName()) and !is_null($diploma->getExt())) {
                     $old_path = './' . $folder_temp . "/" . $diploma->getFileName() . "." . $diploma->getExt();
@@ -592,7 +592,7 @@ class MeController extends FOSRestController
         }
 
         if ($type == 'sports') {
-            foreach ($advert->getSports() as $sport) {
+            foreach ($user->getSports() as $sport) {
                 if ($sport->getPictures() != null) {
                     $loop = 1;
                     foreach ($sport->getPictures() as $picture) {
@@ -616,13 +616,13 @@ class MeController extends FOSRestController
 
         $em->flush();
 
-        return $advert;
+        return $user;
     }
 
 
-    private function addSport($data, $advert, $serializer)
+    private function addSport($data, $user, $serializer)
     {
-        $sport = $this->getDoctrine()->getRepository('AppBundle:Sport')->find($data['id']);
+        $sport = $this->getDoctrine()->getRepository('App:Sport')->find($data['id']);
 
         if (is_object($sport)) {
             unset($data['id']);
@@ -632,10 +632,10 @@ class MeController extends FOSRestController
             unset($data['specialities']);
 
             $newSport = $serializer->deserialize(json_encode($data), 'Entity\AdvertSport', 'json');
-            $newSport->setAdvert($advert);
+            $newSport->setAdvert($user);
             $newSport->setSport($sport);
             $newSport->setOrderNumber(0);
-            $advert->addSport($newSport);
+            $user->addSport($newSport);
 
             // add translations relation
             foreach ($newSport->getTranslations() as $translation) {
@@ -643,7 +643,7 @@ class MeController extends FOSRestController
             }
 
             foreach ($dataSpecialities as $newSpeciality) {
-                $speciality = $this->getDoctrine()->getRepository('AppBundle:Sport')->find($newSpeciality);
+                $speciality = $this->getDoctrine()->getRepository('App:Sport')->find($newSpeciality);
                 if (is_object($speciality)) {
                     $newSport->addSpeciality($speciality);
                 }
@@ -652,7 +652,7 @@ class MeController extends FOSRestController
             $loop = 1;
             foreach ($dataPictures as $picture) {
                 $image = new image;
-                $image->setFilename($advert->getUser()->getId() . "_" . $sport->getSlug() . "_" . $loop);
+                $image->setFilename($user->getUser()->getId() . "_" . $sport->getSlug() . "_" . $loop);
                 $image->setExt("png");
                 $image->setAdvertSport($newSport);
                 $newSport->addPicture($image);
@@ -666,7 +666,7 @@ class MeController extends FOSRestController
                 $loop++;
             }
 
-            return $advert;
+            return $user;
         }
     }
 
@@ -683,15 +683,15 @@ class MeController extends FOSRestController
         }
 
         $user = $this->getUser();
-        $advert = $this->getDoctrine()->getRepository('AppBundle:Advert')->find($data['advert']);
+        $user = $this->getDoctrine()->getRepository('App:Advert')->find($data['advert']);
         $comment = new Comment();
-        if (!is_object($comment) || !is_object($advert) || !is_object($user)) {
+        if (!is_object($comment) || !is_object($user) || !is_object($user)) {
             throw $this->createNotFoundException();
         }
 
         /* Setting comment */
         $comment->setUser($user);
-        $comment->setAdvert($advert);
+        $comment->setAdvert($user);
         $comment->setGrade($data['grade']);
         $comment->setComment($data['comment']);
         $comment->setValidated(0);

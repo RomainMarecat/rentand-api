@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation as JMS;
  * Course
  *
  * @ORM\Table(name="course_course")
- * @ORM\Entity(repositoryClass="Repository\CourseRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\CourseRepository")
  */
 class Course
 {

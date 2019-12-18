@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query;
 
 /**
@@ -12,6 +13,54 @@ use Doctrine\ORM\Query;
  */
 class UserRepository extends AbstractEntityRepository
 {
+    public function getUsers()
+    {
+        $query = $this->createQueryBuilder('entity');
+        $query
+            ->addSelect('partial entity.{id}')
+            ->addSelect('partial appMetadata.{id}')
+            ->addSelect('partial userMetadata.{id, firstname, lastname, slug}')
+            ->addSelect('partial media.{id,filename}')
+            ->leftJoin('entity.appMetadata', 'appMetadata')
+            ->leftJoin('entity.userMetadata', 'userMetadata')
+            ->leftJoin('userMetadata.media', 'media')
+            ->andWhere('appMetadata.coach = 1')
+            ->andWhere('entity.enabled = 1');
+
+        return $query->getQuery()
+            ->setHint(Query::HINT_FORCE_PARTIAL_LOAD, true)
+            ->getResult();
+    }
+
+    public function getUser(string $slug)
+    {
+        $query = $this->createQueryBuilder('entity');
+        $query
+            ->addSelect('partial entity.{id}')
+            ->addSelect('partial appMetadata.{id}')
+            ->addSelect('partial userMetadata.{id, firstname, lastname, slug, languages, birthday, nationality}')
+            ->addSelect('partial media.{id,filename}')
+            ->addSelect('partial sportsTeached.{id, orderNumber, ages, levels, translations}')
+            ->addSelect('partial sport.{id, name, slug, level, translations}')
+            ->leftJoin('entity.appMetadata', 'appMetadata')
+            ->leftJoin('entity.userMetadata', 'userMetadata')
+            ->leftJoin('userMetadata.media', 'media')
+            ->leftJoin('entity.sportsTeached', 'sportsTeached')
+            ->leftJoin('sportsTeached.sport', 'sport')
+            ->andWhere('userMetadata.slug = :slug')
+            ->setParameter('slug', $slug)
+            ->andWhere('appMetadata.coach = 1')
+            ->andWhere('entity.enabled = 1');
+
+        try {
+            return $query->getQuery()
+                ->setHint(Query::HINT_FORCE_PARTIAL_LOAD, true)
+                ->getOneOrNullResult();
+        } catch (NonUniqueResultException $e) {
+            return null;
+        }
+    }
+
     public function findUsersIdByMangopayId($mangopayId)
     {
         $query = $this->createQueryBuilder('entity');
@@ -76,14 +125,14 @@ class UserRepository extends AbstractEntityRepository
         return $query->getQuery()->getResult(Query::HYDRATE_ARRAY);
     }
 
-    public function findPartialOneByAdvert($advert)
+    public function findPartialOneByAdvert($user)
     {
         $query = $this->createQueryBuilder('entity');
         $query
             ->select('partial entity.{id, email, firstName}')
             ->innerJoin('entity.adverts', 'advert')
             ->andWhere('advert.id = :advert')
-            ->setParameter('advert', $advert);
+            ->setParameter('advert', $user);
 
         return $query->getQuery()->getOneOrNullResult(Query::HYDRATE_ARRAY);
     }

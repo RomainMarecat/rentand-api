@@ -1,5 +1,5 @@
 App\Entity\Phone:
-    phone{1..100}:
+    phone{1..10}:
         number: <numberBetween(10, 3000000)>
         countryCode: <numberBetween(1, 55)>
         countryNumber: <numberBetween(1000000000, 9999999999)>

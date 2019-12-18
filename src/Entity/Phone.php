@@ -81,12 +81,12 @@ class Phone
     protected $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="User", inversedBy="phone")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE"))
+     * @ORM\OneToOne(targetEntity="UserMetadata", inversedBy="phone")
+     * @ORM\JoinColumn(name="user_metadata_id", referencedColumnName="user_metadata_id", onDelete="CASCADE"))
      * @JMS\Exclude
      * @JMS\Groups({"hidden"})
      */
-    protected $user;
+    protected $userMetadata;
 
     /**
      * Get id
@@ -243,7 +243,7 @@ class Phone
     /**
      * Get user
      *
-     * @return \Entity\User
+     * @return User
      */
     public function getUser()
     {
@@ -296,5 +296,17 @@ class Phone
     public function getCountryNumber()
     {
         return $this->countryNumber;
+    }
+
+    public function getUserMetadata(): ?UserMetadata
+    {
+        return $this->userMetadata;
+    }
+
+    public function setUserMetadata(?UserMetadata $userMetadata): self
+    {
+        $this->userMetadata = $userMetadata;
+
+        return $this;
     }
 }

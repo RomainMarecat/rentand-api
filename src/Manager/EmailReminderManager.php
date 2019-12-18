@@ -20,11 +20,11 @@ class EmailReminderManager
 
     protected $meetingManager;
 
-    protected $advertManager;
+    protected $userManager;
 
     protected $cityManager;
 
-    protected $advertSportManager;
+    protected $userSportManager;
 
     protected $sportManager;
 
@@ -35,10 +35,10 @@ class EmailReminderManager
         try {
             $this->getLogger()->info("debug course", array($course));
             if (isset($course['sport'])) {
-                $advertSport = $this->getAdvertSportManager()->getAdvertSportById($course['sport']);
-                $this->getLogger()->debug("debug advertSport", array('instanceof advertSport' => $advertSport instanceof AdvertSport));
-                if ($advertSport instanceof AdvertSport and method_exists($advertSport, 'getSport')) {
-                    $course['sport'] = $this->getSportManager()->get($advertSport->getSport());
+                $userSport = $this->getAdvertSportManager()->getAdvertSportById($course['sport']);
+                $this->getLogger()->debug("debug advertSport", array('instanceof advertSport' => $userSport instanceof AdvertSport));
+                if ($userSport instanceof AdvertSport and method_exists($userSport, 'getSport')) {
+                    $course['sport'] = $this->getSportManager()->get($userSport->getSport());
                 }
             }
             if (isset($course['profile'])) {
@@ -169,13 +169,13 @@ class EmailReminderManager
     /**
      * Sets the value of advertManager.
      *
-     * @param mixed $advertManager the advert manager
+     * @param mixed $userManager the advert manager
      *
      * @return self
      */
-    public function setAdvertManager($advertManager)
+    public function setAdvertManager($userManager)
     {
-        $this->advertManager = $advertManager;
+        $this->advertManager = $userManager;
 
         return $this;
     }
@@ -217,13 +217,13 @@ class EmailReminderManager
     /**
      * Sets the value of advertSportManager.
      *
-     * @param mixed $advertSportManager the advert sport manager
+     * @param mixed $userSportManager the advert sport manager
      *
      * @return self
      */
-    public function setAdvertSportManager($advertSportManager)
+    public function setAdvertSportManager($userSportManager)
     {
-        $this->advertSportManager = $advertSportManager;
+        $this->advertSportManager = $userSportManager;
 
         return $this;
     }

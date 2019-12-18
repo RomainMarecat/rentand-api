@@ -24,21 +24,21 @@ class Address
      * @ORM\GeneratedValue(strategy="UUID")
      * @JMS\Exclude
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="street", type="string", length=255, nullable=true)
      */
-    protected $street;
+    private $street;
 
     /**
      * @var string
      *
      * @ORM\Column(name="postalCode", type="string", length=255, nullable=true)
      */
-    protected $postalCode;
+    private $postalCode;
 
     /**
      * @var string
@@ -46,7 +46,7 @@ class Address
      * @ORM\Column(name="city", type="string", length=255, nullable=true)
      * @JMS\Groups({"Default", "adminGetUsers"})
      */
-    protected $city;
+    private $city;
 
     /**
      * @var string
@@ -54,7 +54,7 @@ class Address
      * @ORM\Column(name="country", type="string", length=2)
      * @Assert\NotBlank
      */
-    protected $country;
+    private $country;
 
     /**
      * @var \DateTime
@@ -63,7 +63,7 @@ class Address
      * @Gedmo\Timestampable(on="create")
      * @JMS\Exclude
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @var \DateTime
@@ -72,15 +72,15 @@ class Address
      * @Gedmo\Timestampable(on="update")
      * @JMS\Exclude
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="User", inversedBy="address")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE")
+     * @ORM\OneToOne(targetEntity="UserMetadata", inversedBy="address")
+     * @ORM\JoinColumn(name="user_metadata_id", referencedColumnName="user_metadata_id", onDelete="CASCADE")
      * @JMS\Exclude
      * @JMS\Groups({"hidden"})
      */
-    protected $user;
+    private $userMetadata;
 
     /**
      * Get id
@@ -253,10 +253,22 @@ class Address
     /**
      * Get user
      *
-     * @return \Entity\User
+     * @return User
      */
     public function getUser()
     {
         return $this->user;
+    }
+
+    public function getUserMetadata(): ?UserMetadata
+    {
+        return $this->userMetadata;
+    }
+
+    public function setUserMetadata(?UserMetadata $userMetadata): self
+    {
+        $this->userMetadata = $userMetadata;
+
+        return $this;
     }
 }
