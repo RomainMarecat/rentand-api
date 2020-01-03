@@ -71,7 +71,7 @@ class AdvertType extends AbstractType
             ->add('sports', CollectionType::class, array(
                 'entry_type' => SportType::class,
                 'allow_add' => true,
-                'by_reference' => false,
+                'by_reference' => false,'Entity\Advert',
                 'allow_delete' => true,
                 'prototype' => true,
                 'label' => false,

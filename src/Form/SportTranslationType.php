@@ -22,5 +22,4 @@ class SportTranslationType extends AbstractType
             ->add('handisport', HiddenType::class)
             ->add('description', HiddenType::class);
     }
-
 }

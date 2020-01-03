@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
 use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserMetadataRepository")
@@ -17,7 +18,7 @@ class UserMetadata
      * @ORM\Column(name="user_metadata_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"Default", "getUsers", "getUser"})
+     * @JMS\Groups({"getUsers", "getUser", "getAccount", "patchUsers"})
      */
     private $id;
 
@@ -25,7 +26,8 @@ class UserMetadata
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
-     * @JMS\Groups({"Default", "adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers", "getUser"})
+     * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
+     *     "getUser", "getAccount", "patchUsers"})
      */
     private $firstname;
 
@@ -33,7 +35,8 @@ class UserMetadata
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
-     * @JMS\Groups({"Default", "adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers", "getUser"})
+     * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
+     *     "getUser", "getAccount", "patchUsers"})
      */
     private $lastname;
 
@@ -41,7 +44,8 @@ class UserMetadata
      * @var boolean
      *
      * @ORM\Column(name="gender", type="boolean", nullable=true)
-     * @JMS\Groups({"Default", "adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers", "getUser"})
+     * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
+     *     "getUser", "getAccount", "patchUsers"})
      * @Assert\Type(
      *     type="boolean",
      *     message="The value {{ value }} is not a valid {{ type }}."
@@ -53,7 +57,8 @@ class UserMetadata
      * @var \DateTime
      *
      * @ORM\Column(name="birthday", type="date", nullable=true)
-     * @JMS\Groups({"Default", "adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers", "getUser"})
+     * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
+     *     "getUser", "getAccount", "patchUsers"})
      * @Assert\Type(
      *     type="datetime",
      *     message="The value {{ value }} is not a valid {{ type }}."
@@ -62,28 +67,29 @@ class UserMetadata
     private $birthday;
 
     /**
-     * @var string
+     * @var Country
      *
-     * @ORM\Column(name="nationality", type="string", length=2, nullable=true)
-     * @JMS\Groups({"Default", "adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers", "getUser"})
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 2,
-     *      exactMessage = "The value must be a coutry code 3166-1_alpha-2",
-     * )
+     * @ORM\ManyToOne(targetEntity="Country")
+     * @ORM\JoinColumn(name="nationality", referencedColumnName="country_id", nullable=true)
+     * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
+     *     "getUser", "getAccount", "patchUsers"})
      */
     private $nationality;
 
     /**
-     * @var string
-     * @JMS\Groups({"Default", "adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers", "getUser"})
-     * @ORM\Column(type="string", length=255)
+     * @var Language
+     *
+     * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
+     *     "getUser", "getAccount", "patchUsers"})
+     * @ORM\ManyToOne(targetEntity="Language")
+     * @ORM\JoinColumn(name="mother_lang", referencedColumnName="language_id", nullable=true)
      */
     private $motherLang;
 
     /**
      * @var array
-     * @JMS\Groups({"Default", "adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers", "getUser"})
+     * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
+     *     "getUser", "getAccount"})
      * @ORM\Column(type="json_array", nullable=true)
      */
     private $languages;
@@ -92,7 +98,8 @@ class UserMetadata
      * @var string
      *
      * @ORM\Column(type="string", length=255)
-     * @JMS\Groups({"Default", "getUsers", "getUser"})
+     * @Gedmo\Slug(fields={"firstname","lastname"})
+     * @JMS\Groups({"getUsers", "getUser"})
      */
     private $slug;
 
@@ -101,7 +108,7 @@ class UserMetadata
      *
      * @ORM\ManyToOne(targetEntity="Media")
      * @ORM\JoinColumn(name="media_id", referencedColumnName="media_id", nullable=true)
-     * @JMS\Groups({"Default", "getUsers", "getUser"})
+     * @JMS\Groups({"getUsers", "getUser", "getAccount"})
      */
     private $media;
 
@@ -112,7 +119,7 @@ class UserMetadata
      * cascade={"remove", "persist"},
      * fetch="LAZY")
      * @JMS\Groups({"hidden", "getMe", "patchMe", "getUser", "getIsValidUser", "getUserByToken", "adminGetUsers",
-     *     "adminGetUser"})
+     *     "adminGetUser", "patchUsers"})
      */
     private $address;
 
@@ -160,55 +167,7 @@ class UserMetadata
 
         return $this;
     }
-
-    public function getBirthday(): ?string
-    {
-        return $this->birthday;
-    }
-
-    public function setBirthday(?string $birthday): self
-    {
-        $this->birthday = $birthday;
-
-        return $this;
-    }
-
-    public function getGender(): ?string
-    {
-        return $this->gender;
-    }
-
-    public function setGender(?string $gender): self
-    {
-        $this->gender = $gender;
-
-        return $this;
-    }
-
-    public function getNationality(): ?string
-    {
-        return $this->nationality;
-    }
-
-    public function setNationality(string $nationality): self
-    {
-        $this->nationality = $nationality;
-
-        return $this;
-    }
-
-    public function getMotherLang(): ?string
-    {
-        return $this->motherLang;
-    }
-
-    public function setMotherLang(string $motherLang): self
-    {
-        $this->motherLang = $motherLang;
-
-        return $this;
-    }
-
+    
     public function getLanguages(): array
     {
         return $this->languages;
@@ -306,6 +265,54 @@ class UserMetadata
     public function setMedia(Media $media): UserMetadata
     {
         $this->media = $media;
+        return $this;
+    }
+
+    public function getNationality(): ?Country
+    {
+        return $this->nationality;
+    }
+
+    public function setNationality(?Country $nationality): self
+    {
+        $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    public function getMotherLang(): ?Language
+    {
+        return $this->motherLang;
+    }
+
+    public function setMotherLang(?Language $motherLang): self
+    {
+        $this->motherLang = $motherLang;
+
+        return $this;
+    }
+
+    public function getGender(): ?bool
+    {
+        return $this->gender;
+    }
+
+    public function setGender(?bool $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getBirthday(): ?\DateTimeInterface
+    {
+        return $this->birthday;
+    }
+
+    public function setBirthday(?\DateTimeInterface $birthday): self
+    {
+        $this->birthday = $birthday;
+
         return $this;
     }
 }

@@ -23,7 +23,7 @@ class Phone
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
@@ -31,28 +31,28 @@ class Phone
      * @ORM\Column(name="number", type="string", length=45)
      * @JMS\Accessor(getter="getNumber", setter="setNumber")
      */
-    protected $number;
+    private $number;
 
     /**
      * @var string $countryCode length 2
      *
      * @ORM\Column(name="countryCode", type="string", length=2)
      */
-    protected $countryCode;
+    private $countryCode;
 
     /**
      * @var string $countryNumber length 10
      *
      * @ORM\Column(name="country_number", type="string", length=10)
      */
-    protected $countryNumber;
+    private $countryNumber;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="checked", type="boolean")
      */
-    protected $checked;
+    private $checked;
 
     /**
      * @var string
@@ -60,7 +60,7 @@ class Phone
      * @ORM\Column(name="token", type="string", length=10)
      * @JMS\Exclude
      */
-    protected $token;
+    private $token;
 
     /**
      * @var \DateTime
@@ -69,7 +69,7 @@ class Phone
      * @Gedmo\Timestampable(on="create")
      * @JMS\Exclude
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @var \DateTime
@@ -78,7 +78,7 @@ class Phone
      * @Gedmo\Timestampable(on="update")
      * @JMS\Exclude
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
      * @ORM\OneToOne(targetEntity="UserMetadata", inversedBy="phone")
@@ -86,7 +86,13 @@ class Phone
      * @JMS\Exclude
      * @JMS\Groups({"hidden"})
      */
-    protected $userMetadata;
+    private $userMetadata;
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
+    }
 
     /**
      * Get id

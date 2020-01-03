@@ -1,9 +1,9 @@
 App\Entity\Address:
     address{1..10}:
         street: <streetAddress()>
-        postalCode: <postcode()>
+        zipcode: <postcode()>
         city: <city()>
-        country: <countryCode()>
+        country: '@country61'
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
 #        user (unique): '@user<numberBetween(1, 10)>'

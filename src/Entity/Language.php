@@ -3,48 +3,55 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LanguageRepository")
+ * @JMS\ExclusionPolicy("none")
  */
 class Language
 {
     /**
      * @var string
      *
-     * @ORM\Column(name="lanaguage_id", type="guid")
+     * @ORM\Column(name="language_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
+     * @JMS\Groups({"getLanguages", "patchUsers"})
      */
     private $id;
 
     /**
      * @ORM\Column(name="ISO639_1", type="string", length=255)
+     * @JMS\Groups({"getLanguages", "patchUsers"})
      */
     private $ISO6391;
 
     /**
      * @ORM\Column(name="ISO639_2", type="string", length=255)
+     * @JMS\Groups({"getLanguages", "patchUsers"})
      */
     private $ISO6392;
 
     /**
      * @ORM\Column(name="name", type="string", length=255)
+     * @JMS\Groups({"getLanguages", "patchUsers"})
      */
     private $name;
 
     /**
      * @ORM\Column(name="translations", type="json", nullable=true)
+     * @JMS\Groups({"getLanguages", "patchUsers"})
      */
     private $translations;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Country", inversedBy="languages")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="country_id", nullable=false)
      */
     private $country;
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -81,18 +88,6 @@ class Language
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getTranslation()
-    {
-        return $this->translation;
-    }
-
-    public function setTranslation($translation): self
-    {
-        $this->translation = $translation;
 
         return $this;
     }

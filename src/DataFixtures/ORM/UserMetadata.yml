@@ -6,7 +6,7 @@ App\Entity\UserMetadata:
         gender: <boolean(50)>
         birthday: null
         languages: fr
-        nationality: <countryCode()>
-        motherLang:  <countryCode()>
+        nationality: '@country61'
+        motherLang: '@fra'
         user: '@user<current()>'
         media: '@media<numberBetween(1, 10)>'

@@ -3,7 +3,6 @@
 namespace App\Manager;
 
 use App\Entity\Address;
-use App\Entity\Phone;
 use App\Entity\User;
 use App\Form\RegisterType;
 use App\Form\UserType;
@@ -194,35 +193,58 @@ class UserManager
 
     /**
      * @param Request $request
-     * @param         $email
+     * @param         $username
      *
      * @return mixed
      */
-    public function patch(Request $request, $email)
+    public function patch(Request $request, string $username)
     {
-        $user = $this->em->getRepository(User::class)->findOneBy(['email' => $email]);
-        $form = $this->createUserForm($user);
-        if ($request->isMethod('PATCH')) {
-            $form->submit($request->request->get($form->getName()));
-            if ($form->isSubmitted() && $form->isValid()) {
-                try {
-                    $user = $form->getData();
+        $data = $request->request->all();
+        if (isset($data['user_metadata'])) {
+            $data['userMetadata'] = $data['user_metadata'];
+            unset($data['user_metadata']);
 
-                    $this->updateUser($user);
-                } catch (\Exception $e) {
-                    $this->logger->debug(
-                        $e->getMessage(),
-                        array(
-                            'message' => $e->getMessage(),
-                            'trace' => $e->getTraceAsString(),
-                            'l.' => $e->getLine()
-                        )
-                    );
-                }
+            if (isset($data['userMetadata']['mother_lang'])) {
+                $data['userMetadata']['motherLang'] = $data['userMetadata']['mother_lang']['id'];
+                unset($data['userMetadata']['mother_lang']);
+            }
+            if (isset($data['userMetadata']['address']['country']['id'])) {
+                $data['userMetadata']['address']['country'] = $data['userMetadata']['address']['country']['id'];
+            }
+            if (isset($data['userMetadata']['nationality']['id'])) {
+                $data['userMetadata']['nationality'] = $data['userMetadata']['nationality']['id'];
+            }
+            if (isset($data['userMetadata']['phone']['country_code'])) {
+                $data['userMetadata']['phone']['countryCode'] = $data['userMetadata']['phone']['country_code'];
+            }
+            if (isset($data['userMetadata']['phone']['country_number'])) {
+                $data['userMetadata']['phone']['countryNumber'] = $data['userMetadata']['phone']['country_number'];
             }
         }
 
-        return $user;
+
+        $user = $this->em->getRepository(User::class)
+            ->findOneBy(['username' => $username]);
+        $form = $this->createUserForm($user);
+        if ($request->isMethod('PATCH')) {
+            $form->submit($data, false);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $user = $form->getData();
+
+                return $this->updateUser($user);
+            }
+        }
+
+        $this->logger->debug(
+            'debug form',
+            [
+                'valid' => $form->isValid(),
+                'data' => $form->getData(),
+                'extra_data' => $form->getExtraData(),
+            ]
+        );
+
+        return FormErrorFormatter::getErrorsAsJsonResponse($form);
     }
 
     /**
@@ -242,19 +264,34 @@ class UserManager
         return $user;
     }
 
+    /**
+     * Update current user informations
+     *
+     * @param User $user
+     *
+     * @return User
+     */
+    private function updateUser(User $user)
+    {
+        $this->em->persist($user);
+        $this->em->flush();
+
+        return $user;
+    }
+
     public function getUserByToken(Request $request, $token)
     {
-        return $this->em->getRepository('App:User')->findOneByConfirmationToken($token);
+        return $this->em->getRepository(User::class)->findOneByConfirmationToken($token);
     }
 
     public function getUserByEmailType(Request $request, $email, $type)
     {
-        return $this->em->getRepository('App:User')->findOneBy(array('email' => $email, 'type' => $type));
+        return $this->em->getRepository(User::class)->findOneBy(array('email' => $email, 'type' => $type));
     }
 
     public function isValid(Request $request, $token)
     {
-        $user = $this->em->getRepository('App:User')->findOneByConfirmationToken($token);
+        $user = $this->em->getRepository(User::class)->findOneByConfirmationToken($token);
 
         $this->logger->debug(
             'user info',
@@ -282,67 +319,5 @@ class UserManager
         }
 
         return false;
-    }
-
-    public function enable(Request $request)
-    {
-        $data = json_decode($request->getContent(), true);
-        $this->logger->debug('data info', array(
-            'data' => $data,
-            'request' => $request->request->all()
-        ));
-
-        $user = $this->em->getRepository('App:User')->findOneByConfirmationToken($data['token']);
-        if (!is_object($user)) {
-            throw new \Exception("findOneByConfirmationToken(token) return null");
-        }
-
-        $user->setEnabled(true);
-        $user->setMangopayId(isset($data['user']['mangopayId']) ? $data['user']['mangopayId'] : null);
-        $user->setPlanningId(isset($data['user']['planning']) ? $data['user']['planning'] : null);
-        $user->setPlanningToken(isset($data['user']['planningToken']) ? $data['user']['planningToken'] : null);
-
-        $user->setFirstName(isset($data['user']['firstName']) ? $data['user']['firstName'] : null);
-        $user->setLastName(isset($data['user']['lastName']) ? $data['user']['lastName'] : null);
-        $user->setGender(isset($data['user']['gender']) ? $data['user']['gender'] : true);
-        $user->setBirthdate(new \DateTime(isset($data['user']['birthdate']['date']) ? $data['user']['birthdate']['date'] : 'now'));
-        $user->setNationality(isset($data['user']['nationality']) ? $data['user']['nationality'] : null);
-
-        if (isset($data['user']['address'])) {
-            if (!$user->getAddress() instanceof Address) {
-                $address = new Address();
-            } else {
-                $address = $user->getAddress();
-            }
-            $address->setStreet(isset($data['user']['address']['street']) ? $data['user']['address']['street'] : null);
-            $address->setPostalCode(isset($data['user']['address']['postalCode']) ? $data['user']['address']['postalCode'] : null);
-            $address->setCity(isset($data['user']['address']['city']) ? $data['user']['address']['city'] : null);
-            $address->setCountry(isset($data['user']['address']['country']) ? $data['user']['address']['country'] : '');
-            $address->setUser($user);
-            $user->setAddress($address);
-
-            $this->em->persist($address);
-        }
-
-        if (isset($data['user']['phone']['number'])) {
-            if (!$user->getPhone() instanceof Phone) {
-                $phone = new Phone();
-            } else {
-                $phone = $user->getPhone();
-            }
-            $phone->setChecked(false);
-            $phone->setNumber(isset($data['user']['phone']['number']) ? $data['user']['phone']['number'] : '');
-            $phone->setCountryCode(isset($data['user']['phone']['countryCode']) ? $data['user']['phone']['countryCode'] : 'fr');
-            $phone->setCountryNumber(isset($data['user']['phone']['countryNumber']) ? $data['user']['phone']['countryNumber'] : '');
-            $phone->setUser($user);
-            $user->setPhone($phone);
-
-            $this->em->persist($phone);
-        }
-        $user->setConfirmationToken(null);
-
-        $this->updateUser($user);
-
-        return true;
     }
 }

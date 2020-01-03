@@ -25,7 +25,7 @@ trait FormErrorFormatter
         }
 
         foreach ($form->all() as $child) {
-            if (!$child->isValid()) {
+            if ($child->isSubmitted() && !$child->isValid()) {
                 $childError = self::getErrors($child);
                 if (!empty($childError)) {
                     $errors[$child->getName()] = $childError;

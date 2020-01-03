@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Address;
+use App\Entity\Country;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,7 +14,7 @@ class AddressType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -21,15 +23,13 @@ class AddressType extends AbstractType
                 'street',
                 TextType::class,
                 array(
-                    'required' => false,
                     'translation_domain' => false
                 )
             )
             ->add(
-                'postalCode',
+                'zipcode',
                 TextType::class,
                 array(
-                    'required' => false,
                     'translation_domain' => false
                 )
             )
@@ -37,25 +37,26 @@ class AddressType extends AbstractType
                 'city',
                 TextType::class,
                 array(
-                    'required' => false,
                     'translation_domain' => false
                 )
             )
             ->add(
                 'country',
-                CountryType::class,
+                EntityType::class,
                 array(
+                    'class' => Country::class,
                     'translation_domain' => false
                 )
-            );
+            )
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'Entity\Address',
-                'allow_extra_fields' => true,
+                'data_class' => Address::class,
+                'allow_extra_fields' => false,
                 'csrf_protection' => false
             )
         );

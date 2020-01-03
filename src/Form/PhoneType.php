@@ -2,11 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\Phone;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class PhoneType extends AbstractType
 {
@@ -21,22 +23,19 @@ class PhoneType extends AbstractType
                 'countryCode',
                 HiddenType::class,
                 array(
-                    'attr' => array('class' => 'phone_countryCode')
                 )
             )
             ->add(
                 'countryNumber',
                 HiddenType::class,
                 array(
-                    'attr' => array('class' => 'phone_countryNumber')
                 )
             )
             ->add(
                 'number',
                 TextType::class,
                 array(
-                    'label' => false,
-                    'attr' => array('class' => 'phone_js')
+                    'constraints' => new NotBlank(),
                 )
             );
     }
@@ -45,7 +44,7 @@ class PhoneType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'Entity\Phone',
+                'data_class' => Phone::class,
                 'allow_extra_fields' => true,
                 'csrf_protection' => false
             )

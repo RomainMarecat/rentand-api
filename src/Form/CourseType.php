@@ -3,6 +3,7 @@
 
 namespace App\Form;
 
+use App\Entity\Course;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -101,7 +102,7 @@ class CourseType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'Entity\Course',
+                'data_class' => Course::class,
                 'allow_extra_fields' => true,
                 'csrf_protection' => false
             )

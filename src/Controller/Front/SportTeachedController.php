@@ -24,11 +24,15 @@ class SportTeachedController extends AbstractFOSRestController
 
     /**
      * @Annotations\View(serializerGroups={"Default", "getSportLevels"})
-     * @Annotations\Get("/adverts/{advert}/sports/{sport}/advert_sport")
+     * @Annotations\Get("/sports_teached/sports/user_id/{user}")
+     * @param                     $user
+     * @param SportTeachedManager $sportTeachedManager
+     *
+     * @return
      */
-    public function getAdvertSportAction($user, $sport, SportTeachedManager $sportTeachedManager)
+    public function getSportsTeachedByUserAction($user, SportTeachedManager $sportTeachedManager)
     {
-        return $sportTeachedManager->getAdvertSport($user, $sport);
+        return $sportTeachedManager->getSportsTeachedByUser($user);
     }
 
     /**

@@ -32,19 +32,19 @@ class User implements UserInterface, JWTUserInterface
      * @ORM\Column(name="user_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "register"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "register", "getAccount", "patchUsers"})
      */
     private $id;
 
     /**
      * @ORM\Column(name="username", type="string", length=255)
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "register"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "register", "getAccount", "patchUsers"})
      */
     private $username;
 
     /**
      * @ORM\Column(name="email", type="string", length=255)
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "register"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "register", "getAccount", "patchUsers"})
      */
     private $email;
 
@@ -284,16 +284,16 @@ class User implements UserInterface, JWTUserInterface
      * @var AppMetadata
      *
      * @ORM\OneToOne(targetEntity="AppMetadata", mappedBy="user", orphanRemoval=true, cascade={"persist"})
-     * @JMS\Groups({"Default", "getUsers", "getUser"})
+     * @JMS\Groups({"getUsers", "getUser", "getAccount", "patchUsers"})
      */
     private $appMetadata;
 
     /**
      * @var UserMetadata
      * @ORM\OneToOne(targetEntity="UserMetadata", mappedBy="user", cascade={"remove", "persist"}, fetch="LAZY")
-     * @JMS\Groups({"hidden", "getMe", "patchMe", "getPlanningUserInformations", "putBooking", "getBooking",
+     * @JMS\Groups({"patchMe", "getPlanningUserInformations", "putBooking", "getBooking",
      *     "getBookingUser", "getBookingUser", "getUserById", "postEmailReminder", "adminGetUser", "getUsers",
-     *     "getUser"})
+     *     "getUser", "getAccount", "patchUsers"})
      */
     private $userMetadata;
 
@@ -308,7 +308,7 @@ class User implements UserInterface, JWTUserInterface
      *          @ORM\JoinColumn(name="city_id", referencedColumnName="city_id")
      *      }
      * )
-     * @JMS\Groups({"hidden", "getUser", "postSimpleSearch", "countPostSimpleSearch", "getBestUsers"})
+     * @JMS\Groups({"hidden", "getUser", "postSimpleSearch", "countPostSimpleSearch", "getBestUsers", "getAccount"})
      */
     private $cities;
 
@@ -321,7 +321,7 @@ class User implements UserInterface, JWTUserInterface
     /**
      * @ORM\OneToOne(targetEntity="Media", mappedBy="user", cascade={"remove", "persist"}, fetch="LAZY")
      * @JMS\Groups({"hidden", "getUser", "getMyUsers", "getUsers", "postSimpleSearch", "getBestUsers", "patchBooking",
-     *     "getBooking", "putBooking", "getBookingUser", "getUserComplete"})
+     *     "getBooking", "putBooking", "getBookingUser", "getUserComplete", "getAccount"})
      */
     private $media;
 
@@ -795,48 +795,6 @@ class User implements UserInterface, JWTUserInterface
         }
 
         return true;
-    }
-
-    /**
-     * Set firstName
-     *
-     * @param string $firstName
-     *
-     * @return User
-     */
-    public function setFirstName($firstName)
-    {
-        $this->firstName = ucfirst($firstName);
-
-        return $this;
-    }
-
-    /**
-     * Set lastName
-     *
-     * @param string $lastName
-     *
-     * @return User
-     */
-    public function setLastName($lastName)
-    {
-        $this->lastName = strtoupper($lastName);
-
-        return $this;
-    }
-
-    /**
-     * Set nationality
-     *
-     * @param string $nationality
-     *
-     * @return User
-     */
-    public function setNationality($nationality)
-    {
-        $this->nationality = strtoupper($nationality);
-
-        return $this;
     }
 
     /**

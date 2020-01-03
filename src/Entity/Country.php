@@ -5,66 +5,79 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CountryRepository")
+ * @JMS\ExclusionPolicy("none")
  */
 class Country
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(name="country_id", type="guid")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @JMS\Groups({"getCountries", "patchUsers"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @JMS\Groups({"getCountries", "patchUsers"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @JMS\Groups({"getCountries"})
      */
     private $latlng;
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @JMS\Groups({"getCountries"})
      */
     private $timezones = [];
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @JMS\Groups({"getCountries", "patchUsers"})
      */
     private $alpha2;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Groups({"getCountries", "patchUsers"})
      */
     private $alpha3;
 
     /**
      * @ORM\Column(name="calling_codes", type="array")
+     * @JMS\Groups({"getCountries"})
      */
     private $callingCodes = [];
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Groups({"getCountries"})
      */
     private $numericCode;
 
     /**
      * @ORM\Column(type="json", nullable=true)
+     * @JMS\Groups({"getCountries", "patchUsers"})
      */
     private $translations;
 
     /**
      * @ORM\Column(type="object", nullable=true)
+     * @JMS\Groups({"getCountries", "patchUsers"})
      */
     private $demonym;
 
     /**
      * @ORM\Column(type="object", nullable=true)
+     * @JMS\Groups({"getCountries"})
      */
     private $currencies;
 

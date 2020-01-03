@@ -3,7 +3,8 @@
 
 namespace App\Form;
 
-use Model\Language;
+use App\Entity\Language;
+use App\Model\PreBooking;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -30,7 +31,7 @@ class PreBookingType extends AbstractType
                     'expanded' => false,
                     'choices' => array_map(
                         function ($language) {
-                            return new Language($language);
+                            return new Language();
                         },
                         $options['languages']
                     ),
@@ -50,13 +51,12 @@ class PreBookingType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'specialities' => array(),
             'cities' => array(),
             'levels' => array(),
             'languages' => array(),
             'ages' => array(),
             'specialities' => array(),
-            'data_class' => 'Model\PreBooking',
+            'data_class' => PreBooking::class,
             'allow_extra_fields' => true,
             'csrf_protection' => true
         ));

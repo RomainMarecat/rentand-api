@@ -2,21 +2,14 @@
 
 namespace App\Manager;
 
-use Doctrine\DBAL\Connection;
-use Doctrine\ORM\EntityManager;
-use Entity\Advert;
-use Entity\Booking;
-use Form\BookingType;
-use Form\DeleteBookingType;
-use Form\PatchBookingType;
-use Form\PutBookingType;
-use Helper\RegexHelper;
-use JMS\Serializer\Serializer;
+use App\Entity\Booking;
+use App\Form\BookingType;
+use App\Form\DeleteBookingType;
+use App\Form\PatchBookingType;
+use App\Form\PutBookingType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Zeemono\VoucherBundle\Helper\RandomHelper;
-use Zeemono\VoucherBundle\Services\FormParser;
 
 /**
  * Class BookingManager
@@ -25,21 +18,15 @@ use Zeemono\VoucherBundle\Services\FormParser;
  */
 class BookingManager
 {
-    protected $em;
+    /**
+     * @var EntityManagerInterface $entityManager
+     */
+    private $entityManager;
 
-    protected $connection;
-
-    protected $logger;
-
-    protected $regexHelper;
-
-    protected $formFactory;
-
-    protected $tokenStorage;
-
-    protected $serializer;
-
-    protected $formParser;
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
 
     /**
      * Get a user from the Security Token Storage.
@@ -66,17 +53,17 @@ class BookingManager
 
     public function getByUser()
     {
-        return $this->getEm()->getRepository('App:Booking')->findByUser($this->getUser()->getId());
+        return $this->entityManager->getRepository(Booking::class)->findByUser($this->getUser()->getId());
     }
 
     public function getPaymentsMono()
     {
-        return $this->getEm()->getRepository('App:Booking')->findPaymentsByMono($this->getUser()->getId());
+        return $this->entityManager->getRepository(Booking::class)->findPaymentsByMono($this->getUser()->getId());
     }
 
     public function get($booking)
     {
-        $booking = $this->getEm()->getRepository('App:Booking')->find($booking);
+        $booking = $this->entityManager->getRepository(Booking::class)->find($booking);
         if (!$booking instanceof Booking) {
             throw new HttpException(404, "booking.undefined");
         }
@@ -98,20 +85,20 @@ class BookingManager
             if ($form->isSubmitted() and $form->isValid()) {
                 $booking = $form->getData();
                 try {
-                    $this->getEm()->getConnection()->beginTransaction();
+                    $this->entityManager->getConnection()->beginTransaction();
                     foreach ($booking->getCourses() as $course) {
                         $course->setBooking($booking);
                         $course->setCreatedAt(new \DateTime());
                         $course->setUpdatedAt(new \DateTime());
 
-                        $this->getEm()->persist($course);
+                        $this->entityManager->persist($course);
                     }
 
                     $booking->setUser($user);
                     $booking->setStatut(0);
                     $booking->setCreatedAt(new \DateTime());
                     $booking->setUpdatedAt(new \DateTime());
-                    $user = $this->getEm()
+                    $user = $this->entityManager
                         ->getRepository('App:Advert')
                         ->findOneById($booking->getAdvert());
                     $booking->setAdvert($user);
@@ -119,12 +106,12 @@ class BookingManager
                         $booking->setCancellation($user->getCancel());
                     }
 
-                    $this->getEm()->persist($booking);
-                    $this->getEm()->flush();
-                    $this->getEm()->getConnection()->commit();
+                    $this->entityManager->persist($booking);
+                    $this->entityManager->flush();
+                    $this->entityManager->getConnection()->commit();
                 } catch (\Exception $e) {
-                    if ($this->getEm()->getConnection()->getTransactionNestingLevel() != 0) {
-                        $this->getEm()->getConnection()->rollBack();
+                    if ($this->entityManager->getConnection()->getTransactionNestingLevel() != 0) {
+                        $this->entityManager->getConnection()->rollBack();
                     }
                     $this->getLogger()->error(
                         'booking error persist',
@@ -155,8 +142,8 @@ class BookingManager
     public function patch(Request $request, $booking)
     {
         $user = $this->getUser();
-        $booking = $this->getEm()
-            ->getRepository('App:Booking')->find($booking);
+        $booking = $this->entityManager
+            ->getRepository(Booking::class)->find($booking);
         if (!is_object($booking)) {
             throw new HttpException(404, "Booking is undefined");
         }
@@ -171,8 +158,8 @@ class BookingManager
                 try {
                     $booking = $form->getData();
 
-                    $this->getEm()->merge($booking);
-                    $this->getEm()->flush();
+                    $this->entityManager->merge($booking);
+                    $this->entityManager->flush();
                 } catch (\Exception $e) {
                     throw new HttpException(400, "Error merge booking");
                 }
@@ -202,8 +189,8 @@ class BookingManager
     public function put(Request $request, $booking)
     {
         $user = $this->getUser();
-        $booking = $this->getEm()
-            ->getRepository('App:Booking')->find($booking);
+        $booking = $this->entityManager
+            ->getRepository(Booking::class)->find($booking);
         if (!is_object($booking)) {
             throw new HttpException(404, "Booking is undefined");
         }
@@ -221,8 +208,8 @@ class BookingManager
                     $booking->setStatut(1);
 
 
-                    $this->getEm()->merge($booking);
-                    $this->getEm()->flush();
+                    $this->entityManager->merge($booking);
+                    $this->entityManager->flush();
                 } catch (\Exception $e) {
                     throw new HttpException(400, "Error merge booking");
                 }
@@ -251,8 +238,8 @@ class BookingManager
     public function delete(Request $request, $booking)
     {
         $user = $this->getUser();
-        $booking = $this->getEm()
-            ->getRepository('App:Booking')->find($booking);
+        $booking = $this->entityManager
+            ->getRepository(Booking::class)->find($booking);
         if (!is_object($booking)) {
             throw new HttpException(404, "Booking is undefined");
         }
@@ -268,8 +255,8 @@ class BookingManager
                     $booking = $form->getData();
                     $booking->setStatut("-1");
 
-                    $this->getEm()->merge($booking);
-                    $this->getEm()->flush();
+                    $this->entityManager->merge($booking);
+                    $this->entityManager->flush();
                 } catch (\Exception $e) {
                     throw new HttpException(400, "Error merge booking");
                 }
@@ -288,267 +275,5 @@ class BookingManager
         );
 
         return $booking;
-    }
-
-    public function registerBookings($users)
-    {
-
-        $bookings = new \ArrayIterator($this->getConnection()->fetchAll('
-            SELECT
-                * ,
-                u.email as Uemail,
-                a.email as Aemail,
-            FROM booking b
-            LEFT JOIN user u ON u.id = b.user_id
-            LEFT JOIN advert a ON a.id = b.advert_id
-            WHERE statut is not null'));
-        $total = $bookings->count();
-        $this->logger->info(
-            'import.table.booking.array.bookings',
-            array(
-                'total' => $total
-            )
-        );
-
-        $this->getEm()->getConnection()->beginTransaction();
-
-        foreach ($bookings as $bookingV1) {
-            try {
-                if (isset($bookingV1['user_id'])) {
-                    $user = $this->getEm()->getRepository('App:User')->findOneByEmail($bookingV1['Uemail']);
-                }
-                if (isset($users[$bookingV1['advert_id']])) {
-                    $user = $this->getEm()->getRepository('App:Advert')->findOneByEmail($newAdvertId['Aemail']);
-                }
-
-                if (isset($user) && isset($user)) {
-                    $booking = new Booking;
-
-                    $booking->setAdvert($user);
-                    $booking->setUser($user);
-
-                    $booking->setStatut($bookingV1['statut']);
-                    $booking->setStartDate(new \DateTime($bookingV1['date']));
-                    $booking->setEndDate(new \DateTime($bookingV1['date']));
-                    $booking->setPrice($bookingV1['price'] + $bookingV1['fees']);
-                    $booking->setTransaction($bookingV1['discount_id']);
-                    $booking->setCreatedAt(new \DateTime($bookingV1['created_at']));
-                    $booking->setUpdatedAt(new \DateTime($bookingV1['updated_at']));
-
-                    $this->getEm()->persist($booking);
-                    $this->getEm()->flush();
-                }
-            } catch (\Exception $e) {
-                if ($this->getEm()->getConnection()->getTransactionNestingLevel() != 0) {
-                    $this->getEm()->getConnection()->rollBack(); // transaction marked for rollback only
-                }
-                $this->logger->error(
-                    'import.table.booking.insert.query.error',
-                    array(
-                        'booking' => $bookingV1,
-                        'message' => $e->getMessage(),
-                        'trace' => $e->getTraceAsString(),
-                    )
-                );
-                throw $e;
-                // interface with user to manage entity
-            }
-        }
-
-        $this->getEm()->getConnection()->commit();
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of em.
-     *
-     * @return mixed
-     */
-    public function getEm()
-    {
-        return $this->em;
-    }
-
-    /**
-     * Sets the value of em.
-     *
-     * @param mixed $em the em
-     *
-     * @return self
-     */
-    public function setEm(EntityManager $em)
-    {
-        $this->em = $em;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of connection.
-     *
-     * @return mixed
-     */
-    public function getConnection()
-    {
-        return $this->connection;
-    }
-
-    /**
-     * Sets the value of connection.
-     *
-     * @param mixed $connection the connection
-     *
-     * @return self
-     */
-    public function setConnection(Connection $connection)
-    {
-        $this->connection = $connection;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of logger.
-     *
-     * @return mixed
-     */
-    public function getLogger()
-    {
-        return $this->logger;
-    }
-
-    /**
-     * Sets the value of logger.
-     *
-     * @param mixed $logger the logger
-     *
-     * @return self
-     */
-    public function setLogger($logger)
-    {
-        $this->logger = $logger;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of regexHelper.
-     *
-     * @return mixed
-     */
-    public function getRegexHelper()
-    {
-        return $this->regexHelper;
-    }
-
-    /**
-     * Sets the value of regexHelper.
-     *
-     * @param mixed $regexHelper the regex helper
-     *
-     * @return self
-     */
-    public function setRegexHelper(RegexHelper $regexHelper)
-    {
-        $this->regexHelper = $regexHelper;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of formFactory.
-     *
-     * @return mixed
-     */
-    public function getFormFactory()
-    {
-        return $this->formFactory;
-    }
-
-    /**
-     * Sets the value of formFactory.
-     *
-     * @param mixed $formFactory the form factory
-     *
-     * @return self
-     */
-    public function setFormFactory($formFactory)
-    {
-        $this->formFactory = $formFactory;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of tokenStorage.
-     *
-     * @return mixed
-     */
-    public function getTokenStorage()
-    {
-        return $this->tokenStorage;
-    }
-
-    /**
-     * Sets the value of tokenStorage.
-     *
-     * @param mixed $tokenStorage the token storage
-     *
-     * @return self
-     */
-    public function setTokenStorage(TokenStorage $tokenStorage)
-    {
-        $this->tokenStorage = $tokenStorage;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of serializer.
-     *
-     * @return mixed
-     */
-    public function getSerializer()
-    {
-        return $this->serializer;
-    }
-
-    /**
-     * Sets the value of serializer.
-     *
-     * @param mixed $serializer the serializer
-     *
-     * @return self
-     */
-    public function setSerializer(Serializer $serializer)
-    {
-        $this->serializer = $serializer;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of formParser.
-     *
-     * @return mixed
-     */
-    public function getFormParser()
-    {
-        return $this->formParser;
-    }
-
-    /**
-     * Sets the value of formParser.
-     *
-     * @param mixed $formParser the form parser
-     *
-     * @return self
-     */
-    public function setFormParser(FormParser $formParser)
-    {
-        $this->formParser = $formParser;
-
-        return $this;
     }
 }

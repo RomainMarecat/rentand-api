@@ -3,6 +3,7 @@
 
 namespace App\Form;
 
+use App\Entity\Booking;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -55,7 +56,7 @@ class BookingType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'Entity\Booking',
+                'data_class' => Booking::class,
                 'allow_extra_fields' => true,
                 'csrf_protection' => false
             )

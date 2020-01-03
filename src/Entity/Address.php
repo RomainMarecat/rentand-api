@@ -22,7 +22,7 @@ class Address
      * @ORM\Column(name="address_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Exclude
+     * @JMS\Groups({"patchUsers"})
      */
     private $id;
 
@@ -30,29 +30,33 @@ class Address
      * @var string
      *
      * @ORM\Column(name="street", type="string", length=255, nullable=true)
+     * @JMS\Groups({"patchUsers"})
      */
     private $street;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="postalCode", type="string", length=255, nullable=true)
+     * @ORM\Column(name="zipcode", type="string", length=255, nullable=true)
+     * @JMS\Groups({"patchUsers"})
      */
-    private $postalCode;
+    private $zipcode;
 
     /**
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255, nullable=true)
-     * @JMS\Groups({"Default", "adminGetUsers"})
+     * @JMS\Groups({"patchUsers"})
      */
     private $city;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="country", type="string", length=2)
+     * @ORM\ManyToOne(targetEntity="Country")
+     * @ORM\JoinColumn(name="country", referencedColumnName="country_id", nullable=true)
      * @Assert\NotBlank
+     * @JMS\Groups({"patchUsers"})
      */
     private $country;
 
@@ -61,7 +65,7 @@ class Address
      *
      * @ORM\Column(name="createdAt", type="datetime")
      * @Gedmo\Timestampable(on="create")
-     * @JMS\Exclude
+     *
      */
     private $createdAt;
 
@@ -82,182 +86,87 @@ class Address
      */
     private $userMetadata;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
+    }
+
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set street
-     *
-     * @param string $street
-     *
-     * @return Address
-     */
-    public function setStreet($street)
-    {
-        $this->street = ucfirst($street);
-
-        return $this;
-    }
-
-    /**
-     * Get street
-     *
-     * @return string
-     */
-    public function getStreet()
+    public function getStreet(): ?string
     {
         return $this->street;
     }
 
-    /**
-     * Set postalCode
-     *
-     * @param string $postalCode
-     *
-     * @return Address
-     */
-    public function setPostalCode($postalCode)
+    public function setStreet(?string $street): self
     {
-        $this->postalCode = strtoupper($postalCode);
+        $this->street = $street;
 
         return $this;
     }
 
-    /**
-     * Get postalCode
-     *
-     * @return string
-     */
-    public function getPostalCode()
+    public function getZipcode(): ?string
     {
-        return $this->postalCode;
+        return $this->zipcode;
     }
 
-    /**
-     * Set city
-     *
-     * @param string $city
-     *
-     * @return Address
-     */
-    public function setCity($city)
+    public function setZipcode(?string $zipcode): self
     {
-        $this->city = ucfirst($city);
+        $this->zipcode = $zipcode;
 
         return $this;
     }
 
-    /**
-     * Get city
-     *
-     * @return string
-     */
-    public function getCity()
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
-    /**
-     * Set country
-     *
-     * @param string $country
-     *
-     * @return Address
-     */
-    public function setCountry($country)
+    public function setCity(?string $city): self
     {
-        $this->country = strtoupper($country);
+        $this->city = $city;
 
         return $this;
     }
 
-    /**
-     * Get country
-     *
-     * @return string
-     */
-    public function getCountry()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->country;
+        return $this->createdAt;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Address
-     */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->createdAt;
+        return $this->updatedAt;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Address
-     */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
+    public function getCountry(): ?Country
     {
-        return $this->updatedAt;
+        return $this->country;
     }
 
-    /**
-     * Set user
-     *
-     * @param User $user
-     *
-     * @return Address
-     */
-    public function setUser(User $user = null)
+    public function setCountry(?Country $country): self
     {
-        $this->user = $user;
+        $this->country = $country;
 
         return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 
     public function getUserMetadata(): ?UserMetadata
