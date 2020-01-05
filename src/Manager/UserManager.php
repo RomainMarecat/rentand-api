@@ -10,6 +10,8 @@ use App\Traits\FormErrorFormatter;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
+use Lexik\Bundle\JWTAuthenticationBundle\Event\AuthenticationSuccessEvent;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -29,6 +31,8 @@ class UserManager
 {
     use FormErrorFormatter;
 
+    /** @var JWTTokenManagerInterface $jwtTokenManager */
+    private $jwtTokenManager;
     /** @var EntityManagerInterface $em */
     private $em;
     /** @var Connection $connection */
@@ -45,6 +49,7 @@ class UserManager
     private $passwordEncoder;
 
     public function __construct(
+        JWTTokenManagerInterface $jwtTokenManager,
         EntityManagerInterface $em,
         Connection $connection,
         LoggerInterface $logger,
@@ -53,6 +58,7 @@ class UserManager
         TokenGeneratorInterface $tokenGenerator,
         UserPasswordEncoderInterface $passwordEncoder
     ) {
+        $this->jwtTokenManager = $jwtTokenManager;
         $this->em = $em;
         $this->connection = $connection;
         $this->logger = $logger;
@@ -80,7 +86,7 @@ class UserManager
             if ($form->isSubmitted() && $form->isValid()) {
                 try {
                     if ($searchUser = $this->getUserByEmail($user->getEmail())) {
-                        throw new Exception("user.already.exists", 400);
+                        throw new Exception("The user already exists", 400);
                     }
                     $user->addRole('ROLE_USER');
                     if ($user->getAppMetadata()->getCoach() === true) {
@@ -97,11 +103,15 @@ class UserManager
                     $this->em->persist($user);
                     $this->em->flush();
 
-                    return $user;
+                    $jwt = $this->jwtTokenManager->create($user);
+                    $response = new JsonResponse();
+                    $event = new AuthenticationSuccessEvent(array('token' => $jwt), $user, $response);
+                    $response->setData($event->getData());
+
+                    return $response;
                 } catch (Exception $e) {
                     $error = (new FormError($e->getMessage()));
-                    $error->setOrigin($form->get('email'));
-                    $form->addError($error);
+                    $form->get('email')->addError($error);
                     return FormErrorFormatter::getErrorsAsJsonResponse($form);
                 }
             }

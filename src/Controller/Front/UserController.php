@@ -27,7 +27,7 @@ class UserController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"registerUsers"})
+     * @Annotations\View(serializerGroups={"registerUser"})
      * @Annotations\Post("/users/register")
      * @param Request     $request
      * @param UserManager $userManager

@@ -18,7 +18,7 @@ class UserMetadata
      * @ORM\Column(name="user_metadata_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getUsers", "getUser", "getAccount", "patchUsers"})
+     * @JMS\Groups({"getUsers", "getUser", "getAccount", "patchUsers", "registerUser"})
      */
     private $id;
 
@@ -27,7 +27,7 @@ class UserMetadata
      *
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
-     *     "getUser", "getAccount", "patchUsers"})
+     *     "getUser", "getAccount", "patchUsers", "registerUser"})
      */
     private $firstname;
 
@@ -36,7 +36,7 @@ class UserMetadata
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
      * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
-     *     "getUser", "getAccount", "patchUsers"})
+     *     "getUser", "getAccount", "patchUsers", "registerUser"})
      */
     private $lastname;
 
@@ -58,7 +58,7 @@ class UserMetadata
      *
      * @ORM\Column(name="birthday", type="date", nullable=true)
      * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
-     *     "getUser", "getAccount", "patchUsers"})
+     *     "getUser", "getAccount", "patchUsers", "registerUser"})
      * @Assert\Type(
      *     type="datetime",
      *     message="The value {{ value }} is not a valid {{ type }}."

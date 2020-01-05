@@ -32,19 +32,19 @@ class User implements UserInterface, JWTUserInterface
      * @ORM\Column(name="user_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "register", "getAccount", "patchUsers"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers"})
      */
     private $id;
 
     /**
      * @ORM\Column(name="username", type="string", length=255)
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "register", "getAccount", "patchUsers"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers"})
      */
     private $username;
 
     /**
      * @ORM\Column(name="email", type="string", length=255)
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "register", "getAccount", "patchUsers"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers"})
      */
     private $email;
 
@@ -291,9 +291,7 @@ class User implements UserInterface, JWTUserInterface
     /**
      * @var UserMetadata
      * @ORM\OneToOne(targetEntity="UserMetadata", mappedBy="user", cascade={"remove", "persist"}, fetch="LAZY")
-     * @JMS\Groups({"patchMe", "getPlanningUserInformations", "putBooking", "getBooking",
-     *     "getBookingUser", "getBookingUser", "getUserById", "postEmailReminder", "adminGetUser", "getUsers",
-     *     "getUser", "getAccount", "patchUsers"})
+     * @JMS\Groups({"getUsers", "getUser", "getAccount", "patchUsers"})
      */
     private $userMetadata;
 
