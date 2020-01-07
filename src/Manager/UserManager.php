@@ -82,7 +82,13 @@ class UserManager
         /** @var FormInterface $form */
         $form = $this->createRegisterForm($user);
         if ($request->isMethod('POST')) {
-            $form->submit($request->request->get($form->getName()));
+            $data = $request->request->get($form->getName());
+            if (isset($data['user_metadata'])) {
+                $data['userMetadata'] = $data['user_metadata'];
+                unset($data['user_metadata']);
+            }
+
+            $form->submit($data);
             if ($form->isSubmitted() && $form->isValid()) {
                 try {
                     if ($searchUser = $this->getUserByEmail($user->getEmail())) {

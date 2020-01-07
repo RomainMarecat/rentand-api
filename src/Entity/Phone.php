@@ -22,6 +22,7 @@ class Phone
      * @ORM\Column(name="phone_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
+     * @JMS\Groups({"getAccount", "patchUsers"})
      */
     private $id;
 
@@ -30,6 +31,7 @@ class Phone
      *
      * @ORM\Column(name="number", type="string", length=45)
      * @JMS\Accessor(getter="getNumber", setter="setNumber")
+     * @JMS\Groups({"getAccount", "patchUsers"})
      */
     private $number;
 
@@ -37,6 +39,7 @@ class Phone
      * @var string $countryCode length 2
      *
      * @ORM\Column(name="countryCode", type="string", length=2)
+     * @JMS\Groups({"getAccount", "patchUsers"})
      */
     private $countryCode;
 
@@ -44,6 +47,7 @@ class Phone
      * @var string $countryNumber length 10
      *
      * @ORM\Column(name="country_number", type="string", length=10)
+     * @JMS\Groups({"getAccount", "patchUsers"})
      */
     private $countryNumber;
 

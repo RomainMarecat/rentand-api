@@ -40,6 +40,10 @@ class RegisterType extends AbstractType
             ->add(
                 'appMetadata',
                 AppMetadataType::class
+            )
+            ->add(
+                'userMetadata',
+                RegisterUserMetadataType::class
             );
     }
 

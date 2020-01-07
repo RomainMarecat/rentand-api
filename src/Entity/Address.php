@@ -22,7 +22,7 @@ class Address
      * @ORM\Column(name="address_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"patchUsers"})
+     * @JMS\Groups({"getAccount", "patchUsers"})
      */
     private $id;
 
@@ -30,7 +30,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="street", type="string", length=255, nullable=true)
-     * @JMS\Groups({"patchUsers"})
+     * @JMS\Groups({"getAccount", "patchUsers"})
      */
     private $street;
 
@@ -38,7 +38,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="zipcode", type="string", length=255, nullable=true)
-     * @JMS\Groups({"patchUsers"})
+     * @JMS\Groups({"getAccount", "patchUsers"})
      */
     private $zipcode;
 
@@ -46,7 +46,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255, nullable=true)
-     * @JMS\Groups({"patchUsers"})
+     * @JMS\Groups({"getAccount", "patchUsers"})
      */
     private $city;
 
@@ -56,7 +56,7 @@ class Address
      * @ORM\ManyToOne(targetEntity="Country")
      * @ORM\JoinColumn(name="country", referencedColumnName="country_id", nullable=true)
      * @Assert\NotBlank
-     * @JMS\Groups({"patchUsers"})
+     * @JMS\Groups({"getAccount", "patchUsers"})
      */
     private $country;
 

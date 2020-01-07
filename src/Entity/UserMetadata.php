@@ -3,9 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
 use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserMetadataRepository")
@@ -71,8 +71,7 @@ class UserMetadata
      *
      * @ORM\ManyToOne(targetEntity="Country")
      * @ORM\JoinColumn(name="nationality", referencedColumnName="country_id", nullable=true)
-     * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
-     *     "getUser", "getAccount", "patchUsers"})
+     * @JMS\Groups({"getUsers", "getUser", "getAccount", "patchUsers"})
      */
     private $nationality;
 
@@ -119,14 +118,13 @@ class UserMetadata
      * cascade={"remove", "persist"},
      * fetch="LAZY")
      * @JMS\Groups({"hidden", "getMe", "patchMe", "getUser", "getIsValidUser", "getUserByToken", "adminGetUsers",
-     *     "adminGetUser", "patchUsers"})
+     *     "adminGetUser", "patchUsers", "getAccount"})
      */
     private $address;
 
     /**
      * @ORM\OneToOne(targetEntity="Phone", mappedBy="userMetadata", cascade={"remove", "persist"}, fetch="LAZY")
-     * @JMS\Groups({"hidden", "getMe", "patchMe", "getUser", "getPlanningUserInformations", "putBooking", "getBooking",
-     *     "getBookingUser", "getBookingUser", "getUserById", "postEmailReminder", "adminGetUser"})
+     * @JMS\Groups({"getUser", "putBooking", "patchUsers", "getAccount"})
      */
     private $phone;
 
@@ -167,7 +165,7 @@ class UserMetadata
 
         return $this;
     }
-    
+
     public function getLanguages(): array
     {
         return $this->languages;
@@ -201,12 +199,13 @@ class UserMetadata
     }
 
     /**
-     * @param mixed $address
+     * @param Address|null $address
      *
      * @return UserMetadata
      */
-    public function setAddress($address)
+    public function setAddress(Address $address = null)
     {
+        $address->setUserMetadata($this);
         $this->address = $address;
         return $this;
     }
@@ -220,13 +219,15 @@ class UserMetadata
     }
 
     /**
-     * @param mixed $phone
+     * @param Phone|null $phone
      *
      * @return UserMetadata
      */
-    public function setPhone($phone)
+    public function setPhone(Phone $phone = null)
     {
+        $phone->setUserMetadata($this);
         $this->phone = $phone;
+
         return $this;
     }
 

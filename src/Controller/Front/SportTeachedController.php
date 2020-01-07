@@ -23,7 +23,7 @@ class SportTeachedController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "getSportLevels"})
+     * @Annotations\View(serializerGroups={"getSportsTeachedByUser"})
      * @Annotations\Get("/sports_teached/sports/user_id/{user}")
      * @param                     $user
      * @param SportTeachedManager $sportTeachedManager

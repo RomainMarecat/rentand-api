@@ -40,7 +40,7 @@ class MeetingPoint
      */
     private $lng;
 
-    /**+
+    /**
      * @var float
      *
      * @ORM\Column(name="lat", type="float")

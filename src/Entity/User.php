@@ -1239,7 +1239,9 @@ class User implements UserInterface, JWTUserInterface
      */
     public function setUserMetadata(UserMetadata $userMetadata): User
     {
+        $userMetadata->setUser($this);
         $this->userMetadata = $userMetadata;
+
         return $this;
     }
 

@@ -17,13 +17,13 @@ class Country
      * @ORM\Column(name="country_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getCountries", "patchUsers"})
+     * @JMS\Groups({"getCountries", "patchUsers", "getAccount"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @JMS\Groups({"getCountries", "patchUsers"})
+     * @JMS\Groups({"getCountries", "patchUsers", "getAccount"})
      */
     private $name;
 
@@ -41,13 +41,13 @@ class Country
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @JMS\Groups({"getCountries", "patchUsers"})
+     * @JMS\Groups({"getCountries", "patchUsers", "getAccount"})
      */
     private $alpha2;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @JMS\Groups({"getCountries", "patchUsers"})
+     * @JMS\Groups({"getCountries", "patchUsers", "getAccount"})
      */
     private $alpha3;
 
@@ -65,13 +65,13 @@ class Country
 
     /**
      * @ORM\Column(type="json", nullable=true)
-     * @JMS\Groups({"getCountries", "patchUsers"})
+     * @JMS\Groups({"getCountries", "patchUsers", "getAccount"})
      */
     private $translations;
 
     /**
      * @ORM\Column(type="object", nullable=true)
-     * @JMS\Groups({"getCountries", "patchUsers"})
+     * @JMS\Groups({"getCountries", "patchUsers", "getAccount"})
      */
     private $demonym;
 

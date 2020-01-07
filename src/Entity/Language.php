@@ -17,31 +17,31 @@ class Language
      * @ORM\Column(name="language_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getLanguages", "patchUsers"})
+     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount"})
      */
     private $id;
 
     /**
      * @ORM\Column(name="ISO639_1", type="string", length=255)
-     * @JMS\Groups({"getLanguages", "patchUsers"})
+     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount"})
      */
     private $ISO6391;
 
     /**
      * @ORM\Column(name="ISO639_2", type="string", length=255)
-     * @JMS\Groups({"getLanguages", "patchUsers"})
+     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount"})
      */
     private $ISO6392;
 
     /**
      * @ORM\Column(name="name", type="string", length=255)
-     * @JMS\Groups({"getLanguages", "patchUsers"})
+     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount"})
      */
     private $name;
 
     /**
      * @ORM\Column(name="translations", type="json", nullable=true)
-     * @JMS\Groups({"getLanguages", "patchUsers"})
+     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount"})
      */
     private $translations;
 

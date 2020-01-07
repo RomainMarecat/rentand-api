@@ -29,7 +29,7 @@ class SportTeached
      * @var int
      *
      * @ORM\Column(name="orderNumber", type="integer")
-     * @JMS\Groups({"hidden", "getUser", "getMyUsers", "getSportTeachedById", "postEmailReminder"})
+     * @JMS\Groups({"getUser"})
      */
     private $orderNumber;
 
@@ -37,7 +37,7 @@ class SportTeached
      * @var array
      *
      * @ORM\Column(name="levels", type="array", nullable=true)
-     * @JMS\Groups({"hidden", "getUser", "getMyUsers", "getSportTeachedById", "postEmailReminder"})
+     * @JMS\Groups({"getUser"})
      */
     private $levels;
 
@@ -45,21 +45,21 @@ class SportTeached
      * @var array
      *
      * @ORM\Column(name="ages", type="array", nullable=true)
-     * @JMS\Groups({"hidden", "getUser", "getMyUsers", "getSportTeachedById", "postEmailReminder"})
+     * @JMS\Groups({"getUser"})
      */
     private $ages;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="sportsTeached", fetch="LAZY")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE"))
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="Sport", inversedBy="sportsTeached", fetch="LAZY")
      * @ORM\JoinColumn(name="sport_id", referencedColumnName="sport_id", onDelete="CASCADE"))
-     * @JMS\Groups({"hidden", "getUser", "getMyUsers", "getSportTeachedById", "postEmailReminder"})
+     * @JMS\Groups({"getUser"})
      */
     private $sport;
 
@@ -76,13 +76,13 @@ class SportTeached
      * )
      * @JMS\MaxDepth(1)
      * @JMS\Type("ArrayCollection<App\Entity\Sport>")
-     * @JMS\Groups({"hidden", "postSimpleSearch", "countPostSimpleSearch", "getUser"})
+     * @JMS\Groups({"getUser"})
      */
     private $specialities;
 
     /**
      * @ORM\OneToMany(targetEntity="Media", mappedBy="sportTeached", cascade={"persist","remove"}, fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden", "getUser", "getUserSportTeacheds"})
+     * @JMS\Groups({"getUser"})
      *
      */
     private $pictures;
@@ -281,7 +281,7 @@ class SportTeached
      *
      * @JMS\VirtualProperty()
      * @JMS\SerializedName("translations")
-     * @JMS\Groups({"Default", "getUsers", "getUser"})
+     * @JMS\Groups({"Default", "getUsers", "getUser", "getSportsTeachedByUser"})
      *
      */
     public function getTranslationsObject()
