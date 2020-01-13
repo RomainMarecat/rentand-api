@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Campaign
  *
- * @ORM\Table(name="campaign_campaign")
+ * @ORM\Table(name="campaign")
  * @ORM\Entity()
  */
 class Campaign
@@ -50,88 +50,57 @@ class Campaign
 
     /**
      * @ORM\OneToMany(targetEntity="Plan", mappedBy="campaign", fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
-    protected $plans;
+    private $plans;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", nullable=true, onDelete="SET NULL")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
-    protected $user;
+    private $user;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->plans = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->plans = new ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Campaign
-     */
-    public function setName($name)
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
+    public function getSlug(): ?string
     {
-        return $this->name;
+        return $this->slug;
     }
 
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return Campaign
-     */
-    public function setSlug($slug)
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 
         return $this;
     }
 
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
+    public function getType(): ?string
     {
-        return $this->slug;
+        return $this->type;
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     * @return Campaign
-     */
-    public function setType($type)
+    public function setType(string $type): self
     {
         $this->type = $type;
 
@@ -139,68 +108,45 @@ class Campaign
     }
 
     /**
-     * Get type
-     *
-     * @return string
+     * @return Collection|Plan[]
      */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Add plans
-     *
-     * @param \App\Entity\Plan $plans
-     * @return Campaign
-     */
-    public function addPlan(\App\Entity\Plan $plans)
-    {
-        $this->plans[] = $plans;
-
-        return $this;
-    }
-
-    /**
-     * Remove plans
-     *
-     * @param \App\Entity\Plan $plans
-     */
-    public function removePlan(\App\Entity\Plan $plans)
-    {
-        $this->plans->removeElement($plans);
-    }
-
-    /**
-     * Get plans
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPlans()
+    public function getPlans(): Collection
     {
         return $this->plans;
     }
 
-    /**
-     * Set user
-     *
-     * @param User $user
-     * @return Campaign
-     */
-    public function setUser(User $user = null)
+    public function addPlan(Plan $plan): self
     {
-        $this->user = $user;
+        if (!$this->plans->contains($plan)) {
+            $this->plans[] = $plan;
+            $plan->setCampaign($this);
+        }
 
         return $this;
     }
 
-    /**
-     * Get user
-     *
-     * @return \Entity\User
-     */
-    public function getUser()
+    public function removePlan(Plan $plan): self
+    {
+        if ($this->plans->contains($plan)) {
+            $this->plans->removeElement($plan);
+            // set the owning side to null (unless already changed)
+            if ($plan->getCampaign() === $this) {
+                $plan->setCampaign(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
     {
         return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

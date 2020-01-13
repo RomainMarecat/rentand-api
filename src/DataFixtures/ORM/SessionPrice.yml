@@ -1,0 +1,8 @@
+App\Entity\SessionPrice:
+    sessionPrice{1..10}:
+        price: '<numberBetween(10, 200)>'
+        startDate: '<dateTimeBetween("-20 days", "now")>'
+        endDate: '<dateTimeBetween("-20 days", "now")>'
+        startTime: '<dateTimeBetween("-20 days", "now")>'
+        endTime: '<dateTimeBetween("-20 days", "now")>'
+        onlineSession: '@onlineSession<numberBetween(1, 50)>'

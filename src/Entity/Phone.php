@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * Phone
  *
- * @ORM\Table(name="phone_phone")
+ * @ORM\Table(name="phone")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * @JMS\ExclusionPolicy("none")
@@ -88,7 +88,7 @@ class Phone
      * @ORM\OneToOne(targetEntity="UserMetadata", inversedBy="phone")
      * @ORM\JoinColumn(name="user_metadata_id", referencedColumnName="user_metadata_id", onDelete="CASCADE"))
      * @JMS\Exclude
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     private $userMetadata;
 

@@ -5,33 +5,27 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\SessionPriceRepository")
  */
-class Event
+class SessionPrice
 {
     /**
-     * @var string
-     *
-     * @ORM\Column(name="event_id", type="guid")
+     * @ORM\Column(name="session_price_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      */
     private $id;
 
     /**
-     * @ORM\Column(name="custom_title", type="string", length=255, nullable=true)
+     * @ORM\Column(type="float")
      */
-    private $customTitle;
+    private $price;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\OnlineSession", inversedBy="sessionPrices")
+     * @ORM\JoinColumn(name="online_session_id", referencedColumnName="online_session_id", nullable=false)
      */
-    private $comment;
-
-    /**
-     * @ORM\Column(name="group_booking", type="string", length=255, nullable=true)
-     */
-    private $groupBooking;
+    private $onlineSession;
 
     /**
      * @ORM\Column(name="start_date", type="date")
@@ -53,48 +47,31 @@ class Event
      */
     private $endTime;
 
-    /**
-     * @ORM\Column(name="details", type="object")
-     */
-    private $details;
-
     public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getCustomTitle(): ?string
+    public function getPrice(): ?float
     {
-        return $this->customTitle;
+        return $this->price;
     }
 
-    public function setCustomTitle(?string $customTitle): self
+    public function setPrice(float $price): self
     {
-        $this->customTitle = $customTitle;
+        $this->price = $price;
 
         return $this;
     }
 
-    public function getComment(): ?string
+    public function getOnlineSession(): ?OnlineSession
     {
-        return $this->comment;
+        return $this->onlineSession;
     }
 
-    public function setComment(?string $comment): self
+    public function setOnlineSession(?OnlineSession $onlineSession): self
     {
-        $this->comment = $comment;
-
-        return $this;
-    }
-
-    public function getGroupBooking(): ?string
-    {
-        return $this->groupBooking;
-    }
-
-    public function setGroupBooking(?string $groupBooking): self
-    {
-        $this->groupBooking = $groupBooking;
+        $this->onlineSession = $onlineSession;
 
         return $this;
     }
@@ -143,18 +120,6 @@ class Event
     public function setEndTime(\DateTimeInterface $endTime): self
     {
         $this->endTime = $endTime;
-
-        return $this;
-    }
-
-    public function getDetails()
-    {
-        return $this->details;
-    }
-
-    public function setDetails($details): self
-    {
-        $this->details = $details;
 
         return $this;
     }

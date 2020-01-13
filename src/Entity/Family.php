@@ -11,27 +11,27 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * Family
  *
- * @ORM\Table(name="family_family")
+ * @ORM\Table(name="family")
  * @ORM\Entity(repositoryClass="App\Repository\FamilyRepository")
  * @JMS\ExclusionPolicy("none")
  */
 class Family
 {
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="family_id", type="integer")
+     * @ORM\Column(name="family_id", type="guid")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="UUID")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
      */
-    protected $name;
+    private $name;
 
     /**
      * @var string
@@ -39,51 +39,48 @@ class Family
      * @Gedmo\Slug(fields={"name"}, separator="-", updatable=true)
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      */
-    protected $slug;
+    private $slug;
 
     /**
      * @var string
      *
      * @ORM\Column(name="level", type="integer", nullable=true)
      */
-    protected $level;
+    private $level;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="FamilyTranslation", mappedBy="family", indexBy="locale", cascade={"remove", "persist"}, fetch="EXTRA_LAZY")
-     * @ORM\OrderBy({"id" = "DESC"})
-     * @JMS\Type("ArrayCollection<App\Entity\FamilyTranslation>")
-     * @JMS\Groups({"hidden", "getFormFamily", "getFamily", "getParentFamilies", "getFamiliesByParent"})
+     * @ORM\Column(name="translations", type="json")
      */
-    protected $translations;
+    private $translations;
 
     /**
      * @ORM\ManyToOne(targetEntity="Family", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="family_id", onDelete="CASCADE")
-     * @JMS\Groups({"hidden", "getFormFamily", "getFamily"})
+     * @JMS\Groups({"getFormFamily", "getFamily"})
      */
-    protected $parent;
+    private $parent;
 
     /**
      * @ORM\OneToMany(targetEntity="Family", mappedBy="parent", cascade={"remove", "persist"}, fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden", "getFamiliesByParent"})
+     * @JMS\Groups({"getFamiliesByParent"})
      */
-    protected $children;
+    private $children;
 
     /**
      * @JMS\Type("ArrayCollection<App\Entity\Sport>")
@@ -97,193 +94,99 @@ class Family
      *          @ORM\JoinColumn(name="sport_id", referencedColumnName="sport_id")
      *      }
      * )
-     * @JMS\Groups({"hidden", "getFormFamily", "getFamily"})
+     * @JMS\Groups({"getFormFamily", "getFamily"})
      */
-    protected $sports;
+    private $sports;
 
-
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->sports = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->children = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->children = new ArrayCollection();
+        $this->sports = new ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Family
-     */
-    public function setName($name)
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
+    public function getSlug(): ?string
     {
-        return $this->name;
+        return $this->slug;
     }
 
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return Family
-     */
-    public function setSlug($slug)
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 
         return $this;
     }
 
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
+    public function getLevel(): ?int
     {
-        return $this->slug;
+        return $this->level;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Family
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Family
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Add translation
-     *
-     * @param FamilyTranslation $translation
-     *
-     * @return Family
-     */
-    public function addTranslation(FamilyTranslation $translation)
-    {
-        $this->translations->add($translation);
-
-        return $this;
-    }
-
-    /**
-     * Remove translation
-     *
-     * @param FamilyTranslation $translation
-     */
-    public function removeTranslation(FamilyTranslation $translation)
-    {
-        $this->translations->removeElement($translation);
-    }
-
-    /**
-     * Get translations
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTranslations()
-    {
-        return $this->translations;
-    }
-
-    /**
-     * Set level
-     *
-     * @param integer $level
-     *
-     * @return Family
-     */
-    public function setLevel($level)
+    public function setLevel(?int $level): self
     {
         $this->level = $level;
 
         return $this;
     }
 
-    /**
-     * Get level
-     *
-     * @return integer
-     */
-    public function getLevel()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->level;
+        return $this->createdAt;
     }
 
-    /**
-     * Set parent
-     *
-     * @param Family $parent
-     *
-     * @return Family
-     */
-    public function setParent(Family $parent = null)
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getTranslations(): ?array
+    {
+        return $this->translations;
+    }
+
+    public function setTranslations(array $translations): self
+    {
+        $this->translations = $translations;
+
+        return $this;
+    }
+
+    public function getParent(): ?self
+    {
+        return $this->parent;
+    }
+
+    public function setParent(?self $parent): self
     {
         $this->parent = $parent;
 
@@ -291,80 +194,59 @@ class Family
     }
 
     /**
-     * Get parent
-     *
-     * @return \Entity\Family
+     * @return Collection|Family[]
      */
-    public function getParent()
-    {
-        return $this->parent;
-    }
-
-    /**
-     * Add child
-     *
-     * @param Family $child
-     *
-     * @return Family
-     */
-    public function addChild(Family $child)
-    {
-        $this->children[] = $child;
-
-        return $this;
-    }
-
-    /**
-     * Remove child
-     *
-     * @param Family $child
-     */
-    public function removeChild(Family $child)
-    {
-        $this->children->removeElement($child);
-    }
-
-    /**
-     * Get children
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getChildren()
+    public function getChildren(): Collection
     {
         return $this->children;
     }
 
-    /**
-     * Add sport
-     *
-     * @param Sport $sport
-     *
-     * @return Family
-     */
-    public function addSport(Sport $sport)
+    public function addChild(Family $child): self
     {
-        $this->sports[] = $sport;
+        if (!$this->children->contains($child)) {
+            $this->children[] = $child;
+            $child->setParent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChild(Family $child): self
+    {
+        if ($this->children->contains($child)) {
+            $this->children->removeElement($child);
+            // set the owning side to null (unless already changed)
+            if ($child->getParent() === $this) {
+                $child->setParent(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * Remove sport
-     *
-     * @param Sport $sport
+     * @return Collection|Sport[]
      */
-    public function removeSport(Sport $sport)
-    {
-        $this->sports->removeElement($sport);
-    }
-
-    /**
-     * Get sports
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSports()
+    public function getSports(): Collection
     {
         return $this->sports;
+    }
+
+    public function addSport(Sport $sport): self
+    {
+        if (!$this->sports->contains($sport)) {
+            $this->sports[] = $sport;
+        }
+
+        return $this;
+    }
+
+    public function removeSport(Sport $sport): self
+    {
+        if ($this->sports->contains($sport)) {
+            $this->sports->removeElement($sport);
+        }
+
+        return $this;
     }
 }

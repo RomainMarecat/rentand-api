@@ -5,4 +5,4 @@ App\Entity\Diploma:
         ext: <fileExtension()>
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
-#        advert (unique): '@advert<current()>'
+        user (unique): '@user<current()>'

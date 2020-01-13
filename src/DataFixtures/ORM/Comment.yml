@@ -6,5 +6,4 @@ App\Entity\Comment:
         status: '50%? published : unpublished'
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
-#        advert: '@advert<numberBetween(1, 10)>'
-#        user: '@user<numberBetween(1, 10)>'
+        user: '@user<numberBetween(1, 10)>'

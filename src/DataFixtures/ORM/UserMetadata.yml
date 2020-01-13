@@ -1,5 +1,5 @@
 App\Entity\UserMetadata:
-    userMetadata{1..500}:
+    userMetadata{1..10}:
         lastname: <lastName()>
         firstname: <firstName()>
         slug: <firstName()>-<lastName()>

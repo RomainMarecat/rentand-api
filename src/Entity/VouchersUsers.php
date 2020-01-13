@@ -3,10 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
-use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * VouchersUsers
@@ -17,7 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class VouchersUsers
 {
     /**
-     * @var int
+     * @var string
      *
      * @ORM\Column(name="vouchers_users_id", type="guid")
      * @ORM\Id
@@ -33,118 +30,72 @@ class VouchersUsers
     private $createdAt;
 
     /**
-     * @var App\Entity\Voucher $voucher
+     * @var Voucher $voucher
      *
      * @ORM\ManyToOne(
-     *   targetEntity="App\Entity\Voucher",
+     *   targetEntity="Voucher",
      *   inversedBy="users",
      *   cascade={"persist", "merge"},
      *   fetch="LAZY"
      * )
      * @ORM\JoinColumn(name="voucher_id", referencedColumnName="voucher_id", onDelete="CASCADE")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      *
      */
-    protected $voucher;
+    private $voucher;
 
     /**
-     * @var Entity\User $user
+     * @var User $user
      *
      * @ORM\ManyToOne(
-     *   targetEntity="App\Entity\User",
+     *   targetEntity="User",
      *   inversedBy="vouchers",
      *   cascade={"persist", "merge"},
      *   fetch="LAZY"
      * )
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
-    protected $user;
+    private $user;
 
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-    }
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return VouchersUsers
-     */
-    public function setCreatedAt($createdAt)
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getVoucher(): ?Voucher
     {
-        return $this->createdAt;
+        return $this->voucher;
     }
 
-    /**
-     * Set voucher
-     *
-     * @param \App\Entity\Voucher $voucher
-     *
-     * @return VouchersUsers
-     */
-    public function setVoucher(\App\Entity\Voucher $voucher = null)
+    public function setVoucher(?Voucher $voucher): self
     {
         $this->voucher = $voucher;
 
         return $this;
     }
 
-    /**
-     * Get voucher
-     *
-     * @return \App\Entity\Voucher
-     */
-    public function getVoucher()
+    public function getUser(): ?User
     {
-        return $this->voucher;
+        return $this->user;
     }
 
-    /**
-     * Set user
-     *
-     * @param User $user
-     *
-     * @return VouchersUsers
-     */
-    public function setUser(User $user = null)
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }

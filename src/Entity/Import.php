@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Import
  *
- * @ORM\Table(name="import_import")
+ * @ORM\Table(name="import_voucher")
  * @ORM\Entity(repositoryClass="App\Repository\ImportRepository")
  */
 class Import
@@ -56,14 +56,14 @@ class Import
     /**
      * @ORM\ManyToOne(targetEntity="Plan", inversedBy="imports", fetch="LAZY")
      * @ORM\JoinColumn(name="plan_id", referencedColumnName="plan_id", nullable=true, onDelete="SET NULL")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     protected $plan;
 
     /**
      * @ORM\ManyToOne(targetEntity="Voucher", inversedBy="imports", fetch="LAZY")
      * @ORM\JoinColumn(name="voucher_id", referencedColumnName="voucher_id", nullable=true, onDelete="SET NULL")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     protected $voucher;
 

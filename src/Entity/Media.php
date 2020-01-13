@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Media
  *
- * @ORM\Table(name="media_media")
+ * @ORM\Table(name="media")
  * @ORM\Entity(repositoryClass="App\Repository\MediaRepository")
  */
 class Media
@@ -68,7 +68,7 @@ class Media
     /**
      * @ORM\ManyToOne(targetEntity="SportTeached", inversedBy="pictures")
      * @ORM\JoinColumn(name="sport_teached_id", referencedColumnName="sport_teached_id", onDelete="CASCADE"))
-     * @JMS\Groups({""})
+     * @JMS\Groups({})
      */
     private $sportTeached;
 

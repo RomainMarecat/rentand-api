@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Plan
  *
- * @ORM\Table(name="plan_plan")
+ * @ORM\Table(name="plan")
  * @ORM\Entity(repositoryClass="App\Repository\PlanRepository")
  */
 class Plan
@@ -24,124 +24,124 @@ class Plan
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    protected $name;
+    private $name;
 
     /**
      * @var string
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      */
-    protected $slug;
+    private $slug;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="updated_at", type="datetime")
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
      * @var string
      *
      * @ORM\Column(name="start", type="datetime", nullable=false)
      */
-    protected $start;
+    private $start;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end", type="datetime", nullable=false)
      */
-    protected $end;
+    private $end;
 
     /**
      * @var float
      *
      * @ORM\Column(name="initial_amount", type="float", nullable=false)
      */
-    protected $initialAmount;
+    private $initialAmount;
 
     /**
      * @var float
      *
      * @ORM\Column(name="minimum_amount", type="float", nullable=true)
      */
-    protected $minimumAmount;
+    private $minimumAmount;
 
     /**
      * @var float
      *
      * @ORM\Column(name="maximum_amount", type="float", nullable=true)
      */
-    protected $maximumAmount;
+    private $maximumAmount;
 
     /**
      * @var float
      *
      * @ORM\Column(name="initial_purchase", type="float", nullable=true)
      */
-    protected $initialPurchase;
+    private $initialPurchase;
 
     /**
      * @var float
      *
      * @ORM\Column(name="minimum_purchase", type="float", nullable=true)
      */
-    protected $minimumPurchase;
+    private $minimumPurchase;
 
     /**
      * @var float
      *
      * @ORM\Column(name="maximum_purchase", type="float", nullable=true)
      */
-    protected $maximumPurchase;
+    private $maximumPurchase;
 
     /**
      * @var string
      * @Assert\Choice(choices = {"voucher", "discount"}, message = "Choose a valid type.")
      * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
-    protected $type;
+    private $type;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="limitation_number", type="integer", nullable=true)
      */
-    protected $limitationNumber;
+    private $limitationNumber;
 
     /**
      * @ORM\ManyToOne(targetEntity="Campaign", inversedBy="plans", cascade={"remove"}, fetch="LAZY")
      * @ORM\JoinColumn(name="campaign_id", referencedColumnName="campaign_id", nullable=true, onDelete="CASCADE")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
-    protected $campaign;
+    private $campaign;
 
     /**
      * @ORM\OneToMany(targetEntity="Voucher", mappedBy="plan", fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
-    protected $vouchers;
+    private $vouchers;
 
     /**
      * @ORM\OneToMany(targetEntity="Import", mappedBy="plan", fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
-    protected $imports;
+    private $imports;
 
     /**
      * Instructor relation with plans
@@ -150,366 +150,196 @@ class Plan
      *      joinColumns={@ORM\JoinColumn(name="plan_id", referencedColumnName="plan_id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="user_id")}
      * )
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
-    protected $instructors;
+    private $instructors;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->instructors = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->imports = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->vouchers = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
+        $this->vouchers = new ArrayCollection();
+        $this->imports = new ArrayCollection();
+        $this->instructors = new ArrayCollection();
     }
 
-    public function __toString()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Plan
-     */
-    public function setName($name)
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
+    public function getSlug(): ?string
     {
-        return $this->name;
+        return $this->slug;
     }
 
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return Plan
-     */
-    public function setSlug($slug)
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 
         return $this;
     }
 
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->slug;
+        return $this->createdAt;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     * @return Plan
-     */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->createdAt;
+        return $this->updatedAt;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return Plan
-     */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
+    public function getStart(): ?\DateTimeInterface
     {
-        return $this->updatedAt;
+        return $this->start;
     }
 
-    /**
-     * Set start
-     *
-     * @param \DateTime $start
-     * @return Plan
-     */
-    public function setStart($start)
+    public function setStart(\DateTimeInterface $start): self
     {
         $this->start = $start;
 
         return $this;
     }
 
-    /**
-     * Get start
-     *
-     * @return \DateTime
-     */
-    public function getStart()
+    public function getEnd(): ?\DateTimeInterface
     {
-        return $this->start;
+        return $this->end;
     }
 
-    /**
-     * Set end
-     *
-     * @param \DateTime $end
-     * @return Plan
-     */
-    public function setEnd($end)
+    public function setEnd(\DateTimeInterface $end): self
     {
         $this->end = $end;
 
         return $this;
     }
 
-    /**
-     * Get end
-     *
-     * @return \DateTime
-     */
-    public function getEnd()
+    public function getInitialAmount(): ?float
     {
-        return $this->end;
+        return $this->initialAmount;
     }
 
-    /**
-     * Set initialAmount
-     *
-     * @param float $initialAmount
-     * @return Plan
-     */
-    public function setInitialAmount($initialAmount)
+    public function setInitialAmount(float $initialAmount): self
     {
         $this->initialAmount = $initialAmount;
 
         return $this;
     }
 
-    /**
-     * Get initialAmount
-     *
-     * @return float
-     */
-    public function getInitialAmount()
+    public function getMinimumAmount(): ?float
     {
-        return $this->initialAmount;
+        return $this->minimumAmount;
     }
 
-    /**
-     * Set minimumAmount
-     *
-     * @param float $minimumAmount
-     * @return Plan
-     */
-    public function setMinimumAmount($minimumAmount)
+    public function setMinimumAmount(?float $minimumAmount): self
     {
         $this->minimumAmount = $minimumAmount;
 
         return $this;
     }
 
-    /**
-     * Get minimumAmount
-     *
-     * @return float
-     */
-    public function getMinimumAmount()
+    public function getMaximumAmount(): ?float
     {
-        return $this->minimumAmount;
+        return $this->maximumAmount;
     }
 
-    /**
-     * Set maximumAmount
-     *
-     * @param float $maximumAmount
-     * @return Plan
-     */
-    public function setMaximumAmount($maximumAmount)
+    public function setMaximumAmount(?float $maximumAmount): self
     {
         $this->maximumAmount = $maximumAmount;
 
         return $this;
     }
 
-    /**
-     * Get maximumAmount
-     *
-     * @return float
-     */
-    public function getMaximumAmount()
+    public function getInitialPurchase(): ?float
     {
-        return $this->maximumAmount;
+        return $this->initialPurchase;
     }
 
-    /**
-     * Set initialPurchase
-     *
-     * @param float $initialPurchase
-     * @return Plan
-     */
-    public function setInitialPurchase($initialPurchase)
+    public function setInitialPurchase(?float $initialPurchase): self
     {
         $this->initialPurchase = $initialPurchase;
 
         return $this;
     }
 
-    /**
-     * Get initialPurchase
-     *
-     * @return float
-     */
-    public function getInitialPurchase()
+    public function getMinimumPurchase(): ?float
     {
-        return $this->initialPurchase;
+        return $this->minimumPurchase;
     }
 
-    /**
-     * Set minimumPurchase
-     *
-     * @param float $minimumPurchase
-     * @return Plan
-     */
-    public function setMinimumPurchase($minimumPurchase)
+    public function setMinimumPurchase(?float $minimumPurchase): self
     {
         $this->minimumPurchase = $minimumPurchase;
 
         return $this;
     }
 
-    /**
-     * Get minimumPurchase
-     *
-     * @return float
-     */
-    public function getMinimumPurchase()
+    public function getMaximumPurchase(): ?float
     {
-        return $this->minimumPurchase;
+        return $this->maximumPurchase;
     }
 
-    /**
-     * Set maximumPurchase
-     *
-     * @param float $maximumPurchase
-     * @return Plan
-     */
-    public function setMaximumPurchase($maximumPurchase)
+    public function setMaximumPurchase(?float $maximumPurchase): self
     {
         $this->maximumPurchase = $maximumPurchase;
 
         return $this;
     }
 
-    /**
-     * Get maximumPurchase
-     *
-     * @return float
-     */
-    public function getMaximumPurchase()
+    public function getType(): ?string
     {
-        return $this->maximumPurchase;
+        return $this->type;
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     * @return Plan
-     */
-    public function setType($type)
+    public function setType(string $type): self
     {
         $this->type = $type;
 
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
+    public function getLimitationNumber(): ?int
     {
-        return $this->type;
+        return $this->limitationNumber;
     }
 
-    /**
-     * Set limitationNumber
-     *
-     * @param integer $limitationNumber
-     * @return Plan
-     */
-    public function setLimitationNumber($limitationNumber)
+    public function setLimitationNumber(?int $limitationNumber): self
     {
         $this->limitationNumber = $limitationNumber;
 
         return $this;
     }
 
-    /**
-     * Get limitationNumber
-     *
-     * @return integer
-     */
-    public function getLimitationNumber()
+    public function getCampaign(): ?Campaign
     {
-        return $this->limitationNumber;
+        return $this->campaign;
     }
 
-    /**
-     * Set campaign
-     *
-     * @param \App\Entity\Campaign $campaign
-     * @return Plan
-     */
-    public function setCampaign(\App\Entity\Campaign $campaign = null)
+    public function setCampaign(?Campaign $campaign): self
     {
         $this->campaign = $campaign;
 
@@ -517,79 +347,65 @@ class Plan
     }
 
     /**
-     * Get campaign
-     *
-     * @return \App\Entity\Campaign
+     * @return Collection|Voucher[]
      */
-    public function getCampaign()
-    {
-        return $this->campaign;
-    }
-
-    /**
-     * Add vouchers
-     *
-     * @param \App\Entity\Voucher $vouchers
-     * @return Plan
-     */
-    public function addVoucher(\App\Entity\Voucher $vouchers)
-    {
-        $this->vouchers[] = $vouchers;
-
-        return $this;
-    }
-
-    /**
-     * Remove vouchers
-     *
-     * @param \App\Entity\Voucher $vouchers
-     */
-    public function removeVoucher(\App\Entity\Voucher $vouchers)
-    {
-        $this->vouchers->removeElement($vouchers);
-    }
-
-    /**
-     * Get vouchers
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getVouchers()
+    public function getVouchers(): Collection
     {
         return $this->vouchers;
     }
 
-    /**
-     * Add imports
-     *
-     * @param \App\Entity\Import $imports
-     * @return Plan
-     */
-    public function addImport(\App\Entity\Import $imports)
+    public function addVoucher(Voucher $voucher): self
     {
-        $this->imports[] = $imports;
+        if (!$this->vouchers->contains($voucher)) {
+            $this->vouchers[] = $voucher;
+            $voucher->setPlan($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVoucher(Voucher $voucher): self
+    {
+        if ($this->vouchers->contains($voucher)) {
+            $this->vouchers->removeElement($voucher);
+            // set the owning side to null (unless already changed)
+            if ($voucher->getPlan() === $this) {
+                $voucher->setPlan(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * Remove imports
-     *
-     * @param \App\Entity\Import $imports
+     * @return Collection|Import[]
      */
-    public function removeImport(\App\Entity\Import $imports)
-    {
-        $this->imports->removeElement($imports);
-    }
-
-    /**
-     * Get imports
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getImports()
+    public function getImports(): Collection
     {
         return $this->imports;
+    }
+
+    public function addImport(Import $import): self
+    {
+        if (!$this->imports->contains($import)) {
+            $this->imports[] = $import;
+            $import->setPlan($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImport(Import $import): self
+    {
+        if ($this->imports->contains($import)) {
+            $this->imports->removeElement($import);
+            // set the owning side to null (unless already changed)
+            if ($import->getPlan() === $this) {
+                $import->setPlan(null);
+            }
+        }
+
+        return $this;
     }
 
     /**

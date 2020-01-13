@@ -18,7 +18,7 @@ class CityTeached
      * @ORM\GeneratedValue(strategy="UUID")
      * @JMS\Groups({"getCity"})
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(name="personal_meeting_point_accepted", type="boolean")

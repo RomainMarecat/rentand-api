@@ -9,5 +9,4 @@ App\Entity\Booking:
         endDate: <dateTime()>
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
-#        user: '@user<numberBetween(1, 10)>'
-#        advert: '@advert<numberBetween(1, 10)>'
+        user: '@user<numberBetween(1, 10)>'

@@ -10,13 +10,13 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Diploma
  *
- * @ORM\Table(name="diploma_diploma")
+ * @ORM\Table(name="diploma")
  * @ORM\Entity
  */
 class Diploma
 {
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(name="diploma_id", type="guid")
      * @ORM\Id
@@ -51,7 +51,7 @@ class Diploma
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
@@ -59,7 +59,7 @@ class Diploma
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
@@ -68,157 +68,84 @@ class Diploma
      * @ORM\OneToOne(targetEntity="User", inversedBy="diploma")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE"))
      * @Assert\NotBlank()
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     private $user;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Diploma
-     */
-    public function setTitle($title)
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
+    public function getFilename(): ?string
     {
-        return $this->title;
+        return $this->filename;
     }
 
-    /**
-     * Set filename
-     *
-     * @param string $filename
-     *
-     * @return Diploma
-     */
-    public function setFilename($filename)
+    public function setFilename(?string $filename): self
     {
         $this->filename = $filename;
 
         return $this;
     }
 
-    /**
-     * Get filename
-     *
-     * @return string
-     */
-    public function getFilename()
+    public function getExt(): ?string
     {
-        return $this->filename;
+        return $this->ext;
     }
 
-    /**
-     * Set ext
-     *
-     * @param string $ext
-     *
-     * @return Diploma
-     */
-    public function setExt($ext)
+    public function setExt(?string $ext): self
     {
         $this->ext = $ext;
 
         return $this;
     }
 
-    /**
-     * Get ext
-     *
-     * @return string
-     */
-    public function getExt()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->ext;
+        return $this->createdAt;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Diploma
-     */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->createdAt;
+        return $this->updatedAt;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Diploma
-     */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    /**
-     * @param mixed $user
-     *
-     * @return Diploma
-     */
-    public function setUser($user)
+    public function setUser(?User $user): self
     {
         $this->user = $user;
+
         return $this;
     }
 }

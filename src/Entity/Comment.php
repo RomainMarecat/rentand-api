@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Comment
  *
- * @ORM\Table(name="comment_comment")
+ * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
  */
 class Comment
@@ -21,9 +21,9 @@ class Comment
      * @ORM\Column(name="comment_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"Default", "adminGetComments"})
+     * @JMS\Groups({})
      */
-    protected $id;
+    private $id;
 
     /**
      * @var integer
@@ -35,7 +35,7 @@ class Comment
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
      */
-    protected $grade;
+    private $grade;
 
     /**
      * @var string
@@ -43,7 +43,7 @@ class Comment
      * @ORM\Column(name="comment", type="text")
      * @Assert\NotBlank
      */
-    protected $comment;
+    private $comment;
 
     /**
      * @var boolean
@@ -54,14 +54,14 @@ class Comment
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
      */
-    protected $validated;
+    private $validated;
 
     /**
      * @var string
      * @ORM\Column(name="status", type="string", length=50, nullable=false)
      * @JMS\Groups({"Default", "adminGetComments"})
      */
-    protected $status;
+    private $status;
 
     /**
      * @var \DateTime
@@ -70,7 +70,7 @@ class Comment
      * @Gedmo\Timestampable(on="create")
      * @JMS\Groups({"Default", "adminGetComments"})
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @var \DateTime
@@ -78,7 +78,7 @@ class Comment
      * @ORM\Column(name="updatedAt", type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
      * @var Booking
@@ -86,197 +86,91 @@ class Comment
      * @ORM\ManyToOne(targetEntity="Booking", inversedBy="comments")
      * @ORM\JoinColumn(name="booking_id", referencedColumnName="booking_id", onDelete="CASCADE"))
      * @Assert\NotBlank
-     * @JMS\Groups({"hidden", "adminGetComments"})
+     * @JMS\Groups({"", "adminGetComments"})
      */
-    protected $booking;
+    private $booking;
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE"))
      * @Assert\NotBlank
-     * @JMS\Groups({"hidden", "adminGetComments", "getUser"})
+     * @JMS\Groups({"", "adminGetComments", "getUser"})
      */
-    protected $user;
+    private $user;
 
-    public function __construct()
-    {
-        $this->setStatus('unpublished');
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set grade
-     *
-     * @param integer $grade
-     *
-     * @return Comment
-     */
-    public function setGrade($grade)
+    public function getGrade(): ?int
+    {
+        return $this->grade;
+    }
+
+    public function setGrade(int $grade): self
     {
         $this->grade = $grade;
 
         return $this;
     }
 
-    /**
-     * Get grade
-     *
-     * @return integer
-     */
-    public function getGrade()
-    {
-        return $this->grade;
-    }
-
-    /**
-     * Set comment
-     *
-     * @param string $comment
-     *
-     * @return Comment
-     */
-    public function setComment($comment)
-    {
-        $this->comment = ucfirst($comment);
-
-        return $this;
-    }
-
-    /**
-     * Get comment
-     *
-     * @return string
-     */
-    public function getComment()
+    public function getComment(): ?string
     {
         return $this->comment;
     }
 
-    /**
-     * Set validated
-     *
-     * @param boolean $validated
-     *
-     * @return Comment
-     */
-    public function setValidated($validated)
+    public function setComment(string $comment): self
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function getValidated(): ?bool
+    {
+        return $this->validated;
+    }
+
+    public function setValidated(bool $validated): self
     {
         $this->validated = $validated;
 
         return $this;
     }
 
-    /**
-     * Get validated
-     *
-     * @return boolean
-     */
-    public function getValidated()
+    public function getStatus(): ?string
     {
-        return $this->validated;
+        return $this->status;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Comment
-     */
-    public function setCreatedAt($createdAt)
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Comment
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-    /**
-     * Set User
-     *
-     * @param User $user
-     *
-     * @return Comment
-     */
-    public function setUser(User $user = null)
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get advert
-     *
-     * @return User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Gets the value of status.
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Sets the value of status.
-     *
-     * @param string $status the status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
@@ -289,6 +183,18 @@ class Comment
     public function setBooking(?Booking $booking): self
     {
         $this->booking = $booking;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

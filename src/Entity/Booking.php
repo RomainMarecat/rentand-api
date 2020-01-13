@@ -11,7 +11,7 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * Booking
  *
- * @ORM\Table(name="booking_booking")
+ * @ORM\Table(name="booking")
  * @ORM\Entity(repositoryClass="App\Repository\BookingRepository")
  */
 class Booking
@@ -93,7 +93,7 @@ class Booking
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="bookings")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="SET NULL")
-     * @JMS\Groups({"hidden", "getMyBookings", "getBookings", "getBooking", "patchBooking", "putBooking",
+     * @JMS\Groups({"", "getMyBookings", "getBookings", "getBooking", "patchBooking", "putBooking",
      *     "adminGetBookings", "adminGetBooking"})
      */
     private $user;
@@ -101,394 +101,146 @@ class Booking
     /**
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="coach_id", referencedColumnName="user_id", onDelete="SET NULL")
-     * @JMS\Groups({"hidden", "getMyBookings", "getBookings", "getBooking", "patchBooking", "putBooking",
+     * @JMS\Groups({"", "getMyBookings", "getBookings", "getBooking", "patchBooking", "putBooking",
      *     "adminGetBookings"})
      */
     private $coach;
 
     /**
-     * @ORM\OneToMany(targetEntity="Course", mappedBy="booking", cascade={"persist", "remove"}, fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden", "getBooking", "patchBooking", "getMyBookings", "putBooking", "adminGetBookings"})
-     */
-    private $courses;
-
-    /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="booking", cascade={"remove"}, fetch="EXTRA_LAZY")
      * @ORM\OrderBy({"id" = "DESC"})
-     * @JMS\Groups({"hidden", "getUsers", "getUser", "postSimpleSearch"})
+     * @JMS\Groups({"", "getUsers", "getUser", "postSimpleSearch"})
      */
     private $comments;
 
     public function __construct()
     {
-        $this->courses = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set walletId
-     *
-     * @param string $walletId
-     *
-     * @return Booking
-     */
-    public function setWalletId($walletId)
+    public function getWalletId(): ?string
+    {
+        return $this->walletId;
+    }
+
+    public function setWalletId(?string $walletId): self
     {
         $this->walletId = $walletId;
 
         return $this;
     }
 
-    /**
-     * Get walletId
-     *
-     * @return string
-     */
-    public function getWalletId()
+    public function getStatut(): ?int
     {
-        return $this->walletId;
+        return $this->statut;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Booking
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Booking
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Set user
-     *
-     * @param User $user
-     *
-     * @return Booking
-     */
-    public function setUser(User $user = null)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Set statut
-     *
-     * @param integer $statut
-     *
-     * @return Booking
-     */
-    public function setStatut($statut)
+    public function setStatut(int $statut): self
     {
         $this->statut = $statut;
 
         return $this;
     }
 
-    /**
-     * Get statut
-     *
-     * @return integer
-     */
-    public function getStatut()
+    public function getMangoPayTransactionId(): ?string
     {
-        return $this->statut;
+        return $this->mangoPayTransactionId;
     }
 
-    /**
-     * Set transaction
-     *
-     * @param string $transaction
-     *
-     * @return Booking
-     */
-    public function setTransaction($transaction)
-    {
-        $this->transaction = $transaction;
-
-        return $this;
-    }
-
-    /**
-     * Get transaction
-     *
-     * @return string
-     */
-    public function getTransaction()
-    {
-        return $this->transaction;
-    }
-
-    /**
-     * Set code
-     *
-     * @param string $code
-     *
-     * @return Booking
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    /**
-     * Get code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * Set startDate
-     *
-     * @param \DateTime $startDate
-     *
-     * @return Booking
-     */
-    public function setStartDate($startDate)
-    {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    /**
-     * Get startDate
-     *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
-
-    /**
-     * Set endDate
-     *
-     * @param \DateTime $endDate
-     *
-     * @return Booking
-     */
-    public function setEndDate($endDate)
-    {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    /**
-     * Get endDate
-     *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
-    }
-
-    /**
-     * Gets the value of price.
-     *
-     * @return mixed
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * Sets the value of price.
-     *
-     * @param mixed $price the price
-     *
-     * @return self
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Add course
-     *
-     * @param Course $course
-     *
-     * @return Booking
-     */
-    public function addCourse(Course $course)
-    {
-        $this->courses[] = $course;
-
-        return $this;
-    }
-
-    /**
-     * Remove course
-     *
-     * @param Course $course
-     */
-    public function removeCourse(Course $course)
-    {
-        $this->courses->removeElement($course);
-    }
-
-    /**
-     * Get courses
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCourses()
-    {
-        return $this->courses;
-    }
-
-    /**
-     * Set mangoPayTransactionId
-     *
-     * @param string $mangoPayTransactionId
-     *
-     * @return Booking
-     */
-    public function setMangoPayTransactionId($mangoPayTransactionId)
+    public function setMangoPayTransactionId(?string $mangoPayTransactionId): self
     {
         $this->mangoPayTransactionId = $mangoPayTransactionId;
 
         return $this;
     }
 
-    /**
-     * Get mangoPayTransactionId
-     *
-     * @return string
-     */
-    public function getMangoPayTransactionId()
+    public function getTransaction(): ?string
     {
-        return $this->mangoPayTransactionId;
+        return $this->transaction;
     }
 
-    /**
-     * Set cancellation
-     *
-     * @param integer $cancellation
-     *
-     * @return Booking
-     */
-    public function setCancellation($cancellation)
+    public function setTransaction(?string $transaction): self
+    {
+        $this->transaction = $transaction;
+
+        return $this;
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(?string $code): self
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getCancellation(): ?int
+    {
+        return $this->cancellation;
+    }
+
+    public function setCancellation(?int $cancellation): self
     {
         $this->cancellation = $cancellation;
 
         return $this;
     }
 
-    /**
-     * Get cancellation
-     *
-     * @return integer
-     */
-    public function getCancellation()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->cancellation;
+        return $this->createdAt;
     }
 
-    /**
-     * Add comment
-     *
-     * @param Comment $comment
-     *
-     * @return Booking
-     */
-    public function addComment(Comment $comment)
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->comments[] = $comment;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Remove comment
-     *
-     * @param Comment $comment
-     */
-    public function removeComment(Comment $comment)
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        $this->comments->removeElement($comment);
+        return $this->updatedAt;
     }
 
-    /**
-     * Get comments
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getComments()
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
-        return $this->comments;
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 
     public function getCoach(): ?User
@@ -499,6 +251,37 @@ class Booking
     public function setCoach(?User $coach): self
     {
         $this->coach = $coach;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setBooking($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getBooking() === $this) {
+                $comment->setBooking(null);
+            }
+        }
 
         return $this;
     }

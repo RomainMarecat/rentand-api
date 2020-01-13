@@ -11,7 +11,7 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * Sport
  *
- * @ORM\Table(name="sport_sport")
+ * @ORM\Table(name="sport")
  * @ORM\Entity(repositoryClass="App\Repository\SportRepository")
  * @JMS\ExclusionPolicy("none")
  */
@@ -20,11 +20,10 @@ class Sport
     /**
      * @var integer
      *
-     * @ORM\Column(name="sport_id", type="integer")
+     * @ORM\Column(name="sport_id", type="guid")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @JMS\Groups({"Default", "getSimpleSearch", "getAdvancedSearch", "postSimpleSearch", "countPostSimpleSearch",
-     *     "getUser"})
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @JMS\Groups({"getUser"})
      */
     private $id;
 
@@ -56,7 +55,7 @@ class Sport
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
@@ -64,7 +63,7 @@ class Sport
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
@@ -77,7 +76,7 @@ class Sport
     /**
      * @ORM\ManyToOne(targetEntity="Sport", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="sport_id", onDelete="CASCADE")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      * @JMS\MaxDepth(2)
      */
     private $parent;
@@ -85,28 +84,28 @@ class Sport
     /**
      * @ORM\OneToMany(targetEntity="SportTeached", mappedBy="sport", fetch="EXTRA_LAZY")
      * @JMS\Exclude
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     private $sportsTeached;
 
     /**
      * @ORM\ManyToMany(targetEntity="SportTeached", mappedBy="specialities")
      * @JMS\Exclude
-     * @JMS\Groups({"hidden", "getFamiliesByParent"})
+     * @JMS\Groups({"getFamiliesByParent"})
      * @JMS\MaxDepth(1)
      */
     private $sportTeachedSpecialites;
 
     /**
      * @ORM\OneToMany(targetEntity="Sport", mappedBy="parent", cascade={"remove", "persist"}, fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden", "getFormUser", "getSport"})
+     * @JMS\Groups({"getFormUser", "getSport"})
      */
     private $children;
 
     /**
      * @ORM\ManyToMany(targetEntity="Family", mappedBy="sports", fetch="EXTRA_LAZY")
      * @JMS\Exclude
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     private $families;
 

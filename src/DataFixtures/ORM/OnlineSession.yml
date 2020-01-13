@@ -1,0 +1,5 @@
+App\Entity\OnlineSession:
+    onlineSession{1..50}:
+        sportTeached: '@sportTeached<numberBetween(1, 200)>'
+        cityTeached: '@cityTeached<numberBetween(1, 100)>'
+        user: '@user<numberBetween(1, 10)>'

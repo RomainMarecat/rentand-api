@@ -11,7 +11,7 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * Structure
  *
- * @ORM\Table(name="structure_structure")
+ * @ORM\Table(name="structure")
  * @ORM\Entity
  * @JMS\ExclusionPolicy("none")
  */
@@ -20,9 +20,9 @@ class Structure
     /**
      * @var string
      *
-     * @ORM\Column(name="structure_id", type="integer")
+     * @ORM\Column(name="structure_id", type="guid")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="UUID")
      */
     private $id;
 
@@ -49,7 +49,7 @@ class Structure
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
     private $createdAt;
@@ -57,13 +57,14 @@ class Structure
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
     private $updatedAt;
 
     /**
      * @var ArrayCollection
+     *
      * @ORM\OneToMany(targetEntity="User", mappedBy="structure")
      */
     private $users;
@@ -77,7 +78,7 @@ class Structure
      *    cascade={"persist", "merge"},
      *    fetch="EXTRA_LAZY"
      * )
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     private $structureLinks;
 
@@ -87,134 +88,69 @@ class Structure
         $this->structureLinks = new ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Structure
-     */
-    public function setName($name)
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
+    public function getEmail(): ?string
     {
-        return $this->name;
+        return $this->email;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Structure
-     */
-    public function setEmail($email)
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
+    public function getCode(): ?string
     {
-        return $this->email;
+        return $this->code;
     }
 
-    /**
-     * Set code
-     *
-     * @param string $code
-     *
-     * @return Structure
-     */
-    public function setCode($code)
+    public function setCode(?string $code): self
     {
         $this->code = $code;
 
         return $this;
     }
 
-    /**
-     * Get code
-     *
-     * @return string
-     */
-    public function getCode()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->code;
+        return $this->createdAt;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Structure
-     */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->createdAt;
+        return $this->updatedAt;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Structure
-     */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**

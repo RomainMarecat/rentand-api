@@ -117,7 +117,7 @@ class UserMetadata
      * mappedBy="userMetadata",
      * cascade={"remove", "persist"},
      * fetch="LAZY")
-     * @JMS\Groups({"hidden", "getMe", "patchMe", "getUser", "getIsValidUser", "getUserByToken", "adminGetUsers",
+     * @JMS\Groups({"", "getMe", "patchMe", "getUser", "getIsValidUser", "getUserByToken", "adminGetUsers",
      *     "adminGetUser", "patchUsers", "getAccount"})
      */
     private $address;
@@ -132,7 +132,7 @@ class UserMetadata
      * @var User
      * @ORM\OneToOne(targetEntity="User", inversedBy="userMetadata", cascade={"remove", "persist"}, fetch="LAZY")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE"))
-     * @JMS\Groups({"hidden", "getMe", "patchMe", "getUser", "getPlanningUserInformations", "putBooking", "getBooking",
+     * @JMS\Groups({"", "getMe", "patchMe", "getUser", "getPlanningUserInformations", "putBooking", "getBooking",
      *     "getBookingUser", "getBookingUser", "getUserById", "postEmailReminder", "adminGetUser"})
      */
     private $user;

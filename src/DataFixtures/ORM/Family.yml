@@ -3,6 +3,9 @@ App\Entity\Family:
         name: <text(20)>
         slug: <slug()>
         level: <numberBetween(0, 2)>
+        translations:
+            fr: <text(20)>
+            en: <text(20)>
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
         parent: '50%? @family<numberBetween(1, 10)>'

@@ -1,0 +1,7 @@
+App\Entity\SessionType:
+    sessionType{1..100}:
+        duration: '<numberBetween(1, 300)>'
+        maxPersons: '<numberBetween(1, 10)>'
+        bookingDelay: '<numberBetween(1, 10)>'
+        pause: '<numberBetween(1, 120)>'
+        onlineSession: '@onlineSession<numberBetween(1, 50)>'

@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * City
  *
- * @ORM\Table(name="city_city")
+ * @ORM\Table(name="city")
  * @ORM\Entity(repositoryClass="App\Repository\CityRepository")
  * @JMS\ExclusionPolicy("none")
  */
@@ -24,7 +24,7 @@ class City
      * @ORM\Column(name="city_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getSimpleSearch", "getAdvancedSearch", "postSimpleSearch", "countPostSimpleSearch", "getCity"})
+     * @JMS\Groups({"getCity"})
      */
     private $id;
 
@@ -132,12 +132,6 @@ class City
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="cities", fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden"})
-     */
-    private $users;
-
-    /**
      * @ORM\OneToMany(targetEntity="MeetingPoint", mappedBy="city")
      */
     private $meetingPoints;
@@ -147,7 +141,6 @@ class City
      */
     public function __construct()
     {
-        $this->users = new ArrayCollection();
         $this->meetingPoints = new ArrayCollection();
     }
 
@@ -283,34 +276,6 @@ class City
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addCity($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-            $user->removeCity($this);
-        }
 
         return $this;
     }

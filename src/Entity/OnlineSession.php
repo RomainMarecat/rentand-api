@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,36 +21,16 @@ class OnlineSession
     private $id;
 
     /**
-     * @ORM\Column(name="session_type", type="object")
-     */
-    private $sessionType;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Sport")
-     * @ORM\JoinColumn(name="sport_id", referencedColumnName="sport_id")
+     * @ORM\ManyToOne(targetEntity="SportTeached")
+     * @ORM\JoinColumn(name="sport_teached_id", referencedColumnName="sport_teached_id")
      */
     private $sportTeached;
 
     /**
-     * @ORM\ManyToOne(targetEntity="City")
-     * @ORM\JoinColumn(name="city_id", referencedColumnName="city_id")
+     * @ORM\ManyToOne(targetEntity="CityTeached")
+     * @ORM\JoinColumn(name="city_teached_id", referencedColumnName="city_teached_id")
      */
     private $cityTeached;
-
-    /**
-     * @ORM\Column(name="prices", type="array")
-     */
-    private $prices = [];
-
-    /**
-     * @ORM\Column(name="date_range", type="object")
-     */
-    private $dateRange;
-
-    /**
-     * @ORM\Column(name="time_range", type="object")
-     */
-    private $timeRange;
 
     /**
      * @ORM\ManyToOne(targetEntity="User")
@@ -57,154 +39,107 @@ class OnlineSession
     private $user;
 
     /**
-     * @return mixed
+     * @ORM\OneToMany(targetEntity="App\Entity\SessionPrice", mappedBy="onlineSession", orphanRemoval=true)
      */
-    public function getId()
+    private $sessionPrices;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\SessionType", mappedBy="onlineSession", cascade={"persist", "remove"})
+     */
+    private $sessionType;
+
+    public function __construct()
+    {
+        $this->sessionPrices = new ArrayCollection();
+    }
+
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * @param mixed $id
-     *
-     * @return OnlineSession
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSessionType()
-    {
-        return $this->sessionType;
-    }
-
-    /**
-     * @param mixed $sessionType
-     *
-     * @return OnlineSession
-     */
-    public function setSessionType($sessionType)
-    {
-        $this->sessionType = $sessionType;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getSportTeached()
+    public function getSportTeached(): ?SportTeached
     {
         return $this->sportTeached;
     }
 
-    /**
-     * @param mixed $sportTeached
-     *
-     * @return OnlineSession
-     */
-    public function setSportTeached($sportTeached)
+    public function setSportTeached(?SportTeached $sportTeached): self
     {
         $this->sportTeached = $sportTeached;
+
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCityTeached()
+    public function getCityTeached(): ?CityTeached
     {
         return $this->cityTeached;
     }
 
-    /**
-     * @param mixed $cityTeached
-     *
-     * @return OnlineSession
-     */
-    public function setCityTeached($cityTeached)
+    public function setCityTeached(?CityTeached $cityTeached): self
     {
         $this->cityTeached = $cityTeached;
+
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function getPrices(): array
-    {
-        return $this->prices;
-    }
-
-    /**
-     * @param array $prices
-     *
-     * @return OnlineSession
-     */
-    public function setPrices(array $prices): OnlineSession
-    {
-        $this->prices = $prices;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDateRange()
-    {
-        return $this->dateRange;
-    }
-
-    /**
-     * @param mixed $dateRange
-     *
-     * @return OnlineSession
-     */
-    public function setDateRange($dateRange)
-    {
-        $this->dateRange = $dateRange;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTimeRange()
-    {
-        return $this->timeRange;
-    }
-
-    /**
-     * @param mixed $timeRange
-     *
-     * @return OnlineSession
-     */
-    public function setTimeRange($timeRange)
-    {
-        $this->timeRange = $timeRange;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    /**
-     * @param mixed $user
-     *
-     * @return OnlineSession
-     */
-    public function setUser($user)
+    public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SessionPrice[]
+     */
+    public function getSessionPrices(): Collection
+    {
+        return $this->sessionPrices;
+    }
+
+    public function addSessionPrice(SessionPrice $sessionPrice): self
+    {
+        if (!$this->sessionPrices->contains($sessionPrice)) {
+            $this->sessionPrices[] = $sessionPrice;
+            $sessionPrice->setOnlineSession($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSessionPrice(SessionPrice $sessionPrice): self
+    {
+        if ($this->sessionPrices->contains($sessionPrice)) {
+            $this->sessionPrices->removeElement($sessionPrice);
+            // set the owning side to null (unless already changed)
+            if ($sessionPrice->getOnlineSession() === $this) {
+                $sessionPrice->setOnlineSession(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getSessionType(): ?SessionType
+    {
+        return $this->sessionType;
+    }
+
+    public function setSessionType(?SessionType $sessionType): self
+    {
+        $this->sessionType = $sessionType;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newOnlineSession = null === $sessionType ? null : $this;
+        if ($sessionType->getOnlineSession() !== $newOnlineSession) {
+            $sessionType->setOnlineSession($newOnlineSession);
+        }
+
         return $this;
     }
 }

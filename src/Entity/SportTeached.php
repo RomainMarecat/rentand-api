@@ -21,7 +21,7 @@ class SportTeached
      * @ORM\Column(name="sport_teached_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"hidden", "getUser", "getMyUsers", "getSportTeachedById", "postEmailReminder"})
+     * @JMS\Groups({"", "getUser", "getMyUsers", "getSportTeachedById", "postEmailReminder"})
      */
     private $id;
 

@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Address
  *
- * @ORM\Table(name="address_address")
+ * @ORM\Table(name="address")
  * @ORM\Entity
  * @JMS\ExclusionPolicy("none")
  */
@@ -63,7 +63,7 @@ class Address
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
      *
      */
@@ -72,7 +72,7 @@ class Address
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      * @Gedmo\Timestampable(on="update")
      * @JMS\Exclude
      */
@@ -82,7 +82,7 @@ class Address
      * @ORM\OneToOne(targetEntity="UserMetadata", inversedBy="address")
      * @ORM\JoinColumn(name="user_metadata_id", referencedColumnName="user_metadata_id", onDelete="CASCADE")
      * @JMS\Exclude
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     private $userMetadata;
 

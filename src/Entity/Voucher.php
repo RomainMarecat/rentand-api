@@ -12,407 +12,275 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Voucher
  *
- * @ORM\Table(name="voucher_voucher")
+ * @ORM\Table(name="voucher")
  * @ORM\Entity
  */
 class Voucher
 {
     /**
-     * @var integer
+     * @var string
      *
      * @ORM\Column(name="voucher_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      */
-    protected $name;
+    private $name;
 
     /**
      * @var string
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      */
-    protected $slug;
+    private $slug;
 
     /**
      * @var string
      *
      * @ORM\Column(name="code", type="string", length=255, nullable=false, unique=true)
      */
-    protected $code;
+    private $code;
 
     /**
      * @var float
      *
      * @ORM\Column(name="cash_available", type="float", nullable=false)
      */
-    protected $cashAvailable;
+    private $cashAvailable;
 
     /**
      * @var float
      *
      * @ORM\Column(name="cash_reserved", type="float", nullable=false)
      */
-    protected $cashReserved;
+    private $cashReserved;
 
     /**
      * @var float
      *
      * @ORM\Column(name="cash_used", type="float", nullable=false)
      */
-    protected $cashUsed;
+    private $cashUsed;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="active", type="boolean", nullable=false)
      */
-    protected $active;
+    private $active;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updated_at", type="datetime")
      */
-    protected $updatedAt;
+    private $updatedAt;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="start", type="datetime", nullable=false)
      */
-    protected $start;
+    private $start;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="end", type="datetime", nullable=false)
      */
-    protected $end;
+    private $end;
 
     /**
      * @ORM\ManyToOne(targetEntity="Plan", inversedBy="vouchers", cascade={"persist", "remove"}, fetch="LAZY")
      * @ORM\JoinColumn(name="plan_id", referencedColumnName="plan_id", nullable=true, onDelete="CASCADE")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
-    protected $plan;
+    private $plan;
 
     /**
      * @ORM\OneToMany(targetEntity="Transaction", mappedBy="voucher", fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden", "postSearchVouchers"})
+     * @JMS\Groups({"postSearchVouchers"})
      */
-    protected $transactions;
+    private $transactions;
 
     /**
      * @ORM\OneToMany(targetEntity="Import", mappedBy="voucher", fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
-    protected $imports;
+    private $imports;
 
     /**
      * @var ArrayCollection Users $users
      *
      * @ORM\OneToMany(targetEntity="App\Entity\VouchersUsers", mappedBy="voucher", cascade={"persist", "merge"}, fetch="EXTRA_LAZY")
      * @ORM\JoinColumn(name="voucher_id", referencedColumnName="voucher_id")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
-    protected $users;
+    private $users;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->transactions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->imports = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
+        $this->transactions = new ArrayCollection();
+        $this->imports = new ArrayCollection();
         $this->users = new ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Voucher
-     */
-    public function setName($name)
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
+    public function getSlug(): ?string
     {
-        return $this->name;
+        return $this->slug;
     }
 
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return Voucher
-     */
-    public function setSlug($slug)
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 
         return $this;
     }
 
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
+    public function getCode(): ?string
     {
-        return $this->slug;
+        return $this->code;
     }
 
-    /**
-     * Set code
-     *
-     * @param string $code
-     * @return Voucher
-     */
-    public function setCode($code)
+    public function setCode(string $code): self
     {
         $this->code = $code;
 
         return $this;
     }
 
-    /**
-     * Get code
-     *
-     * @return string
-     */
-    public function getCode()
+    public function getCashAvailable(): ?float
     {
-        return $this->code;
+        return $this->cashAvailable;
     }
 
-    /**
-     * Set cashAvailable
-     *
-     * @param float $cashAvailable
-     * @return Voucher
-     */
-    public function setCashAvailable($cashAvailable)
+    public function setCashAvailable(float $cashAvailable): self
     {
         $this->cashAvailable = $cashAvailable;
 
         return $this;
     }
 
-    /**
-     * Get cashAvailable
-     *
-     * @return float
-     */
-    public function getCashAvailable()
+    public function getCashReserved(): ?float
     {
-        return $this->cashAvailable;
+        return $this->cashReserved;
     }
 
-    /**
-     * Set cashReserved
-     *
-     * @param float $cashReserved
-     * @return Voucher
-     */
-    public function setCashReserved($cashReserved)
+    public function setCashReserved(float $cashReserved): self
     {
         $this->cashReserved = $cashReserved;
 
         return $this;
     }
 
-    /**
-     * Get cashReserved
-     *
-     * @return float
-     */
-    public function getCashReserved()
+    public function getCashUsed(): ?float
     {
-        return $this->cashReserved;
+        return $this->cashUsed;
     }
 
-    /**
-     * Set cashUsed
-     *
-     * @param float $cashUsed
-     * @return Voucher
-     */
-    public function setCashUsed($cashUsed)
+    public function setCashUsed(float $cashUsed): self
     {
         $this->cashUsed = $cashUsed;
 
         return $this;
     }
 
-    /**
-     * Get cashUsed
-     *
-     * @return float
-     */
-    public function getCashUsed()
+    public function getActive(): ?bool
     {
-        return $this->cashUsed;
+        return $this->active;
     }
 
-    /**
-     * Set active
-     *
-     * @param boolean $active
-     * @return Voucher
-     */
-    public function setActive($active)
+    public function setActive(bool $active): self
     {
         $this->active = $active;
 
         return $this;
     }
 
-    /**
-     * Get active
-     *
-     * @return boolean
-     */
-    public function getActive()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->active;
+        return $this->createdAt;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     * @return Voucher
-     */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->createdAt;
+        return $this->updatedAt;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     * @return Voucher
-     */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
+    public function getStart(): ?\DateTimeInterface
     {
-        return $this->updatedAt;
+        return $this->start;
     }
 
-    /**
-     * Set start
-     *
-     * @param \DateTime $start
-     * @return Voucher
-     */
-    public function setStart($start)
+    public function setStart(\DateTimeInterface $start): self
     {
         $this->start = $start;
 
         return $this;
     }
 
-    /**
-     * Get start
-     *
-     * @return \DateTime
-     */
-    public function getStart()
+    public function getEnd(): ?\DateTimeInterface
     {
-        return $this->start;
+        return $this->end;
     }
 
-    /**
-     * Set end
-     *
-     * @param \DateTime $end
-     * @return Voucher
-     */
-    public function setEnd($end)
+    public function setEnd(\DateTimeInterface $end): self
     {
         $this->end = $end;
 
         return $this;
     }
 
-    /**
-     * Get end
-     *
-     * @return \DateTime
-     */
-    public function getEnd()
+    public function getPlan(): ?Plan
     {
-        return $this->end;
+        return $this->plan;
     }
 
-    /**
-     * Set plan
-     *
-     * @param \App\Entity\Plan $plan
-     * @return Voucher
-     */
-    public function setPlan(\App\Entity\Plan $plan = null)
+    public function setPlan(?Plan $plan): self
     {
         $this->plan = $plan;
 
@@ -420,122 +288,95 @@ class Voucher
     }
 
     /**
-     * Get plan
-     *
-     * @return \App\Entity\Plan
+     * @return Collection|Transaction[]
      */
-    public function getPlan()
-    {
-        return $this->plan;
-    }
-
-    /**
-     * Add transactions
-     *
-     * @param \App\Entity\Transaction $transactions
-     * @return Voucher
-     */
-    public function addTransaction(\App\Entity\Transaction $transactions)
-    {
-        $this->transactions[] = $transactions;
-
-        return $this;
-    }
-
-    /**
-     * Remove transactions
-     *
-     * @param \App\Entity\Transaction $transactions
-     */
-    public function removeTransaction(\App\Entity\Transaction $transactions)
-    {
-        $this->transactions->removeElement($transactions);
-    }
-
-    /**
-     * Get transactions
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTransactions()
+    public function getTransactions(): Collection
     {
         return $this->transactions;
     }
 
-    /**
-     * Add imports
-     *
-     * @param \App\Entity\Import $imports
-     * @return Voucher
-     */
-    public function addImport(\App\Entity\Import $imports)
+    public function addTransaction(Transaction $transaction): self
     {
-        $this->imports[] = $imports;
+        if (!$this->transactions->contains($transaction)) {
+            $this->transactions[] = $transaction;
+            $transaction->setVoucher($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTransaction(Transaction $transaction): self
+    {
+        if ($this->transactions->contains($transaction)) {
+            $this->transactions->removeElement($transaction);
+            // set the owning side to null (unless already changed)
+            if ($transaction->getVoucher() === $this) {
+                $transaction->setVoucher(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * Remove imports
-     *
-     * @param \App\Entity\Import $imports
+     * @return Collection|Import[]
      */
-    public function removeImport(\App\Entity\Import $imports)
-    {
-        $this->imports->removeElement($imports);
-    }
-
-    /**
-     * Get imports
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getImports()
+    public function getImports(): Collection
     {
         return $this->imports;
     }
 
-    /**
-     * Add user
-     *
-     * @param User $user
-     *
-     * @return Voucher
-     */
-    public function addUser(User $user)
+    public function addImport(Import $import): self
     {
-        $this->user[] = $user;
+        if (!$this->imports->contains($import)) {
+            $this->imports[] = $import;
+            $import->setVoucher($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImport(Import $import): self
+    {
+        if ($this->imports->contains($import)) {
+            $this->imports->removeElement($import);
+            // set the owning side to null (unless already changed)
+            if ($import->getVoucher() === $this) {
+                $import->setVoucher(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * Remove user
-     *
-     * @param User $user
+     * @return Collection|VouchersUsers[]
      */
-    public function removeUser(User $user)
-    {
-        $this->user->removeElement($user);
-    }
-
-    /**
-     * Get user
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * Get users
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsers()
+    public function getUsers(): Collection
     {
         return $this->users;
+    }
+
+    public function addUser(VouchersUsers $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setVoucher($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(VouchersUsers $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            // set the owning side to null (unless already changed)
+            if ($user->getVoucher() === $this) {
+                $user->setVoucher(null);
+            }
+        }
+
+        return $this;
     }
 }

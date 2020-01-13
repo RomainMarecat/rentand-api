@@ -6,4 +6,4 @@ App\Entity\Address:
         country: '@country61'
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
-#        user (unique): '@user<numberBetween(1, 10)>'
+        user (unique): '@user<current()>'

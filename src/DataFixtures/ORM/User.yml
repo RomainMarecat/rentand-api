@@ -1,5 +1,5 @@
 App\Entity\User:
-    user{1..500}:
+    user{1..10}:
         email (unique): <email()>
         username (unique): <email()>
         enabled: <boolean(95)>

@@ -16,7 +16,7 @@ class AppMetadata
      * @ORM\Column(name="app_metadata_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"Default", "getUsers"})
+     * @JMS\Groups({"getUsers"})
      */
     private $id;
 
@@ -36,7 +36,7 @@ class AppMetadata
      */
     private $user;
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
@@ -70,7 +70,7 @@ class AppMetadata
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(User $user): self
     {
         $this->user = $user;
 

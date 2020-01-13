@@ -3,15 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Transaction
  *
- * @ORM\Table(name="transaction_transaction")
+ * @ORM\Table(name="transaction")
  * @ORM\Entity(repositoryClass="App\Repository\TransactionRepository")
  */
 class Transaction
@@ -23,287 +21,181 @@ class Transaction
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
-    protected $name;
+    private $name;
 
     /**
      * @var string
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
      */
-    protected $slug;
+    private $slug;
 
     /**
      * @var string
      *
      * @ORM\Column(name="initial_amount", type="float", nullable=false)
      */
-    protected $initialAmount;
+    private $initialAmount;
 
     /**
      * @var string
      *
      * @ORM\Column(name="rest_amount", type="float", nullable=false)
      */
-    protected $restAmount;
+    private $restAmount;
 
     /**
      * @var float
      *
      * @ORM\Column(name="maximum_amount", type="float", nullable=true)
      */
-    protected $maximumAmount;
+    private $maximumAmount;
 
     /**
      * @var float
      *
      * @ORM\Column(name="minimum_amount", type="float", nullable=true)
      */
-    protected $minimumAmount;
+    private $minimumAmount;
 
     /**
      * @var string
      *
      * @ORM\Column(name="status", type="string", length=255)
      */
-    protected $status;
+    private $status;
 
     /**
-     * @var datetime
+     * @var \Datetime
      *
      * @ORM\Column(name="created_at", type="datetime")
      */
-    protected $createdAt;
+    private $createdAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="Voucher", inversedBy="transactions")
      * @ORM\JoinColumn(name="voucher_id", referencedColumnName="voucher_id", nullable=true, onDelete="SET NULL")
-     * @JMS\Groups({"hidden", "postTransactions"})
+     * @JMS\Groups({"postTransactions"})
      */
-    protected $voucher;
+    private $voucher;
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Transaction
-     */
-    public function setName($name)
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
+    public function getSlug(): ?string
     {
-        return $this->name;
+        return $this->slug;
     }
 
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return Transaction
-     */
-    public function setSlug($slug)
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
 
         return $this;
     }
 
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
+    public function getInitialAmount(): ?float
     {
-        return $this->slug;
+        return $this->initialAmount;
     }
 
-    /**
-     * Set initialAmount
-     *
-     * @param string $initialAmount
-     * @return Transaction
-     */
-    public function setInitialAmount($initialAmount)
+    public function setInitialAmount(float $initialAmount): self
     {
         $this->initialAmount = $initialAmount;
 
         return $this;
     }
 
-    /**
-     * Get initialAmount
-     *
-     * @return string
-     */
-    public function getInitialAmount()
+    public function getRestAmount(): ?float
     {
-        return $this->initialAmount;
+        return $this->restAmount;
     }
 
-    /**
-     * Set maximumAmount
-     *
-     * @param float $maximumAmount
-     * @return Transaction
-     */
-    public function setMaximumAmount($maximumAmount)
-    {
-        $this->maximumAmount = $maximumAmount;
-
-        return $this;
-    }
-
-    /**
-     * Get maximumAmount
-     *
-     * @return float
-     */
-    public function getMaximumAmount()
-    {
-        return $this->maximumAmount;
-    }
-
-    /**
-     * Set minimumAmount
-     *
-     * @param float $minimumAmount
-     * @return Transaction
-     */
-    public function setMinimumAmount($minimumAmount)
-    {
-        $this->minimumAmount = $minimumAmount;
-
-        return $this;
-    }
-
-    /**
-     * Get minimumAmount
-     *
-     * @return float
-     */
-    public function getMinimumAmount()
-    {
-        return $this->minimumAmount;
-    }
-
-    /**
-     * Set status
-     *
-     * @param string $status
-     * @return Transaction
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
-     * Set voucher
-     *
-     * @param \App\Entity\Voucher $voucher
-     * @return Transaction
-     */
-    public function setVoucher(\App\Entity\Voucher $voucher = null)
-    {
-        $this->voucher = $voucher;
-
-        return $this;
-    }
-
-    /**
-     * Get voucher
-     *
-     * @return \App\Entity\Voucher
-     */
-    public function getVoucher()
-    {
-        return $this->voucher;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Transaction
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set restAmount
-     *
-     * @param float $restAmount
-     *
-     * @return Transaction
-     */
-    public function setRestAmount($restAmount)
+    public function setRestAmount(float $restAmount): self
     {
         $this->restAmount = $restAmount;
 
         return $this;
     }
 
-    /**
-     * Get restAmount
-     *
-     * @return float
-     */
-    public function getRestAmount()
+    public function getMaximumAmount(): ?float
     {
-        return $this->restAmount;
+        return $this->maximumAmount;
+    }
+
+    public function setMaximumAmount(?float $maximumAmount): self
+    {
+        $this->maximumAmount = $maximumAmount;
+
+        return $this;
+    }
+
+    public function getMinimumAmount(): ?float
+    {
+        return $this->minimumAmount;
+    }
+
+    public function setMinimumAmount(?float $minimumAmount): self
+    {
+        $this->minimumAmount = $minimumAmount;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getVoucher(): ?Voucher
+    {
+        return $this->voucher;
+    }
+
+    public function setVoucher(?Voucher $voucher): self
+    {
+        $this->voucher = $voucher;
+
+        return $this;
     }
 }

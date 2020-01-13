@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * User
  *
- * @ORM\Table(name="user_user")
+ * @ORM\Table(name="user")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks()
  * @JMS\ExclusionPolicy("none")
@@ -61,36 +61,6 @@ class User implements UserInterface, JWTUserInterface
     private $salt;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="facebookId", type="string", length=255, nullable=true)
-     */
-    private $facebookId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="mangopayId", type="string", length=255, nullable=true)
-     */
-    private $mangopayId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="planningId", type="string", length=255, nullable=true)
-     * @JMS\Groups({"Default", "adminGetUsers"})
-     */
-    private $planningId;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="planningToken", type="string", length=255, nullable=true)
-     * @JMS\Groups({"Default", "adminGetUsers", "adminGetUsers"})
-     */
-    private $planningToken;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(name="newsletter", type="boolean")
@@ -104,12 +74,12 @@ class User implements UserInterface, JWTUserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="adminComment", type="text", nullable = true)
+     * @ORM\Column(name="adminComment", type="text", nullable=true)
      */
     private $adminComment;
 
     /**
-     * @JMS\Groups({"Default", "adminGetUsers"})
+     * @JMS\Groups({"adminGetUsers"})
      */
     private $roles;
 
@@ -147,7 +117,7 @@ class User implements UserInterface, JWTUserInterface
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="createdAt", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
      * @JMS\Groups({"Default", "adminGetUsers"})
      */
@@ -156,9 +126,9 @@ class User implements UserInterface, JWTUserInterface
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="updatedAt", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      * @Gedmo\Timestampable(on="update")
-     * @JMS\Groups({"Default", "adminGetUsers"})
+     * @JMS\Groups({"adminGetUsers"})
      */
     private $updatedAt;
 
@@ -214,7 +184,7 @@ class User implements UserInterface, JWTUserInterface
     /**
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="user", cascade={"remove"}, fetch="EXTRA_LAZY")
      * @OrderBy({"id" = "DESC"})
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     private $comments;
 
@@ -236,13 +206,13 @@ class User implements UserInterface, JWTUserInterface
      *      fetch="EXTRA_LAZY"
      * )
      * @OrderBy({"id" = "DESC"})
-     * @JMS\Groups({"hidden", "getMe", "patchMe"})
+     * @JMS\Groups({"", "getMe", "patchMe"})
      */
     private $coachs;
 
     /**
      * @ORM\OneToMany(targetEntity="Booking", mappedBy="user", fetch="EXTRA_LAZY")
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     private $bookings;
 
@@ -255,7 +225,7 @@ class User implements UserInterface, JWTUserInterface
      *    cascade={"persist", "merge"},
      *    fetch="EXTRA_LAZY"
      * )
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      * @JMS\MaxDepth(1)
      */
     private $vouchers;
@@ -276,7 +246,7 @@ class User implements UserInterface, JWTUserInterface
      *    cascade={"persist", "merge"},
      *    fetch="EXTRA_LAZY"
      * )
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({})
      */
     private $structureLinks;
 
@@ -296,7 +266,7 @@ class User implements UserInterface, JWTUserInterface
     private $userMetadata;
 
     /**
-     * @ORM\OneToMany(targetEntity="CityTeached", mappedBy="users", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="CityTeached", mappedBy="user", fetch="EXTRA_LAZY")
      * @JMS\Groups({"getUser", "getAccount"})
      */
     private $citiesTeached;

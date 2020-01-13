@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation as JMS;
 /**
  * MeetingPoint
  *
- * @ORM\Table(name="meeting_meeting")
+ * @ORM\Table(name="meeting_point")
  * @ORM\Entity(repositoryClass="App\Repository\MeetingRepository")
  */
 class MeetingPoint
@@ -78,177 +78,92 @@ class MeetingPoint
      */
     private $city;
 
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return MeetingPoint
-     */
-    public function setTitle($title)
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
     {
         $this->title = $title;
 
         return $this;
     }
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle()
+    public function getLng(): ?float
     {
-        return $this->title;
+        return $this->lng;
     }
 
-    /**
-     * Set lng
-     *
-     * @param float $lng
-     *
-     * @return MeetingPoint
-     */
-    public function setLng($lng)
+    public function setLng(float $lng): self
     {
         $this->lng = $lng;
 
         return $this;
     }
 
-    /**
-     * Get lng
-     *
-     * @return float
-     */
-    public function getLng()
+    public function getLat(): ?float
     {
-        return $this->lng;
+        return $this->lat;
     }
 
-    /**
-     * Set lat
-     *
-     * @param float $lat
-     *
-     * @return MeetingPoint
-     */
-    public function setLat($lat)
+    public function setLat(float $lat): self
     {
         $this->lat = $lat;
 
         return $this;
     }
 
-    /**
-     * Get lat
-     *
-     * @return float
-     */
-    public function getLat()
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->lat;
+        return $this->createdAt;
     }
 
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return MeetingPoint
-     */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->createdAt;
+        return $this->updatedAt;
     }
 
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return MeetingPoint
-     */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-
-    /**
-     * Set city
-     *
-     * @param City $city
-     *
-     * @return MeetingPoint
-     */
-    public function setCity(City $city = null)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return City
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUser()
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    /**
-     * @param mixed $user
-     *
-     * @return MeetingPoint
-     */
-    public function setUser($user)
+    public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCity(): ?City
+    {
+        return $this->city;
+    }
+
+    public function setCity(?City $city): self
+    {
+        $this->city = $city;
+
         return $this;
     }
 }

@@ -3,7 +3,7 @@ App\Entity\AppMetadata:
         admin: true
         coach: false
         user: '@user<current()>'
-    appMetadata{2..500}:
+    appMetadata{2..10}:
         admin: false
         coach: true
         user: '@user<current()>'
