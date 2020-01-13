@@ -19,32 +19,23 @@ class OnlineSessionRepository extends ServiceEntityRepository
         parent::__construct($registry, OnlineSession::class);
     }
 
-    // /**
-    //  * @return OnlineSession[] Returns an array of OnlineSession objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @param OnlineSession $onlineSession
+     * @return OnlineSession[] Returns an array of OnlineSession objects
+     */
+    public function findByCriteria(OnlineSession $onlineSession)
     {
         return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('o.id', 'ASC')
+            ->andWhere('o.cityTeached = :cityTeached')
+            ->setParameter('cityTeached', $onlineSession->getCityTeached())
+            ->andWhere('o.sportTeached = :sportTeached')
+            ->setParameter('sportTeached', $onlineSession->getSportTeached())
+            ->andWhere('o.user = :user')
+            ->setParameter('user', $onlineSession->getUser())
+            ->andWhere('o.timeRange = :timeRange')
+            ->setParameter('timeRange', $onlineSession->getTimeRange())
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?OnlineSession
-    {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

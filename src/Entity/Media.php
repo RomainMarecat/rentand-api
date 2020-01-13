@@ -28,7 +28,7 @@ class Media
     /**
      * @var string
      *
-     * @ORM\Column(name="filename", type="string", length=255, nullable=false, unique=true)
+     * @ORM\Column(name="filename", type="string", length=255, nullable=false)
      * @JMS\Groups({"Default", "getUsers", "getUser"})
      * @Assert\NotBlank
      */
@@ -66,16 +66,9 @@ class Media
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="User", inversedBy="media")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE"))
-     * @JMS\Groups({"hidden"})
-     */
-    private $user;
-
-    /**
      * @ORM\ManyToOne(targetEntity="SportTeached", inversedBy="pictures")
      * @ORM\JoinColumn(name="sport_teached_id", referencedColumnName="sport_teached_id", onDelete="CASCADE"))
-     * @JMS\Groups({"hidden"})
+     * @JMS\Groups({""})
      */
     private $sportTeached;
 
@@ -223,18 +216,6 @@ class Media
             'http://localhost:8001',
             $this->filename
         );
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
     }
 
     public function getSportTeached(): ?SportTeached

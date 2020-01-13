@@ -296,37 +296,21 @@ class User implements UserInterface, JWTUserInterface
     private $userMetadata;
 
     /**
-     * @ORM\ManyToMany(targetEntity="City", inversedBy="users", fetch="EXTRA_LAZY")
-     * @ORM\JoinTable(
-     *      name="cities_teached",
-     *      joinColumns={
-     *          @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
-     *      },
-     *      inverseJoinColumns={
-     *          @ORM\JoinColumn(name="city_id", referencedColumnName="city_id")
-     *      }
-     * )
-     * @JMS\Groups({"hidden", "getUser", "postSimpleSearch", "countPostSimpleSearch", "getBestUsers", "getAccount"})
+     * @ORM\OneToMany(targetEntity="CityTeached", mappedBy="users", fetch="EXTRA_LAZY")
+     * @JMS\Groups({"getUser", "getAccount"})
      */
-    private $cities;
+    private $citiesTeached;
 
     /**
      * @ORM\OneToOne(targetEntity="Diploma", mappedBy="user", cascade={"remove", "persist"}, fetch="LAZY")
-     * @JMS\Groups({"hidden", "getUser", "postSimpleSearch"})
+     * @JMS\Groups({"getUser"})
      */
     private $diploma;
 
     /**
-     * @ORM\OneToOne(targetEntity="Media", mappedBy="user", cascade={"remove", "persist"}, fetch="LAZY")
-     * @JMS\Groups({"hidden", "getUser", "getMyUsers", "getUsers", "postSimpleSearch", "getBestUsers", "patchBooking",
-     *     "getBooking", "putBooking", "getBookingUser", "getUserComplete", "getAccount"})
-     */
-    private $media;
-
-    /**
      * @ORM\OneToMany(targetEntity="MeetingPoint", mappedBy="user", cascade={"remove", "persist"}, fetch="EXTRA_LAZY")
      * @JMS\Type("ArrayCollection<App\Entity\MeetingPoint>")
-     * @JMS\Groups({"hidden", "getUser", "getMyUsers"})
+     * @JMS\Groups({"getUser"})
      */
     private $meetings;
 
@@ -335,8 +319,7 @@ class User implements UserInterface, JWTUserInterface
      *
      * @ORM\OneToMany(targetEntity="SportTeached", mappedBy="user", cascade={"remove", "persist"}, fetch="EXTRA_LAZY")
      * @ORM\OrderBy({"id" = "DESC"})
-     * @JMS\Groups({"hidden", "getUser", "getFormUser", "getMyUsers", "postSimpleSearch",
-     *     "countPostSimpleSearch", "getSportsTeached", "getUserUsersports"})
+     * @JMS\Groups({"getUser"})
      */
     private $sportsTeached;
 
@@ -354,7 +337,7 @@ class User implements UserInterface, JWTUserInterface
         $this->sportsTeached = new ArrayCollection();
         $this->structureLinks = new ArrayCollection();
         $this->meetings = new ArrayCollection();
-        $this->cities = new ArrayCollection();
+        $this->citiesTeached = new ArrayCollection();
         $this->enabled = false;
         $this->roles = array();
         $this->coachs = new ArrayCollection();
@@ -1385,32 +1368,6 @@ class User implements UserInterface, JWTUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|City[]
-     */
-    public function getCities(): Collection
-    {
-        return $this->cities;
-    }
-
-    public function addCity(City $city): self
-    {
-        if (!$this->cities->contains($city)) {
-            $this->cities[] = $city;
-        }
-
-        return $this;
-    }
-
-    public function removeCity(City $city): self
-    {
-        if ($this->cities->contains($city)) {
-            $this->cities->removeElement($city);
-        }
-
-        return $this;
-    }
-
     public function getDiploma(): ?Diploma
     {
         return $this->diploma;
@@ -1424,24 +1381,6 @@ class User implements UserInterface, JWTUserInterface
         $newUser = null === $diploma ? null : $this;
         if ($diploma->getUser() !== $newUser) {
             $diploma->setUser($newUser);
-        }
-
-        return $this;
-    }
-
-    public function getImage(): ?Media
-    {
-        return $this->image;
-    }
-
-    public function setImage(?Media $image): self
-    {
-        $this->image = $image;
-
-        // set (or unset) the owning side of the relation if necessary
-        $newUser = null === $image ? null : $this;
-        if ($image->getUser() !== $newUser) {
-            $image->setUser($newUser);
         }
 
         return $this;
@@ -1509,27 +1448,40 @@ class User implements UserInterface, JWTUserInterface
         return $this;
     }
 
-    public function getMedia(): ?Media
+    public function setUsername(string $username): self
     {
-        return $this->media;
+        $this->username = $username;
+
+        return $this;
     }
 
-    public function setMedia(?Media $media): self
+    /**
+     * @return Collection|CityTeached[]
+     */
+    public function getCitiesTeached(): Collection
     {
-        $this->media = $media;
+        return $this->citiesTeached;
+    }
 
-        // set (or unset) the owning side of the relation if necessary
-        $newUser = null === $media ? null : $this;
-        if ($media->getUser() !== $newUser) {
-            $media->setUser($newUser);
+    public function addCitiesTeached(CityTeached $citiesTeached): self
+    {
+        if (!$this->citiesTeached->contains($citiesTeached)) {
+            $this->citiesTeached[] = $citiesTeached;
+            $citiesTeached->setUsers($this);
         }
 
         return $this;
     }
 
-    public function setUsername(string $username): self
+    public function removeCitiesTeached(CityTeached $citiesTeached): self
     {
-        $this->username = $username;
+        if ($this->citiesTeached->contains($citiesTeached)) {
+            $this->citiesTeached->removeElement($citiesTeached);
+            // set the owning side to null (unless already changed)
+            if ($citiesTeached->getUsers() === $this) {
+                $citiesTeached->setUsers(null);
+            }
+        }
 
         return $this;
     }

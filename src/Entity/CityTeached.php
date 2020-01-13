@@ -36,7 +36,7 @@ class CityTeached
 
     /**
      * @var User
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="citiesTeached")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
      * @JMS\Groups({"getCity"})
      */
