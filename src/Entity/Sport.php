@@ -23,7 +23,7 @@ class Sport
      * @ORM\Column(name="sport_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getUser"})
+     * @JMS\Groups({"getUser", "getSportsTeachedByUser"})
      */
     private $id;
 
@@ -31,7 +31,7 @@ class Sport
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getUser"})
+     * @JMS\Groups({"getUser", "getSportsTeachedByUser"})
      */
     private $name;
 
@@ -74,7 +74,7 @@ class Sport
     private $translations;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Sport", inversedBy="children")
+     * @ORM\ManyToOne(targetEntity="Sport", inversedBy="children", cascade={"persist"})
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="sport_id", onDelete="CASCADE")
      * @JMS\Groups({})
      * @JMS\MaxDepth(2)

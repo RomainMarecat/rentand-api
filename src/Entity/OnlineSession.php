@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\OnlineSessionRepository")
@@ -17,34 +18,39 @@ class OnlineSession
      * @ORM\Column(name="online_session_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="SportTeached")
+     * @ORM\ManyToOne(targetEntity="SportTeached", cascade={"persist"})
      * @ORM\JoinColumn(name="sport_teached_id", referencedColumnName="sport_teached_id")
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $sportTeached;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CityTeached")
+     * @ORM\ManyToOne(targetEntity="CityTeached", cascade={"persist"})
      * @ORM\JoinColumn(name="city_teached_id", referencedColumnName="city_teached_id")
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $cityTeached;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
      */
     private $user;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\SessionPrice", mappedBy="onlineSession", orphanRemoval=true)
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $sessionPrices;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\SessionType", mappedBy="onlineSession", cascade={"persist", "remove"})
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $sessionType;
 

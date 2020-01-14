@@ -24,7 +24,7 @@ class City
      * @ORM\Column(name="city_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getCity"})
+     * @JMS\Groups({"getCity", "getOnlineSessions"})
      */
     private $id;
 
@@ -33,7 +33,7 @@ class City
      *
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
-     * @JMS\Groups({"getCity"})
+     * @JMS\Groups({"getCity", "getOnlineSessions"})
      */
     private $name;
 
@@ -54,7 +54,7 @@ class City
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
-     * @JMS\Groups({"getCity"})
+     * @JMS\Groups({"getCity", "getOnlineSessions"})
      */
     private $lng;
 
@@ -67,7 +67,7 @@ class City
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
-     * @JMS\Groups({"getCity"})
+     * @JMS\Groups({"getCity", "getOnlineSessions"})
      */
     private $lat;
 

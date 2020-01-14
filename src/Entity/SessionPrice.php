@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SessionPriceRepository")
@@ -13,11 +14,13 @@ class SessionPrice
      * @ORM\Column(name="session_price_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="float")
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $price;
 
@@ -29,21 +32,25 @@ class SessionPrice
 
     /**
      * @ORM\Column(name="start_date", type="date")
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $startDate;
 
     /**
      * @ORM\Column(name="end_date", type="date")
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $endDate;
 
     /**
      * @ORM\Column(name="start_time", type="time")
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $startTime;
 
     /**
      * @ORM\Column(name="end_time", type="time")
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $endTime;
 

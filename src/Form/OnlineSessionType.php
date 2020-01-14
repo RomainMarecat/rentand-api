@@ -13,9 +13,7 @@ class OnlineSessionType extends AbstractType
     {
         $builder
             ->add('sessionType')
-            ->add('prices')
-            ->add('dateRange')
-            ->add('timeRange')
+            ->add('sessionPrices')
             ->add('sportTeached')
             ->add('cityTeached')
             ->add('user')

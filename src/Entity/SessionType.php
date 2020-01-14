@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SessionTypeRepository")
@@ -15,26 +16,31 @@ class SessionType
      * @ORM\Column(name="session_type_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $name;
 
     /**
      * @ORM\Column(name="max_persons", type="integer", nullable=true)
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $maxPersons;
 
     /**
      * @ORM\Column(name="booking_delay", type="integer", nullable=true)
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $bookingDelay;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @JMS\Groups({"getOnlineSessions"})
      */
     private $duration;
 

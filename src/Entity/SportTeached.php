@@ -21,7 +21,7 @@ class SportTeached
      * @ORM\Column(name="sport_teached_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"", "getUser", "getMyUsers", "getSportTeachedById", "postEmailReminder"})
+     * @JMS\Groups({"getUser", "getMyUsers", "getSportTeachedById", "getOnlineSessions", "getSportsTeachedByUser"})
      */
     private $id;
 
@@ -29,7 +29,7 @@ class SportTeached
      * @var int
      *
      * @ORM\Column(name="orderNumber", type="integer")
-     * @JMS\Groups({"getUser"})
+     * @JMS\Groups({"getUser", "getSportsTeachedByUser"})
      */
     private $orderNumber;
 
@@ -37,7 +37,7 @@ class SportTeached
      * @var array
      *
      * @ORM\Column(name="levels", type="array", nullable=true)
-     * @JMS\Groups({"getUser"})
+     * @JMS\Groups({"getUser", "getSportsTeachedByUser"})
      */
     private $levels;
 
@@ -45,21 +45,21 @@ class SportTeached
      * @var array
      *
      * @ORM\Column(name="ages", type="array", nullable=true)
-     * @JMS\Groups({"getUser"})
+     * @JMS\Groups({"getUser", "getSportsTeachedByUser"})
      */
     private $ages;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="sportsTeached", fetch="LAZY")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="sportsTeached", fetch="LAZY", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE"))
      * @JMS\Groups({})
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Sport", inversedBy="sportsTeached", fetch="LAZY")
+     * @ORM\ManyToOne(targetEntity="Sport", inversedBy="sportsTeached", fetch="LAZY", cascade={"persist"})
      * @ORM\JoinColumn(name="sport_id", referencedColumnName="sport_id", onDelete="CASCADE"))
-     * @JMS\Groups({"getUser"})
+     * @JMS\Groups({"getUser", "getOnlineSessions", "getSportsTeachedByUser"})
      */
     private $sport;
 
@@ -91,6 +91,20 @@ class SportTeached
      * @ORM\Column(name="translations", type="json")
      */
     private $translations;
+
+
+    /**
+     * Get translations
+     *
+     * @JMS\VirtualProperty()
+     * @JMS\SerializedName("translations")
+     * @JMS\Groups({"Default", "getUsers", "getUser", "getSportsTeachedByUser", "getOnlineSessions"})
+     *
+     */
+    public function getTranslationsObject()
+    {
+        return $this->getTranslations();
+    }
 
     /**
      * Constructor
@@ -274,19 +288,6 @@ class SportTeached
     public function getPictures()
     {
         return $this->pictures;
-    }
-
-    /**
-     * Get translations
-     *
-     * @JMS\VirtualProperty()
-     * @JMS\SerializedName("translations")
-     * @JMS\Groups({"Default", "getUsers", "getUser", "getSportsTeachedByUser"})
-     *
-     */
-    public function getTranslationsObject()
-    {
-        return $this->getTranslations();
     }
 
     /**

@@ -65,7 +65,7 @@ class Diploma
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="User", inversedBy="diploma")
+     * @ORM\OneToOne(targetEntity="User", inversedBy="diploma", cascade={"persist"})
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id", onDelete="CASCADE"))
      * @Assert\NotBlank()
      * @JMS\Groups({})

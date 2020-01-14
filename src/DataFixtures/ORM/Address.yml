@@ -6,4 +6,4 @@ App\Entity\Address:
         country: '@country61'
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
-        user (unique): '@user<current()>'
+        userMetadata: '@userMetadata<current()>'

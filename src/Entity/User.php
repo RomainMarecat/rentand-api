@@ -192,7 +192,7 @@ class User implements UserInterface, JWTUserInterface
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="coachs")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="coachs", cascade={"persist"})
      * @ORM\JoinColumn(name="coach_manager_id", referencedColumnName="user_id", nullable=true)
      */
     private $coachManager;
@@ -232,7 +232,7 @@ class User implements UserInterface, JWTUserInterface
 
     /**
      * @var Structure
-     * @ORM\ManyToOne(targetEntity="Structure", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="Structure", inversedBy="users", cascade={"persist"})
      * @ORM\JoinColumn(name="structure_id", referencedColumnName="structure_id", nullable=true)
      */
     private $structure;
