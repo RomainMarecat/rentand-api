@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\OnlineSession;
-use App\Entity\SessionPrice;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -26,9 +25,7 @@ class OnlineSessionRepository extends ServiceEntityRepository
      */
     public function findByCriteria(OnlineSession $onlineSession)
     {
-        $qb = $this->createQueryBuilder('o')
-            ->addSelect('sessionPrice')
-            ->leftJoin('o.sessionPrices', 'sessionPrice');
+        $qb = $this->createQueryBuilder('o');
 
         if ($onlineSession->getCityTeached()) {
             $qb->andWhere('o.cityTeached = :cityTeached')
@@ -42,15 +39,13 @@ class OnlineSessionRepository extends ServiceEntityRepository
             $qb->andWhere('o.user = :user')
                 ->setParameter('user', $onlineSession->getUser());
         }
-        if ($onlineSession->getSessionPrices()) {
-            /** @var SessionPrice $sessionPrice */
-            foreach ($onlineSession->getSessionPrices() as $sessionPrice) {
-                $qb->andWhere('sessionPrice.startDate = :startDate')
-                    ->setParameter('startDate', $sessionPrice->getStartDate());
-
-                $qb->andWhere('sessionPrice.endDate = :endDate')
-                    ->setParameter('endDate', $sessionPrice->getEndDate());
-            }
+        if ($onlineSession->getStartDate()) {
+            $qb->andWhere('o.startDate = :startDate')
+                ->setParameter('startDate', $onlineSession->getStartDate());
+        }
+        if ($onlineSession->getEndDate()) {
+            $qb->andWhere('o.endDate = :endDate')
+                ->setParameter('endDate', $onlineSession->getEndDate());
         }
         return $qb
             ->setMaxResults(10)

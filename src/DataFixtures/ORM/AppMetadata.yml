@@ -7,3 +7,7 @@ App\Entity\AppMetadata:
         admin: false
         coach: true
         user: '@user<current()>'
+    appMetadataTest:
+        admin: false
+        coach: true
+        user: '@userTest'

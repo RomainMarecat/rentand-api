@@ -1,5 +1,5 @@
 App\Entity\City:
-    city{1..3000}:
+    city{1..100}:
         name: <city()>
         googleId: <swiftBicNumber()>
         lng: <longitude()>

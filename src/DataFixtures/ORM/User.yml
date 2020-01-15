@@ -19,3 +19,23 @@ App\Entity\User:
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
         structure: '@structure<numberBetween(1, 10)>'
+    userTest:
+        email (unique): romain.marecat+mono@gmail.com
+        username (unique): romain.marecat+mono@gmail.com
+        enabled: <boolean(95)>
+        password: <userName()>
+        salt: <userName()>
+        lastLogin: <dateTimeBetween('-20 days', 'now')>
+        locked: <boolean(35)>
+        expiresAt: null
+        expired: <boolean(1)>
+        confirmationToken: <slug()>
+        roles: ['ROLE_USER']
+        credentialsExpired: <boolean(10)>
+        facebookId: <ean13()>
+        mangopayId: <creditCardNumber()>
+        newsletter: <boolean(10)>
+        adminComment: <realText()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        structure: '@structure<numberBetween(1, 10)>'

@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\SessionPrice;
+use App\Entity\Session;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method SessionPrice|null find($id, $lockMode = null, $lockVersion = null)
- * @method SessionPrice|null findOneBy(array $criteria, array $orderBy = null)
- * @method SessionPrice[]    findAll()
- * @method SessionPrice[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Session|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Session|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Session[]    findAll()
+ * @method Session[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SessionPriceRepository extends ServiceEntityRepository
+class SessionRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, SessionPrice::class);
+        parent::__construct($registry, Session::class);
     }
 
     // /**
-    //  * @return SessionPrice[] Returns an array of SessionPrice objects
+    //  * @return Session[] Returns an array of Session objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SessionPriceRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?SessionPrice
+    public function findOneBySomeField($value): ?Session
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')

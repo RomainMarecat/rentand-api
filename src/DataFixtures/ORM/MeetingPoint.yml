@@ -1,10 +1,25 @@
 App\Entity\MeetingPoint:
-    meetingPoint{1..300}:
+    meetingPoint{1..10}:
         title: <catchPhrase()>
         lng: <longitude()>
         lat: <latitude()>
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
         user: '@user<numberBetween(1, 10)>'
-        city: '@city<numberBetween(1, 3000)>'
-
+        city: '@city<numberBetween(1, 100)>'
+    meetingPointTest:
+        title: <catchPhrase()>
+        lng: <longitude()>
+        lat: <latitude()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        user: '@userTest'
+        city: '@city1'
+    meetingPointTest2:
+        title: <catchPhrase()>
+        lng: <longitude()>
+        lat: <latitude()>
+        createdAt: <dateTime()>
+        updatedAt: <dateTime()>
+        user: '@userTest'
+        city: '@city2'

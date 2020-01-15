@@ -294,6 +294,16 @@ class User implements UserInterface, JWTUserInterface
     private $sportsTeached;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Session", mappedBy="user")
+     */
+    private $events;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Session", mappedBy="customers")
+     */
+    private $sessions;
+
+    /**
      * User constructor.
      *
      * @param string|null $username
@@ -311,6 +321,8 @@ class User implements UserInterface, JWTUserInterface
         $this->enabled = false;
         $this->roles = array();
         $this->coachs = new ArrayCollection();
+        $this->events = new ArrayCollection();
+        $this->sessions = new ArrayCollection();
     }
 
     /**
@@ -1451,6 +1463,63 @@ class User implements UserInterface, JWTUserInterface
             if ($citiesTeached->getUsers() === $this) {
                 $citiesTeached->setUsers(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Event $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Event $event): self
+    {
+        if ($this->events->contains($event)) {
+            $this->events->removeElement($event);
+            // set the owning side to null (unless already changed)
+            if ($event->getUser() === $this) {
+                $event->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Session[]
+     */
+    public function getSessions(): Collection
+    {
+        return $this->sessions;
+    }
+
+    public function addSession(Session $session): self
+    {
+        if (!$this->sessions->contains($session)) {
+            $this->sessions[] = $session;
+        }
+
+        return $this;
+    }
+
+    public function removeSession(Session $session): self
+    {
+        if ($this->sessions->contains($session)) {
+            $this->sessions->removeElement($session);
         }
 
         return $this;

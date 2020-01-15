@@ -3,9 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMS;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
+ * @ORM\MappedSuperclass()
  */
 class Event
 {
@@ -15,48 +16,60 @@ class Event
      * @ORM\Column(name="event_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
+     * @JMS\Groups({"getSessionsByUser"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(name="custom_title", type="string", length=255, nullable=true)
+     * @JMS\Groups({"getSessionsByUser"})
      */
-    private $customTitle;
+    protected $customTitle;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @JMS\Groups({"getSessionsByUser"})
      */
-    private $comment;
+    protected $comment;
 
     /**
      * @ORM\Column(name="group_booking", type="string", length=255, nullable=true)
+     * @JMS\Groups({"getSessionsByUser"})
      */
-    private $groupBooking;
+    protected $groupBooking;
 
     /**
-     * @ORM\Column(name="start_date", type="date")
+     * @ORM\Column(name="start", type="datetime")
+     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Type("DateTime<'Y-m-d h:i:s'>")
      */
-    private $startDate;
+    protected $start;
 
     /**
-     * @ORM\Column(name="end_date", type="date")
+     * @ORM\Column(name="end", type="datetime")
+     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Type("DateTime<'Y-m-d h:i:s'>")
      */
-    private $endDate;
+    protected $end;
 
     /**
-     * @ORM\Column(name="start_time", type="time")
+     * @ORM\Column(name="details", type="object", nullable=true)
+     * @JMS\Groups({"getSessionsByUser"})
      */
-    private $startTime;
+    protected $details;
 
     /**
-     * @ORM\Column(name="end_time", type="time")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="events")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
+     * @JMS\Groups({"getSessionsByUser"})
      */
-    private $endTime;
+    protected $user;
 
     /**
-     * @ORM\Column(name="details", type="object")
+     * @ORM\Column(type="integer", nullable=true)
+     * @JMS\Groups({"getSessionsByUser"})
      */
-    private $details;
+    protected $pause;
 
     public function getId(): ?string
     {
@@ -99,54 +112,6 @@ class Event
         return $this;
     }
 
-    public function getStartDate(): ?\DateTimeInterface
-    {
-        return $this->startDate;
-    }
-
-    public function setStartDate(\DateTimeInterface $startDate): self
-    {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    public function getEndDate(): ?\DateTimeInterface
-    {
-        return $this->endDate;
-    }
-
-    public function setEndDate(\DateTimeInterface $endDate): self
-    {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    public function getStartTime(): ?\DateTimeInterface
-    {
-        return $this->startTime;
-    }
-
-    public function setStartTime(\DateTimeInterface $startTime): self
-    {
-        $this->startTime = $startTime;
-
-        return $this;
-    }
-
-    public function getEndTime(): ?\DateTimeInterface
-    {
-        return $this->endTime;
-    }
-
-    public function setEndTime(\DateTimeInterface $endTime): self
-    {
-        $this->endTime = $endTime;
-
-        return $this;
-    }
-
     public function getDetails()
     {
         return $this->details;
@@ -155,6 +120,54 @@ class Event
     public function setDetails($details): self
     {
         $this->details = $details;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPause(): ?int
+    {
+        return $this->pause;
+    }
+
+    public function setPause(?int $pause): self
+    {
+        $this->pause = $pause;
+
+        return $this;
+    }
+
+    public function getStart(): ?\DateTimeInterface
+    {
+        return $this->start;
+    }
+
+    public function setStart(\DateTimeInterface $start): self
+    {
+        $this->start = $start;
+
+        return $this;
+    }
+
+    public function getEnd(): ?\DateTimeInterface
+    {
+        return $this->end;
+    }
+
+    public function setEnd(\DateTimeInterface $end): self
+    {
+        $this->end = $end;
 
         return $this;
     }

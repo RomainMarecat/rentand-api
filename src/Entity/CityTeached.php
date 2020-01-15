@@ -16,13 +16,13 @@ class CityTeached
      * @ORM\Column(name="city_teached_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getCity", "getOnlineSessions"})
+     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser"})
      */
     private $id;
 
     /**
      * @ORM\Column(name="personal_meeting_point_accepted", type="boolean")
-     * @JMS\Groups({"getCity", "getOnlineSessions"})
+     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser"})
      */
     private $personalMeetingPointAccepted;
 
@@ -30,7 +30,7 @@ class CityTeached
      * @var City
      * @ORM\ManyToOne(targetEntity="City", cascade={"persist"})
      * @ORM\JoinColumn(name="city_id", referencedColumnName="city_id")
-     * @JMS\Groups({"getCity", "getOnlineSessions"})
+     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser"})
      */
     private $city;
 

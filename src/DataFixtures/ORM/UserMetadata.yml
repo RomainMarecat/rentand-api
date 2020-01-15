@@ -9,4 +9,15 @@ App\Entity\UserMetadata:
         nationality: '@country61'
         motherLang: '@fra'
         user: '@user<current()>'
-        media: '@media<numberBetween(1, 10)>'
+#        media: '@media<numberBetween(1, 10)>'
+    userMetadataTest:
+        lastname: Marecat
+        firstname: Romain
+        slug: marecat-romain
+        gender: <boolean(50)>
+        birthday: null
+        languages: fr
+        nationality: '@country61'
+        motherLang: '@fra'
+        user: '@userTest'
+#        media: '@media<numberBetween(1, 10)>'

@@ -1,5 +1,13 @@
 App\Entity\CityTeached:
     cityTeached{1..100}:
         personalMeetingPointAccepted: <boolean(50)>
-        city: '@city<numberBetween(1, 3000)>'
+        city: '@city<numberBetween(1, 100)>'
         user: '@user<numberBetween(1, 10)>'
+    cityTeachedTest:
+        personalMeetingPointAccepted: <boolean(50)>
+        city: '@city1'
+        user: '@userTest'
+    cityTeachedTest2:
+        personalMeetingPointAccepted: <boolean(50)>
+        city: '@city2'
+        user: '@userTest'

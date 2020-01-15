@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
 
@@ -43,25 +41,132 @@ class OnlineSession
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\SessionPrice", mappedBy="onlineSession", orphanRemoval=true)
+     * @ORM\Column(type="float")
      * @JMS\Groups({"getOnlineSessions"})
      */
-    private $sessionPrices;
+    private $price;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\SessionType", mappedBy="onlineSession", cascade={"persist", "remove"})
+     * @ORM\Column(name="start_date", type="date")
+     * @JMS\Groups({"getOnlineSessions"})
+     * @JMS\Type("DateTime<'Y-m-d'>")
+     */
+    private $startDate;
+
+    /**
+     * @ORM\Column(name="end_date", type="date")
+     * @JMS\Groups({"getOnlineSessions"})
+     * @JMS\Type("DateTime<'Y-m-d'>")
+     */
+    private $endDate;
+
+    /**
+     * @ORM\Column(name="start_time", type="time")
+     * @JMS\Groups({"getOnlineSessions"})
+     * @JMS\Type("DateTime<'h:i'>")
+     */
+    private $startTime;
+
+    /**
+     * @ORM\Column(name="end_time", type="time")
+     * @JMS\Groups({"getOnlineSessions"})
+     * @JMS\Type("DateTime<'h:i'>")
+     */
+    private $endTime;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @JMS\Groups({"getOnlineSessions"})
      */
-    private $sessionType;
+    private $name;
 
-    public function __construct()
-    {
-        $this->sessionPrices = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(name="max_persons", type="integer", nullable=true)
+     * @JMS\Groups({"getOnlineSessions"})
+     */
+    private $maxPersons;
+
+    /**
+     * @ORM\Column(name="booking_delay", type="integer", nullable=true)
+     * @JMS\Groups({"getOnlineSessions"})
+     */
+    private $bookingDelay;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     * @JMS\Groups({"getOnlineSessions"})
+     */
+    private $duration;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $pause;
+
 
     public function getId(): ?string
     {
         return $this->id;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    public function getStartDate(): ?\DateTimeInterface
+    {
+        return $this->startDate;
+    }
+
+    public function setStartDate(\DateTimeInterface $startDate): self
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    public function getEndDate(): ?\DateTimeInterface
+    {
+        return $this->endDate;
+    }
+
+    public function setEndDate(\DateTimeInterface $endDate): self
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    public function getStartTime(): ?\DateTimeInterface
+    {
+        return $this->startTime;
+    }
+
+    public function setStartTime(\DateTimeInterface $startTime): self
+    {
+        $this->startTime = $startTime;
+
+        return $this;
+    }
+
+    public function getEndTime(): ?\DateTimeInterface
+    {
+        return $this->endTime;
+    }
+
+    public function setEndTime(\DateTimeInterface $endTime): self
+    {
+        $this->endTime = $endTime;
+
+        return $this;
     }
 
     public function getSportTeached(): ?SportTeached
@@ -100,51 +205,62 @@ class OnlineSession
         return $this;
     }
 
-    /**
-     * @return Collection|SessionPrice[]
-     */
-    public function getSessionPrices(): Collection
+    public function getName(): ?string
     {
-        return $this->sessionPrices;
+        return $this->name;
     }
 
-    public function addSessionPrice(SessionPrice $sessionPrice): self
+    public function setName(?string $name): self
     {
-        if (!$this->sessionPrices->contains($sessionPrice)) {
-            $this->sessionPrices[] = $sessionPrice;
-            $sessionPrice->setOnlineSession($this);
-        }
+        $this->name = $name;
 
         return $this;
     }
 
-    public function removeSessionPrice(SessionPrice $sessionPrice): self
+    public function getMaxPersons(): ?int
     {
-        if ($this->sessionPrices->contains($sessionPrice)) {
-            $this->sessionPrices->removeElement($sessionPrice);
-            // set the owning side to null (unless already changed)
-            if ($sessionPrice->getOnlineSession() === $this) {
-                $sessionPrice->setOnlineSession(null);
-            }
-        }
+        return $this->maxPersons;
+    }
+
+    public function setMaxPersons(?int $maxPersons): self
+    {
+        $this->maxPersons = $maxPersons;
 
         return $this;
     }
 
-    public function getSessionType(): ?SessionType
+    public function getBookingDelay(): ?int
     {
-        return $this->sessionType;
+        return $this->bookingDelay;
     }
 
-    public function setSessionType(?SessionType $sessionType): self
+    public function setBookingDelay(?int $bookingDelay): self
     {
-        $this->sessionType = $sessionType;
+        $this->bookingDelay = $bookingDelay;
 
-        // set (or unset) the owning side of the relation if necessary
-        $newOnlineSession = null === $sessionType ? null : $this;
-        if ($sessionType->getOnlineSession() !== $newOnlineSession) {
-            $sessionType->setOnlineSession($newOnlineSession);
-        }
+        return $this;
+    }
+
+    public function getDuration(): ?int
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(?int $duration): self
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    public function getPause(): ?int
+    {
+        return $this->pause;
+    }
+
+    public function setPause(?int $pause): self
+    {
+        $this->pause = $pause;
 
         return $this;
     }
