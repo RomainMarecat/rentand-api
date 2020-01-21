@@ -221,7 +221,7 @@
         "version": "v4.3.0"
     },
     "php": {
-        "version": "7.4"
+        "version": "7.2"
     },
     "predis/predis": {
         "version": "v1.1.1"
