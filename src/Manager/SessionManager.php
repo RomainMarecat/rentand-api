@@ -25,4 +25,12 @@ class SessionManager
     {
         return $this->entityManager->getRepository(Session::class)->findByUser($user);
     }
+
+    public function registerSession(Session $session)
+    {
+        $this->entityManager->persist($session);
+        $this->entityManager->flush();
+
+        return $session;
+    }
 }
