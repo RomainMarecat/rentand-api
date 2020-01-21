@@ -7,6 +7,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 final class LoadFixtureData implements FixtureInterface
 {
+    /**
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         // Pass $this as an additional faker provider to make the "groupName"
@@ -19,7 +22,7 @@ final class LoadFixtureData implements FixtureInterface
      */
     public static function getRoleUser()
     {
-        $value = (bool) rand(0, 1);
+        $value = (bool)rand(0, 1);
         if ($value) {
             return ['ROLE_USER', 'ROLE_PART'];
         }

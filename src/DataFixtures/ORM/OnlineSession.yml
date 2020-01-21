@@ -6,8 +6,8 @@ App\Entity\OnlineSession:
         price: '<numberBetween(10, 200)>'
         startDate: '<dateTimeBetween("-20 days", "now")>'
         endDate: '<dateTimeBetween("now", "+100 days")>'
-        startTime: '<dateTimeBetween("-20 days", "now")>'
-        endTime: '<dateTimeBetween("now", "+100 days")>'
+        startTime: <startTime()>
+        endTime: <endTime()>
         name: '<catchPhrase()>'
         duration: '<numberBetween(1, 300)>'
         maxPersons: '<numberBetween(1, 10)>'
@@ -20,8 +20,8 @@ App\Entity\OnlineSession:
         price: '<numberBetween(10, 200)>'
         startDate: '<dateTimeBetween("-20 days", "now")>'
         endDate: '<dateTimeBetween("now", "+100 days")>'
-        startTime: '<dateTimeBetween("-20 days", "now")>'
-        endTime: '<dateTimeBetween("now", "+100 days")>'
+        startTime: <startTime()>
+        endTime: <endTime()>
         name: '<catchPhrase()>'
         duration: '<numberBetween(1, 300)>'
         maxPersons: '<numberBetween(1, 10)>'
@@ -34,8 +34,8 @@ App\Entity\OnlineSession:
         price: '<numberBetween(10, 200)>'
         startDate: '<dateTimeBetween("-20 days", "now")>'
         endDate: '<dateTimeBetween("now", "+100 days")>'
-        startTime: '<dateTimeBetween("-20 days", "now")>'
-        endTime: '<dateTimeBetween("now", "+100 days")>'
+        startTime: <startTime()>
+        endTime: <endTime()>
         name: '<catchPhrase()>'
         duration: '<numberBetween(1, 300)>'
         maxPersons: '<numberBetween(1, 10)>'

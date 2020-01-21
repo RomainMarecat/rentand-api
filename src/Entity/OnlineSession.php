@@ -63,14 +63,14 @@ class OnlineSession
     /**
      * @ORM\Column(name="start_time", type="time")
      * @JMS\Groups({"getOnlineSessions"})
-     * @JMS\Type("DateTime<'h:i'>")
+     * @JMS\Type("DateTime<'H:i'>")
      */
     private $startTime;
 
     /**
      * @ORM\Column(name="end_time", type="time")
      * @JMS\Groups({"getOnlineSessions"})
-     * @JMS\Type("DateTime<'h:i'>")
+     * @JMS\Type("DateTime<'H:i'>")
      */
     private $endTime;
 
