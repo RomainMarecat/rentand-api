@@ -14,59 +14,59 @@ class Session extends Event
 {
     /**
      * @ORM\Column(type="float")
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     private $age;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     private $level;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Sport")
      * @ORM\JoinColumn(name="sport_id", referencedColumnName="sport_id")
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     private $sport;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Sport")
      * @ORM\JoinColumn(name="sport_id", referencedColumnName="sport_id")
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     private $speciality;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\City")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="city_id")
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     private $city;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\MeetingPoint")
      * @ORM\JoinColumn(name="meeting_id", referencedColumnName="meeting_id")
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     private $meetingPoint;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     private $nbPersons;
 
     /**
      * @ORM\Column(type="integer")
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     private $duration;
 
@@ -75,9 +75,15 @@ class Session extends Event
      * @ORM\JoinTable(name="sessions_customers",
      *      joinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="event_id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="user_id")})
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     private $customers;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\OnlineSession", inversedBy="sessions")
+     * @ORM\JoinColumn(name="online_session_id", referencedColumnName="online_session_id")
+     */
+    private $onlineSession;
 
     public function __construct()
     {
@@ -219,6 +225,18 @@ class Session extends Event
     public function setDuration(int $duration): self
     {
         $this->duration = $duration;
+
+        return $this;
+    }
+
+    public function getOnlineSession(): ?OnlineSession
+    {
+        return $this->onlineSession;
+    }
+
+    public function setOnlineSession(?OnlineSession $onlineSession): self
+    {
+        $this->onlineSession = $onlineSession;
 
         return $this;
     }

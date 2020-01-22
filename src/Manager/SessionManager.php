@@ -2,6 +2,7 @@
 
 namespace App\Manager;
 
+use App\Entity\OnlineSession;
 use App\Entity\Session;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -28,6 +29,12 @@ class SessionManager
 
     public function registerSession(Session $session)
     {
+        /** @var OnlineSession $onlineSession */
+        $onlineSession = $this->entityManager->getRepository(OnlineSession::class)
+            ->find($session->getOnlineSession()->getId());
+
+        $session->setPrice($onlineSession->getPrice());
+
         $this->entityManager->persist($session);
         $this->entityManager->flush();
 
