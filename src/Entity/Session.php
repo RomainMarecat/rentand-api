@@ -102,37 +102,6 @@ class Session extends Event
         return $this;
     }
 
-    /**
-     * @return Collection|User[]
-     */
-    public function getCustomers(): Collection
-    {
-        return $this->customers;
-    }
-
-    public function addCustomer(User $customer): self
-    {
-        if (!$this->customers->contains($customer)) {
-            $this->customers[] = $customer;
-            $customer->setSession($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCustomer(User $customer): self
-    {
-        if ($this->customers->contains($customer)) {
-            $this->customers->removeElement($customer);
-            // set the owning side to null (unless already changed)
-            if ($customer->getSession() === $this) {
-                $customer->setSession(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getAge(): ?int
     {
         return $this->age;
@@ -237,6 +206,32 @@ class Session extends Event
     public function setOnlineSession(?OnlineSession $onlineSession): self
     {
         $this->onlineSession = $onlineSession;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getCustomers(): Collection
+    {
+        return $this->customers;
+    }
+
+    public function addCustomer(User $customer): self
+    {
+        if (!$this->customers->contains($customer)) {
+            $this->customers[] = $customer;
+        }
+
+        return $this;
+    }
+
+    public function removeCustomer(User $customer): self
+    {
+        if ($this->customers->contains($customer)) {
+            $this->customers->removeElement($customer);
+        }
 
         return $this;
     }

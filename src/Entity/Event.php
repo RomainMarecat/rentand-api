@@ -17,58 +17,58 @@ class Event
      * @ORM\Column(name="event_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     protected $id;
 
     /**
      * @ORM\Column(name="custom_title", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     protected $customTitle;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     protected $comment;
 
     /**
      * @ORM\Column(name="group_booking", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     protected $groupBooking;
 
     /**
      * @ORM\Column(name="start", type="datetime")
-     * @JMS\Groups({"getSessionsByUser"})
-     * @JMS\Type("DateTime<'Y-m-d h:i:s'>")
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Type("DateTime<'Y-m-d H:i'>")
      */
     protected $start;
 
     /**
      * @ORM\Column(name="end", type="datetime")
-     * @JMS\Groups({"getSessionsByUser"})
-     * @JMS\Type("DateTime<'Y-m-d h:i:s'>")
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Type("DateTime<'Y-m-d H:i'>")
      */
     protected $end;
 
     /**
      * @ORM\Column(name="details", type="object", nullable=true)
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     protected $details;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="events")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     protected $user;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @JMS\Groups({"getSessionsByUser"})
+     * @JMS\Groups({"getSessionsByUser", "addSession"})
      */
     protected $pause;
 

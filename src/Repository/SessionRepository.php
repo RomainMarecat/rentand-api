@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Entity\Session;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\NonUniqueResultException;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @method Session|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,22 +21,21 @@ class SessionRepository extends ServiceEntityRepository
         parent::__construct($registry, Session::class);
     }
 
-    // /**
-    //  * @return Session[] Returns an array of Session objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findSessionByCustomer(Session $session, UserInterface $user)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        try {
+            return $this->createQueryBuilder('s')
+                ->leftJoin('s.customers', 'customer')
+                ->andWhere('customer.id IN (:customer)')
+                ->andWhere('s.id = :session')
+                ->setParameter('customer', $user)
+                ->setParameter('session', $session)
+                ->getQuery()
+                ->getOneOrNullResult();
+        } catch (NonUniqueResultException $e) {
+            return null;
+        }
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Session

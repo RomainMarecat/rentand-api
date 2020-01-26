@@ -32,19 +32,19 @@ class User implements UserInterface, JWTUserInterface
      * @ORM\Column(name="user_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers", "getSessionsByUser"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers", "getSessionsByUser", "addSession"})
      */
     private $id;
 
     /**
      * @ORM\Column(name="username", type="string", length=255)
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers", "getSessionsByUser"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers", "getSessionsByUser", "addSession"})
      */
     private $username;
 
     /**
      * @ORM\Column(name="email", type="string", length=255)
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers", "getSessionsByUser"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers", "getSessionsByUser", "addSession"})
      */
     private $email;
 

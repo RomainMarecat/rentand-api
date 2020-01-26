@@ -6,6 +6,7 @@ use App\Entity\OnlineSession;
 use App\Entity\Session;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class SessionManager
 {
@@ -39,5 +40,14 @@ class SessionManager
         $this->entityManager->flush();
 
         return $session;
+    }
+
+    public function removeSession(UserInterface $user, Session $session)
+    {
+        $session = $this->entityManager->getRepository(Session::class)
+            ->findSessionByCustomer($session, $user);
+
+        $this->entityManager->remove($session);
+        $this->entityManager->flush();
     }
 }

@@ -25,9 +25,25 @@ class SessionController extends AbstractFOSRestController
         $form = $this->createForm(SessionType::class, $session);
         $form->submit($request->request->all());
         if ($form->isSubmitted() && $form->isValid()) {
-            $session->setUser($this->getUser());
+            $session->addCustomer($this->getUser());
             return $sessionManager->registerSession($session);
         }
         return FormErrorFormatter::getErrorsAsJsonResponse($form);
+    }
+
+    /**
+     * @Annotations\View(serializerGroups={"removeSession"})
+     * @Annotations\Delete("/sessions/{session}")
+     * @param SessionManager $sessionManager
+     * @param Session $session
+     * @return Session|\Symfony\Component\HttpFoundation\JsonResponse
+     */
+    public function removeSessionAction(SessionManager $sessionManager, Session $session)
+    {
+        if ($this->getUser()) {
+            $sessionManager->removeSession($this->getUser(), $session);
+        }
+
+        return null;
     }
 }

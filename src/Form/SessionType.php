@@ -7,9 +7,10 @@ use App\Entity\MeetingPoint;
 use App\Entity\OnlineSession;
 use App\Entity\Session;
 use App\Entity\Sport;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -26,15 +27,16 @@ class SessionType extends AbstractType
             ->add('customTitle')
             ->add('comment')
             ->add('groupBooking')
-            ->add('start', DateType::class, [
+            ->add('start', DateTimeType::class, [
                 'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
+                'format' => DateTimeType::HTML5_FORMAT,
                 'constraints' => new NotBlank()])
-            ->add('end', DateType::class, [
+            ->add('end', DateTimeType::class, [
                 'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
+                'format' => DateTimeType::HTML5_FORMAT,
                 'constraints' => new NotBlank()])
             ->add('pause')
+            ->add('user', EntityType::class, ['class' => User::class])
             ->add('sport', EntityType::class, ['class' => Sport::class])
             ->add('onlineSession', EntityType::class, ['class' => OnlineSession::class, 'property_path' => 'online_session'])
             ->add('speciality', EntityType::class, ['class' => Sport::class])
@@ -43,8 +45,7 @@ class SessionType extends AbstractType
                 'meetingPoint',
                 EntityType::class,
                 ['class' => MeetingPoint::class, 'property_path' => 'meeting_point']
-            )
-            ->add('customers');
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)
