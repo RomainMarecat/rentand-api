@@ -2,23 +2,21 @@
 
 namespace App\Controller\Front;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use App\Entity\Sport;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
 
 class SportController extends AbstractFOSRestController
 {
     /**
-     * @Annotations\View(serializerGroups={"Default", "getSports"})
+     * @Annotations\View(serializerGroups={"getSports"})
      * @Annotations\Get("/sports")
      */
     public function getSportsAction()
     {
-        $sports = new ArrayCollection($this->getDoctrine()
-            ->getRepository('App:Sport')
-            ->findByParent(null));
-
-        return array('sports' => $sports);
+        return $this->getDoctrine()
+            ->getRepository(Sport::class)
+            ->findAll();
     }
 
     /**

@@ -6,3 +6,4 @@ App\Entity\Sport:
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
         parent: '@sport<numberBetween(1, 10)>'
+        media: '@media<numberBetween(1, 30)>'

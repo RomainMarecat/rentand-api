@@ -24,7 +24,7 @@ class City
      * @ORM\Column(name="city_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser"})
+     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser", "addSession"})
      */
     private $id;
 
@@ -33,7 +33,7 @@ class City
      *
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
-     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser"})
+     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser", "addSession"})
      */
     private $name;
 
