@@ -21,18 +21,20 @@ class Media
      * @ORM\Column(name="media_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"Default", "getUsers", "getUser"})
+     * @JMS\Groups({"Default", "getUsers", "getUser", "getSport", "getSports"})
      */
     private $id;
+
 
     /**
      * @var string
      *
      * @ORM\Column(name="filename", type="string", length=255, nullable=false)
-     * @JMS\Groups({"Default", "getUsers", "getUser"})
+     * @JMS\Groups({"Default", "getUsers", "getUser", "getSport", "getSports"})
      * @Assert\NotBlank
      */
     private $filename;
+
 
     /**
      * @var string
@@ -46,8 +48,10 @@ class Media
      * @var string
      *
      * @ORM\Column(name="alt", type="string", length=255, nullable=true)
+     * @JMS\Groups({"getUsers", "getUser", "getSport", "getSports"})
      */
     private $alt;
+
 
     /**
      * @var \DateTime
@@ -207,10 +211,13 @@ class Media
      * @return string
      * @JMS\VirtualProperty()
      * @JMS\SerializedName("url")
-     * @JMS\Groups({"Default", "getUsers", "getUser"})
+     * @JMS\Groups({"Default", "getUsers", "getUser", "getSport", "getSports"})
      */
     public function getUrl(): ?string
     {
+        if (empty($this->filename)) {
+            return '/assets/images/picto-fusee.png';
+        }
         return str_replace(
             '/home/romainmarecat/alr/rentand-api/public',
             'http://localhost:8001',

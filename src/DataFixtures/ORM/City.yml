@@ -1,12 +1,2374 @@
 App\Entity\City:
-    city{1..100}:
-        name: <city()>
-        googleId: <swiftBicNumber()>
-        lng: <longitude()>
-        lat: <latitude()>
-        north: <longitude()>
-        south: <latitude()>
-        east: <longitude()>
-        west: <longitude()>
-        createdAt: <dateTime()>
-        updatedAt: <dateTime()>
+    city1:
+      name: MAROLLES SOUS LIGNIERES
+      zipcode: '10130'
+      lat: '48.052'
+      lng: '3.93247'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city2:
+      name: LES GRANDES CHAPELLES
+      zipcode: '10170'
+      lat: '48.4916'
+      lng: '3.9335'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city3:
+      name: MERREY SUR ARCE
+      zipcode: '10110'
+      lat: '48.116'
+      lng: '4.43093'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city4:
+      name: JUVANCOURT
+      zipcode: '10310'
+      lat: '48.1568'
+      lng: '4.7947'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city5:
+      name: LAUBRESSEL
+      zipcode: '10270'
+      lat: '48.2596'
+      lng: '4.2496'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city6:
+      name: ISLE AUMONT
+      zipcode: '10800'
+      lat: '48.2056'
+      lng: '4.11251'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city7:
+      name: LIGNIERES
+      zipcode: '10130'
+      lat: '48.052'
+      lng: '3.93247'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city8:
+      name: MERGEY
+      zipcode: '10600'
+      lat: '48.3767'
+      lng: '3.98875'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city9:
+      name: MACHY
+      zipcode: '10320'
+      lat: '48.1632'
+      lng: '4.0206'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city10:
+      name: CRUSCADES
+      zipcode: '11200'
+      lat: '43.1662'
+      lng: '2.78892'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city11:
+      name: CUBIERES SUR CINOBLE
+      zipcode: '11190'
+      lat: '42.9167'
+      lng: '2.34708'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city12:
+      name: CUCUGNAN
+      zipcode: '11350'
+      lat: '42.8797'
+      lng: '2.66523'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city13:
+      name: DONAZAC
+      zipcode: '11240'
+      lat: '43.1188'
+      lng: '2.06672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city14:
+      name: FAJAC EN VAL
+      zipcode: '11220'
+      lat: '43.0809'
+      lng: '2.59146'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city15:
+      name: FESTES ET ST ANDRE
+      zipcode: '11300'
+      lat: '43.0486'
+      lng: '2.18021'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city16:
+      name: FONTANES DE SAULT
+      zipcode: '11140'
+      lat: '42.7658'
+      lng: '2.16672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city17:
+      name: FONTCOUVERTE
+      zipcode: '11700'
+      lat: '43.2164'
+      lng: '2.63518'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city18:
+      name: FONTJONCOUSE
+      zipcode: '11360'
+      lat: '42.9849'
+      lng: '2.79678'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city19:
+      name: GALINAGUES
+      zipcode: '11140'
+      lat: '42.7658'
+      lng: '2.16672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city20:
+      name: GENERVILLE
+      zipcode: '11270'
+      lat: '43.1822'
+      lng: '1.96657'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city21:
+      name: GINESTAS
+      zipcode: '11120'
+      lat: '43.2794'
+      lng: '2.88392'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city22:
+      name: GREFFEIL
+      zipcode: '11250'
+      lat: '43.0946'
+      lng: '2.34321'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city23:
+      name: GRUISSAN
+      zipcode: '11430'
+      lat: '43.1034'
+      lng: '3.08203'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city24:
+      name: HOMPS
+      zipcode: '11200'
+      lat: '43.1662'
+      lng: '2.78892'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city25:
+      name: ISSEL
+      zipcode: '11400'
+      lat: '43.3333'
+      lng: '1.9782'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city26:
+      name: JOUCOU
+      zipcode: '11140'
+      lat: '42.7658'
+      lng: '2.16672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city27:
+      name: LABASTIDE ESPARBAIRENQUE
+      zipcode: '11380'
+      lat: '43.3946'
+      lng: '2.38723'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city28:
+      name: LACOMBE
+      zipcode: '11310'
+      lat: '43.3722'
+      lng: '2.17411'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city29:
+      name: LAGRASSE
+      zipcode: '11220'
+      lat: '43.0809'
+      lng: '2.59146'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city30:
+      name: LAPRADE
+      zipcode: '11390'
+      lat: '43.3926'
+      lng: '2.2792'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city31:
+      name: LA REDORTE
+      zipcode: '11700'
+      lat: '43.2164'
+      lng: '2.63518'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city32:
+      name: LASBORDES
+      zipcode: '11400'
+      lat: '43.3333'
+      lng: '1.9782'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city33:
+      name: LAURAC
+      zipcode: '11270'
+      lat: '43.1822'
+      lng: '1.96657'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city34:
+      name: LEUCATE
+      zipcode: '11370'
+      lat: '42.8991'
+      lng: '3.02622'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city35:
+      name: LEUCATE
+      zipcode: '11370'
+      lat: '42.8991'
+      lng: '3.02622'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city36:
+      name: MAILHAC
+      zipcode: '11120'
+      lat: '43.2794'
+      lng: '2.88392'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city37:
+      name: MAYREVILLE
+      zipcode: '11420'
+      lat: '43.2068'
+      lng: '1.79389'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city38:
+      name: MERIAL
+      zipcode: '11140'
+      lat: '42.7658'
+      lng: '2.16672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city39:
+      name: MONTBRUN DES CORBIERES
+      zipcode: '11700'
+      lat: '43.2164'
+      lng: '2.63518'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city40:
+      name: MONTCLAR
+      zipcode: '11250'
+      lat: '43.0946'
+      lng: '2.34321'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city41:
+      name: MONTGRADAIL
+      zipcode: '11240'
+      lat: '43.1188'
+      lng: '2.06672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city42:
+      name: MONTHAUT
+      zipcode: '11240'
+      lat: '43.1188'
+      lng: '2.06672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city43:
+      name: MONTLAUR
+      zipcode: '11220'
+      lat: '43.0809'
+      lng: '2.59146'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city44:
+      name: MONTREDON DES CORBIERES
+      zipcode: '11100'
+      lat: '43.1614'
+      lng: '3.00769'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city45:
+      name: MOUTHOUMET
+      zipcode: '11330'
+      lat: '42.9592'
+      lng: '2.54503'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city46:
+      name: NEVIAN
+      zipcode: '11200'
+      lat: '43.1662'
+      lng: '2.78892'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city47:
+      name: PADERN
+      zipcode: '11350'
+      lat: '42.8797'
+      lng: '2.66523'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city48:
+      name: PENNAUTIER
+      zipcode: '11610'
+      lat: '43.2601'
+      lng: '2.30203'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city49:
+      name: PEYREFITTE SUR L HERS
+      zipcode: '11420'
+      lat: '43.2068'
+      lng: '1.79389'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city50:
+      name: PEYRIAC DE MER
+      zipcode: '11440'
+      lat: '43.09'
+      lng: '2.94881'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city51:
+      name: PEZENS
+      zipcode: '11170'
+      lat: '43.2815'
+      lng: '2.19443'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city52:
+      name: POMAS
+      zipcode: '11250'
+      lat: '43.0946'
+      lng: '2.34321'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city53:
+      name: PRADELLES CABARDES
+      zipcode: '11380'
+      lat: '43.3946'
+      lng: '2.38723'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city54:
+      name: PRADELLES EN VAL
+      zipcode: '11220'
+      lat: '43.0809'
+      lng: '2.59146'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city55:
+      name: PREIXAN
+      zipcode: '11250'
+      lat: '43.0946'
+      lng: '2.34321'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city56:
+      name: PUILAURENS
+      zipcode: '11140'
+      lat: '42.7658'
+      lng: '2.16672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city57:
+      name: QUILLAN
+      zipcode: '11500'
+      lat: '42.8643'
+      lng: '2.21431'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city58:
+      name: RIEUX EN VAL
+      zipcode: '11220'
+      lat: '43.0809'
+      lng: '2.59146'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city59:
+      name: ROQUECOURBE MINERVOIS
+      zipcode: '11700'
+      lat: '43.2164'
+      lng: '2.63518'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city60:
+      name: ROQUEFEUIL
+      zipcode: '11340'
+      lat: '42.8371'
+      lng: '1.9818'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city61:
+      name: ROQUEFORT DE SAULT
+      zipcode: '11140'
+      lat: '42.7658'
+      lng: '2.16672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city62:
+      name: STE COLOMBE SUR GUETTE
+      zipcode: '11140'
+      lat: '42.7658'
+      lng: '2.16672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city63:
+      name: ST COUAT DU RAZES
+      zipcode: '11300'
+      lat: '43.0486'
+      lng: '2.18021'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city64:
+      name: ST LAURENT DE LA CABRERISSE
+      zipcode: '11220'
+      lat: '43.0809'
+      lng: '2.59146'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city65:
+      name: ST PAPOUL
+      zipcode: '11400'
+      lat: '43.3333'
+      lng: '1.9782'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city66:
+      name: SAISSAC
+      zipcode: '11310'
+      lat: '43.3722'
+      lng: '2.17411'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city67:
+      name: SOUPEX
+      zipcode: '11320'
+      lat: '43.3837'
+      lng: '1.85528'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city68:
+      name: TREBES
+      zipcode: '11800'
+      lat: '43.2183'
+      lng: '2.49172'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city69:
+      name: TREZIERS
+      zipcode: '11230'
+      lat: '42.9737'
+      lng: '2.0269'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city70:
+      name: VILLARDEBELLE
+      zipcode: '11580'
+      lat: '43.002'
+      lng: '2.3297'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city71:
+      name: VILLARZEL DU RAZES
+      zipcode: '11300'
+      lat: '43.0486'
+      lng: '2.18021'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city72:
+      name: VILLEMOUSTAUSSOU
+      zipcode: '11620'
+      lat: '43.2497'
+      lng: '2.3663'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city73:
+      name: VILLENEUVE LES CORBIERES
+      zipcode: '11360'
+      lat: '42.9849'
+      lng: '2.79678'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city74:
+      name: VILLENEUVE LES MONTREAL
+      zipcode: '11290'
+      lat: '43.1944'
+      lng: '2.18783'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city75:
+      name: VILLEPINTE
+      zipcode: '11150'
+      lat: '43.2499'
+      lng: '2.06462'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city76:
+      name: AGUESSAC
+      zipcode: '12520'
+      lat: '44.1968'
+      lng: '3.06387'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city77:
+      name: BALAGUIER D OLT
+      zipcode: '12260'
+      lat: '44.4589'
+      lng: '1.98297'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city78:
+      name: LA BASTIDE SOLAGES
+      zipcode: '12550'
+      lat: '43.9452'
+      lng: '2.61732'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city79:
+      name: BELMONT SUR RANCE
+      zipcode: '12370'
+      lat: '43.8038'
+      lng: '2.74263'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city80:
+      name: BOR ET BAR
+      zipcode: '12270'
+      lat: '44.2133'
+      lng: '2.02193'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city81:
+      name: BROMMAT
+      zipcode: '12600'
+      lat: '44.8341'
+      lng: '2.67665'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city82:
+      name: BROQUIES
+      zipcode: '12480'
+      lat: '43.9974'
+      lng: '2.69341'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city83:
+      name: CALMONT
+      zipcode: '12450'
+      lat: '44.2841'
+      lng: '2.57256'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city84:
+      name: LA CAPELLE BALAGUIER
+      zipcode: '12260'
+      lat: '44.4589'
+      lng: '1.98297'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city85:
+      name: LE CLAPIER
+      zipcode: '12540'
+      lat: '43.8787'
+      lng: '3.14987'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city86:
+      name: COMPS LA GRAND VILLE
+      zipcode: '12120'
+      lat: '44.1739'
+      lng: '2.54749'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city87:
+      name: CONQUES EN ROUERGUE
+      zipcode: '12320'
+      lat: '44.5838'
+      lng: '2.46441'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city88:
+      name: CONQUES EN ROUERGUE
+      zipcode: '12320'
+      lat: '44.5838'
+      lng: '2.46441'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city89:
+      name: CREISSELS
+      zipcode: '12100'
+      lat: '44.0898'
+      lng: '3.10622'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city90:
+      name: ENTRAYGUES SUR TRUYERE
+      zipcode: '12140'
+      lat: '44.6558'
+      lng: '2.58165'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city91:
+      name: FAYET
+      zipcode: '12360'
+      lat: '43.7904'
+      lng: '2.95796'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city92:
+      name: FIRMI
+      zipcode: '12300'
+      lat: '44.5948'
+      lng: '2.27515'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city93:
+      name: GALGAN
+      zipcode: '12220'
+      lat: '44.4875'
+      lng: '2.20156'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city94:
+      name: GISSAC
+      zipcode: '12360'
+      lat: '43.7904'
+      lng: '2.95796'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city95:
+      name: GOLINHAC
+      zipcode: '12140'
+      lat: '44.6558'
+      lng: '2.58165'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city96:
+      name: LEDERGUES
+      zipcode: '12170'
+      lat: '44.0745'
+      lng: '2.5189'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city97:
+      name: LESTRADE ET THOUELS
+      zipcode: '12430'
+      lat: '44.0865'
+      lng: '2.70136'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city98:
+      name: MELJAC
+      zipcode: '12120'
+      lat: '44.1739'
+      lng: '2.54749'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city99:
+      name: MILLAU
+      zipcode: '12100'
+      lat: '44.0898'
+      lng: '3.10622'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city100:
+      name: MONTAGNOL
+      zipcode: '12360'
+      lat: '43.7904'
+      lng: '2.95796'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city101:
+      name: BRUGAIROLLES
+      zipcode: '11300'
+      lat: '43.0486'
+      lng: '2.18021'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city102:
+      name: CABRESPINE
+      zipcode: '11160'
+      lat: '43.346'
+      lng: '2.52082'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city103:
+      name: CASSAIGNES
+      zipcode: '11190'
+      lat: '42.9167'
+      lng: '2.34708'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city104:
+      name: BOURIGEOLE
+      zipcode: '11300'
+      lat: '43.0486'
+      lng: '2.18021'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city105:
+      name: CAILHAVEL
+      zipcode: '11240'
+      lat: '43.1188'
+      lng: '2.06672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city106:
+      name: BOUTENAC
+      zipcode: '11200'
+      lat: '43.1662'
+      lng: '2.78892'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city107:
+      name: BOUISSE
+      zipcode: '11330'
+      lat: '42.9592'
+      lng: '2.54503'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city108:
+      name: CARLIPA
+      zipcode: '11170'
+      lat: '43.2815'
+      lng: '2.19443'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city109:
+      name: CAILLA
+      zipcode: '11140'
+      lat: '42.7658'
+      lng: '2.16672'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city110:
+      name: L ABERGEMENT CLEMENCIAT
+      zipcode: '1400'
+      lat: '46.1331'
+      lng: '4.99858'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city111:
+      name: ARS SUR FORMANS
+      zipcode: '1480'
+      lat: '46.0178'
+      lng: '4.81483'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city112:
+      name: AMBLEON
+      zipcode: '1300'
+      lat: '45.7328'
+      lng: '5.65716'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city113:
+      name: BRANCOURT EN LAONNOIS
+      zipcode: '2320'
+      lat: '49.5132'
+      lng: '3.44966'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city114:
+      name: BUCY LES PIERREPONT
+      zipcode: '2350'
+      lat: '49.6393'
+      lng: '3.83481'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city115:
+      name: CHATILLON LES SONS
+      zipcode: '2270'
+      lat: '49.7146'
+      lng: '3.59689'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city116:
+      name: BRUYERES SUR FERE
+      zipcode: '2130'
+      lat: '49.1936'
+      lng: '3.55983'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city117:
+      name: LA CAPELLE
+      zipcode: '2260'
+      lat: '49.9666'
+      lng: '3.91128'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city118:
+      name: CHAVIGNY
+      zipcode: '2880'
+      lat: '49.4239'
+      lng: '3.38403'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city119:
+      name: CERSEUIL
+      zipcode: '2220'
+      lat: '49.318'
+      lng: '3.54396'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city120:
+      name: BRENY
+      zipcode: '2210'
+      lat: '49.2129'
+      lng: '3.35012'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city121:
+      name: BRUYS
+      zipcode: '2220'
+      lat: '49.318'
+      lng: '3.54396'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city122:
+      name: HAUT VALROMEY
+      zipcode: '1260'
+      lat: '45.9507'
+      lng: '5.68746'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city123:
+      name: FRANCHELEINS
+      zipcode: '1090'
+      lat: '46.087'
+      lng: '4.79611'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city124:
+      name: DOMPIERRE SUR CHALARONNE
+      zipcode: '1400'
+      lat: '46.1331'
+      lng: '4.99858'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city125:
+      name: DOMPIERRE SUR VEYLE
+      zipcode: '1240'
+      lat: '46.0917'
+      lng: '5.14798'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city126:
+      name: GENOUILLEUX
+      zipcode: '1090'
+      lat: '46.087'
+      lng: '4.79611'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city127:
+      name: DRUILLAT
+      zipcode: '1160'
+      lat: '46.0747'
+      lng: '5.31395'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city128:
+      name: GORREVOD
+      zipcode: '1190'
+      lat: '46.4317'
+      lng: '4.96424'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city129:
+      name: FAREINS
+      zipcode: '1480'
+      lat: '46.0178'
+      lng: '4.81483'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city130:
+      name: FLAXIEU
+      zipcode: '1350'
+      lat: '45.8544'
+      lng: '5.76557'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city131:
+      name: GEX
+      zipcode: '1170'
+      lat: '46.3286'
+      lng: '6.0306'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city132:
+      name: SONTHONNAX LA MONTAGNE
+      zipcode: '1580'
+      lat: '46.2402'
+      lng: '5.54909'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city133:
+      name: SONTHONNAX LA MONTAGNE
+      zipcode: '1580'
+      lat: '46.2402'
+      lng: '5.54909'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city134:
+      name: SERRIERES DE BRIORD
+      zipcode: '1470'
+      lat: '45.8059'
+      lng: '5.47728'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city135:
+      name: ST RAMBERT EN BUGEY
+      zipcode: '1230'
+      lat: '45.9329'
+      lng: '5.46923'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city136:
+      name: ST PAUL DE VARAX
+      zipcode: '1240'
+      lat: '46.0917'
+      lng: '5.14798'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city137:
+      name: THEZILLIEU
+      zipcode: '1110'
+      lat: '45.9724'
+      lng: '5.57711'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city138:
+      name: SERVIGNAT
+      zipcode: '1560'
+      lat: '46.443'
+      lng: '5.12305'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city139:
+      name: THOISSEY
+      zipcode: '1140'
+      lat: '46.167'
+      lng: '4.846'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city140:
+      name: SOUCLIN
+      zipcode: '1150'
+      lat: '45.8773'
+      lng: '5.32596'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city141:
+      name: SERGY
+      zipcode: '1630'
+      lat: '46.2146'
+      lng: '5.95817'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city142:
+      name: CHAMPAGNE EN VALROMEY
+      zipcode: '1260'
+      lat: '45.9507'
+      lng: '5.68746'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city143:
+      name: CHARNOZ SUR AIN
+      zipcode: '1800'
+      lat: '45.8985'
+      lng: '5.1634'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city144:
+      name: CHAMPFROMIER
+      zipcode: '1410'
+      lat: '46.2797'
+      lng: '5.91198'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city145:
+      name: CHAZEY BONS
+      zipcode: '1300'
+      lat: '45.7328'
+      lng: '5.65716'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city146:
+      name: CONFRANCON
+      zipcode: '1310'
+      lat: '46.2413'
+      lng: '5.11553'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city147:
+      name: COLLONGES
+      zipcode: '1550'
+      lat: '46.1521'
+      lng: '5.90976'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city148:
+      name: DOMMARTIN
+      zipcode: '1380'
+      lat: '46.3162'
+      lng: '4.974'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city149:
+      name: CHALEINS
+      zipcode: '1480'
+      lat: '46.0178'
+      lng: '4.81483'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city150:
+      name: COLOMIEU
+      zipcode: '1300'
+      lat: '45.7328'
+      lng: '5.65716'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city151:
+      name: CROTTET
+      zipcode: '1750'
+      lat: '46.2973'
+      lng: '4.87546'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city152:
+      name: GROSLEE ST BENOIT
+      zipcode: '1680'
+      lat: '45.7526'
+      lng: '5.55446'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city153:
+      name: PARVES ET NATTAGES
+      zipcode: '1300'
+      lat: '45.7328'
+      lng: '5.65716'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city154:
+      name: ST ANDRE DE BAGE
+      zipcode: '1380'
+      lat: '46.3162'
+      lng: '4.974'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city155:
+      name: ST BENIGNE
+      zipcode: '1190'
+      lat: '46.4317'
+      lng: '4.96424'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city156:
+      name: REYSSOUZE
+      zipcode: '1190'
+      lat: '46.4317'
+      lng: '4.96424'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city157:
+      name: RELEVANT
+      zipcode: '1990'
+      lat: '46.0767'
+      lng: '4.8996'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city158:
+      name: ST ALBAN
+      zipcode: '1450'
+      lat: '46.1108'
+      lng: '5.4552'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city159:
+      name: PONCIN
+      zipcode: '1450'
+      lat: '46.1108'
+      lng: '5.4552'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city160:
+      name: POUGNY
+      zipcode: '1550'
+      lat: '46.1521'
+      lng: '5.90976'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city161:
+      name: PERON
+      zipcode: '1630'
+      lat: '46.2146'
+      lng: '5.95817'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city162:
+      name: HAUT VALROMEY
+      zipcode: '1260'
+      lat: '45.9507'
+      lng: '5.68746'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city163:
+      name: MATAFELON GRANGES
+      zipcode: '1580'
+      lat: '46.2402'
+      lng: '5.54909'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city164:
+      name: MATAFELON GRANGES
+      zipcode: '1580'
+      lat: '46.2402'
+      lng: '5.54909'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city165:
+      name: MALAFRETAZ
+      zipcode: '1340'
+      lat: '46.34'
+      lng: '5.13298'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city166:
+      name: JOURNANS
+      zipcode: '1250'
+      lat: '46.2067'
+      lng: '5.38606'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city167:
+      name: JAYAT
+      zipcode: '1340'
+      lat: '46.34'
+      lng: '5.13298'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city168:
+      name: LURCY
+      zipcode: '1090'
+      lat: '46.087'
+      lng: '4.79611'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city169:
+      name: LHUIS
+      zipcode: '1680'
+      lat: '45.7526'
+      lng: '5.55446'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city170:
+      name: LENT
+      zipcode: '1240'
+      lat: '46.0917'
+      lng: '5.14798'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city171:
+      name: LEAZ
+      zipcode: '1200'
+      lat: '46.1339'
+      lng: '5.81259'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city172:
+      name: BOHAS MEYRIAT RIGNAT
+      zipcode: '1250'
+      lat: '46.2067'
+      lng: '5.38606'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city173:
+      name: BOHAS MEYRIAT RIGNAT
+      zipcode: '1250'
+      lat: '46.2067'
+      lng: '5.38606'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city174:
+      name: MESSIMY SUR SAONE
+      zipcode: '1480'
+      lat: '46.0178'
+      lng: '4.81483'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city175:
+      name: MOGNENEINS
+      zipcode: '1140'
+      lat: '46.167'
+      lng: '4.846'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city176:
+      name: ORDONNAZ
+      zipcode: '1510'
+      lat: '45.848'
+      lng: '5.61949'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city177:
+      name: MIRIBEL
+      zipcode: '1700'
+      lat: '45.8389'
+      lng: '4.95806'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city178:
+      name: MIONNAY
+      zipcode: '1390'
+      lat: '45.9283'
+      lng: '4.92728'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city179:
+      name: MIJOUX
+      zipcode: '1170'
+      lat: '46.3286'
+      lng: '6.0306'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city180:
+      name: MIJOUX
+      zipcode: '1410'
+      lat: '46.2797'
+      lng: '5.91198'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city181:
+      name: OZAN
+      zipcode: '1190'
+      lat: '46.4317'
+      lng: '4.96424'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city182:
+      name: ANIZY LE CHATEAU
+      zipcode: '2320'
+      lat: '49.5132'
+      lng: '3.44966'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city183:
+      name: ATHIES SOUS LAON
+      zipcode: '2840'
+      lat: '49.5688'
+      lng: '3.7297'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city184:
+      name: ANCIENVILLE
+      zipcode: '2600'
+      lat: '49.2731'
+      lng: '3.1234'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city185:
+      name: ANDELAIN
+      zipcode: '2800'
+      lat: '49.6765'
+      lng: '3.39232'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city186:
+      name: BOURG ST CHRISTOPHE
+      zipcode: '1800'
+      lat: '45.8985'
+      lng: '5.1634'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city187:
+      name: BELIGNEUX
+      zipcode: '1360'
+      lat: '45.8283'
+      lng: '5.15327'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city188:
+      name: BOYEUX ST JEROME
+      zipcode: '1640'
+      lat: '46.0338'
+      lng: '5.42152'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city189:
+      name: BOULIGNEUX
+      zipcode: '1330'
+      lat: '45.9977'
+      lng: '5.02165'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city190:
+      name: CEYZERIAT
+      zipcode: '1250'
+      lat: '46.2067'
+      lng: '5.38606'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city191:
+      name: ATTIGNAT
+      zipcode: '1340'
+      lat: '46.34'
+      lng: '5.13298'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city192:
+      name: BEAUPONT
+      zipcode: '1270'
+      lat: '46.389'
+      lng: '5.30343'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city193:
+      name: BOLOZON
+      zipcode: '1450'
+      lat: '46.1108'
+      lng: '5.4552'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city194:
+      name: BIRIEUX
+      zipcode: '1330'
+      lat: '45.9977'
+      lng: '5.02165'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city195:
+      name: BRENAZ
+      zipcode: '1260'
+      lat: '45.9507'
+      lng: '5.68746'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city196:
+      name: ST GERMAIN LES PAROISSES
+      zipcode: '1300'
+      lat: '45.7328'
+      lng: '5.65716'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city197:
+      name: ST JULIEN SUR REYSSOUZE
+      zipcode: '1560'
+      lat: '46.443'
+      lng: '5.12305'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city198:
+      name: ST JEAN DE THURIGNEUX
+      zipcode: '1390'
+      lat: '45.9283'
+      lng: '4.92728'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city199:
+      name: ST MAURICE DE BEYNOST
+      zipcode: '1700'
+      lat: '45.8389'
+      lng: '4.95806'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city200:
+      name: ST JULIEN SUR VEYLE
+      zipcode: '1540'
+      lat: '46.2213'
+      lng: '4.98198'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city201:
+      name: BANNOST VILLEGAGNON
+      zipcode: '77970'
+      lat: '48.663'
+      lng: '3.14094'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city202:
+      name: BARBEY
+      zipcode: '77130'
+      lat: '48.3779'
+      lng: '2.96426'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city203:
+      name: BAZOCHES LES BRAY
+      zipcode: '77118'
+      lat: '48.3962'
+      lng: '3.16889'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city204:
+      name: BEAUMONT DU GATINAIS
+      zipcode: '77890'
+      lat: '48.1786'
+      lng: '2.53414'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city205:
+      name: BLANDY
+      zipcode: '77115'
+      lat: '48.5424'
+      lng: '2.7715'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city206:
+      name: BLENNES
+      zipcode: '77940'
+      lat: '48.301'
+      lng: '2.97852'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city207:
+      name: BOIS LE ROI
+      zipcode: '77590'
+      lat: '48.486'
+      lng: '2.72692'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city208:
+      name: BOISSETTES
+      zipcode: '77350'
+      lat: '48.5351'
+      lng: '2.60727'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city209:
+      name: BOISSISE LA BERTRAND
+      zipcode: '77350'
+      lat: '48.5351'
+      lng: '2.60727'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city210:
+      name: BOUGLIGNY
+      zipcode: '77570'
+      lat: '48.173'
+      lng: '2.64931'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city211:
+      name: BOURRON MARLOTTE
+      zipcode: '77780'
+      lat: '48.3348'
+      lng: '2.70118'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city212:
+      name: BRANSLES
+      zipcode: '77620'
+      lat: '48.1722'
+      lng: '2.86731'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city213:
+      name: BRAY SUR SEINE
+      zipcode: '77480'
+      lat: '48.4108'
+      lng: '3.29924'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city214:
+      name: BREAU
+      zipcode: '77720'
+      lat: '48.585'
+      lng: '2.8965'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city215:
+      name: BUSSY ST MARTIN
+      zipcode: '77600'
+      lat: '48.8362'
+      lng: '2.73227'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city216:
+      name: BUTHIERS
+      zipcode: '77760'
+      lat: '48.2952'
+      lng: '2.54279'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city217:
+      name: CHALAUTRE LA PETITE
+      zipcode: '77160'
+      lat: '48.5897'
+      lng: '3.24327'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city218:
+      name: CHAMPDEUIL
+      zipcode: '77390'
+      lat: '48.64'
+      lng: '2.79775'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city219:
+      name: LA CHAPELLE RABLAIS
+      zipcode: '77370'
+      lat: '48.5606'
+      lng: '3.03744'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city220:
+      name: CHATRES
+      zipcode: '77610'
+      lat: '48.7336'
+      lng: '2.85537'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city221:
+      name: CHELLES
+      zipcode: '77500'
+      lat: '48.8836'
+      lng: '2.59608'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city222:
+      name: CHEVRY COSSIGNY
+      zipcode: '77173'
+      lat: '48.7235'
+      lng: '2.677'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city223:
+      name: COMBS LA VILLE
+      zipcode: '77380'
+      lat: '48.6576'
+      lng: '2.57532'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city224:
+      name: COMPANS
+      zipcode: '77290'
+      lat: '48.9796'
+      lng: '2.61891'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city225:
+      name: CONDE STE LIBIAIRE
+      zipcode: '77450'
+      lat: '48.9197'
+      lng: '2.80318'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city226:
+      name: COULOMMIERS
+      zipcode: '77120'
+      lat: '48.7888'
+      lng: '3.09543'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city227:
+      name: COURTACON
+      zipcode: '77560'
+      lat: '48.6367'
+      lng: '3.38264'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city228:
+      name: COUTENCON
+      zipcode: '77154'
+      lat: '48.4892'
+      lng: '3.02294'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city229:
+      name: CROISSY BEAUBOURG
+      zipcode: '77183'
+      lat: '48.8166'
+      lng: '2.65568'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city230:
+      name: DARVAULT
+      zipcode: '77140'
+      lat: '48.275'
+      lng: '2.70959'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city231:
+      name: FAY LES NEMOURS
+      zipcode: '77167'
+      lat: '48.2323'
+      lng: '2.71472'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city232:
+      name: FORGES
+      zipcode: '77130'
+      lat: '48.3779'
+      lng: '2.96426'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city233:
+      name: FROMONT
+      zipcode: '77760'
+      lat: '48.2952'
+      lng: '2.54279'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city234:
+      name: FUBLAINES
+      zipcode: '77470'
+      lat: '48.9379'
+      lng: '2.95706'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city235:
+      name: GIREMOUTIERS
+      zipcode: '77120'
+      lat: '48.7888'
+      lng: '3.09543'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city236:
+      name: GRANDPUITS BAILLY CARROIS
+      zipcode: '77720'
+      lat: '48.585'
+      lng: '2.8965'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city237:
+      name: GRANDPUITS BAILLY CARROIS
+      zipcode: '77720'
+      lat: '48.585'
+      lng: '2.8965'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city238:
+      name: GRETZ ARMAINVILLIERS
+      zipcode: '77220'
+      lat: '48.7441'
+      lng: '2.75834'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city239:
+      name: GRISY SUISNES
+      zipcode: '77166'
+      lat: '48.6689'
+      lng: '2.65739'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city240:
+      name: GUERMANTES
+      zipcode: '77600'
+      lat: '48.8362'
+      lng: '2.73227'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city241:
+      name: HERICY
+      zipcode: '77850'
+      lat: '48.4421'
+      lng: '2.78874'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city242:
+      name: HONDEVILLIERS
+      zipcode: '77510'
+      lat: '48.8662'
+      lng: '3.27609'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city243:
+      name: ISLES LES VILLENOY
+      zipcode: '77450'
+      lat: '48.9197'
+      lng: '2.80318'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city244:
+      name: JOUARRE
+      zipcode: '77640'
+      lat: '48.9061'
+      lng: '3.10099'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city245:
+      name: LESIGNY
+      zipcode: '77150'
+      lat: '48.741'
+      lng: '2.62904'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city246:
+      name: LIZINES
+      zipcode: '77650'
+      lat: '48.5152'
+      lng: '3.24055'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city247:
+      name: LIZY SUR OURCQ
+      zipcode: '77440'
+      lat: '49.0212'
+      lng: '3.05011'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city248:
+      name: LORREZ LE BOCAGE PREAUX
+      zipcode: '77710'
+      lat: '48.2431'
+      lng: '2.88429'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city249:
+      name: LUMIGNY NESLES ORMEAUX
+      zipcode: '77540'
+      lat: '48.6872'
+      lng: '2.97338'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city250:
+      name: LA MADELEINE SUR LOING
+      zipcode: '77570'
+      lat: '48.173'
+      lng: '2.64931'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city251:
+      name: MAINCY
+      zipcode: '77950'
+      lat: '48.5739'
+      lng: '2.69879'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city252:
+      name: MAISONCELLES EN BRIE
+      zipcode: '77580'
+      lat: '48.8616'
+      lng: '2.95011'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city253:
+      name: MARY SUR MARNE
+      zipcode: '77440'
+      lat: '49.0212'
+      lng: '3.05011'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city254:
+      name: MAUPERTHUIS
+      zipcode: '77120'
+      lat: '48.7888'
+      lng: '3.09543'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city255:
+      name: MAY EN MULTIEN
+      zipcode: '77145'
+      lat: '49.0701'
+      lng: '3.02511'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city256:
+      name: MEAUX
+      zipcode: '77100'
+      lat: '48.9417'
+      lng: '2.89233'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city257:
+      name: LE MEE SUR SEINE
+      zipcode: '77350'
+      lat: '48.5351'
+      lng: '2.60727'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city258:
+      name: MEILLERAY
+      zipcode: '77320'
+      lat: '48.7633'
+      lng: '3.31883'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city259:
+      name: MOISENAY
+      zipcode: '77950'
+      lat: '48.5739'
+      lng: '2.69879'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city260:
+      name: MONTCEAUX LES MEAUX
+      zipcode: '77470'
+      lat: '48.9379'
+      lng: '2.95706'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city261:
+      name: MONTEREAU FAULT YONNE
+      zipcode: '77130'
+      lat: '48.3779'
+      lng: '2.96426'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city262:
+      name: MONTEREAU SUR LE JARD
+      zipcode: '77950'
+      lat: '48.5739'
+      lng: '2.69879'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city263:
+      name: MONTEVRAIN
+      zipcode: '77144'
+      lat: '48.8765'
+      lng: '2.7575'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city264:
+      name: MONTMACHOUX
+      zipcode: '77940'
+      lat: '48.301'
+      lng: '2.97852'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city265:
+      name: MORET LOING ET ORVANNE
+      zipcode: '77250'
+      lat: '48.3335'
+      lng: '2.82848'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city266:
+      name: MORET LOING ET ORVANNE
+      zipcode: '77250'
+      lat: '48.3335'
+      lng: '2.82848'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city267:
+      name: MORTCERF
+      zipcode: '77163'
+      lat: '48.7979'
+      lng: '2.90272'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city268:
+      name: NANTEAU SUR ESSONNE
+      zipcode: '77760'
+      lat: '48.2952'
+      lng: '2.54279'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city269:
+      name: NANTEUIL LES MEAUX
+      zipcode: '77100'
+      lat: '48.9417'
+      lng: '2.89233'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city270:
+      name: CHAUCONIN NEUFMONTIERS
+      zipcode: '77124'
+      lat: '48.9688'
+      lng: '2.84385'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city271:
+      name: NOISY RUDIGNON
+      zipcode: '77940'
+      lat: '48.301'
+      lng: '2.97852'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city272:
+      name: NOISY SUR ECOLE
+      zipcode: '77123'
+      lat: '48.3613'
+      lng: '2.50124'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city273:
+      name: OTHIS
+      zipcode: '77280'
+      lat: '49.0832'
+      lng: '2.65348'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city274:
+      name: PAMFOU
+      zipcode: '77830'
+      lat: '48.4599'
+      lng: '2.90487'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city275:
+      name: PASSY SUR SEINE
+      zipcode: '77480'
+      lat: '48.4108'
+      lng: '3.29924'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city276:
+      name: PERTHES
+      zipcode: '77930'
+      lat: '48.469'
+      lng: '2.55645'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city277:
+      name: PIERRE LEVEE
+      zipcode: '77580'
+      lat: '48.8616'
+      lng: '2.95011'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city278:
+      name: LE PIN
+      zipcode: '77181'
+      lat: '48.9152'
+      lng: '2.61878'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city279:
+      name: PONTAULT COMBAULT
+      zipcode: '77340'
+      lat: '48.7869'
+      lng: '2.61351'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city280:
+      name: PRECY SUR MARNE
+      zipcode: '77410'
+      lat: '48.9494'
+      lng: '2.71612'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city281:
+      name: QUINCY VOISINS
+      zipcode: '77860'
+      lat: '48.8893'
+      lng: '2.86626'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city282:
+      name: REBAIS
+      zipcode: '77510'
+      lat: '48.8662'
+      lng: '3.27609'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city283:
+      name: RECLOSES
+      zipcode: '77760'
+      lat: '48.2952'
+      lng: '2.54279'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city284:
+      name: REMAUVILLE
+      zipcode: '77710'
+      lat: '48.2431'
+      lng: '2.88429'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city285:
+      name: ROZAY EN BRIE
+      zipcode: '77540'
+      lat: '48.6872'
+      lng: '2.97338'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city286:
+      name: RUMONT
+      zipcode: '77760'
+      lat: '48.2952'
+      lng: '2.54279'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city287:
+      name: STE AULDE
+      zipcode: '77260'
+      lat: '48.9692'
+      lng: '3.12482'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city288:
+      name: ST CYR SUR MORIN
+      zipcode: '77750'
+      lat: '48.9148'
+      lng: '3.22989'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city289:
+      name: ST FARGEAU PONTHIERRY
+      zipcode: '77310'
+      lat: '48.5292'
+      lng: '2.53978'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city290:
+      name: ST GERMAIN LAVAL
+      zipcode: '77130'
+      lat: '48.3779'
+      lng: '2.96426'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city291:
+      name: ST GERMAIN SOUS DOUE
+      zipcode: '77169'
+      lat: '48.825'
+      lng: '3.16311'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city292:
+      name: ST LEGER
+      zipcode: '77510'
+      lat: '48.8662'
+      lng: '3.27609'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city293:
+      name: ST OUEN EN BRIE
+      zipcode: '77720'
+      lat: '48.585'
+      lng: '2.8965'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city294:
+      name: ST PIERRE LES NEMOURS
+      zipcode: '77140'
+      lat: '48.275'
+      lng: '2.70959'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city295:
+      name: ST REMY LA VANNE
+      zipcode: '77320'
+      lat: '48.7633'
+      lng: '3.31883'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city296:
+      name: ST SAUVEUR SUR ECOLE
+      zipcode: '77930'
+      lat: '48.469'
+      lng: '2.55645'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city297:
+      name: ST SIMEON
+      zipcode: '77169'
+      lat: '48.825'
+      lng: '3.16311'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city298:
+      name: SANCY LES PROVINS
+      zipcode: '77320'
+      lat: '48.7633'
+      lng: '3.31883'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city299:
+      name: SEINE PORT
+      zipcode: '77240'
+      lat: '48.5646'
+      lng: '2.60004'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city300:
+      name: SIGNY SIGNETS
+      zipcode: '77640'
+      lat: '48.9061'
+      lng: '3.10099'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city301:
+      name: ARBOYS EN BUGEY
+      zipcode: '1300'
+      lat: '45.7328'
+      lng: '5.65716'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city302:
+      name: BELIGNEUX
+      zipcode: '1360'
+      lat: '45.8283'
+      lng: '5.15327'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city303:
+      name: AMBERIEUX EN DOMBES
+      zipcode: '1330'
+      lat: '45.9977'
+      lng: '5.02165'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city304:
+      name: ANDERT ET CONDON
+      zipcode: '1300'
+      lat: '45.7328'
+      lng: '5.65716'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city305:
+      name: BAGE LE CHATEL
+      zipcode: '1380'
+      lat: '46.3162'
+      lng: '4.974'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city306:
+      name: AMBUTRIX
+      zipcode: '1500'
+      lat: '45.9756'
+      lng: '5.34314'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city307:
+      name: ARBENT
+      zipcode: '1100'
+      lat: '46.2469'
+      lng: '5.65226'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city308:
+      name: ARANC
+      zipcode: '1110'
+      lat: '45.9724'
+      lng: '5.57711'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city309:
+      name: OULCHY LE CHATEAU
+      zipcode: '2210'
+      lat: '49.2129'
+      lng: '3.35012'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city310:
+      name: OULCHES LA VALLEE FOULON
+      zipcode: '2160'
+      lat: '49.3989'
+      lng: '3.73817'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city311:
+      name: PRESLES ET THIERNY
+      zipcode: '2860'
+      lat: '49.4878'
+      lng: '3.68305'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city312:
+      name: OULCHY LE CHATEAU
+      zipcode: '2210'
+      lat: '49.2129'
+      lng: '3.35012'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city313:
+      name: PLEINE SELVE
+      zipcode: '2240'
+      lat: '49.7791'
+      lng: '3.44336'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city314:
+      name: PIERREMANDE
+      zipcode: '2300'
+      lat: '49.5817'
+      lng: '3.1917'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city315:
+      name: PONTAVERT
+      zipcode: '2160'
+      lat: '49.3989'
+      lng: '3.73817'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city316:
+      name: PITHON
+      zipcode: '2480'
+      lat: '49.7351'
+      lng: '3.17025'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city317:
+      name: PAVANT
+      zipcode: '2310'
+      lat: '48.9876'
+      lng: '3.27825'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city318:
+      name: ST CHRISTOPHE A BERRY
+      zipcode: '2290'
+      lat: '49.4211'
+      lng: '3.18005'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city319:
+      name: SANCY LES CHEMINOTS
+      zipcode: '2880'
+      lat: '49.4239'
+      lng: '3.38403'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city320:
+      name: SACONIN ET BREUIL
+      zipcode: '2200'
+      lat: '49.3519'
+      lng: '3.32022'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city321:
+      name: STE GENEVIEVE
+      zipcode: '2340'
+      lat: '49.6857'
+      lng: '4.02292'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city322:
+      name: ST CLEMENT
+      zipcode: '2360'
+      lat: '49.7487'
+      lng: '4.14397'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city323:
+      name: ST AUBIN
+      zipcode: '2300'
+      lat: '49.5817'
+      lng: '3.1917'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city324:
+      name: STE CROIX
+      zipcode: '2820'
+      lat: '49.5127'
+      lng: '3.83345'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city325:
+      name: ST ALGIS
+      zipcode: '2260'
+      lat: '49.9666'
+      lng: '3.91128'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city326:
+      name: SERCHES
+      zipcode: '2220'
+      lat: '49.318'
+      lng: '3.54396'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city327:
+      name: DHUYS ET MORIN EN BRIE
+      zipcode: '2540'
+      lat: '48.9129'
+      lng: '3.44038'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city328:
+      name: MARTIGNY COURPIERRE
+      zipcode: '2860'
+      lat: '49.4878'
+      lng: '3.68305'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city329:
+      name: MEZIERES SUR OISE
+      zipcode: '2240'
+      lat: '49.7791'
+      lng: '3.44336'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city330:
+      name: MARCY SOUS MARLE
+      zipcode: '2250'
+      lat: '49.7385'
+      lng: '3.80416'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city331:
+      name: MERCIN ET VAUX
+      zipcode: '2200'
+      lat: '49.3519'
+      lng: '3.32022'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city332:
+      name: MARIZY ST MARD
+      zipcode: '2470'
+      lat: '49.1587'
+      lng: '3.23193'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city333:
+      name: MONAMPTEUIL
+      zipcode: '2000'
+      lat: '49.5539'
+      lng: '3.59338'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city334:
+      name: MENNESSIS
+      zipcode: '2700'
+      lat: '49.6403'
+      lng: '3.2963'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city335:
+      name: MEURIVAL
+      zipcode: '2160'
+      lat: '49.3989'
+      lng: '3.73817'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city336:
+      name: MAIZY
+      zipcode: '2160'
+      lat: '49.3989'
+      lng: '3.73817'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city337:
+      name: LES SEPTVALLONS
+      zipcode: '2160'
+      lat: '49.3989'
+      lng: '3.73817'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city338:
+      name: LESQUIELLES ST GERMAIN
+      zipcode: '2120'
+      lat: '49.8881'
+      lng: '3.6413'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'
+    city339:
+      name: LOGNY LES AUBENTON
+      zipcode: '2500'
+      lat: '49.8908'
+      lng: '4.10751'
+      createdAt: '<dateTime()>'
+      updatedAt: '<dateTime()>'

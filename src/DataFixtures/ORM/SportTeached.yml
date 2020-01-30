@@ -4,12 +4,14 @@ App\Entity\SportTeached:
         levels: [1, 4]
         ages: [1, 2]
         user: '@user<numberBetween(1, 10)>'
-        sport: '@sport<numberBetween(1, 10)>'
-        translations: '{"fr": "<catchPhrase()>"}'
+        sport: '@sport_<numberBetween(1, 100)>'
+        translations:
+            fr: '@sport_<numberBetween(1, 100)>->name'
     sportTeachedTest:
         orderNumber: <numberBetween(1, 10)>
         levels: [1, 4]
         ages: [1, 2]
         user: '@userTest'
-        sport: '@sport<numberBetween(1, 10)>'
-        translations: '{"fr": "<catchPhrase()>"}'
+        sport: '@sport_<numberBetween(1, 100)>'
+        translations:
+            fr: '@sport_<numberBetween(1, 100)>->name'

@@ -11,6 +11,7 @@ use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -22,7 +23,7 @@ class SessionType extends AbstractType
         $builder
             ->add('age')
             ->add('level')
-            ->add('nbPersons')
+            ->add('nbPersons', NumberType::class, ['property_path' => 'nb_persons'])
             ->add('duration')
             ->add('customTitle')
             ->add('comment')

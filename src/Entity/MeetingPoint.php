@@ -20,7 +20,7 @@ class MeetingPoint
      * @ORM\Column(name="meeting_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getCity", "getUser"})
+     * @JMS\Groups({"getCity", "getUser", "addSession"})
      */
     private $id;
 
@@ -28,7 +28,7 @@ class MeetingPoint
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
-     * @JMS\Groups({"getCity", "getUser"})
+     * @JMS\Groups({"getCity", "getUser", "addSession"})
      */
     private $title;
 
@@ -36,7 +36,7 @@ class MeetingPoint
      * @var float
      *
      * @ORM\Column(name="lng", type="float")
-     * @JMS\Groups({"getCity", "getUser"})
+     * @JMS\Groups({"getCity", "getUser", "addSession"})
      */
     private $lng;
 
@@ -44,7 +44,7 @@ class MeetingPoint
      * @var float
      *
      * @ORM\Column(name="lat", type="float")
-     * @JMS\Groups({"getCity", "getUser"})
+     * @JMS\Groups({"getCity", "getUser", "addSession"})
      */
     private $lat;
 

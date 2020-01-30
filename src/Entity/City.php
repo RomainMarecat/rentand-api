@@ -24,7 +24,7 @@ class City
      * @ORM\Column(name="city_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser"})
+     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser", "addSession"})
      */
     private $id;
 
@@ -33,14 +33,23 @@ class City
      *
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
-     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser"})
+     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser", "addSession"})
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="googleId", type="string", length=255)
+     * @ORM\Column(name="zipcode", type="string", length=5)
+     * @Assert\NotBlank()
+     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser", "addSession"})
+     */
+    private $zipcode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="googleId", type="string", length=255, nullable=true)
      * @Assert\NotBlank()
      */
     private $googleId;
@@ -307,6 +316,18 @@ class City
                 $meetingPoint->setCity(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getZipcode(): ?string
+    {
+        return $this->zipcode;
+    }
+
+    public function setZipcode(string $zipcode): self
+    {
+        $this->zipcode = $zipcode;
 
         return $this;
     }

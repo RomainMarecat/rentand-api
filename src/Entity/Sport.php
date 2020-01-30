@@ -23,7 +23,7 @@ class Sport
      * @ORM\Column(name="sport_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getUser", "getSportsTeachedByUser"})
+     * @JMS\Groups({"getUser", "getSportsTeachedByUser", "addSession", "getSports"})
      */
     private $id;
 
@@ -31,7 +31,7 @@ class Sport
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getUser", "getSportsTeachedByUser"})
+     * @JMS\Groups({"getUser", "getSportsTeachedByUser", "addSession", "getSports"})
      */
     private $name;
 
@@ -40,7 +40,7 @@ class Sport
      *
      * @Gedmo\Slug(fields={"name"}, separator="-", updatable=true)
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
-     * @JMS\Groups({"getUser"})
+     * @JMS\Groups({"getUser", "addSession", "getSports"})
      */
     private $slug;
 
@@ -48,7 +48,7 @@ class Sport
      * @var string
      *
      * @ORM\Column(name="level", type="integer", nullable=true)
-     * @JMS\Groups({"getUser"})
+     * @JMS\Groups({"getUser", "addSession"})
      */
     private $level;
 
@@ -98,7 +98,7 @@ class Sport
 
     /**
      * @ORM\OneToMany(targetEntity="Sport", mappedBy="parent", cascade={"remove", "persist"}, fetch="EXTRA_LAZY")
-     * @JMS\Groups({"getFormUser", "getSport"})
+     * @JMS\Groups({"getFormUser", "getSport", "getSports"})
      */
     private $children;
 
@@ -108,6 +108,13 @@ class Sport
      * @JMS\Groups({})
      */
     private $families;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Media")
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="media_id", onDelete="CASCADE"))
+     * @JMS\Groups({"getSport", "getSports"})
+     */
+    private $media;
 
     public function __construct()
     {
@@ -317,7 +324,7 @@ class Sport
      */
     public function getTranslations()
     {
-        return json_decode($this->translations, true);
+        return $this->translations;
     }
 
     /**
@@ -328,7 +335,7 @@ class Sport
      * @JMS\Groups({"Default", "getUsers", "getSports", "getSport", "getFormUser", "getFormSearch", "getFormSport",
      *     "getFormFamily",
      *     "getUser", "getFormUser", "getFamiliesByParent", "getSimpleSearch", "postSimpleSearch",
-     *     "postAdvancedSearch", "getAdvancedSearch", "newPreBookings", "getSport", "getUserSportById"})
+     *     "postAdvancedSearch", "getAdvancedSearch", "newPreBookings", "getSport", "getUserSportById", "addSession"})
      *
      */
     public function getTranslationsObject()
@@ -339,6 +346,18 @@ class Sport
     public function setTranslations($translations): self
     {
         $this->translations = $translations;
+
+        return $this;
+    }
+
+    public function getMedia(): ?Media
+    {
+        return $this->media;
+    }
+
+    public function setMedia(?Media $media): self
+    {
+        $this->media = $media;
 
         return $this;
     }

@@ -1,8 +1,2453 @@
 App\Entity\Sport:
-    sport{1..100}:
-        slug: <catchPhrase()>
-        level: <numberBetween(0, 2)>
-        translations: '{"fr": "<catchPhrase()>"}'
-        createdAt: <dateTime()>
-        updatedAt: <dateTime()>
-        parent: '@sport<numberBetween(1, 10)>'
+#  sport{1..100}:
+#    slug: <catchPhrase()>
+#    level: <numberBetween(0, 2)>
+#    translations:
+#      fr: "<catchPhrase()>"
+#    parent: '@sport<numberBetween(1, 10)>'
+#createdAt: <dateTime()>
+#updatedAt: <dateTime()>
+#media: '@media<numberBetween(1, 30)>'
+  sport_1:
+    name: "Mountain sport"
+    slug: "mountain-sport"
+    level: 0
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Montagne"
+      en: "Mountain sport"
+    children: [
+      '@sport_2',
+      '@sport_3',
+      '@sport_4',
+      '@sport_69',
+      '@sport_70',
+      '@sport_72',
+      '@sport_73',
+      '@sport_74',
+      '@sport_78'
+    ]
+
+  sport_2:
+    name: "Mountaineering"
+    slug: "mountaineering"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Alpinisme"
+      en: "Mountaineering"
+    children: [
+      '@sport_38',
+      '@sport_39',
+      '@sport_40',
+      '@sport_62'
+    ]
+
+  sport_3:
+    name: "Mountain climbing"
+    slug: "mountain-climbing"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Grimpe"
+      en: "Mountain climbing"
+    children: [
+      '@sport_63',
+      '@sport_65',
+      '@sport_66',
+      '@sport_67'
+    ]
+
+  sport_4:
+    name: "Mountain whitewater"
+    slug: "mountain-whitewater"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Eau-vive"
+      en: "Mountain whitewater"
+    children: [
+      '@sport_81',
+      '@sport_82',
+      '@sport_83',
+      '@sport_84',
+      '@sport_101',
+      '@sport_102'
+    ]
+
+  sport_5:
+    name: "Motor sports"
+    slug: "motor-sports"
+    level: 0
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports mécaniques"
+      en: "Motor sports"
+    children: [
+      '@sport_41',
+      '@sport_136',
+      '@sport_137',
+      '@sport_138',
+      '@sport_139'
+    ]
+
+  sport_6:
+    name: "Team sports"
+    slug: "team-sports"
+    level: 0
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports collectifs"
+      en: "Team sports"
+    children: [
+      '@sport_127',
+      '@sport_128',
+      '@sport_129',
+      '@sport_130',
+      '@sport_131'
+    ]
+
+  sport_7:
+    name: "Water sports"
+    slug: "water-sports"
+    level: 0
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Nautiques et aquatiques"
+      en: "Water sports"
+    children: [
+      '@sport_1014',
+      '@sport_1015',
+      '@sport_1016',
+      '@sport_1017',
+      '@sport_1018',
+      '@sport_1019',
+      '@sport_1020',
+      '@sport_1021'
+    ]
+
+  sport_8:
+    name: "Sports coaching"
+    slug: "sports-coaching"
+    level: 0
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Coaching sportif"
+      en: "Sports coaching"
+    children: [
+      '@sport_1022',
+      '@sport_1023',
+      '@sport_1024'
+    ]
+
+  sport_9:
+    name: "Traditional sports"
+    slug: "traditional-sports"
+    level: 0
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports traditionnels"
+      en: "Traditional sports"
+    children: [
+      '@sport_1030',
+      '@sport_1031'
+    ]
+
+  sport_10:
+    name: "Ski"
+    slug: "ski"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Ski"
+      en: "Skiing"
+    children: [
+      '@sport_11',
+      '@sport_12',
+      '@sport_13',
+      '@sport_14',
+      '@sport_15',
+      '@sport_16',
+      '@sport_17'
+    ]
+
+  sport_11:
+    name: "Ski racing"
+    slug: "ski-racing"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Compétition"
+      en: "Ski racing"
+
+  sport_12:
+    name: "Backcountry/freeriding"
+    slug: "backcountry-freeriding"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Hors piste/freeride"
+      en: "Backcountry/freeriding"
+
+  sport_13:
+    name: "Freestyle"
+    slug: "freestyle"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Freestyle"
+      en: "Freestyle"
+
+  sport_14:
+    name: "Ski cross"
+    slug: "ski-cross"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Skicross"
+      en: "Ski cross"
+
+  sport_15:
+    name: "Cross-country skiing"
+    slug: "cross-country-skiing"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Ski de randonnée"
+      en: "Cross-country skiing"
+
+  sport_16:
+    name: "Mogul skiing"
+    slug: "mogul-skiing"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Ski de bosses"
+      en: "Mogul skiing"
+
+  sport_17:
+    name: "Alpine skiing"
+    slug: "alpine-skiing"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Ski de piste"
+      en: "Alpine skiing"
+
+  sport_18:
+    name: "Snowboard"
+    slug: "snowboard"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Snowboard"
+      en: "Snowboarding"
+    children: [
+      '@sport_19',
+      '@sport_20',
+      '@sport_21',
+      '@sport_22'
+    ]
+
+  sport_19:
+    name: "Downhill snowboard"
+    slug: "downhill-snowboard"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Snowboard sur piste"
+      en: "Downhill snowboard"
+
+  sport_20:
+    name: "Backcountry/freeriding"
+    slug: "backcountry-freeriding"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Hors piste/freeride"
+      en: "Backcountry/freeriding"
+
+  sport_21:
+    name: "Freestyle/flat"
+    slug: "freestyle-flat"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Freestyle/flat"
+      en: "Freestyle/flat"
+
+  sport_22:
+    name: "Alpine snowboarding/racing"
+    slug: "alpine-snowboarding-racing"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Snowboard alpin/course"
+      en: "Alpine snowboarding/racing"
+
+  sport_23:
+    name: "Telemark"
+    slug: "telemark"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Télémark"
+      en: "Telemark skiing"
+    children: [
+      '@sport_24',
+      '@sport_25',
+      '@sport_26',
+      '@sport_27',
+      '@sport_28'
+    ]
+
+  sport_24:
+    name: "Alpine Telemark/racing"
+    slug: "alpine-telemark-racing"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Compétition"
+      en: "Alpine Telemark/racing"
+
+  sport_25:
+    name: "Backcountry/freeriding"
+    slug: "backcountry-freeriding-2"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Hors piste/freeride"
+      en: "Backcountry/freeriding"
+
+  sport_26:
+    name: "Freestyle Telemark skiing"
+    slug: "freestyle-telemark-skiing"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Freestyle"
+      en: "Freestyle Telemark skiing"
+
+  sport_27:
+    name: "Cross-country Telemark skiing"
+    slug: "cross-country-telemark-skiing"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Télémark de randonnée"
+      en: "Cross-country Telemark skiing"
+
+  sport_28:
+    name: "Downhill Telemark skiing"
+    slug: "downhill-telemark-skiing"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Télémark sur piste"
+      en: "Downhill Telemark skiing"
+
+  sport_29:
+    name: "Biathlon"
+    slug: "biathlon"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Biathlon"
+      en: "Biathlon"
+
+  sport_30:
+    name: "Nordic skiing"
+    slug: "nordic-skiing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Ski nordique"
+      en: "Nordic skiing"
+    children: [
+      '@sport_31',
+      '@sport_32'
+    ]
+
+  sport_31:
+    name: "Classic nordic skiing"
+    slug: "classic-nordic-skiing"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Ski de fond classique"
+      en: "Classic nordic skiing"
+
+  sport_32:
+    name: "Skate nordic skiing"
+    slug: "skate-nordic-skiing"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Skating"
+      en: "Skate nordic skiing"
+
+  sport_33:
+    name: "Snowshoeing"
+    slug: "snowshoeing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Raquettes"
+      en: "Snowshoeing"
+
+  sport_34:
+    name: "Dog sledding"
+    slug: "dog-sledding"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Chiens de traineau"
+      en: "Dog sledding"
+
+  sport_35:
+    name: "Skijoring"
+    slug: "skijoring"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Ski-joering"
+      en: "Skijoring"
+
+  sport_36:
+    name: "Speed riding"
+    slug: "speed-riding"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Speed-riding"
+      en: "Speed riding"
+
+  sport_37:
+    name: "Snowkiting"
+    slug: "snowkiting"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Kiteski"
+      en: "Snowkiting"
+
+  sport_38:
+    name: "Ice fall"
+    slug: "ice-fall"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Cascade de glace"
+      en: "Ice fall"
+
+  sport_39:
+    name: "Ski mountaineering"
+    slug: "ski-mountaineering"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Ski alpinisme"
+      en: "Ski mountaineering"
+
+  sport_40:
+    name: "Classic races"
+    slug: "classic-races"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Courses classiques"
+      en: "Classic races"
+
+  sport_41:
+    name: "Ice driving"
+    slug: "ice-driving"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Pilotage sur glace"
+      en: "Ice driving"
+
+  sport_42:
+    name: "Fat bike"
+    slug: "fat-bike"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Fatbike"
+      en: "Fat bike"
+
+  sport_43:
+    name: "Sledge"
+    slug: "sledge"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Luge"
+      en: "Sledge"
+
+  sport_44:
+    name: "Bobsleigh"
+    slug: "bobsleigh"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Bobsleigh"
+      en: "Bobsleigh"
+
+  sport_45:
+    name: "Mountain bike"
+    slug: "mountain-bike"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "VTT"
+      en: "Mountain bike"
+    children: [
+      '@sport_46',
+      '@sport_47',
+      '@sport_48',
+      '@sport_49',
+      '@sport_50'
+    ]
+
+  sport_46:
+    name: "Downhill mountain biking"
+    slug: "downhill-mountain-biking"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Descente/DH"
+      en: "Downhill mountain biking"
+
+  sport_47:
+    name: "Enduro"
+    slug: "enduro"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Enduro"
+      en: "Enduro"
+
+  sport_48:
+    name: "Xcountry"
+    slug: "xcountry"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Xcountry"
+      en: "Xcountry"
+
+  sport_49:
+    name: "Electric mountain bike"
+    slug: "electric-mountain-bike"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "VTT électrique"
+      en: "Electric mountain bike"
+
+  sport_50:
+    name: "Trial"
+    slug: "trial"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Trial"
+      en: "Trial"
+
+  sport_51:
+    name: "Traditional cycling"
+    slug: "traditional-cycling"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Cyclisme traditionnel"
+      en: "Traditional cycling"
+    children: [
+      '@sport_52',
+      '@sport_53',
+      '@sport_54',
+      '@sport_55'
+    ]
+
+  sport_52:
+    name: "Road"
+    slug: "road"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Route"
+      en: "Road"
+
+  sport_53:
+    name: "Cyclo-cross"
+    slug: "cyclo-cross"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Cyclo-cross"
+      en: "Cyclo-cross"
+
+  sport_54:
+    name: "Electric bike"
+    slug: "electric-bike"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Vélo électrique"
+      en: "Electric bike"
+
+  sport_55:
+    name: "Track"
+    slug: "track"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Piste"
+      en: "Track"
+
+  sport_56:
+    name: "BMX"
+    slug: "bmx"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "BMX"
+      en: "BMX"
+    children: [
+      '@sport_57',
+      '@sport_58',
+      '@sport_59',
+      '@sport_60',
+      '@sport_61'
+    ]
+
+  sport_57:
+    name: "Ramp"
+    slug: "ramp"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Rampe"
+      en: "Ramp"
+
+  sport_58:
+    name: "Street"
+    slug: "street"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Street"
+      en: "Street"
+
+  sport_59:
+    name: "Race"
+    slug: "race"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Race"
+      en: "Race"
+
+  sport_60:
+    name: "Dirt"
+    slug: "dirt"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Dirt"
+      en: "Dirt"
+
+  sport_61:
+    name: "Flat"
+    slug: "flat"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Flat"
+      en: "Flat"
+
+  sport_62:
+    name: "Dry tooling"
+    slug: "dry-tooling"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Dry tooling"
+      en: "Dry tooling"
+
+  sport_63:
+    name: "Climbing"
+    slug: "climbing-sport"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Escalade"
+      en: "Climbing"
+
+  sport_64:
+    name: "Slacklining"
+    slug: "slacklining"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Slack-line"
+      en: "Slacklining"
+
+  sport_65:
+    name: "Via ferrata"
+    slug: "via-ferrata"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Via ferrata"
+      en: "Via ferrata"
+
+  sport_66:
+    name: "Via corda"
+    slug: "via-corda"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Via corda"
+      en: "Via corda"
+
+  sport_67:
+    name: "Caving"
+    slug: "caving"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Spéléologie"
+      en: "Caving"
+
+  sport_68:
+    name: "Freefall"
+    slug: "freefall"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Chute libre"
+      en: "Freefall"
+
+  sport_69:
+    name: "Paragliding"
+    slug: "paragliding"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Parapente"
+      en: "Paragliding"
+
+  sport_70:
+    name: "Hang gliding"
+    slug: "hang-gliding"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Deltaplane"
+      en: "Hang gliding"
+
+  sport_71:
+    name: "Wingsuit flying"
+    slug: "wingsuit-flying"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Wingsuit"
+      en: "Wingsuit flying"
+
+  sport_72:
+    name: "Hiking"
+    slug: "hiking"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Randonnée"
+      en: "Hiking"
+
+  sport_73:
+    name: "Trail running"
+    slug: "trail-running"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Trail"
+      en: "Trail running"
+
+  sport_74:
+    name: "Nordic walking"
+    slug: "nordic-walking"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Marche nordique"
+      en: "Nordic walking"
+
+  sport_75:
+    name: "Orienteering"
+    slug: "orienteering"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Course d\\'orientation"
+      en: "Orienteering"
+
+  sport_76:
+    name: "Dog scootering"
+    slug: "dog-scootering"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Cani-bike"
+      en: "Dog scootering"
+
+  sport_77:
+    name: "Canicross"
+    slug: "canicross"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Cani-rando"
+      en: "Canicross"
+
+  sport_78:
+    name: "Mountain boarding"
+    slug: "mountain-boarding"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Mountain board"
+      en: "Mountain boarding"
+
+  sport_79:
+    name: "Paddle boarding"
+    slug: "paddle-boarding"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Paddle"
+      en: "Paddle boarding"
+
+  sport_80:
+    name: "Rowing"
+    slug: "rowing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Aviron"
+      en: "Rowing"
+
+  sport_81:
+    name: "Rafting"
+    slug: "rafting"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Rafting"
+      en: "Rafting"
+
+  sport_82:
+    name: "Kayak"
+    slug: "kayak"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Kayak"
+      en: "Kayak"
+
+  sport_83:
+    name: "Canoe"
+    slug: "canoe"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Canoë"
+      en: "Canoe"
+
+  sport_84:
+    name: "Canoraft"
+    slug: "canoraft"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Hotdog"
+      en: "Canoraft"
+
+  sport_85:
+    name: "Windsurfing"
+    slug: "windsurfing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Windsurf / Planche à voile"
+      en: "Windsurfing"
+
+  sport_86:
+    name: "Optimist"
+    slug: "optimist"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Optimist"
+      en: "Optimist"
+
+  sport_87:
+    name: "Dinghy"
+    slug: "dinghy"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Dériveur"
+      en: "Dinghy"
+
+  sport_88:
+    name: "Catamaran"
+    slug: "catamaran"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Catamaran"
+      en: "Catamaran"
+
+  sport_89:
+    name: "Kitesurfing"
+    slug: "kitesurfing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Kitesurf"
+      en: "Kitesurfing"
+
+  sport_90:
+    name: "Habitable sailboat"
+    slug: "habitable-sailboat"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Voilier - habitable"
+      en: "Habitable sailboat"
+
+  sport_91:
+    name: "Water skiing"
+    slug: "water-skiing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Ski nautique"
+      en: "Water skiing"
+
+  sport_92:
+    name: "Wakeboarding"
+    slug: "wakeboarding"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Wakeboard"
+      en: "Wakeboarding"
+
+  sport_93:
+    name: "Wakesurfing"
+    slug: "wakesurfing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Wakesurf"
+      en: "Wakesurfing"
+
+  sport_94:
+    name: "Wakeskating"
+    slug: "wakeskating"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Wakeskate"
+      en: "Wakeskating"
+
+  sport_95:
+    name: "Surfing"
+    slug: "surfing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Surf"
+      en: "Surfing"
+
+  sport_96:
+    name: "Bodyboarding"
+    slug: "bodyboarding"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Bodyboard"
+      en: "Bodyboarding"
+
+  sport_97:
+    name: "Diving"
+    slug: "diving"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Plongée"
+      en: "Submarine diving"
+
+  sport_98:
+    name: "Ice diving"
+    slug: "ice-diving"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Plongée sous glace"
+      en: "Ice diving"
+
+  sport_99:
+    name: "Snorkelling"
+    slug: "snorkelling"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Snorkeling"
+      en: "Snorkelling"
+
+  sport_100:
+    name: "apnea"
+    slug: "apnea"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Apnée"
+      en: "apnea"
+
+  sport_101:
+    name: "Canyoning"
+    slug: "canyoning"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Canyoning"
+      en: "Canyoneering"
+
+  sport_102:
+    name: "River boarding / Hydrospeed"
+    slug: "river-boarding-hydrospeed"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Hydrospeed"
+      en: "River boarding / Hydrospeed"
+
+  sport_103:
+    name: "Swimming"
+    slug: "swimming"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Natation"
+      en: "Swimming"
+    children: [
+      '@sport_104',
+      '@sport_105',
+      '@sport_106',
+      '@sport_107',
+      '@sport_108'
+    ]
+
+  sport_104:
+    name: "Front crawl"
+    slug: "front-crawl"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Crawl"
+      en: "Front crawl"
+
+  sport_105:
+    name: "Breaststroke"
+    slug: "breaststroke"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Brasse"
+      en: "Breaststroke"
+
+  sport_106:
+    name: "Butterfly"
+    slug: "butterfly"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Papillon"
+      en: "Butterfly"
+
+  sport_107:
+    name: "Backstroke"
+    slug: "backstroke"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Dos"
+      en: "Backstroke"
+
+  sport_108:
+    name: "Baby swimming"
+    slug: "baby-swimming"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Bébé nageur"
+      en: "Baby swimming"
+
+  sport_109:
+    name: "Diving"
+    slug: "diving-1"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Plongeon"
+      en: "Diving"
+
+  sport_110:
+    name: "Golf"
+    slug: "golf"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Golf"
+      en: "Golf"
+    children: [
+      '@sport_111',
+      '@sport_112',
+      '@sport_113',
+      '@sport_114'
+    ]
+
+  sport_111:
+    name: "Practice"
+    slug: "practice"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Practice"
+      en: "Practice"
+
+  sport_112:
+    name: "Golf course"
+    slug: "golf-course"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Parcours"
+      en: "Golf course"
+
+  sport_113:
+    name: "Putting green"
+    slug: "putting-green"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Putting green"
+      en: "Putting green"
+
+  sport_114:
+    name: "Bunker"
+    slug: "bunker"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Bunker"
+      en: "Bunker"
+
+  sport_115:
+    name: "Riding"
+    slug: "riding"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Equitation"
+      en: "Riding"
+    children: [
+      '@sport_116',
+      '@sport_117',
+      '@sport_118',
+      '@sport_119',
+      '@sport_120',
+      '@sport_121',
+      '@sport_122'
+    ]
+
+  sport_116:
+    name: "Horseback hiking"
+    slug: "horseback-hiking"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Randonnée"
+      en: "Horseback hiking"
+
+  sport_117:
+    name: "Jumping"
+    slug: "jumping"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Saut d\\'obstacles"
+      en: "Jumping"
+
+  sport_118:
+    name: "NULL"
+    slug: ""
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Passage de galops"
+      en: "NULL"
+
+  sport_119:
+    name: "Dressage"
+    slug: "dressage"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Dressage"
+      en: "Dressage"
+
+  sport_120:
+    name: "Pony"
+    slug: "pony"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Poney"
+      en: "Pony"
+
+  sport_121:
+    name: "Acrobatics"
+    slug: "acrobatics"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Voltige"
+      en: "Acrobatics"
+
+  sport_122:
+    name: "Hitching"
+    slug: "hitching"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Attelage"
+      en: "Hitching"
+
+  sport_123:
+    name: "Dance"
+    slug: "dance"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Danse"
+      en: "Dance"
+    children: [
+      '@sport_124',
+      '@sport_125',
+      '@sport_126'
+    ]
+
+  sport_124:
+    name: "Artistic dance"
+    slug: "artistic-dance"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Danse artistique"
+      en: "Artistic dance"
+
+  sport_125:
+    name: "Couple dance"
+    slug: "couple-dance"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Danse de couple"
+      en: "Couple dance"
+
+  sport_126:
+    name: "Pole dance"
+    slug: "pole-dance"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Pole dance"
+      en: "Pole dance"
+
+  sport_127:
+    name: "Rugby"
+    slug: "rugby"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Rugby"
+      en: "Rugby"
+
+  sport_128:
+    name: "Football"
+    slug: "football"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Football"
+      en: "Football"
+
+  sport_129:
+    name: "Basketball"
+    slug: "basketball"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Basketball"
+      en: "Basketball"
+
+  sport_130:
+    name: "Handball"
+    slug: "handball"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Handball"
+      en: "Handball"
+
+  sport_131:
+    name: "Volleyball"
+    slug: "volleyball"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Volley"
+      en: "Volleyball"
+
+  sport_132:
+    name: "table tennis"
+    slug: "table-tennis"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Tennis de table"
+      en: "table tennis"
+
+  sport_133:
+    name: "Squash"
+    slug: "squash"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Squash"
+      en: "Squash"
+
+  sport_134:
+    name: "Badminton"
+    slug: "badminton"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Badminton"
+      en: "Badminton"
+
+  sport_135:
+    name: "Tennis"
+    slug: "tennis"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Tennis"
+      en: "Tennis"
+
+  sport_136:
+    name: "Car racing"
+    slug: "car-racing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Automobile"
+      en: "Car racing"
+
+  sport_137:
+    name: "Motorbike racing"
+    slug: "motorbike-racing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Moto"
+      en: "Motorbike racing"
+
+  sport_138:
+    name: "Karting"
+    slug: "karting"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Karting"
+      en: "Karting"
+
+  sport_139:
+    name: "Quad racing"
+    slug: "quad-racing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Quad"
+      en: "Quad racing"
+
+  sport_140:
+    name: "Running"
+    slug: "running"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Course à pied"
+      en: "Running"
+
+  sport_141:
+    name: "Physical fitness"
+    slug: "physical-fitness"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Entretien physique"
+      en: "Physical fitness"
+    children: [
+      '@sport_142',
+      '@sport_143',
+      '@sport_144'
+    ]
+
+  sport_142:
+    name: "Muscle mass"
+    slug: "muscle-mass"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Prise de masse"
+      en: "Muscle mass"
+
+  sport_143:
+    name: "fitness"
+    slug: "fitness"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Remise en forme"
+      en: "fitness"
+
+  sport_144:
+    name: "Weight loss"
+    slug: "weight-loss"
+    level: 3
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Perte de poids"
+      en: "Weight loss"
+
+  sport_145:
+    name: "Weightlifting"
+    slug: "weightlifting"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Haltérophilie"
+      en: "Weightlifting"
+
+  sport_146:
+    name: "Bodybuilding"
+    slug: "bodybuilding"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Musculation"
+      en: "Bodybuilding"
+
+  sport_147:
+    name: "Cardio training"
+    slug: "cardio-training"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Cardio-training"
+      en: "Cardio training"
+
+  sport_148:
+    name: "Cardio boxing"
+    slug: "cardio-boxing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Cardio boxing"
+      en: "Cardio boxing"
+
+  sport_149:
+    name: "Stretching"
+    slug: "stretching"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Stretching"
+      en: "Stretching"
+
+  sport_150:
+    name: "Watergym"
+    slug: "watergym"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Aquagym"
+      en: "Watergym"
+
+  sport_151:
+    name: "Waterbike"
+    slug: "waterbike"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Aquabike"
+      en: "Waterbike"
+
+  sport_152:
+    name: "Pilates"
+    slug: "pilates"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "PIlates"
+      en: "Pilates"
+
+  sport_153:
+    name: "Yoga"
+    slug: "yoga"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Yoga"
+      en: "Yoga"
+
+  sport_154:
+    name: "Boxing"
+    slug: "boxing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Boxe"
+      en: "Boxing"
+
+  sport_155:
+    name: "Judo"
+    slug: "judo"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Judo"
+      en: "Judo"
+
+  sport_156:
+    name: "Karate"
+    slug: "karate"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Karaté"
+      en: "Karate"
+
+  sport_157:
+    name: "Jujitsu"
+    slug: "jujitsu"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Jujitsu"
+      en: "Jujitsu"
+
+  sport_158:
+    name: "Krav Maga"
+    slug: "krav-maga"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Krav Maga"
+      en: "Krav Maga"
+
+  sport_159:
+    name: "Taekwondo"
+    slug: "taekwondo"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Taekwondo"
+      en: "Taekwondo"
+
+  sport_160:
+    name: "Fencing"
+    slug: "fencing"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Escrime"
+      en: "Fencing"
+
+  sport_163:
+    name: "Zbrla"
+    slug: "zbrla"
+    level: 2
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Zbrla"
+      en: "Zbrla"
+
+  sport_1003:
+    name: "Winter sports"
+    slug: "winter-sports"
+    level: 0
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports d'hiver"
+      en: "Winter sports"
+    children: [
+      '@sport_1004',
+      '@sport_1005',
+      '@sport_1006',
+      '@sport_1007',
+      '@sport_10',
+      '@sport_18',
+      '@sport_23'
+    ]
+
+  sport_1004:
+    name: "Non-ski activities"
+    slug: "non-ski-activities"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Activités hors ski"
+      en: "Non-ski activities"
+    children: [
+      '@sport_41',
+      '@sport_42',
+      '@sport_43',
+      '@sport_44',
+      '@sport_98'
+    ]
+
+  sport_1005:
+    name: "Glisse tractée"
+    slug: "glisse-tractee"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Glisse tractée"
+      en: "Glisse tractée"
+    children: [
+      '@sport_34',
+      '@sport_35',
+      '@sport_36',
+      '@sport_37'
+    ]
+
+  sport_1006:
+    name: "Nordic"
+    slug: "nordic"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Nordique"
+      en: "Nordic"
+    children: [
+      '@sport_29',
+      '@sport_30',
+      '@sport_33'
+    ]
+
+  sport_1007:
+    name: "Mountaineering"
+    slug: "mountaineering"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Alpinisme"
+      en: "Mountaineering"
+    children: [
+      '@sport_38',
+      '@sport_39',
+      '@sport_40'
+    ]
+
+  sport_1008:
+    name: "Open-air"
+    slug: "open-air"
+    level: 0
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports de plein air"
+      en: "Open-air"
+    children: [
+      '@sport_1009',
+      '@sport_1010',
+      '@sport_1011',
+      '@sport_1012',
+      '@sport_1013',
+      '@sport_110',
+      '@sport_135'
+    ]
+
+  sport_1009:
+    name: "Cycling"
+    slug: "cycling"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Cyclisme"
+      en: "Cycling"
+    children: [
+      '@sport_42',
+      '@sport_45',
+      '@sport_51',
+      '@sport_56',
+      '@sport_76'
+    ]
+
+  sport_1010:
+    name: "On foot"
+    slug: "on-foot"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "A pied"
+      en: "On foot"
+    children: [
+      '@sport_33',
+      '@sport_40',
+      '@sport_72',
+      '@sport_73',
+      '@sport_74',
+      '@sport_75',
+      '@sport_77',
+      '@sport_140'
+    ]
+
+  sport_1011:
+    name: "Climbing"
+    slug: "climbing"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Grimpe"
+      en: "Climbing"
+    children: [
+      '@sport_38',
+      '@sport_62',
+      '@sport_63',
+      '@sport_64',
+      '@sport_65',
+      '@sport_66',
+      '@sport_67'
+    ]
+
+  sport_1012:
+    name: "Free flight"
+    slug: "free-flight"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Vol libre"
+      en: "Free flight"
+    children: [
+      '@sport_36',
+      '@sport_37',
+      '@sport_68',
+      '@sport_69',
+      '@sport_70',
+      '@sport_71',
+      '@sport_89'
+    ]
+
+  sport_1013:
+    name: "Animal sports"
+    slug: "animal-sports"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports animaliers"
+      en: "Animal sports"
+    children: [
+      '@sport_34',
+      '@sport_35',
+      '@sport_76',
+      '@sport_77',
+      '@sport_115'
+    ]
+
+  sport_1014:
+    name: "Swimming pool"
+    slug: "swimming-pool"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Bassin"
+      en: "Swimming pool"
+    children: [
+      '@sport_100',
+      '@sport_103',
+      '@sport_109',
+      '@sport_150',
+      '@sport_151'
+    ]
+
+  sport_1015:
+    name: "Underwater sports"
+    slug: "underwater-sports"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports sub-aquatiques"
+      en: "Underwater sports"
+    children: [
+      '@sport_97',
+      '@sport_98',
+      '@sport_99',
+      '@sport_100'
+    ]
+
+  sport_1016:
+    name: "power sports / Towed sports"
+    slug: "power-sports-towed-sports"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Motorisé - tracté"
+      en: "power sports / Towed sports"
+    children: [
+      '@sport_91',
+      '@sport_92',
+      '@sport_93',
+      '@sport_94'
+    ]
+
+  sport_1017:
+    name: "Sailing"
+    slug: "sailing"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Voile"
+      en: "Sailing"
+    children: [
+      '@sport_85',
+      '@sport_86',
+      '@sport_87',
+      '@sport_88',
+      '@sport_89',
+      '@sport_90'
+    ]
+
+  sport_1018:
+    name: "Whitewater"
+    slug: "whitewater"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Eaux-vives"
+      en: "Whitewater"
+    children: [
+      '@sport_81',
+      '@sport_82',
+      '@sport_83',
+      '@sport_84',
+      '@sport_101',
+      '@sport_102'
+    ]
+
+  sport_1019:
+    name: "Sea"
+    slug: "sea"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Surf"
+      en: "Surf"
+    children: [
+      '@sport_79',
+      '@sport_85',
+      '@sport_94',
+      '@sport_95',
+      '@sport_96'
+    ]
+
+  sport_1020:
+    name: "Surf"
+    slug: "surf"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Mer"
+      en: "Sea"
+    children: [
+      '@sport_79',
+      '@sport_82',
+      '@sport_83',
+      '@sport_85',
+      '@sport_86',
+      '@sport_87',
+      '@sport_88',
+      '@sport_89',
+      '@sport_90'
+    ]
+
+  sport_1021:
+    name: "Rowing boats"
+    slug: "rowing-boats"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports à rame/pagaie"
+      en: "Rowing boats"
+    children: [
+      '@sport_79',
+      '@sport_80',
+      '@sport_81',
+      '@sport_82',
+      '@sport_83',
+      '@sport_84'
+    ]
+
+  sport_1022:
+    name: "Gym-Fitness"
+    slug: "gym-fitness"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Gym-Fitness"
+      en: "Gym-Fitness"
+    children: [
+      '@sport_148',
+      '@sport_149',
+      '@sport_150',
+      '@sport_151',
+      '@sport_152',
+      '@sport_153'
+    ]
+
+  sport_1023:
+    name: "Physical preparation"
+    slug: "physical-preparation"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Préparation physique"
+      en: "Physical preparation"
+    children: [
+      '@sport_140',
+      '@sport_141',
+      '@sport_146',
+      '@sport_147'
+    ]
+
+  sport_1024:
+    name: "Training"
+    slug: "training"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Entrainement"
+      en: "Training"
+    children: [
+      '@sport_145',
+      '@sport_154'
+    ]
+
+  sport_1025:
+    name: "Sports hall"
+    slug: "sports-hall"
+    level: 0
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports en salle"
+      en: "Sports hall"
+    children: [
+      '@sport_1026',
+      '@sport_1027',
+      '@sport_1028',
+      '@sport_1029',
+      '@sport_63',
+      '@sport_145',
+      '@sport_146'
+    ]
+
+  sport_1026:
+    name: "Combat sport"
+    slug: "combat-sport"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports de combat"
+      en: "Combat sport"
+    children: [
+      '@sport_148',
+      '@sport_154',
+      '@sport_155',
+      '@sport_156',
+      '@sport_157',
+      '@sport_158',
+      '@sport_159',
+      '@sport_160'
+    ]
+
+  sport_1027:
+    name: "Artistic"
+    slug: "artistic"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Artistique"
+      en: "Artistic"
+    children: [
+      '@sport_109',
+      '@sport_123'
+    ]
+
+  sport_1028:
+    name: "Racket Sport (indoor)"
+    slug: "racket-sport-indoor"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports de raquette"
+      en: "Racket Sport (indoor)"
+    children: [
+      '@sport_132',
+      '@sport_133',
+      '@sport_134',
+      '@sport_135'
+    ]
+
+  sport_1029:
+    name: "Fitness hall"
+    slug: "fitness-hall"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Gym-Fitness"
+      en: "Fitness hall"
+    children: [
+      '@sport_152',
+      '@sport_153'
+    ]
+
+  sport_1030:
+    name: "Racket sport"
+    slug: "racket-sport"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports de raquette"
+      en: "Racket sport"
+    children: [
+      '@sport_132',
+      '@sport_133',
+      '@sport_134',
+      '@sport_135'
+    ]
+
+  sport_1031:
+    name: "Ball"
+    slug: "ball"
+    level: 1
+    createdAt: <dateTime()>
+    updatedAt: <dateTime()>
+    media: '@media<numberBetween(1, 30)>'
+    translations:
+      fr: "Sports de balle"
+      en: "Ball"
+    children: [
+      '@sport_110',
+      '@sport_127',
+      '@sport_128',
+      '@sport_129',
+      '@sport_130',
+      '@sport_131',
+      '@sport_132',
+      '@sport_133',
+      '@sport_135'
+    ]

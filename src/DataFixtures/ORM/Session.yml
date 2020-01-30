@@ -1,7 +1,7 @@
 App\Entity\Session:
     session{1..20}:
         customTitle: '<catchPhrase()>'
-        sport: '@sport<numberBetween(1, 100)>'
+        sport: '@sport_<numberBetween(1, 100)>'
         city: '@city<numberBetween(1, 100)>'
         user: '@user<numberBetween(1, 10)>'
         price: '<numberBetween(10, 200)>'
@@ -10,7 +10,7 @@ App\Entity\Session:
         duration: '<numberBetween(10, 200)>'
     session{21..50}:
         customTitle: '<catchPhrase()>'
-        sport: '@sport<numberBetween(1, 100)>'
+        sport: '@sport_<numberBetween(1, 100)>'
         city: '@city<numberBetween(1, 100)>'
         user: '@userTest'
         price: '<numberBetween(10, 200)>'
