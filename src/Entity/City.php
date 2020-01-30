@@ -40,7 +40,16 @@ class City
     /**
      * @var string
      *
-     * @ORM\Column(name="googleId", type="string", length=255)
+     * @ORM\Column(name="zipcode", type="string", length=5)
+     * @Assert\NotBlank()
+     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser", "addSession"})
+     */
+    private $zipcode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="googleId", type="string", length=255, nullable=true)
      * @Assert\NotBlank()
      */
     private $googleId;
@@ -307,6 +316,18 @@ class City
                 $meetingPoint->setCity(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getZipcode(): ?string
+    {
+        return $this->zipcode;
+    }
+
+    public function setZipcode(string $zipcode): self
+    {
+        $this->zipcode = $zipcode;
 
         return $this;
     }

@@ -9,4 +9,4 @@ App\Entity\Family:
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
         parent: '50%? @family<numberBetween(1, 10)>'
-        sports: ['@sport<numberBetween(1, 5)>']
+        sports: ['@sport_<numberBetween(1, 5)>']

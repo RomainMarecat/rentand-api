@@ -296,7 +296,7 @@ class SportTeached
      */
     public function getTranslations()
     {
-        return json_decode($this->translations, true);
+        return $this->translations;
     }
 
     /**

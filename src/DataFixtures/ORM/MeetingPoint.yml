@@ -1,24 +1,24 @@
 App\Entity\MeetingPoint:
     meetingPoint{1..10}:
-        title: <catchPhrase()>
-        lng: <longitude()>
-        lat: <latitude()>
+        title: '@city<numberBetween(1, 100)>->name'
+        lng: '@city<numberBetween(1, 100)>->lng'
+        lat: '@city<numberBetween(1, 100)>->lat'
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
         user: '@user<numberBetween(1, 10)>'
         city: '@city<numberBetween(1, 100)>'
     meetingPointTest:
-        title: <catchPhrase()>
-        lng: <longitude()>
-        lat: <latitude()>
+        title: '@city1->name'
+        lng: '@city1->lng'
+        lat: '@city1->lat'
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
         user: '@userTest'
         city: '@city1'
     meetingPointTest2:
-        title: <catchPhrase()>
-        lng: <longitude()>
-        lat: <latitude()>
+        title: '@city1->name'
+        lng: '@city2->lng'
+        lat: '@city2->lat'
         createdAt: <dateTime()>
         updatedAt: <dateTime()>
         user: '@userTest'
