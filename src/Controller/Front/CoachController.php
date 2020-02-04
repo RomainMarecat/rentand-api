@@ -2,8 +2,11 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Sport;
+use App\Entity\User;
 use App\Manager\UserManager;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
 use Symfony\Component\HttpFoundation\Request;
@@ -42,25 +45,21 @@ class CoachController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "getAdvert"})
+     * @Annotations\Get("/users/sports/{slug}")
+     * @Annotations\View(serializerGroups={"getUsers"}, serializerEnableMaxDepthChecks=true)
      * @param $slug
      *
+     * @param EntityManagerInterface $entityManager
      * @return array
      */
-    public function getAdvertAction($slug)
+    public function getUsersBySportAction($slug, EntityManagerInterface $entityManager)
     {
-        $user = $this->getDoctrine()
-            ->getRepository('App:Advert')
-            ->findPartialOneBySlug($slug);
+        $sport = $entityManager->getRepository(Sport::class)->findOneBySlug($slug);
 
-        $params = array();
-        $params['titles'] = $this->get('app.params')->getTitles();
-        $params['passions'] = $this->get('app.params')->getPassions();
+        return $entityManager
+            ->getRepository(User::class)
+            ->getUsers($sport);
 
-        return array_merge(
-            $user,
-            array('params' => $params)
-        );
     }
 
     /**

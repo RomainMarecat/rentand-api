@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMS;
 
@@ -17,31 +19,31 @@ class Language
      * @ORM\Column(name="language_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount"})
+     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount", "getUsers"})
      */
     private $id;
 
     /**
      * @ORM\Column(name="ISO639_1", type="string", length=255)
-     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount"})
+     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount", "getUsers"})
      */
     private $ISO6391;
 
     /**
      * @ORM\Column(name="ISO639_2", type="string", length=255)
-     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount"})
+     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount", "getUsers"})
      */
     private $ISO6392;
 
     /**
      * @ORM\Column(name="name", type="string", length=255)
-     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount"})
+     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount", "getUsers"})
      */
     private $name;
 
     /**
      * @ORM\Column(name="translations", type="json", nullable=true)
-     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount"})
+     * @JMS\Groups({"getLanguages", "patchUsers", "getAccount", "getUsers"})
      */
     private $translations;
 
@@ -50,6 +52,16 @@ class Language
      * @ORM\JoinColumn(name="country_id", referencedColumnName="country_id", nullable=false)
      */
     private $country;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\UserMetadata", mappedBy="languages")
+     */
+    private $userMetadata;
+
+    public function __construct()
+    {
+        $this->userMetadata = new ArrayCollection();
+    }
 
     public function getId(): ?string
     {
@@ -112,6 +124,34 @@ class Language
     public function setTranslations($translations): self
     {
         $this->translations = $translations;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|UserMetadata[]
+     */
+    public function getUserMetadata(): Collection
+    {
+        return $this->userMetadata;
+    }
+
+    public function addUserMetadata(UserMetadata $userMetadata): self
+    {
+        if (!$this->userMetadata->contains($userMetadata)) {
+            $this->userMetadata[] = $userMetadata;
+            $userMetadata->addLanguage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserMetadata(UserMetadata $userMetadata): self
+    {
+        if ($this->userMetadata->contains($userMetadata)) {
+            $this->userMetadata->removeElement($userMetadata);
+            $userMetadata->removeLanguage($this);
+        }
 
         return $this;
     }

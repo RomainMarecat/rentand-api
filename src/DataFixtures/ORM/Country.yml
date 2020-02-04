@@ -3904,35 +3904,35 @@ App\Entity\Country:
     #        calling_codes:
     #            - '48'
     #        numeric_code: '616'
-    #    country136:
-    #        name: Portugal
-    #        translations:
-    #            de: Portugal
-    #            es: Portugal
-    #            fr: Portugal
-    #            it: Portogallo
-    #            ja: ポルトガル
-    #            nl: Portugal
-    #            hr: Portugal
-    #            en: Portugal
-    #        latlng:
-    #            - 39.5
-    #            - -8
-    #        demonym:
-    #            en: Portuguese
-    #            fr: Portugais
-    #        timezones:
-    #            - UTC-01:00
-    #            - UTC
-    #        currencies:
-    #            - EUR
-    #        languages:
-    #            - por
-    #        alpha2: PT
-    #        alpha3: PRT
-    #        calling_codes:
-    #            - '351'
-    #        numeric_code: '620'
+    country136:
+        name: Portugal
+        translations:
+            de: Portugal
+            es: Portugal
+            fr: Portugal
+            it: Portogallo
+            ja: ポルトガル
+            nl: Portugal
+            hr: Portugal
+            en: Portugal
+        latlng:
+            - 39.5
+            - -8
+        demonym:
+            en: Portuguese
+            fr: Portugais
+        timezones:
+            - UTC-01:00
+            - UTC
+        currencies:
+            - EUR
+        languages:
+            - "@por"
+        alpha2: PT
+        alpha3: PRT
+        calling_codes:
+            - '351'
+        numeric_code: '620'
     #    country137:
     #        name: قطر
     #        translations:

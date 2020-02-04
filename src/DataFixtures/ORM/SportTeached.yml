@@ -1,5 +1,5 @@
 App\Entity\SportTeached:
-    sportTeached{1..200}:
+    sportTeached{1..500}:
         orderNumber: <numberBetween(1, 10)>
         levels: [1, 4]
         ages: [1, 2]

@@ -27,13 +27,13 @@ App\Entity\Language:
 #            en: Arabic
 #            fr: Arabe
 #        ISO639_1: ar
-#    por:
-#        ISO639_2: por
-#        name: português
-#        translations:
-#            en: Portuguese
-#            fr: Portugais
-#        ISO639_1: pt
+    por:
+        ISO639_2: por
+        name: português
+        translations:
+            en: Portuguese
+            fr: Portugais
+        ISO639_1: pt
     fra:
         ISO639_2: fra
         name: français

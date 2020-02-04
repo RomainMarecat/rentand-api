@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use JMS\Serializer\Annotation as JMS;
@@ -85,13 +87,6 @@ class UserMetadata
      */
     private $motherLang;
 
-    /**
-     * @var array
-     * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
-     *     "getUser", "getAccount"})
-     * @ORM\Column(type="json_array", nullable=true)
-     */
-    private $languages;
 
     /**
      * @var string
@@ -137,6 +132,20 @@ class UserMetadata
      */
     private $user;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Language", inversedBy="userMetadata")
+     * @ORM\JoinTable(name="user_languages",
+     *      joinColumns={@ORM\JoinColumn(name="user_metadata_id", referencedColumnName="user_metadata_id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="language_id", referencedColumnName="language_id")})
+     * @JMS\Groups({"getUsers", "getUser", "getAccount"})
+     */
+    private $languages;
+
+    public function __construct()
+    {
+        $this->languages = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -162,18 +171,6 @@ class UserMetadata
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function getLanguages(): array
-    {
-        return $this->languages;
-    }
-
-    public function setLanguages(?string $languages): self
-    {
-        $this->languages = $languages;
 
         return $this;
     }
@@ -313,6 +310,32 @@ class UserMetadata
     public function setBirthday(?\DateTimeInterface $birthday): self
     {
         $this->birthday = $birthday;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Language[]
+     */
+    public function getLanguages(): Collection
+    {
+        return $this->languages;
+    }
+
+    public function addLanguage(Language $language): self
+    {
+        if (!$this->languages->contains($language)) {
+            $this->languages[] = $language;
+        }
+
+        return $this;
+    }
+
+    public function removeLanguage(Language $language): self
+    {
+        if ($this->languages->contains($language)) {
+            $this->languages->removeElement($language);
+        }
 
         return $this;
     }

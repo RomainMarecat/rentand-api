@@ -3,6 +3,7 @@
 namespace App\Controller\Front;
 
 use App\Entity\Sport;
+use Doctrine\ORM\EntityManagerInterface;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
 
@@ -31,11 +32,15 @@ class SportController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "getSport"})
-     * @Annotations\Get("/sports/{sport}")
+     * @Annotations\View(serializerGroups={"getSports"})
+     * @Annotations\Get("/sports/{slug}")
+     * @param $slug
+     * @param EntityManagerInterface $entityManager
+     * @return
      */
-    public function getSportAction($sport)
+    public function getSportAction($slug, EntityManagerInterface $entityManager)
     {
-        return $this->get("manager.sport")->get($sport);
+        return $entityManager->getRepository(Sport::class)
+            ->findOneBySlug($slug);
     }
 }

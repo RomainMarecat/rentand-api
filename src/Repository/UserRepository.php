@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Sport;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query;
 
@@ -13,21 +14,32 @@ use Doctrine\ORM\Query;
  */
 class UserRepository extends AbstractEntityRepository
 {
-    public function getUsers()
+    public function getUsers(?Sport $sport = null)
     {
-        $query = $this->createQueryBuilder('entity');
-        $query
+        $qb = $this->createQueryBuilder('entity');
+        $qb
             ->addSelect('partial entity.{id}')
             ->addSelect('partial appMetadata.{id}')
-            ->addSelect('partial userMetadata.{id, firstname, lastname, slug}')
-            ->addSelect('partial media.{id,filename}')
+            ->addSelect('partial userMetadata.{id, firstname, lastname, slug, gender, birthday, nationality, motherLang}')
+            ->addSelect('partial media.{id, filename}')
+            ->addSelect('partial lang.{id, ISO6391, ISO6392, name, translations}')
+            ->addSelect('partial languages.{id, ISO6391, ISO6392, name, translations}')
             ->leftJoin('entity.appMetadata', 'appMetadata')
             ->leftJoin('entity.userMetadata', 'userMetadata')
+            ->leftJoin('userMetadata.languages', 'languages')
+            ->leftJoin('userMetadata.motherLang', 'lang')
             ->leftJoin('userMetadata.media', 'media')
             ->andWhere('appMetadata.coach = 1')
             ->andWhere('entity.enabled = 1');
 
-        return $query->getQuery()
+        if ($sport) {
+            $qb->leftJoin('entity.sportsTeached', 'sportTeached')
+                ->leftJoin('sportTeached.sport', 'sport')
+                ->andWhere('sport.id =:sport')
+                ->setParameter('sport', $sport);
+        }
+
+        return $qb->getQuery()
             ->setHint(Query::HINT_FORCE_PARTIAL_LOAD, true)
             ->getResult();
     }
@@ -38,16 +50,18 @@ class UserRepository extends AbstractEntityRepository
         $query
             ->addSelect('partial entity.{id}')
             ->addSelect('partial appMetadata.{id}')
-            ->addSelect('partial userMetadata.{id, firstname, lastname, slug, languages, birthday, nationality}')
+            ->addSelect('partial userMetadata.{id, firstname, lastname, slug, birthday, nationality}')
             ->addSelect('partial media.{id,filename}')
             ->addSelect('partial sportsTeached.{id, orderNumber, ages, levels, translations}')
             ->addSelect('partial cityTeached.{id, personalMeetingPointAccepted}')
             ->addSelect('partial city.{id, name, lat, lng}')
+            ->addSelect('partial languages.{id, ISO6391, ISO6392, name, translations}')
             ->addSelect('partial meetingPoint.{id, title, lat, lng}')
             ->addSelect('partial sport.{id, name, slug, level, translations}')
             ->leftJoin('entity.appMetadata', 'appMetadata')
             ->leftJoin('entity.userMetadata', 'userMetadata')
             ->leftJoin('userMetadata.media', 'media')
+            ->leftJoin('userMetadata.languages', 'languages')
             ->leftJoin('entity.sportsTeached', 'sportsTeached')
             ->leftJoin('entity.citiesTeached', 'cityTeached')
             ->leftJoin('cityTeached.city', 'city')
