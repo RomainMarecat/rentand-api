@@ -10,7 +10,7 @@ use FOS\RestBundle\Controller\Annotations;
 class LanguageController extends AbstractFOSRestController
 {
     /**
-     * @Annotations\View(serializerGroups={"getLanguages"})
+     * @Annotations\View(serializerGroups={"getLanguages"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/languages")
      * @param EntityManagerInterface $entityManager
      *
@@ -22,7 +22,7 @@ class LanguageController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"getLanguagesByAlpha"})
+     * @Annotations\View(serializerGroups={"getLanguagesByAlpha"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/languages/alpha/{alpha2}")
      * @param                        $alpha2
      * @param EntityManagerInterface $entityManager

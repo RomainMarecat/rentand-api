@@ -2,51 +2,64 @@
 
 namespace App\Controller\Front;
 
+use App\Manager\CityManager;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
 
 class CityController extends AbstractFOSRestController
 {
     /**
-     * @Annotations\View(serializerGroups={"Default", "getCity"})
+     * Find city by id
+     *
+     * @Annotations\View(serializerGroups={"getCity", serializerEnableMaxDepthChecks=true})
+     * @param $city
+     * @param CityManager $cityManager
+     * @return
      */
-    public function getCityAction($city)
+    public function getCityAction($city, CityManager $cityManager)
     {
-        $city = $this->get('manager.city')->get($city);
-
-        return $city;
+        return $cityManager->get($city);
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "getCityGoogleId"})
+     * Find city googleId by city id
+     *
+     * @Annotations\View(serializerGroups={"getCityGoogleId", serializerEnableMaxDepthChecks=true})
      * @Annotations\Get("/cities/{city}/googleId")
+     * @param $city
+     * @param CityManager $cityManager
+     * @return
      */
-    public function getCityGoogleIdAction($city)
+    public function getCityGoogleIdAction($city, CityManager $cityManager)
     {
-        $city = $this->get('manager.city')->getGoogleId($city);
-
-        return $city;
+        return $cityManager->getGoogleId($city);
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "getCityByGoogleId"})
+     * Find city by googleId
+     *
+     * @Annotations\View(serializerGroups={"getCityByGoogleId", serializerEnableMaxDepthChecks=true})
      * @Annotations\Get("/cities/googleId/{googleId}")
+     * @param $googleId
+     * @param CityManager $cityManager
+     * @return
      */
-    public function getCityByGoogleIdAction($googleId)
+    public function getCityByGoogleIdAction($googleId, CityManager $cityManager)
     {
-        $city = $this->get('manager.city')->getCityByGoogleId($googleId);
-
-        return $city;
+        return $cityManager->getCityByGoogleId($googleId);
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "getCityMeetings"})
+     * Find Meetings by city
+     *
+     * @Annotations\View(serializerGroups={"getCityMeetings", serializerEnableMaxDepthChecks=true})
      * @Annotations\Get("/cities/{city}/meetings")
+     * @param $city
+     * @param CityManager $cityManager
+     * @return
      */
-    public function getCityMeetingsAction($city)
+    public function getCityMeetingsAction($city, CityManager $cityManager)
     {
-        $meetings = $this->get('manager.city')->getMeetings($city);
-
-        return $meetings;
+        return $cityManager->getMeetings($city);
     }
 }

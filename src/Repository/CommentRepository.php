@@ -25,7 +25,7 @@ class CommentRepository extends AbstractEntityRepository
         return $query->getQuery()->getResult(Query::HYDRATE_ARRAY);
     }
 
-    public function findCommentsByStatus($status)
+    public function findCommentsByStatus(string $status)
     {
         $query = $this->createQueryBuilder('entity');
         $query

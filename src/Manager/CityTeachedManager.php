@@ -8,21 +8,21 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class CityTeachedManager
 {
-    /** @var EntityManagerInterface $em */
-    private $em;
+    /** @var EntityManagerInterface $entityManager */
+    private $entityManager;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        $this->em = $em;
+        $this->entityManager = $entityManager;
     }
 
     /**
      * @param User $user
      *
-     * @return mixed
+     * @return CityTeached[]
      */
     public function getCitiesTeachedByUser(User $user)
     {
-        return $this->em->getRepository(CityTeached::class)->findByUser($user);
+        return $this->entityManager->getRepository(CityTeached::class)->findByUser($user);
     }
 }

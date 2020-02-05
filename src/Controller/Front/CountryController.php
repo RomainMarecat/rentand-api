@@ -10,7 +10,7 @@ use FOS\RestBundle\Controller\Annotations;
 class CountryController extends AbstractFOSRestController
 {
     /**
-     * @Annotations\View(serializerGroups={"getCountries"})
+     * @Annotations\View(serializerGroups={"getCountries"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/countries")
      * @param EntityManagerInterface $entityManager
      *
@@ -22,14 +22,14 @@ class CountryController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"getCountriesByAlpha"})
+     * @Annotations\View(serializerGroups={"getCountriesByAlpha"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/countries/alpha/{alpha2}")
-     * @param                        $alpha2
+     * @param string $alpha2
      * @param EntityManagerInterface $entityManager
      *
-     * @return
+     * @return Country[]
      */
-    public function getCountriesByAlphaAction($alpha2, EntityManagerInterface $entityManager)
+    public function getCountriesByAlphaAction(string $alpha2, EntityManagerInterface $entityManager)
     {
         return $entityManager->getRepository(Country::class)->findByAlpha2($alpha2);
     }

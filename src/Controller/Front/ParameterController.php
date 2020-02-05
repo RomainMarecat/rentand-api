@@ -11,6 +11,8 @@ use FOS\RestBundle\Controller\Annotations\View;
 class ParameterController extends AbstractFOSRestController
 {
     /**
+     * Find all parameters
+     *
      * @View(serializerGroups={"getParameter"}, serializerEnableMaxDepthChecks=true)
      * @Get("/parameters")
      * @param EntityManagerInterface $entityManager

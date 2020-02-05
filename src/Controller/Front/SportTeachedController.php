@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class SportTeachedController extends AbstractFOSRestController
 {
     /**
-     * @Annotations\View(serializerGroups={"getSportTeachedById"})
+     * @Annotations\View(serializerGroups={"getSportTeachedById"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/sports_teached/{sportTeached}")
      * @param                     $sportTeached
      * @param SportTeachedManager $sportTeachedManager
@@ -23,7 +23,7 @@ class SportTeachedController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"getSportsTeachedByUser"})
+     * @Annotations\View(serializerGroups={"getSportsTeachedByUser"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/sports_teached/sports/user_id/{user}")
      * @param                     $user
      * @param SportTeachedManager $sportTeachedManager
@@ -36,8 +36,11 @@ class SportTeachedController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "getSportLevels"})
+     * @Annotations\View(serializerGroups={"Default", "getSportLevels"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/advert_sports/{sportTeached}/levels")
+     * @param $sportTeached
+     * @param SportTeachedManager $sportTeachedManager
+     * @return
      */
     public function getSportLevelsAction($sportTeached, SportTeachedManager $sportTeachedManager)
     {
@@ -48,8 +51,11 @@ class SportTeachedController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "getSportAges"})
+     * @Annotations\View(serializerGroups={"Default", "getSportAges"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/advert_sports/{sportTeached}/ages")
+     * @param $sportTeached
+     * @param SportTeachedManager $sportTeachedManager
+     * @return
      */
     public function getSportAgesAction($sportTeached, SportTeachedManager $sportTeachedManager)
     {
@@ -60,20 +66,25 @@ class SportTeachedController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "getAdvertSportSpecialities"})
+     * @Annotations\View(serializerGroups={"Default", "getAdvertSportSpecialities"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/advert_sports/{sportTeached}/specialities")
+     * @param Request $request
+     * @param $sportTeached
+     * @param SportTeachedManager $sportTeachedManager
+     * @return
      */
     public function getAdvertSportsSpecialitiesAction(Request $request, $sportTeached, SportTeachedManager $sportTeachedManager)
     {
-        $sportTeacheds = $sportTeachedManager
+        return $sportTeachedManager
             ->getSpecialitiesBy($sportTeached);
-
-        return $sportTeacheds;
     }
 
     /**
      * @Annotations\View(serializerGroups={"Default", "getAdvertSportSports"})
      * @Annotations\Get("/advert_sports/sports")
+     * @param Request $request
+     * @param SportTeachedManager $sportTeachedManager
+     * @return
      */
     public function getAdvertSportsSportsAction(Request $request, SportTeachedManager $sportTeachedManager)
     {

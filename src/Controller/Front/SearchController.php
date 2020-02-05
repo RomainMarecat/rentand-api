@@ -12,6 +12,8 @@ class SearchController extends AbstractFOSRestController
     /**
      * @Annotations\View(serializerGroups={"Default", "getSearch"})
      * @Annotations\Get("/search/{criteria}")
+     * @param $criteria
+     * @return array|ArrayCollection
      */
     public function getSearchAction($criteria)
     {

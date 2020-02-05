@@ -2,7 +2,6 @@
 
 namespace App\Manager;
 
-use App\Entity\Address;
 use App\Entity\User;
 use App\Form\RegisterType;
 use App\Form\UserType;
@@ -23,8 +22,6 @@ use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * Class UserManager
- *
  * @author Romain Marecat <romain.marecat@gmail.com>
  */
 class UserManager
@@ -57,7 +54,8 @@ class UserManager
         FormFactoryInterface $formFactory,
         TokenGeneratorInterface $tokenGenerator,
         UserPasswordEncoderInterface $passwordEncoder
-    ) {
+    )
+    {
         $this->jwtTokenManager = $jwtTokenManager;
         $this->em = $em;
         $this->connection = $connection;
@@ -181,39 +179,11 @@ class UserManager
 
     /**
      * @param Request $request
-     *
-     * @return mixed
-     * @throws Exception
-     */
-    public function post(Request $request)
-    {
-        /** @var User $user */
-        $user = $this->createUser();
-        $form = $this->createUserForm($user);
-        if ($request->isMethod('POST')) {
-            $form->submit($request->request->get($form->getName()));
-            if ($form->isSubmitted() && $form->isValid()) {
-                $user = $form->getData();
-                $user->setRoles(['ROLE_PART']);
-                $user->setEnabled(true);
-                $user->setPassword('');
-                $this->em->persist($user);
-                $this->em->flush();
-
-                return $user;
-            }
-        }
-
-        return $user;
-    }
-
-    /**
-     * @param Request $request
      * @param         $username
      *
      * @return mixed
      */
-    public function patch(Request $request, string $username)
+    public function update(Request $request, string $username)
     {
         $data = $request->request->all();
         if (isset($data['user_metadata'])) {
@@ -251,15 +221,6 @@ class UserManager
             }
         }
 
-        $this->logger->debug(
-            'debug form',
-            [
-                'valid' => $form->isValid(),
-                'data' => $form->getData(),
-                'extra_data' => $form->getExtraData(),
-            ]
-        );
-
         return FormErrorFormatter::getErrorsAsJsonResponse($form);
     }
 
@@ -295,45 +256,23 @@ class UserManager
         return $user;
     }
 
-    public function getUserByToken(Request $request, $token)
+    /**
+     * @param $token
+     * @return object|null
+     */
+    public function getUserByToken($token)
     {
-        return $this->em->getRepository(User::class)->findOneByConfirmationToken($token);
+        return $this->em->getRepository(User::class)->findOneBy(['confirmationToken' => $token]);
     }
 
+    /**
+     * @param Request $request
+     * @param $email
+     * @param $type
+     * @return object|null
+     */
     public function getUserByEmailType(Request $request, $email, $type)
     {
         return $this->em->getRepository(User::class)->findOneBy(array('email' => $email, 'type' => $type));
-    }
-
-    public function isValid(Request $request, $token)
-    {
-        $user = $this->em->getRepository(User::class)->findOneByConfirmationToken($token);
-
-        $this->logger->debug(
-            'user info',
-            array(
-                'user' => array(
-                    $user->getNationality(),
-                    $user->getAddress() instanceof Address ? $user->getAddress()->getCountry() : null,
-                    $user->getBirthdate(),
-                    $user->eml(),
-                    $user->getLastName(),
-                    $user->getFirstName(),
-                )
-            )
-        );
-        if ($user and $user instanceof User) {
-            if (!empty($user->getNationality()) and
-                (($user->getAddress() instanceof Address) and !empty($user->getAddress()->getCountry())) and
-                !empty($user->getBirthdate()) and
-                !empty($user->eml()) and
-                !empty($user->getLastName()) and
-                !empty($user->getFirstName())
-            ) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

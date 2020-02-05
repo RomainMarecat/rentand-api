@@ -11,8 +11,10 @@ use Symfony\Component\Intl\Intl;
 class PreBookingController extends AbstractFOSRestController
 {
     /**
-     * @Annotations\View(serializerGroups={"Default", "newPreBookings"})
+     * @Annotations\View(serializerGroups={"newPreBookings"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/new")
+     * @param Request $request
+     * @return \FOS\RestBundle\View\View
      */
     public function newPreBookingsAction(Request $request)
     {
@@ -25,18 +27,17 @@ class PreBookingController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "preBookingTranslations"})
+     * @Annotations\View(serializerGroups={"preBookingTranslations"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/translations")
+     * @param Request $request
+     * @return array
      */
     public function getPreBookingsTranslationsAction(Request $request)
     {
-        $translations = array(
+        return [
             'ages' => $this->get('app.params')->getAges(),
             'levels' => $this->get('app.params')->getLevels(),
             'languages' => Intl::getLanguageBundle()->getLanguageNames(),
-        );
-
-
-        return $translations;
+        ];
     }
 }

@@ -2,18 +2,23 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Phone;
+use App\Manager\PhoneManager;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
 
 class PhoneController extends AbstractFOSRestController
 {
     /**
-     * @Annotations\View(serializerGroups={"Default", "getPhone"})
+     * Find phone information by number id
+     *
+     * @Annotations\View(serializerGroups={"phone"}, serializerEnableMaxDepthChecks=true)
+     * @param $phone
+     * @param PhoneManager $phoneManager
+     * @return Phone
      */
-    public function getPhoneAction($phone)
+    public function getPhoneAction($phone, PhoneManager $phoneManager)
     {
-        $phone = $this->get('manager.phone')->get($phone);
-
-        return $phone;
+        return $phoneManager->get($phone);
     }
 }

@@ -10,6 +10,8 @@ use FOS\RestBundle\Controller\Annotations;
 class CityTeachedController extends AbstractFOSRestController
 {
     /**
+     * Find cities Teached by user
+     *
      * @Annotations\View(serializerGroups={"getCity"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/cities_teached/cities/user_id/{user}")
      * @param User               $user
@@ -17,7 +19,7 @@ class CityTeachedController extends AbstractFOSRestController
      *
      * @return mixed
      */
-    public function getCitiesByUserAction(User $user, CityTeachedManager $cityTeachedManager)
+    public function getCitiesTeachedByUserAction(User $user, CityTeachedManager $cityTeachedManager)
     {
         return $cityTeachedManager->getCitiesTeachedByUser($user);
     }

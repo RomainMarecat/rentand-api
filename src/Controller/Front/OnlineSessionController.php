@@ -12,10 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 class OnlineSessionController extends AbstractFOSRestController
 {
     /**
-     * @Annotations\View(serializerGroups={"getOnlineSessions"})
+     * @Annotations\View(serializerGroups={"getOnlineSessions"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/online_sessions")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return \Symfony\Component\HttpFoundation\JsonResponse|OnlineSession[]
      */
     public function getOnlineSessionsAction(Request $request)
     {
