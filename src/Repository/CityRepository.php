@@ -22,21 +22,4 @@ class CityRepository extends AbstractEntityRepository
 
         return $query->getQuery()->getResult(Query::HYDRATE_ARRAY);
     }
-
-    public function findPreBookingCitiesBy($criteria)
-    {
-        $query = $this->createQueryBuilder('entity');
-        $query
-            ->select('partial entity.{id, title, googleId}')
-            ->leftJoin('entity.adverts', 'advert')
-            ->andWhere('advert.statut = 1');
-
-        if (isset($criteria['advert'])) {
-            $query
-                ->andWhere('advert.id = :advert')
-                ->setParameter('advert', $criteria['advert']);
-        }
-
-        return $query->getQuery()->getResult(Query::HYDRATE_ARRAY);
-    }
 }

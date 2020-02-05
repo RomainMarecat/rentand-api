@@ -21,6 +21,9 @@ abstract class AbstractEntityRepository extends EntityRepository
      *
      * array criteria array($key => $value)
      * array joinColumn array($join, $alias, $conditionType, $condition, $indexBy)
+     * @param array $criteria
+     * @param array $joinColumn
+     * @return mixed
      */
     public function findByCriteria(
         array $criteria = array(),
@@ -37,29 +40,7 @@ abstract class AbstractEntityRepository extends EntityRepository
             }
         }
 
-        foreach ($joinColumn as $join) {
-            if (!is_array($join)) {
-                $join = array(
-                    'join' => $join,
-                    'alias' => substr(uniqid('', true), -5),
-                    'conditionType' => null,
-                    'condition' => null,
-                    'indexBy' => null
-                );
-            }
-            if (isset($join['join']) && isset($join['alias'])) {
-                $query
-                    ->addSelect($join['alias'])
-                    ->leftJoin(
-                        (isset($join['leftJoin']) ? $join['leftJoin'] : 'entity') . '.' . $join['join'],
-                        $join['alias'],
-                        isset($join['conditionType']) ? $join['conditionType'] : null,
-                        isset($join['condition']) ? $join['condition'] : null,
-                        isset($join['alias']) && isset($join['indexBy']) ?
-                            $join['alias'] . '.' . $join['indexBy'] : null
-                    );
-            }
-        }
+        $this->createJoin($joinColumn, $query);
 
         if (isset($criteria['asc'])) {
             $query->addOrderBy('entity.' . $criteria['asc'], 'ASC');
@@ -75,15 +56,7 @@ abstract class AbstractEntityRepository extends EntityRepository
         }
         $query = $query->getQuery();
 
-        if (isset($criteria['hint'])) {
-            $query->setHint($criteria['hint'], true);
-        }
-        if (isset($criteria['hydrate'])) {
-            return $query->getResult($criteria['hydrate']);
-        }
-        if (isset($criteria['partial_load'])) {
-            $query->setHint(Query::HINT_FORCE_PARTIAL_LOAD, true);
-        }
+        $query = $this->createQueryMode($query, $criteria);
 
         return $query->getResult();
     }
@@ -102,6 +75,18 @@ abstract class AbstractEntityRepository extends EntityRepository
                     ->setParameter($key, $value);
             }
         }
+
+        $this->createJoin($joinColumn, $query);
+
+        $query = $query->getQuery();
+
+        $query = $this->createQueryMode($query, $criteria);
+
+        return $query->getOneOrNullResult();
+    }
+
+    protected function createJoin($joinColumn, $query)
+    {
         foreach ($joinColumn as $join) {
             if (!is_array($join)) {
                 $join = array(
@@ -125,9 +110,11 @@ abstract class AbstractEntityRepository extends EntityRepository
                     );
             }
         }
+        return $query;
+    }
 
-        $query = $query->getQuery();
-
+    protected function createQueryMode($query, $criteria)
+    {
         if (isset($criteria['hint'])) {
             $query->setHint($criteria['hint'], true);
         }
@@ -138,6 +125,6 @@ abstract class AbstractEntityRepository extends EntityRepository
             return $query->getOneOrNullResult($criteria['hydrate']);
         }
 
-        return $query->getOneOrNullResult();
+        return $query;
     }
 }

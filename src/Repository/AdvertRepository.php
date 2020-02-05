@@ -317,33 +317,6 @@ class AdvertRepository extends AbstractEntityRepository
         return $query;
     }
 
-    public function findPreBookingBy(array $criteria)
-    {
-        $query = $this->createQueryBuilder('entity');
-        $query
-            ->select('partial entity.{id, slug, title, firstName, lastName, languages, passions, statut}')
-            ->addSelect('partial advertSport.{id, levels, ages}')
-            ->addSelect('partial speciality.{id, name, slug, level}')
-            ->addSelect('partial translation_speciality.{id, locale, title}')
-            ->addSelect('partial u.{id, planningId}')
-            ->innerJoin('entity.translations', 'translation', null, null, 'translation.locale')
-            ->innerJoin('entity.cities', 'city')
-            ->leftJoin('entity.sports', 'advertSport')
-            ->innerJoin('entity.user', 'u')
-            ->leftJoin('advertSport.specialities', 'speciality')
-            ->leftJoin('speciality.translations', 'translation_speciality', null, null, 'translation_speciality.locale')
-            ->andWhere('entity.statut = 1')
-            ->andWhere('entity.enabled = 1');
-
-        if (isset($criteria['advert'])) {
-            $query
-                ->andWhere('entity.id = :advert')
-                ->setParameter('advert', $criteria['advert']);
-        }
-
-        return $query->getQuery()->getOneOrNullResult();
-    }
-
     public function countAdvertBySearchForm(array $search)
     {
         $query = $this->createQueryBuilder('entity');

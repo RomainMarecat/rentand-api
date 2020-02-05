@@ -332,10 +332,8 @@ class Sport
      *
      * @JMS\VirtualProperty()
      * @JMS\SerializedName("translations")
-     * @JMS\Groups({"Default", "getUsers", "getSports", "getSport", "getFormUser", "getFormSearch", "getFormSport",
-     *     "getFormFamily",
-     *     "getUser", "getFormUser", "getFamiliesByParent", "getSimpleSearch", "postSimpleSearch",
-     *     "postAdvancedSearch", "getAdvancedSearch", "newPreBookings", "getSport", "getUserSportById", "addSession"})
+     * @JMS\Groups({"getUsers", "getSports", "getSport", "getFormUser", "getFormSearch", "getFormSport",
+     *     "getFormFamily", "getUser", "getSport", "getUserSportById", "addSession"})
      *
      */
     public function getTranslationsObject()
