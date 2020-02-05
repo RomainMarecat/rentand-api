@@ -63,8 +63,10 @@ exclude_patterns:
   - ".idea/"
   - bin/
   - build/
+  - fixtures/
   - config/
   - public/
+  - src/Tests
   - translations/
   - var/
   - vendor/
