@@ -67,6 +67,7 @@ exclude_patterns:
   - config/
   - public/
   - src/Tests
+  - src/Entity
   - translations/
   - var/
   - vendor/

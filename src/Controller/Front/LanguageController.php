@@ -27,7 +27,7 @@ class LanguageController extends AbstractFOSRestController
      * @param                        $alpha2
      * @param EntityManagerInterface $entityManager
      *
-     * @return
+     * @return Language[]
      */
     public function getLanguagesByAlphaAction($alpha2, EntityManagerInterface $entityManager)
     {
