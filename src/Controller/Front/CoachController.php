@@ -37,7 +37,7 @@ class CoachController extends AbstractFOSRestController
      * @param             $slug
      * @param UserManager $userManager
      *
-     * @return
+     * @return User[]
      */
     public function getCoachByIdAction($slug, UserManager $userManager)
     {
@@ -62,6 +62,5 @@ class CoachController extends AbstractFOSRestController
         return $entityManager
             ->getRepository(User::class)
             ->getUsers($sport);
-
     }
 }

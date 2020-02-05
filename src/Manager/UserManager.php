@@ -54,8 +54,7 @@ class UserManager
         FormFactoryInterface $formFactory,
         TokenGeneratorInterface $tokenGenerator,
         UserPasswordEncoderInterface $passwordEncoder
-    )
-    {
+    ) {
         $this->jwtTokenManager = $jwtTokenManager;
         $this->em = $em;
         $this->connection = $connection;
@@ -89,7 +88,7 @@ class UserManager
             $form->submit($data);
             if ($form->isSubmitted() && $form->isValid()) {
                 try {
-                    if ($searchUser = $this->getUserByEmail($user->getEmail())) {
+                    if ($this->getUserByEmail($user->getEmail())) {
                         throw new Exception("The user already exists", 400);
                     }
                     $user->addRole('ROLE_USER');
@@ -266,12 +265,11 @@ class UserManager
     }
 
     /**
-     * @param Request $request
      * @param $email
      * @param $type
      * @return object|null
      */
-    public function getUserByEmailType(Request $request, $email, $type)
+    public function getUserByEmailType($email, $type)
     {
         return $this->em->getRepository(User::class)->findOneBy(array('email' => $email, 'type' => $type));
     }

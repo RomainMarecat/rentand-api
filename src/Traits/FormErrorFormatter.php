@@ -16,14 +16,27 @@ trait FormErrorFormatter
     {
         $errors = [];
 
-        foreach ($form->getErrors() as $key => $error) {
+        $errors = self::getCurrentErrors($form, $errors);
+        $errors = self::getChildErrors($form, $errors);
+
+        return $errors;
+    }
+
+    private static function getCurrentErrors(FormInterface $form, array $errors)
+    {
+        foreach ($form->getErrors() as $error) {
             if ($form->isRoot()) {
                 $errors['#'][] = $error->getMessage();
-            } else {
-                $errors[] = $error->getMessage();
+                continue;
             }
+            $errors[] = $error->getMessage();
         }
 
+        return $errors;
+    }
+
+    private static function getChildErrors(FormInterface $form, array $errors)
+    {
         foreach ($form->all() as $child) {
             if ($child->isSubmitted() && !$child->isValid()) {
                 $childError = self::getErrors($child);

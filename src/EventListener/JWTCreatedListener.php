@@ -18,7 +18,7 @@ class JWTCreatedListener
      */
     public function onJWTCreated(JWTCreatedEvent $event)
     {
-        if (!($request = $event->getRequest())) {
+        if (!$event->getRequest()) {
             return;
         }
 

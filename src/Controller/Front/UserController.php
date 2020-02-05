@@ -61,15 +61,14 @@ class UserController extends AbstractFOSRestController
      *
      * @Annotations\View(serializerGroups={"getUserByEmailType"}, serializerEnableMaxDepthChecks=true)
      * @Annotations\Get("/users/email/{email}/type/{type}")
-     * @param Request $request
      * @param $email
      * @param $type
      * @param UserManager $userManager
      * @return object|null
      */
-    public function getUserByUsernameTypeAction(Request $request, $email, $type, UserManager $userManager)
+    public function getUserByUsernameTypeAction($email, $type, UserManager $userManager)
     {
-        return $userManager->getUserByEmailType($request, $email, $type);
+        return $userManager->getUserByEmailType($email, $type);
     }
 
     /**

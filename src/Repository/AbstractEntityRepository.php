@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * CampaignRepository
@@ -26,35 +27,18 @@ abstract class AbstractEntityRepository extends EntityRepository
      * @return mixed
      */
     public function findByCriteria(
-        array $criteria = array(),
-        array $joinColumn = array()
-    )
-    {
-        $query = $this->createQueryBuilder('entity');
+        array $criteria = [],
+        array $joinColumn = []
+    ) {
+        $queryBuilder = $this->createQueryBuilder('entity');
 
-        foreach ($criteria as $key => $value) {
-            if (!in_array($key, self::$unauthorizedKeys)) {
-                $query
-                    ->andWhere('entity.' . $key . ' = :' . $key)
-                    ->setParameter($key, $value);
-            }
-        }
+        $queryBuilder = $this->addWhere($queryBuilder, $criteria);
 
-        $this->createJoin($joinColumn, $query);
+        $queryBuilder = $this->createJoin($joinColumn, $queryBuilder);
 
-        if (isset($criteria['asc'])) {
-            $query->addOrderBy('entity.' . $criteria['asc'], 'ASC');
-        }
-        if (isset($criteria['desc'])) {
-            $query->addOrderBy('entity.' . $criteria['desc'], 'DESC');
-        }
-        if (isset($criteria['offset'])) {
-            $query->setFirstResult($criteria['offset']);
-        }
-        if (isset($criteria['limit'])) {
-            $query->setMaxResults($criteria['limit']);
-        }
-        $query = $query->getQuery();
+        $queryBuilder = $this->addOrder($queryBuilder, $criteria);
+
+        $query = $queryBuilder->getQuery();
 
         $query = $this->createQueryMode($query, $criteria);
 
@@ -63,29 +47,56 @@ abstract class AbstractEntityRepository extends EntityRepository
 
     /**
      * array joinColumn array($join, $alias, $conditionType, $condition, $indexBy)
+     * @param array $criteria
+     * @param array $joinColumn
+     * @return
      */
-    public function findOneByCriteria(array $criteria = array(), array $joinColumn = array())
+    public function findOneByCriteria(array $criteria = [], array $joinColumn = [])
     {
-        $query = $this->createQueryBuilder('entity');
+        $queryBuilder = $this->createQueryBuilder('entity');
 
-        foreach ($criteria as $key => $value) {
-            if (!in_array($key, self::$unauthorizedKeys)) {
-                $query
-                    ->andWhere('entity.' . $key . ' = :' . $key)
-                    ->setParameter($key, $value);
-            }
-        }
+        $queryBuilder = $this->addWhere($queryBuilder, $criteria);
 
-        $this->createJoin($joinColumn, $query);
+        $queryBuilder = $this->createJoin($joinColumn, $queryBuilder);
 
-        $query = $query->getQuery();
+        $query = $queryBuilder->getQuery();
 
         $query = $this->createQueryMode($query, $criteria);
 
         return $query->getOneOrNullResult();
     }
 
-    protected function createJoin($joinColumn, $query)
+    private function addWhere(QueryBuilder $queryBuilder, array $criteria)
+    {
+        foreach ($criteria as $key => $value) {
+            if (!in_array($key, self::$unauthorizedKeys)) {
+                $queryBuilder
+                    ->andWhere('entity.' . $key . ' = :' . $key)
+                    ->setParameter($key, $value);
+            }
+        }
+        return $queryBuilder;
+    }
+
+    public function addOrder(QueryBuilder $queryBuilder, array $criteria)
+    {
+        if (isset($criteria['asc'])) {
+            $queryBuilder->addOrderBy('entity.' . $criteria['asc'], 'ASC');
+        }
+        if (isset($criteria['desc'])) {
+            $queryBuilder->addOrderBy('entity.' . $criteria['desc'], 'DESC');
+        }
+        if (isset($criteria['offset'])) {
+            $queryBuilder->setFirstResult($criteria['offset']);
+        }
+        if (isset($criteria['limit'])) {
+            $queryBuilder->setMaxResults($criteria['limit']);
+        }
+        return $queryBuilder;
+    }
+
+
+    protected function createJoin($joinColumn, QueryBuilder $queryBuilder)
     {
         foreach ($joinColumn as $join) {
             if (!is_array($join)) {
@@ -97,23 +108,30 @@ abstract class AbstractEntityRepository extends EntityRepository
                     'indexBy' => null
                 );
             }
-            if (isset($join['join']) && isset($join['alias'])) {
-                $query
-                    ->addSelect($join['alias'])
-                    ->leftJoin(
-                        (isset($join['leftJoin']) ? $join['leftJoin'] : 'entity') . '.' . $join['join'],
-                        $join['alias'],
-                        isset($join['conditionType']) ? $join['conditionType'] : null,
-                        isset($join['condition']) ? $join['condition'] : null,
-                        isset($join['alias']) && isset($join['indexBy']) ?
-                            $join['alias'] . '.' . $join['indexBy'] : null
-                    );
-            }
+
+            $this->makeSelectJoin($queryBuilder, $join);
         }
-        return $query;
+        return $queryBuilder;
     }
 
-    protected function createQueryMode($query, $criteria)
+    private function makeSelectJoin(QueryBuilder $queryBuilder, array $join)
+    {
+        if (isset($join['join']) && isset($join['alias'])) {
+            $queryBuilder
+                ->addSelect($join['alias'])
+                ->leftJoin(
+                    (isset($join['leftJoin']) ? $join['leftJoin'] : 'entity') . '.' . $join['join'],
+                    $join['alias'],
+                    isset($join['conditionType']) ? $join['conditionType'] : null,
+                    isset($join['condition']) ? $join['condition'] : null,
+                    isset($join['alias']) && isset($join['indexBy']) ?
+                        $join['alias'] . '.' . $join['indexBy'] : null
+                );
+        }
+        return $queryBuilder;
+    }
+
+    protected function createQueryMode(Query $query, array $criteria)
     {
         if (isset($criteria['hint'])) {
             $query->setHint($criteria['hint'], true);

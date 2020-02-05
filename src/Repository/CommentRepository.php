@@ -12,19 +12,6 @@ use Doctrine\ORM\Query;
  */
 class CommentRepository extends AbstractEntityRepository
 {
-    public function adminCget()
-    {
-        $query = $this->createQueryBuilder('entity');
-        $query
-            ->select('partial entity.{id, createdAt, status}')
-            ->addSelect('partial u.{id, firstName, lastName}')
-            ->addSelect('partial a.{id, firstName, lastName}')
-            ->leftJoin('entity.user', 'u')
-            ->leftJoin('entity.advert', 'a');
-
-        return $query->getQuery()->getResult(Query::HYDRATE_ARRAY);
-    }
-
     public function findCommentsByStatus(string $status)
     {
         $query = $this->createQueryBuilder('entity');
