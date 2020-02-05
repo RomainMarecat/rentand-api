@@ -8,12 +8,14 @@ use App\Manager\SessionManager;
 use App\Traits\FormErrorFormatter;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 
 class SessionController extends AbstractFOSRestController
 {
     /**
      * @Annotations\View(serializerGroups={"addSession"})
+     * @Security("has_role('ROLE_USER')")
      * @Annotations\Post("/sessions")
      * @param SessionManager $sessionManager
      * @param Request $request
@@ -34,6 +36,7 @@ class SessionController extends AbstractFOSRestController
     /**
      * @Annotations\View(serializerGroups={"removeSession"})
      * @Annotations\Delete("/sessions/{session}")
+     * @Security("has_role('ROLE_USER')")
      * @param SessionManager $sessionManager
      * @param Session $session
      * @return Session|\Symfony\Component\HttpFoundation\JsonResponse

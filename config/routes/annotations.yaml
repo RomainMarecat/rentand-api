@@ -1,7 +1,7 @@
-controllers_admin:
-    resource: ../../src/Controller/Admin
-    type: rest
-    prefix: v1/admin
+#controllers_admin:
+#    resource: ../../src/Controller/Admin
+#    type: rest
+#    prefix: v1/admin
 
 controllers_front:
     resource: ../../src/Controller/Front

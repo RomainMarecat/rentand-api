@@ -5,6 +5,7 @@ namespace App\Controller\Restricted;
 use App\Manager\UserManager;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends AbstractFOSRestController
@@ -12,7 +13,8 @@ class UserController extends AbstractFOSRestController
     /**
      * @Annotations\View(serializerGroups={"patchUsers"})
      * @Annotations\Patch("/users")
-     * @param Request     $request
+     * @Security("has_role('ROLE_USER')")
+     * @param Request $request
      * @param UserManager $userManager
      *
      * @return mixed
