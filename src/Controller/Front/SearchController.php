@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class SearchController extends AbstractFOSRestController
 {
     /**
-     * @Annotations\View(serializerGroups={"Default", "getSearch"})
+     * @Annotations\View(serializerGroups={"getSearch"})
      * @Annotations\Get("/search/{criteria}")
      * @param $criteria
      * @return array|ArrayCollection
@@ -54,8 +54,10 @@ class SearchController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "postSimpleSearch"})
+     * @Annotations\View(serializerGroups={"postSimpleSearch"})
      * @Annotations\Post("/simple/search")
+     * @param Request $request
+     * @return array
      */
     public function postSimpleSearchAction(Request $request)
     {
@@ -72,8 +74,10 @@ class SearchController extends AbstractFOSRestController
 
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "countPostSimpleSearch"})
+     * @Annotations\View(serializerGroups={"countPostSimpleSearch"})
      * @Annotations\Post("/count/simple/search")
+     * @param Request $request
+     * @return
      */
     public function countPostSimpleSearchAction(Request $request)
     {
@@ -109,8 +113,10 @@ class SearchController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "postAdvancedSearch"})
+     * @Annotations\View(serializerGroups={"postAdvancedSearch"})
      * @Annotations\Post("/advanced/search")
+     * @param Request $request
+     * @return array
      */
     public function postAdvancedSearchAction(Request $request)
     {
@@ -126,7 +132,7 @@ class SearchController extends AbstractFOSRestController
     }
 
     /**
-     * @Annotations\View(serializerGroups={"Default", "getFormSearch"})
+     * @Annotations\View(serializerGroups={"getFormSearch"})
      */
     public function getFormSearchAction()
     {

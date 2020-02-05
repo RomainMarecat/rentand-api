@@ -8,11 +8,6 @@ controllers_front:
     type: rest
     prefix: v1/public
 
-controllers_planning:
-    resource: ../../src/Controller/Planning
-    type: rest
-    prefix: v1/planning
-
 controllers_restricted:
     resource: ../../src/Controller/Restricted
     type: rest
