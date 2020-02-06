@@ -1779,6 +1779,7 @@ App\Entity\Country:
             - EUR
         languages:
             - '@fra'
+            - '@fsl'
         alpha2: FR
         alpha3: FRA
         calling_codes:
@@ -1868,34 +1869,34 @@ App\Entity\Country:
     #        calling_codes:
     #            - '995'
     #        numeric_code: '268'
-    #    country65:
-    #        name: Deutschland
-    #        translations:
-    #            de: Deutschland
-    #            es: Alemania
-    #            fr: Allemagne
-    #            it: Germania
-    #            ja: ドイツ
-    #            nl: Duitsland
-    #            hr: Njemačka
-    #            en: Germany
-    #        latlng:
-    #            - 51
-    #            - 9
-    #        demonym:
-    #            en: German
-    #            fr: Allemand
-    #        timezones:
-    #            - UTC+01:00
-    #        currencies:
-    #            - EUR
-    #        languages:
-    #            - deu
-    #        alpha2: DE
-    #        alpha3: DEU
-    #        calling_codes:
-    #            - '49'
-    #        numeric_code: '276'
+    country65:
+        name: Deutschland
+        translations:
+            de: Deutschland
+            es: Alemania
+            fr: Allemagne
+            it: Germania
+            ja: ドイツ
+            nl: Duitsland
+            hr: Njemačka
+            en: Germany
+        latlng:
+            - 51
+            - 9
+        demonym:
+            en: German
+            fr: Allemand
+        timezones:
+            - UTC+01:00
+        currencies:
+            - EUR
+        languages:
+            - '@deu'
+        alpha2: DE
+        alpha3: DEU
+        calling_codes:
+            - '49'
+        numeric_code: '276'
     #    country66:
     #        name: Ghana
     #        translations:
@@ -2379,34 +2380,34 @@ App\Entity\Country:
     #        calling_codes:
     #            - '972'
     #        numeric_code: '376'
-    #    country83:
-    #        name: Italia
-    #        translations:
-    #            de: Italien
-    #            es: Italia
-    #            fr: Italie
-    #            it: Italia
-    #            ja: イタリア
-    #            nl: Italië
-    #            hr: Italija
-    #            en: Italy
-    #        latlng:
-    #            - 42.83333333
-    #            - 12.83333333
-    #        demonym:
-    #            en: Italian
-    #            fr: Italien
-    #        timezones:
-    #            - UTC+01:00
-    #        currencies:
-    #            - EUR
-    #        languages:
-    #            - ita
-    #        alpha2: IT
-    #        alpha3: ITA
-    #        calling_codes:
-    #            - '39'
-    #        numeric_code: '380'
+    country83:
+        name: Italia
+        translations:
+            de: Italien
+            es: Italia
+            fr: Italie
+            it: Italia
+            ja: イタリア
+            nl: Italië
+            hr: Italija
+            en: Italy
+        latlng:
+            - 42.83333333
+            - 12.83333333
+        demonym:
+            en: Italian
+            fr: Italien
+        timezones:
+            - UTC+01:00
+        currencies:
+            - EUR
+        languages:
+            - '@ita'
+        alpha2: IT
+        alpha3: ITA
+        calling_codes:
+            - '39'
+        numeric_code: '380'
     #    country84:
     #        name: Jamaica
     #        translations:
@@ -3300,34 +3301,34 @@ App\Entity\Country:
     #        calling_codes:
     #            - '382'
     #        numeric_code: '499'
-    #    country115:
-    #        name: المغرب
-    #        translations:
-    #            de: Marokko
-    #            es: Marruecos
-    #            fr: Maroc
-    #            it: Marocco
-    #            ja: モロッコ
-    #            nl: Marokko
-    #            hr: Maroko
-    #            en: Morocco
-    #        latlng:
-    #            - 32
-    #            - -5
-    #        demonym:
-    #            en: Moroccan
-    #            fr: Marocain
-    #        timezones:
-    #            - UTC
-    #        currencies:
-    #            - MAD
-    #        languages:
-    #            - ara
-    #        alpha2: MA
-    #        alpha3: MAR
-    #        calling_codes:
-    #            - '212'
-    #        numeric_code: '504'
+    country115:
+        name: المغرب
+        translations:
+            de: Marokko
+            es: Marruecos
+            fr: Maroc
+            it: Marocco
+            ja: モロッコ
+            nl: Marokko
+            hr: Maroko
+            en: Morocco
+        latlng:
+            - 32
+            - -5
+        demonym:
+            en: Moroccan
+            fr: Marocain
+        timezones:
+            - UTC
+        currencies:
+            - MAD
+        languages:
+            - '@ara'
+        alpha2: MA
+        alpha3: MAR
+        calling_codes:
+            - '212'
+        numeric_code: '504'
     #    country116:
     #        name: Moçambique
     #        translations:
@@ -3472,35 +3473,35 @@ App\Entity\Country:
     #        calling_codes:
     #            - '977'
     #        numeric_code: '524'
-    #    country121:
-    #        name: Nederland
-    #        translations:
-    #            de: Niederlande
-    #            es: Países Bajos
-    #            fr: Pays-Bas
-    #            it: Paesi Bassi
-    #            ja: オランダ
-    #            nl: Nederland
-    #            hr: Nizozemska
-    #            en: Netherlands
-    #        latlng:
-    #            - 52.5
-    #            - 5.75
-    #        demonym:
-    #            en: Dutch
-    #            fr: Néerlandais
-    #        currencies:
-    #            - EUR
-    #        languages:
-    #            - nld
-    #        timezones:
-    #            - UTC-04:00
-    #            - UTC+01:00
-    #        alpha2: NL
-    #        alpha3: NLD
-    #        calling_codes:
-    #            - '31'
-    #        numeric_code: '528'
+    country121:
+        name: Nederland
+        translations:
+            de: Niederlande
+            es: Países Bajos
+            fr: Pays-Bas
+            it: Paesi Bassi
+            ja: オランダ
+            nl: Nederland
+            hr: Nizozemska
+            en: Netherlands
+        latlng:
+            - 52.5
+            - 5.75
+        demonym:
+            en: Dutch
+            fr: Néerlandais
+        currencies:
+            - EUR
+        languages:
+            - '@nld'
+        timezones:
+            - UTC-04:00
+            - UTC+01:00
+        alpha2: NL
+        alpha3: NLD
+        calling_codes:
+            - '31'
+        numeric_code: '528'
     #    country122:
     #        name: New Zealand
     #        translations:
@@ -4045,42 +4046,42 @@ App\Entity\Country:
     #        calling_codes:
     #            - '40'
     #        numeric_code: '642'
-    #    country141:
-    #        name: Россия
-    #        translations:
-    #            de: Russland
-    #            es: Rusia
-    #            fr: Russie
-    #            it: Russia
-    #            ja: ロシア連邦
-    #            nl: Rusland
-    #            hr: Rusija
-    #            en: Russian Federation
-    #        latlng:
-    #            - 60
-    #            - 100
-    #        demonym:
-    #            en: Russian
-    #            fr: Russe
-    #        timezones:
-    #            - UTC+03:00
-    #            - UTC+04:00
-    #            - UTC+06:00
-    #            - UTC+07:00
-    #            - UTC+08:00
-    #            - UTC+09:00
-    #            - UTC+10:00
-    #            - UTC+11:00
-    #            - UTC+12:00
-    #        currencies:
-    #            - RUB
-    #        languages:
-    #            - rus
-    #        alpha2: RU
-    #        alpha3: RUS
-    #        calling_codes:
-    #            - '7'
-    #        numeric_code: '643'
+    country141:
+        name: Россия
+        translations:
+            de: Russland
+            es: Rusia
+            fr: Russie
+            it: Russia
+            ja: ロシア連邦
+            nl: Rusland
+            hr: Rusija
+            en: Russian Federation
+        latlng:
+            - 60
+            - 100
+        demonym:
+            en: Russian
+            fr: Russe
+        timezones:
+            - UTC+03:00
+            - UTC+04:00
+            - UTC+06:00
+            - UTC+07:00
+            - UTC+08:00
+            - UTC+09:00
+            - UTC+10:00
+            - UTC+11:00
+            - UTC+12:00
+        currencies:
+            - RUB
+        languages:
+            - '@rus'
+        alpha2: RU
+        alpha3: RUS
+        calling_codes:
+            - '7'
+        numeric_code: '643'
     #    country142:
     #        name: Rwanda
     #        translations:
@@ -4631,35 +4632,35 @@ App\Entity\Country:
     #        calling_codes:
     #            - '211'
     #        numeric_code: '728'
-    #    country161:
-    #        name: España
-    #        translations:
-    #            de: Spanien
-    #            es: España
-    #            fr: Espagne
-    #            it: Spagna
-    #            ja: スペイン
-    #            nl: Spanje
-    #            hr: Španjolska
-    #            en: Spain
-    #        latlng:
-    #            - 40
-    #            - -4
-    #        demonym:
-    #            en: Spanish
-    #            fr: Espagnol
-    #        timezones:
-    #            - UTC
-    #            - UTC+01:00
-    #        currencies:
-    #            - EUR
-    #        languages:
-    #            - spa
-    #        alpha2: ES
-    #        alpha3: ESP
-    #        calling_codes:
-    #            - '34'
-    #        numeric_code: '724'
+    country161:
+        name: España
+        translations:
+            de: Spanien
+            es: España
+            fr: Espagne
+            it: Spagna
+            ja: スペイン
+            nl: Spanje
+            hr: Španjolska
+            en: Spain
+        latlng:
+            - 40
+            - -4
+        demonym:
+            en: Spanish
+            fr: Espagnol
+        timezones:
+            - UTC
+            - UTC+01:00
+        currencies:
+            - EUR
+        languages:
+            - '@spa'
+        alpha2: ES
+        alpha3: ESP
+        calling_codes:
+            - '34'
+        numeric_code: '724'
     #    country162:
     #        name: śrī laṃkāva
     #        translations:
