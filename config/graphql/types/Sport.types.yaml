@@ -1,0 +1,11 @@
+Sport:
+  type: object
+  config:
+    resolveField: '@=resolver("App\\GraphQL\\Resolver\\SportResolver", [info, value, args])'
+    fields:
+      id:
+        type: String
+      name:
+        type: String
+      slug:
+        type: String

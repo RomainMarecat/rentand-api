@@ -289,7 +289,7 @@ class User implements UserInterface, JWTUserInterface
      *
      * @ORM\OneToMany(targetEntity="SportTeached", mappedBy="user", cascade={"remove", "persist"}, fetch="EXTRA_LAZY")
      * @ORM\OrderBy({"id" = "DESC"})
-     * @JMS\Groups({"getUser"})
+     * @JMS\Groups({"getUser", "getUsers"})
      */
     private $sportsTeached;
 

@@ -4,14 +4,22 @@ App\Entity\SportTeached:
         levels: [1, 4]
         ages: [1, 2]
         user: '@user<numberBetween(1, 10)>'
-        sport: '@sport_<numberBetween(1, 100)>'
+        sport: '@sport_<numberBetween(10, 100)>'
         translations:
-            fr: '@sport_<numberBetween(1, 100)>->name'
+            fr: '@sport_<numberBetween(10, 100)>->name'
     sportTeachedTest:
         orderNumber: <numberBetween(1, 10)>
         levels: [1, 4]
         ages: [1, 2]
         user: '@userTest'
-        sport: '@sport_<numberBetween(1, 100)>'
+        sport: '@sport_69'
         translations:
-            fr: '@sport_<numberBetween(1, 100)>->name'
+            fr: '@sport_69->name'
+    sportTeachedTest2:
+        orderNumber: <numberBetween(1, 10)>
+        levels: [1, 4]
+        ages: [1, 2]
+        user: '@userTest'
+        sport: '@sport_70'
+        translations:
+            fr: '@sport_70->name'
