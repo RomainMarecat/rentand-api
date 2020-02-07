@@ -2,6 +2,7 @@
 
 namespace App\Manager;
 
+use App\Entity\Sport;
 use App\Entity\User;
 use App\Form\RegisterType;
 use App\Form\UserType;
@@ -123,11 +124,13 @@ class UserManager
     }
 
     /**
+     * @param Sport|null $sport
+     * @param array|null $queryParams
      * @return mixed
      */
-    public function getUsers()
+    public function getUsers(?Sport $sport = null, ?array $queryParams = [])
     {
-        return $this->em->getRepository(User::class)->getUsers();
+        return $this->em->getRepository(User::class)->getUsers($sport, $queryParams);
     }
 
     /**

@@ -14,7 +14,7 @@ use Doctrine\ORM\Query;
  */
 class UserRepository extends AbstractEntityRepository
 {
-    public function getUsers(?Sport $sport = null)
+    public function getUsers(?Sport $sport = null, ?array $queryParams = [])
     {
         $qb = $this->createQueryBuilder('entity');
         $qb
@@ -24,19 +24,54 @@ class UserRepository extends AbstractEntityRepository
             ->addSelect('partial media.{id, filename}')
             ->addSelect('partial lang.{id, ISO6391, ISO6392, name, translations}')
             ->addSelect('partial languages.{id, ISO6391, ISO6392, name, translations}')
+            ->addSelect('partial sportTeached.{id, orderNumber, levels, ages, translations}')
+            ->addSelect('partial sport.{id, name, translations}')
             ->leftJoin('entity.appMetadata', 'appMetadata')
             ->leftJoin('entity.userMetadata', 'userMetadata')
             ->leftJoin('userMetadata.languages', 'languages')
             ->leftJoin('userMetadata.motherLang', 'lang')
             ->leftJoin('userMetadata.media', 'media')
+            ->leftJoin('entity.sportsTeached', 'sportTeached')
+            ->leftJoin('entity.citiesTeached', 'cityTeached')
+            ->leftJoin('cityTeached.city', 'city')
+            ->leftJoin('sportTeached.onlineSessions', 'onlineSession')
+            ->leftJoin('sportTeached.sport', 'sport')
             ->andWhere('appMetadata.coach = 1')
             ->andWhere('entity.enabled = 1');
 
         if ($sport) {
-            $qb->leftJoin('entity.sportsTeached', 'sportTeached')
-                ->leftJoin('sportTeached.sport', 'sport')
-                ->andWhere('sport.id =:sport')
+            $qb
+                ->leftJoin('sport.parent', 'parent')
+                ->leftJoin('parent.parent', 'parentlvl2')
+                ->leftJoin('parentlvl2.parent', 'parentlvl3')
+                ->andWhere('(sport.id = :sport OR parent.id = :sport OR parentlvl2 = :sport OR parentlvl3 = :sport)')
                 ->setParameter('sport', $sport);
+        }
+        if (!empty($queryParams)) {
+            foreach ($queryParams as $key => $queryParam) {
+                if ($queryParam !== 'null' && $key === 'city') {
+                    $qb
+                        ->andWhere('city.id >= :city')
+                        ->setParameter('city', $queryParam);
+                }
+                if ($queryParam !== 'null' && $key === 'start') {
+                    $qb
+                        ->andWhere('onlineSession.startDate >= :start')
+                        ->setParameter('start', $queryParam);
+                }
+                if ($queryParam !== 'null' && $key === 'end') {
+                    $qb
+                        ->andWhere('onlineSession.endDate <= :end')
+                        ->setParameter('end', $queryParam);
+                }
+                if ($queryParam !== 'null' && $key === 'language') {
+                    $qb
+                        ->andWhere('(languages.id = :languages OR lang.id = :languages)')
+                        ->setParameter('languages', $queryParam);
+                }
+
+
+            }
         }
 
         return $qb->getQuery()

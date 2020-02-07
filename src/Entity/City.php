@@ -24,7 +24,7 @@ class City
      * @ORM\Column(name="city_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser", "addSession"})
+     * @JMS\Groups({"getCity", "getCities", "getOnlineSessions", "getUser", "addSession"})
      */
     private $id;
 
@@ -33,7 +33,7 @@ class City
      *
      * @ORM\Column(name="name", type="string", length=255)
      * @Assert\NotBlank()
-     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser", "addSession"})
+     * @JMS\Groups({"getCity", "getCities", "getOnlineSessions", "getUser", "addSession"})
      */
     private $name;
 
@@ -42,7 +42,7 @@ class City
      *
      * @ORM\Column(name="zipcode", type="string", length=5)
      * @Assert\NotBlank()
-     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser", "addSession"})
+     * @JMS\Groups({"getCity", "getCities", "getOnlineSessions", "getUser", "addSession"})
      */
     private $zipcode;
 
@@ -63,7 +63,7 @@ class City
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
-     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser"})
+     * @JMS\Groups({"getCity", "getCities", "getOnlineSessions", "getUser"})
      */
     private $lng;
 
@@ -76,7 +76,7 @@ class City
      *     type="float",
      *     message="The value {{ value }} is not a valid {{ type }}."
      * )
-     * @JMS\Groups({"getCity", "getOnlineSessions", "getUser"})
+     * @JMS\Groups({"getCity", "getCities", "getOnlineSessions", "getUser"})
      */
     private $lat;
 
@@ -156,12 +156,15 @@ class City
     /**
      * @JMS\VirtualProperty()
      * @JMS\SerializedName("meeting_points")
-     * @JMS\Groups({"getCity", "getUser"})
+     * @JMS\Groups({"getCity", "getCities", "getUser"})
      * @return array
      */
     public function getMeetingPointsData()
     {
-        return $this->meetingPoints->toArray();
+        if ($this->meetingPoints) {
+            return $this->meetingPoints->toArray();
+        }
+        return [];
     }
 
     public function getId(): ?string

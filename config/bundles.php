@@ -19,4 +19,5 @@ return [
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
     Nelmio\CorsBundle\NelmioCorsBundle::class => ['all' => true],
+    Overblog\GraphQLBundle\OverblogGraphQLBundle::class => ['all' => true],
 ];
