@@ -220,6 +220,20 @@
     "nikic/php-parser": {
         "version": "v4.3.0"
     },
+    "overblog/graphql-bundle": {
+        "version": "0.12",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.12",
+            "ref": "c01dcfb85a6e93f1a43ef36151fcff11cf17f791"
+        },
+        "files": [
+            "config/graphql/types/.gitignore",
+            "config/packages/graphql.yaml",
+            "config/routes/graphql.yaml"
+        ]
+    },
     "php": {
         "version": "7.2"
     },
@@ -568,6 +582,9 @@
     },
     "twig/twig": {
         "version": "v3.0.0"
+    },
+    "webonyx/graphql-php": {
+        "version": "v0.13.8"
     },
     "willdurand/jsonp-callback-validator": {
         "version": "v1.1.0"

@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use Doctrine\ORM\Query;
+
 /**
  * SportRepository
  *
@@ -10,4 +12,37 @@ namespace App\Repository;
  */
 class SportRepository extends AbstractEntityRepository
 {
+    public function findAllOrderedByName(int $level, $sport)
+    {
+        $qb = $this->createQueryBuilder('s');
+
+        $qb
+            ->addSelect('partial s.{id, name, slug, level, translations}')
+            ->addSelect('partial media.{id,filename}')
+            ->leftJoin('s.media', 'media')
+            ->andWhere('s.level = :level')
+            ->setParameter('level', $level)
+            ->addOrderBy('s.name', 'ASC');
+
+        if ($sport) {
+            for ($i = 0; $i <= $level; $i++) {
+                if ($i === 0) {
+                    $qb
+                        ->leftJoin('s.parent', "parent$i")
+                        ->andWhere("s.parent = :parent$i")
+                        ->setParameter("parent$i", $sport);
+                    continue;
+                }
+                $prev = $i - 1;
+                $qb
+                    ->leftJoin("parent$prev.parent", "parent$i")
+                    ->orWhere("parent$i.parent = :parent$i")
+                    ->setParameter("parent$i", $sport);
+            }
+        }
+
+        return $qb->getQuery()
+            ->setHint(Query::HINT_FORCE_PARTIAL_LOAD, true)
+            ->getResult();
+    }
 }

@@ -16,10 +16,10 @@ App\Entity\UserMetadata:
         firstname: Romain
         slug: marecat-romain
         gender: <boolean(50)>
-        birthday: null
+        birthday: <dateTime()>
         languages:
             - '@eng'
         nationality: '@country61'
         motherLang: '@fra'
         user: '@userTest'
-#        media: '@media<numberBetween(1, 10)>'
+        media: '@media<numberBetween(1, 30)>'

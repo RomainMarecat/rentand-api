@@ -18,15 +18,28 @@ class CoachController extends AbstractFOSRestController
      *
      * @param UserManager $userManager
      *
+     * @param EntityManagerInterface $entityManager
+     * @param $slug
      * @return array
-     * @todo need refacto by keywords search)
-     *
      * @Annotations\View(serializerGroups={"getUsers"}, serializerEnableMaxDepthChecks=true)
-     * @Annotations\Get("/users")
+     * @Annotations\Get("/users", name="users")
+     * @Annotations\Get("/users/sports/{slug}", name="users_sport")
      */
-    public function getUsersAction(Request $request, UserManager $userManager)
-    {
-        return $userManager->getUsers();
+    public function getUsersAction(
+        Request $request,
+        UserManager $userManager,
+        EntityManagerInterface $entityManager,
+        $slug = null
+    ) {
+        if ($slug) {
+            /** @var Sport $sport */
+            $sport = $entityManager->getRepository(Sport::class)
+                ->findOneBy(['slug' => $slug]);
+
+            return $userManager->getUsers($sport, $request->query->all());
+        }
+
+        return $userManager->getUsers(null, $request->query->all());
     }
 
     /**
@@ -42,25 +55,5 @@ class CoachController extends AbstractFOSRestController
     public function getCoachByIdAction($slug, UserManager $userManager)
     {
         return $userManager->getUser($slug);
-    }
-
-    /**
-     * Filters user by sport
-     *
-     * @Annotations\Get("/users/sports/{slug}")
-     * @Annotations\View(serializerGroups={"getUsers"}, serializerEnableMaxDepthChecks=true)
-     * @param $slug
-     *
-     * @param EntityManagerInterface $entityManager
-     * @return array
-     */
-    public function getUsersBySportAction($slug, EntityManagerInterface $entityManager)
-    {
-        /** @var Sport $sport */
-        $sport = $entityManager->getRepository(Sport::class)->findOneBy(['slug' => $slug]);
-
-        return $entityManager
-            ->getRepository(User::class)
-            ->getUsers($sport);
     }
 }
