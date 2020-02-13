@@ -21,7 +21,7 @@ class SportTeached
      * @ORM\Column(name="sport_teached_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getUser", "getMyUsers", "getSportTeachedById", "getOnlineSessions", "getSportsTeachedByUser"})
+     * @JMS\Groups({"getUser", "getMyUsers", "getSportTeachedById", "getOnlineSessions", "getSportsTeachedByUser", "getUsers"})
      */
     private $id;
 
@@ -29,7 +29,7 @@ class SportTeached
      * @var int
      *
      * @ORM\Column(name="orderNumber", type="integer")
-     * @JMS\Groups({"getUser", "getSportsTeachedByUser"})
+     * @JMS\Groups({"getUser", "getSportsTeachedByUser", "getUsers"})
      */
     private $orderNumber;
 
@@ -37,7 +37,7 @@ class SportTeached
      * @var array
      *
      * @ORM\Column(name="levels", type="array", nullable=true)
-     * @JMS\Groups({"getUser", "getSportsTeachedByUser"})
+     * @JMS\Groups({"getUser", "getSportsTeachedByUser", "getUsers"})
      */
     private $levels;
 
@@ -45,7 +45,7 @@ class SportTeached
      * @var array
      *
      * @ORM\Column(name="ages", type="array", nullable=true)
-     * @JMS\Groups({"getUser", "getSportsTeachedByUser"})
+     * @JMS\Groups({"getUser", "getSportsTeachedByUser", "getUsers"})
      */
     private $ages;
 
@@ -59,7 +59,7 @@ class SportTeached
     /**
      * @ORM\ManyToOne(targetEntity="Sport", inversedBy="sportsTeached", fetch="LAZY", cascade={"persist"})
      * @ORM\JoinColumn(name="sport_id", referencedColumnName="sport_id", onDelete="CASCADE"))
-     * @JMS\Groups({"getUser", "getOnlineSessions", "getSportsTeachedByUser"})
+     * @JMS\Groups({"getUser", "getOnlineSessions", "getSportsTeachedByUser", "getUsers"})
      */
     private $sport;
 
@@ -81,6 +81,11 @@ class SportTeached
     private $specialities;
 
     /**
+     * @ORM\OneToMany(targetEntity="OnlineSession", mappedBy="sportTeached")
+     */
+    private $onlineSessions;
+
+    /**
      * @ORM\OneToMany(targetEntity="Media", mappedBy="sportTeached", cascade={"persist","remove"}, fetch="EXTRA_LAZY")
      * @JMS\Groups({"getUser"})
      *
@@ -98,7 +103,7 @@ class SportTeached
      *
      * @JMS\VirtualProperty()
      * @JMS\SerializedName("translations")
-     * @JMS\Groups({"Default", "getUsers", "getUser", "getSportsTeachedByUser", "getOnlineSessions"})
+     * @JMS\Groups({"Default", "getUsers", "getUser", "getSportsTeachedByUser", "getOnlineSessions", "getUsers"})
      *
      */
     public function getTranslationsObject()
@@ -113,6 +118,7 @@ class SportTeached
     {
         $this->specialities = new ArrayCollection();
         $this->pictures = new ArrayCollection();
+        $this->onlineSessions = new ArrayCollection();
     }
 
     /**
@@ -326,6 +332,37 @@ class SportTeached
     public function setTranslations($translations): self
     {
         $this->translations = $translations;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|OnlineSession[]
+     */
+    public function getOnlineSessions(): Collection
+    {
+        return $this->onlineSessions;
+    }
+
+    public function addOnlineSession(OnlineSession $onlineSession): self
+    {
+        if (!$this->onlineSessions->contains($onlineSession)) {
+            $this->onlineSessions[] = $onlineSession;
+            $onlineSession->setSportTeached($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOnlineSession(OnlineSession $onlineSession): self
+    {
+        if ($this->onlineSessions->contains($onlineSession)) {
+            $this->onlineSessions->removeElement($onlineSession);
+            // set the owning side to null (unless already changed)
+            if ($onlineSession->getSportTeached() === $this) {
+                $onlineSession->setSportTeached(null);
+            }
+        }
 
         return $this;
     }

@@ -23,7 +23,7 @@ class Sport
      * @ORM\Column(name="sport_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getUser", "getSportsTeachedByUser", "addSession", "getSports"})
+     * @JMS\Groups({"getUser", "getUsers", "getSportsTeachedByUser", "addSession", "getSports"})
      */
     private $id;
 
@@ -31,7 +31,7 @@ class Sport
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getUser", "getSportsTeachedByUser", "addSession", "getSports"})
+     * @JMS\Groups({"getUser", "getUsers", "getSportsTeachedByUser", "addSession", "getSports"})
      */
     private $name;
 
@@ -40,7 +40,7 @@ class Sport
      *
      * @Gedmo\Slug(fields={"name"}, separator="-", updatable=true)
      * @ORM\Column(name="slug", type="string", length=255, nullable=false, unique=true)
-     * @JMS\Groups({"getUser", "addSession", "getSports"})
+     * @JMS\Groups({"getUser", "getUsers", "addSession", "getSports"})
      */
     private $slug;
 
@@ -48,7 +48,7 @@ class Sport
      * @var string
      *
      * @ORM\Column(name="level", type="integer", nullable=true)
-     * @JMS\Groups({"getUser", "addSession"})
+     * @JMS\Groups({"getUser", "getUsers", "addSession", "getSports"})
      */
     private $level;
 
