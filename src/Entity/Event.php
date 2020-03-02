@@ -17,58 +17,58 @@ class Event
      * @ORM\Column(name="event_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     protected $id;
 
     /**
      * @ORM\Column(name="custom_title", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     protected $customTitle;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     protected $comment;
 
     /**
      * @ORM\Column(name="group_booking", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     protected $groupBooking;
 
     /**
      * @ORM\Column(name="start", type="datetime")
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      * @JMS\Type("DateTime<'Y-m-d H:i'>")
      */
     protected $start;
 
     /**
      * @ORM\Column(name="end", type="datetime")
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      * @JMS\Type("DateTime<'Y-m-d H:i'>")
      */
     protected $end;
 
     /**
      * @ORM\Column(name="details", type="object", nullable=true)
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     protected $details;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="events")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="user_id")
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     protected $user;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     protected $pause;
 

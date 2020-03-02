@@ -23,7 +23,7 @@ class OnlineSession
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="SportTeached", cascade={"persist"}, inversedBy="sportTeached")
+     * @ORM\ManyToOne(targetEntity="SportTeached", cascade={"persist"}, inversedBy="onlineSessions")
      * @ORM\JoinColumn(name="sport_teached_id", referencedColumnName="sport_teached_id")
      * @JMS\Groups({"getOnlineSessions"})
      */

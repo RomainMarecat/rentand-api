@@ -21,7 +21,7 @@ class Media
      * @ORM\Column(name="media_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"Default", "getUsers", "getUser", "getSport", "getSports"})
+     * @JMS\Groups({"Default", "getUsers", "getUser", "getSport", "getSports", "order"})
      */
     private $id;
 
@@ -30,7 +30,7 @@ class Media
      * @var string
      *
      * @ORM\Column(name="filename", type="string", length=255, nullable=false)
-     * @JMS\Groups({"Default", "getUsers", "getUser", "getSport", "getSports"})
+     * @JMS\Groups({"Default", "getUsers", "getUser", "getSport", "getSports", "order"})
      * @Assert\NotBlank
      */
     private $filename;
@@ -48,7 +48,7 @@ class Media
      * @var string
      *
      * @ORM\Column(name="alt", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getUsers", "getUser", "getSport", "getSports"})
+     * @JMS\Groups({"getUsers", "getUser", "getSport", "getSports", "order"})
      */
     private $alt;
 
@@ -211,7 +211,7 @@ class Media
      * @return string
      * @JMS\VirtualProperty()
      * @JMS\SerializedName("url")
-     * @JMS\Groups({"Default", "getUsers", "getUser", "getSport", "getSports"})
+     * @JMS\Groups({"Default", "getUsers", "getUser", "getSport", "getSports", "order"})
      */
     public function getUrl(): ?string
     {
