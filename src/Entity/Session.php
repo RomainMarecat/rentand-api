@@ -14,59 +14,59 @@ class Session extends Event
 {
     /**
      * @ORM\Column(type="float")
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     private $age;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     private $level;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Sport")
      * @ORM\JoinColumn(name="sport_id", referencedColumnName="sport_id")
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     private $sport;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Sport")
      * @ORM\JoinColumn(name="sport_id", referencedColumnName="sport_id")
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     private $speciality;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\City")
      * @ORM\JoinColumn(name="city_id", referencedColumnName="city_id")
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     private $city;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\MeetingPoint")
      * @ORM\JoinColumn(name="meeting_id", referencedColumnName="meeting_id")
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     private $meetingPoint;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     private $nbPersons;
 
     /**
      * @ORM\Column(type="integer")
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     private $duration;
 
@@ -75,7 +75,7 @@ class Session extends Event
      * @ORM\JoinTable(name="sessions_customers",
      *      joinColumns={@ORM\JoinColumn(name="event_id", referencedColumnName="event_id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="user_id")})
-     * @JMS\Groups({"getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getSessionsByUser", "addSession", "cart"})
      */
     private $customers;
 

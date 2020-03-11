@@ -32,19 +32,19 @@ class User implements UserInterface, JWTUserInterface
      * @ORM\Column(name="user_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers", "getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "cart", "registerUser", "getAccount", "patchUsers", "getSessionsByUser", "addSession", "delivery", "order"})
      */
     private $id;
 
     /**
      * @ORM\Column(name="username", type="string", length=255)
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers", "getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "cart", "registerUser", "getAccount", "patchUsers", "getSessionsByUser", "addSession", "delivery", "order"})
      */
     private $username;
 
     /**
      * @ORM\Column(name="email", type="string", length=255)
-     * @JMS\Groups({"getUsers", "getUser", "login_check", "registerUser", "getAccount", "patchUsers", "getSessionsByUser", "addSession"})
+     * @JMS\Groups({"getUsers", "getUser", "login_check", "cart", "registerUser", "getAccount", "patchUsers", "getSessionsByUser", "addSession", "delivery", "order"})
      */
     private $email;
 
@@ -261,7 +261,7 @@ class User implements UserInterface, JWTUserInterface
     /**
      * @var UserMetadata
      * @ORM\OneToOne(targetEntity="UserMetadata", mappedBy="user", cascade={"remove", "persist"}, fetch="LAZY")
-     * @JMS\Groups({"getUsers", "getUser", "getAccount", "patchUsers"})
+     * @JMS\Groups({"getUsers", "getUser", "getAccount", "patchUsers", "cart"})
      */
     private $userMetadata;
 
@@ -304,6 +304,11 @@ class User implements UserInterface, JWTUserInterface
     private $sessions;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Order", mappedBy="user", orphanRemoval=true)
+     */
+    private $orders;
+
+    /**
      * User constructor.
      *
      * @param string|null $username
@@ -323,6 +328,7 @@ class User implements UserInterface, JWTUserInterface
         $this->coachs = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->sessions = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -1520,6 +1526,37 @@ class User implements UserInterface, JWTUserInterface
     {
         if ($this->sessions->contains($session)) {
             $this->sessions->removeElement($session);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Order[]
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Order $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Order $order): self
+    {
+        if ($this->orders->contains($order)) {
+            $this->orders->removeElement($order);
+            // set the owning side to null (unless already changed)
+            if ($order->getUser() === $this) {
+                $order->setUser(null);
+            }
         }
 
         return $this;

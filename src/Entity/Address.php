@@ -22,15 +22,39 @@ class Address
      * @ORM\Column(name="address_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getAccount", "patchUsers"})
+     * @JMS\Groups({"getAccount", "patchUsers", "delivery", "deliveries", "order"})
      */
     private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @JMS\Groups({"getAccount", "patchUsers", "delivery", "deliveries", "order"})
+     */
+    private $lastname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @JMS\Groups({"getAccount", "patchUsers", "delivery", "deliveries", "order"})
+     */
+    private $firstname;
+
+    /**
+     * @ORM\Column(name="street_complement", type="string", length=255, nullable=true)
+     * @JMS\Groups({"getAccount", "patchUsers", "delivery", "deliveries", "order"})
+     */
+    private $streetComplement;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @JMS\Groups({"getAccount", "patchUsers", "delivery", "deliveries", "order"})
+     */
+    private $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="street", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getAccount", "patchUsers"})
+     * @JMS\Groups({"getAccount", "patchUsers", "delivery", "deliveries", "order"})
      */
     private $street;
 
@@ -38,7 +62,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="zipcode", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getAccount", "patchUsers"})
+     * @JMS\Groups({"getAccount", "patchUsers", "delivery", "deliveries", "order"})
      */
     private $zipcode;
 
@@ -46,7 +70,7 @@ class Address
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getAccount", "patchUsers"})
+     * @JMS\Groups({"getAccount", "patchUsers", "delivery", "deliveries", "order"})
      */
     private $city;
 
@@ -56,7 +80,7 @@ class Address
      * @ORM\ManyToOne(targetEntity="Country")
      * @ORM\JoinColumn(name="country", referencedColumnName="country_id", nullable=true)
      * @Assert\NotBlank
-     * @JMS\Groups({"getAccount", "patchUsers"})
+     * @JMS\Groups({"getAccount", "patchUsers", "delivery", "deliveries", "order"})
      */
     private $country;
 
@@ -65,6 +89,7 @@ class Address
      *
      * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
+     * @JMS\Groups({"getAccount", "patchUsers", "delivery", "deliveries", "order"})
      *
      */
     private $createdAt;
@@ -74,7 +99,7 @@ class Address
      *
      * @ORM\Column(name="updated_at", type="datetime")
      * @Gedmo\Timestampable(on="update")
-     * @JMS\Exclude
+     * @JMS\Groups({"getAccount", "patchUsers", "delivery", "deliveries", "order"})
      */
     private $updatedAt;
 
@@ -177,6 +202,54 @@ class Address
     public function setUserMetadata(?UserMetadata $userMetadata): self
     {
         $this->userMetadata = $userMetadata;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getStreetComplement(): ?string
+    {
+        return $this->streetComplement;
+    }
+
+    public function setStreetComplement(?string $streetComplement): self
+    {
+        $this->streetComplement = $streetComplement;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

@@ -44,10 +44,11 @@ class SessionManager
 
     public function removeSession(UserInterface $user, Session $session)
     {
-        $session = $this->entityManager->getRepository(Session::class)
-            ->findSessionByCustomer($session, $user);
-
-        $this->entityManager->remove($session);
-        $this->entityManager->flush();
+        if ($session->getCustomers()->contains($user)) {
+            $session = $this->entityManager->getRepository(Session::class)
+                ->findSessionByCustomer($session, $user);
+            $this->entityManager->remove($session);
+            $this->entityManager->flush();
+        }
     }
 }

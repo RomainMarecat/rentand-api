@@ -20,7 +20,7 @@ class UserMetadata
      * @ORM\Column(name="user_metadata_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getUsers", "getUser", "getAccount", "patchUsers", "registerUser"})
+     * @JMS\Groups({"getUsers", "getUser", "getAccount", "patchUsers", "registerUser", "cart"})
      */
     private $id;
 
@@ -29,7 +29,7 @@ class UserMetadata
      *
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
-     *     "getUser", "getAccount", "patchUsers", "registerUser"})
+     *     "getUser", "getAccount", "patchUsers", "registerUser", "cart"})
      */
     private $firstname;
 
@@ -38,7 +38,7 @@ class UserMetadata
      *
      * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
      * @JMS\Groups({"adminGetComments", "adminGetBookings", "adminGetUsers", "adminGetUser", "getUsers",
-     *     "getUser", "getAccount", "patchUsers", "registerUser"})
+     *     "getUser", "getAccount", "patchUsers", "registerUser", "cart"})
      */
     private $lastname;
 
@@ -93,7 +93,7 @@ class UserMetadata
      *
      * @ORM\Column(type="string", length=255)
      * @Gedmo\Slug(fields={"firstname","lastname"})
-     * @JMS\Groups({"getUsers", "getUser"})
+     * @JMS\Groups({"getUsers", "getUser", "cart"})
      */
     private $slug;
 

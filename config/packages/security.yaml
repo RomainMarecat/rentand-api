@@ -43,7 +43,7 @@ security:
 
     access_control:
         - { path: ^/v1/public, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/v1/secure,       roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/v1/restricted,       roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/v1/admin,       roles: ROLE_ADMIN }
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
