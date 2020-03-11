@@ -23,7 +23,7 @@ class Sport
      * @ORM\Column(name="sport_id", type="guid")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="UUID")
-     * @JMS\Groups({"getUser", "getUsers", "getSportsTeachedByUser", "addSession", "getSports"})
+     * @JMS\Groups({"getUser", "getUsers", "getSportsTeachedByUser", "addSession", "getSports", "cart"})
      */
     private $id;
 
@@ -31,7 +31,7 @@ class Sport
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=true)
-     * @JMS\Groups({"getUser", "getUsers", "getSportsTeachedByUser", "addSession", "getSports"})
+     * @JMS\Groups({"getUser", "getUsers", "getSportsTeachedByUser", "addSession", "getSports", "cart"})
      */
     private $name;
 
@@ -333,7 +333,7 @@ class Sport
      * @JMS\VirtualProperty()
      * @JMS\SerializedName("translations")
      * @JMS\Groups({"getUsers", "getSports", "getSport", "getFormUser", "getFormSearch", "getFormSport",
-     *     "getFormFamily", "getUser", "getSport", "getUserSportById", "addSession"})
+     *     "getFormFamily", "getUser", "getSport", "getUserSportById", "addSession", "cart"})
      *
      */
     public function getTranslationsObject()

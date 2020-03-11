@@ -1,0 +1,14 @@
+App\Entity\Product:
+    session{1..1}:
+        name: Sport session
+        slug: sport-session
+        keywords: "sport session"
+        media: '@media<numberBetween(1, 30)>'
+        alias: session
+        publishedAt: '<dateTimeBetween("now")>'
+        translations:
+            fr: "Session de sport"
+            en: "sport session"
+        description:
+            fr: "Session de sport des coachs"
+        price: 0
